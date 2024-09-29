@@ -14,7 +14,7 @@ def index(request, selected=None, item=None):
             "corners",
             "double chance(12,1X,X2)",
         ],
-        "basketball": ["3 way", "total overtime","total halftime"],
+        "basketball": ["3 way", "total overtime", "total halftime"],
         "tennis": ["3 way", "total"],
     }
 
@@ -215,9 +215,61 @@ def index(request, selected=None, item=None):
                 ("Draw Probability", "draw_probability"),
                 ("Away Win Probability", "away_team_win_probability"),
                 lambda match: {
-                    "home_team_win_probability": match.home_team_win_probability,
-                    "draw_probability": match.draw_probability,
-                    "away_team_win_probability": match.away_team_win_probability,
+                    "home_team_win_probability": (
+                        math.ceil(match.home_team_win_probability)
+                        if match.home_team_win_probability
+                        else "---"
+                    ),
+                    "draw_probability": (
+                        math.ceil(match.draw_probability)
+                        if match.draw_probability
+                        else "---"
+                    ),
+                    "away_team_win_probability": (
+                        math.ceil(match.away_team_win_probability)
+                        if match.away_team_win_probability
+                        else "---"
+                    ),
+                },
+            ],
+            "total overtime": [
+                ("selection probability %", "expected_goals_overtime_probability"),
+                lambda match: {
+                    "expected_goals_overtime_probability": (
+                        math.ceil(match.expected_goals_overtime_probability)
+                        if match.expected_goals_overtime_probability
+                        else "---"
+                    )
+                },
+            ],
+            "total halftime": [
+                ("selection probability %", "expected_goals_halftime_probability"),
+                lambda match: {
+                    "expected_goals_halftime_probability": (
+                        math.ceil(match.expected_goals_halftime_probability)
+                        if match.expected_goals_halftime_probability
+                        else "---"
+                    )
+                },
+            ],
+            "home total": [
+                ("selection probability(ft) %", "expected_goals_hometeam_probability"),
+                lambda match: {
+                    "expected_goals_hometeam_probability": (
+                        math.ceil(match.expected_goals_hometeam_probability)
+                        if match.expected_goals_hometeam_probability
+                        else "---"
+                    )
+                },
+            ],
+            "away total": [
+                ("selection probability(ft) %", "expected_goals_awayteam_probability"),
+                lambda match: {
+                    "expected_goals_awayteam_probability": (
+                        math.ceil(match.expected_goals_awayteam_probability)
+                        if match.expected_goals_awayteam_probability
+                        else "---"
+                    )
                 },
             ],
         },
@@ -226,8 +278,26 @@ def index(request, selected=None, item=None):
                 ("Home Win Probability", "home_win_probability"),
                 ("Away Win Probability", "away_win_probability"),
                 lambda match: {
-                    "home_win_probability": match.home_team_win_probability,
-                    "away_win_probability": match.away_team_win_probability,
+                    "home_win_probability": (
+                        math.ceil(match.home_team_win_probability)
+                        if match.home_team_win_probability
+                        else "---"
+                    ),
+                    "away_win_probability": (
+                        math.ceil(match.away_team_win_probability)
+                        if match.away_team_win_probability
+                        else "---"
+                    ),
+                },
+            ],
+            "total": [
+                ("total games probability(ft) %", "total_games_probability"),
+                lambda match: {
+                    "total_games_probability": (
+                        math.ceil(match.total_games_probability)
+                        if match.total_games_probability
+                        else "---"
+                    )
                 },
             ],
         },
@@ -289,7 +359,34 @@ def index(request, selected=None, item=None):
                                             else (
                                                 match.dc_result
                                                 if selected == "double chance(12,1X,X2)"
-                                                else match.three_way_match_result
+                                                else (
+                                                    match.tovertime_match_result
+                                                    if selected == "basketball"
+                                                    and item == "total overtime"
+                                                    else (
+                                                        match.thalftime_match_result
+                                                        if selected == "basketball"
+                                                        and item == "total halftime"
+                                                        else (
+                                                            match.t_hometeam_result
+                                                            if selected == "basketball"
+                                                            and item == "home total"
+                                                            else (
+                                                                match.t_awayteam_result
+                                                                if selected
+                                                                == "basketball"
+                                                                and item == "away total"
+                                                                else (
+                                                                    match.tgame_match_result
+                                                                    if selected
+                                                                    == "tennis"
+                                                                    and item == "total"
+                                                                    else match.three_way_match_result
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
                                             )
                                         )
                                     )
@@ -327,6 +424,21 @@ def index(request, selected=None, item=None):
         elif item == "double chance(12,1X,X2)":
             data["prediction"] = get_prediction_dc(match)
             data["odds"] = get_odds_dc(match)
+        elif item == "total overtime":
+            data["prediction"] = get_prediction_basketball_overtime_total(match)
+            data["odds"] = get_odds_basketball_overtime_odds(match)
+        elif item == "total halftime":
+            data["prediction"] = get_prediction_basketball_halftime_total(match)
+            data["odds"] = get_odds_basketball_halftime_odds(match)
+        elif item == "home total":
+            data["prediction"] = get_prediction_basketball_hometeam_total(match)
+            data["odds"] = get_odds_basketball_hometeam_odds(match)
+        elif item == "away total":
+            data["prediction"] = get_prediction_basketball_awayteam_total(match)
+            data["odds"] = get_odds_basketball_awayteam_odds(match)
+        elif item == "total":
+            data["prediction"] = get_prediction_tennis_total(match)
+            data["odds"] = get_odds_tennis_total_odds(match)
         else:
             data["prediction"] = get_prediction(match, selected)
             data["odds"] = get_odds(match, selected)
@@ -586,7 +698,7 @@ def get_odds_ov_5_5(match):
 
 def get_prediction_cards(match):
     """Determine the prediction for total based on the probabilities."""
-    if match.total_cards_probability:
+    if match.total_cards:
         return f"{math.ceil(match.total_cards)}+ cards"  # cards
     else:
         return "---"
@@ -604,7 +716,7 @@ def get_odds_cards(match):
 
 def get_prediction_corners(match):
     """Determine the prediction for total corners based on the probabilities."""
-    if match.total_corners_probability:
+    if match.total_corners:
         return f"{math.ceil(match.total_corners)}+ corners"  # cards
     else:
         return "---"
@@ -660,5 +772,105 @@ def get_odds_dc(match):
                 return "---"
         else:
             return "N/A"
+    else:
+        return "---"
+
+
+def get_prediction_basketball_overtime_total(match):
+    """Determine the prediction for total basketball based on the probabilities."""
+    if match.expected_goals_overtime:
+        return f"{math.ceil(match.expected_goals_overtime)}+ goals"  # cards
+    else:
+        return "---"
+
+
+def get_odds_basketball_overtime_odds(match):
+    """Get odds based on the prediction for overtime basketball"""
+    prediction = get_prediction_basketball_overtime_total(match)
+    if prediction != "---":
+        if match.expected_goals_overtime_odds:
+            return match.expected_goals_overtime_odds
+        else:
+            return "---"
+    else:
+        return "---"
+
+
+def get_prediction_basketball_halftime_total(match):
+    """Determine the prediction for halftime total basketball based on the probabilities."""
+    if match.expected_goals_halftime:
+        return f"{math.ceil(match.expected_goals_halftime)}+ halftime goals"
+    else:
+        return "---"
+
+
+def get_odds_basketball_halftime_odds(match):
+    """Get odds based on the prediction for halftime basketball"""
+    prediction = get_prediction_basketball_halftime_total(match)
+    if prediction != "---":
+        if match.expected_goals_halftime_odds:
+            return match.expected_goals_halftime_odds
+        else:
+            return "---"
+    else:
+        return "---"
+
+
+def get_prediction_basketball_hometeam_total(match):
+    """Determine the prediction for hometeam total basketball based on the probabilities."""
+    if match.expected_goals_hometeam:
+        return f"HOME--{math.ceil(match.expected_goals_hometeam)}+  goals"
+    else:
+        return "---"
+
+
+def get_odds_basketball_hometeam_odds(match):
+    """Get odds based on the prediction for home team total basketball"""
+    prediction = get_prediction_basketball_halftime_total(match)
+    if prediction != "---":
+        if match.expected_goals_hometeam_odds:
+            return match.expected_goals_hometeam_odds
+        else:
+            return "---"
+    else:
+        return "---"
+
+
+def get_prediction_basketball_awayteam_total(match):
+    """Determine the prediction for away total basketball based on the probabilities."""
+    if match.expected_goals_awayteam:
+        return f"AWAY--{math.ceil(match.expected_goals_awayteam)}+ goals"
+    else:
+        return "---"
+
+
+def get_odds_basketball_awayteam_odds(match):
+    """Get odds based on the prediction for expected_goals_awayteam_total basketball"""
+    prediction = get_prediction_basketball_halftime_total(match)
+    if prediction != "---":
+        if match.expected_goals_awayteam_odds:
+            return match.expected_goals_awayteam_odds
+        else:
+            return "---"
+    else:
+        return "---"
+
+
+def get_prediction_tennis_total(match):
+    """Determine the prediction for total tenis based on the probabilities."""
+    if match.total_games:
+        return f"{math.ceil(match.total_games)}+ games"
+    else:
+        return "---"
+
+
+def get_odds_tennis_total_odds(match):
+    """Get odds based on the prediction for total tennis"""
+    prediction = get_prediction_tennis_total(match)
+    if prediction != "---":
+        if match.total_games_odds:
+            return match.total_games_odds
+        else:
+            return "---"
     else:
         return "---"

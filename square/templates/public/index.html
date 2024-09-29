@@ -30,12 +30,15 @@
         <div class="option">home wins</div>
         <div class="option">draws</div>
         <div class="option">away wins</div>
-        <div class="option"><a href="{% url 'square:index' selected_sport "total_1_5(OVER/UNDER)" %}">soccer 1.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' selected_sport "total(OVER/UNDER)" %}">soccer 2.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' selected_sport "total_3_5(OVER/UNDER)" %}">soccer 3.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' selected_sport "total_4_5(OVER/UNDER)" %}">soccer 4.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' selected_sport "total_5_5(OVER/UNDER)" %}">soccer 5+ goals</a></div>
-        
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_1_5(OVER/UNDER)" %}">soccer 1.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total(OVER/UNDER)" %}">soccer 2.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_3_5(OVER/UNDER)" %}">soccer 3.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_4_5(OVER/UNDER)" %}">soccer 4.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_5_5(OVER/UNDER)" %}">soccer 5+ goals</a></div>
+
+        <div class="option"><a href="{% url 'square:index' "basketball" "home total" %}">home total goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "basketball" "away total" %}">away total goals</a></div>
+
 
     <div class="square">
         {% if matches %}
