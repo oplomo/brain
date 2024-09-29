@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.utils import timezone
@@ -234,7 +233,11 @@ class FootballPrediction(MatchPredictionBase):
     total_corners_odds = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
-
+    total_corner_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
     # Total Cards
     total_cards = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
@@ -246,6 +249,87 @@ class FootballPrediction(MatchPredictionBase):
     total_cards_odds = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
+    total_card_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
+
+    dc12_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dc12_normalized_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dc12_odds = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+
+    dc1x_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dc1x_normalized_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dc1x_odds = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+
+    dcx2_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dcx2_normalized_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dcx2_odds = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    dc_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
+
+    def save(self, *args, **kwargs):
+        # Make sure the probabilities are set
+        if (
+            self.home_team_win_probability
+            and self.draw_probability
+            and self.away_team_win_probability
+        ):
+            # Convert to floats for calculation
+            home_prob = float(self.home_team_win_probability)
+            draw_prob = float(self.draw_probability)
+            away_prob = float(self.away_team_win_probability)
+
+            # Double Chance Calculations
+            self.dc1x_probability = home_prob + draw_prob
+            self.dcx2_probability = draw_prob + away_prob
+            self.dc12_probability = home_prob + away_prob
+
+            # Normalize to ensure probabilities sum to 100%
+            total_dc_prob = (
+                self.dc1x_probability + self.dcx2_probability + self.dc12_probability
+            )
+
+            # Normalize if total is not zero to avoid division by zero
+            if total_dc_prob > 0:
+                self.dc1x_normalized_probability = (
+                    self.dc1x_probability / total_dc_prob
+                ) * 100
+                self.dcx2_normalized_probability = (
+                    self.dcx2_probability / total_dc_prob
+                ) * 100
+                self.dc12_normalized_probability = (
+                    self.dc12_probability / total_dc_prob
+                ) * 100
+            else:
+                self.dc1x_normalized_probability = 0
+                self.dcx2_normalized_probability = 0
+                self.dc12_normalized_probability = 0
+
+        # Call the parent's save method to ensure the model is saved
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Football Prediction for {self.match}"
@@ -284,6 +368,51 @@ class BasketballPrediction(MatchPredictionBase):
         max_digits=5, decimal_places=2, null=True, blank=True
     )
     tovertime_match_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
+
+    expected_goals_halftime = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    expected_goals_halftime_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    expected_goals_halftime_odds = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    thalftime_match_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
+
+    expected_goals_hometeam = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    expected_goals_hometeam_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    expected_goals_hometeam_odds = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    t_hometeam_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
+    
+    expected_goals_awayteam = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    expected_goals_awayteam_probability = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    expected_goals_awayteam_odds = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    t_awayteam_result = models.CharField(
         max_length=50,
         choices=MatchPredictionBase.ResultChoices.choices,
         default=MatchPredictionBase.ResultChoices.WAITING,

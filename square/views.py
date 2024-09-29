@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import FootballPrediction, BasketballPrediction, TennisPrediction, Match
+import math
 
 
 def index(request, selected=None, item=None):
@@ -9,10 +10,11 @@ def index(request, selected=None, item=None):
             "3 way(1X2)",
             "bts(GG)",
             "total(OVER/UNDER)",
-            "cards & corners",
+            "cards",
+            "corners",
             "double chance(12,1X,X2)",
         ],
-        "basketball": ["3 way", "total overtime"],
+        "basketball": ["3 way", "total overtime","total halftime"],
         "tennis": ["3 way", "total"],
     }
 
@@ -55,15 +57,17 @@ def index(request, selected=None, item=None):
                 ("Away Win Probability %", "away_team_win_probability"),
                 lambda match: {
                     "home_team_win_probability": (
-                        int(match.home_team_win_probability)
+                        math.ceil(match.home_team_win_probability)
                         if match.home_team_win_probability
                         else "---"
                     ),
                     "draw_probability": (
-                        int(match.draw_probability) if match.draw_probability else "---"
+                        math.ceil(match.draw_probability)
+                        if match.draw_probability
+                        else "---"
                     ),
                     "away_team_win_probability": (
-                        int(match.away_team_win_probability)
+                        math.ceil(match.away_team_win_probability)
                         if match.away_team_win_probability
                         else "---"
                     ),
@@ -74,10 +78,12 @@ def index(request, selected=None, item=None):
                 ("No GG Probability %", "no_gg_probability"),
                 lambda match: {
                     "gg_probability": (
-                        int(match.gg_probability) if match.gg_probability else "---"
+                        math.ceil(match.gg_probability)
+                        if match.gg_probability
+                        else "---"
                     ),
                     "no_gg_probability": (
-                        int(match.no_gg_probability)
+                        math.ceil(match.no_gg_probability)
                         if match.no_gg_probability
                         else "---"
                     ),
@@ -88,12 +94,12 @@ def index(request, selected=None, item=None):
                 ("UNDER 2.5 %", "under_2_5_probability"),
                 lambda match: {
                     "over_2_5_probability": (
-                        int(match.over_2_5_probability)
+                        math.ceil(match.over_2_5_probability)
                         if match.over_2_5_probability
                         else "---"
                     ),
                     "under_2_5_probability": (
-                        int(match.under_2_5_probability)
+                        math.ceil(match.under_2_5_probability)
                         if match.under_2_5_probability
                         else "---"
                     ),
@@ -104,12 +110,12 @@ def index(request, selected=None, item=None):
                 ("UNDER 1.5 %", "under_1_5_probability"),
                 lambda match: {
                     "over_1_5_probability": (
-                        int(match.over_1_5_probability)
+                        math.ceil(match.over_1_5_probability)
                         if match.over_1_5_probability
                         else "---"
                     ),
                     "under_1_5_probability": (
-                        int(match.under_1_5_probability)
+                        math.ceil(match.under_1_5_probability)
                         if match.under_1_5_probability
                         else "---"
                     ),
@@ -120,12 +126,12 @@ def index(request, selected=None, item=None):
                 ("UNDER 3.5 %", "under_3_5_probability"),
                 lambda match: {
                     "over_3_5_probability": (
-                        int(match.over_3_5_probability)
+                        math.ceil(match.over_3_5_probability)
                         if match.over_3_5_probability
                         else "---"
                     ),
                     "under_3_5_probability": (
-                        int(match.under_3_5_probability)
+                        math.ceil(match.under_3_5_probability)
                         if match.under_3_5_probability
                         else "---"
                     ),
@@ -136,12 +142,12 @@ def index(request, selected=None, item=None):
                 ("UNDER 4.5 %", "under_4_5_probability"),
                 lambda match: {
                     "over_4_5_probability": (
-                        int(match.over_4_5_probability)
+                        math.ceil(match.over_4_5_probability)
                         if match.over_4_5_probability
                         else "---"
                     ),
                     "under_4_5_probability": (
-                        int(match.under_4_5_probability)
+                        math.ceil(match.under_4_5_probability)
                         if match.under_4_5_probability
                         else "---"
                     ),
@@ -152,14 +158,53 @@ def index(request, selected=None, item=None):
                 ("UNDER 5.5 %", "under_5_5_probability"),
                 lambda match: {
                     "over_5_5_probability": (
-                        int(match.over_5_5_probability)
+                        math.ceil(match.over_5_5_probability)
                         if match.over_5_5_probability
                         else "---"
                     ),
                     "under_5_5_probability": (
-                        int(match.under_5_5_probability)
+                        math.ceil(match.under_5_5_probability)
                         if match.under_5_5_probability
                         else "---"
+                    ),
+                },
+            ],
+            "cards": [
+                ("selection probability %", "total_cards_probability"),
+                lambda match: {
+                    "total_cards_probability": (
+                        math.ceil(match.total_cards_probability)
+                        if match.total_cards_probability
+                        else "---"
+                    )
+                },
+            ],
+            "corners": [
+                ("selection probability %", "total_corners_probability"),
+                lambda match: {
+                    "total_corners_probability": (
+                        math.ceil(match.total_corners_probability)
+                        if match.total_corners_probability
+                        else "---"
+                    )
+                },
+            ],
+            "double chance(12,1X,X2)": [
+                ("1X \n probability|normalized probability %", "dc1x_probability"),
+                ("X2 \n probability|normalized probability %", "dcx2_probability"),
+                (
+                    "12 \n probability|normalized probability  %",
+                    "dc12_probability",
+                ),
+                lambda match: {
+                    "dc1x_probability": (
+                        f"{math.ceil(match.dc1x_probability) if match.dc1x_probability else'---'}|{(match.dc1x_normalized_probability) if match.dc1x_normalized_probability else'---'}"
+                    ),
+                    "dcx2_probability": (
+                        f"{math.ceil(match.dcx2_probability) if match.dcx2_probability else'---'}|{(match.dcx2_normalized_probability) if match.dcx2_normalized_probability else'---'}"
+                    ),
+                    "dc12_probability": (
+                        f"{math.ceil(match.dc12_probability) if match.dc12_probability else'---'}|{(match.dc12_normalized_probability) if match.dc12_normalized_probability else'---'}"
                     ),
                 },
             ],
@@ -234,8 +279,20 @@ def index(request, selected=None, item=None):
                                     match.o_5_5_match_result
                                     if selected == "soccer"
                                     and item == "total_5_5(OVER/UNDER)"
-                                    else match.three_way_match_result
-                                    
+                                    else (
+                                        match.total_card_result
+                                        if selected == "soccer" and item == "cards"
+                                        else (
+                                            match.total_card_result
+                                            if selected == "soccer"
+                                            and item == "corners"
+                                            else (
+                                                match.dc_result
+                                                if selected == "double chance(12,1X,X2)"
+                                                else match.three_way_match_result
+                                            )
+                                        )
+                                    )
                                 )
                             )
                         )
@@ -261,6 +318,15 @@ def index(request, selected=None, item=None):
         elif item == "total_5_5(OVER/UNDER)":
             data["prediction"] = get_prediction_ov_5_5(match)
             data["odds"] = get_odds_ov_5_5(match)
+        elif item == "cards":
+            data["prediction"] = get_prediction_cards(match)
+            data["odds"] = get_odds_cards(match)
+        elif item == "corners":
+            data["prediction"] = get_prediction_corners(match)
+            data["odds"] = get_odds_corners(match)
+        elif item == "double chance(12,1X,X2)":
+            data["prediction"] = get_prediction_dc(match)
+            data["odds"] = get_odds_dc(match)
         else:
             data["prediction"] = get_prediction(match, selected)
             data["odds"] = get_odds(match, selected)
@@ -514,5 +580,85 @@ def get_odds_ov_5_5(match):
 
         else:
             return match.under_5_5_odds
+    else:
+        return "---"
+
+
+def get_prediction_cards(match):
+    """Determine the prediction for total based on the probabilities."""
+    if match.total_cards_probability:
+        return f"{math.ceil(match.total_cards)}+ cards"  # cards
+    else:
+        return "---"
+
+
+def get_odds_cards(match):
+    """Get odds based on the prediction for cards"""
+    prediction = get_prediction_cards(match)
+    if prediction != "---":
+        return match.total_cards_odds
+
+    else:
+        return "---"
+
+
+def get_prediction_corners(match):
+    """Determine the prediction for total corners based on the probabilities."""
+    if match.total_corners_probability:
+        return f"{math.ceil(match.total_corners)}+ corners"  # cards
+    else:
+        return "---"
+
+
+def get_odds_corners(match):
+    """Get odds based on the prediction for corners"""
+    prediction = get_prediction_corners(match)
+    if prediction != "---":
+        return match.total_corners_odds
+
+    else:
+        return "---"
+
+
+def get_prediction_dc(match):
+    """Determine the dc prediction based on the probabilities for each sport."""
+
+    if match.dc1x_probability and match.dcx2_probability and match.dc12_probability:
+        dc1x = match.dc1x_probability
+        dcx2 = match.dcx2_probability
+        dc12 = match.dc12_probability
+        if dc1x > dcx2 and dc1x > dc12:
+            return "1X"  # Home win / draw
+        elif dcx2 > dc1x and dcx2 > dc12:
+            return "X2"  # Draw/away win
+        elif dc12 > dc1x and dc12 > dcx2:
+            return "12"  # home win/ Away win
+        else:
+            return "N/A"
+    else:
+        return "---"
+
+
+def get_odds_dc(match):
+    """Get odds based on the dc prediction for each sport."""
+    prediction = get_prediction_dc(match)
+    if prediction != "---":
+        if prediction == "1X":
+            if match.dc1x_odds:
+                return match.dc1x_odds
+            else:
+                return "---"
+        elif prediction == "X2":
+            if match.dcx2_odds:
+                return match.dcx2_odds
+            else:
+                return "---"
+        elif prediction == "12":
+            if match.dc12_odds:
+                return match.dc12_odds
+            else:
+                return "---"
+        else:
+            return "N/A"
     else:
         return "---"
