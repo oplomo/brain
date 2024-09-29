@@ -1,0 +1,49 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}square brains{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="header">
+        <div class="top_menu">
+            <div class="logo">
+                <a href="{% url "square:index" %}">SQUARE BRAINS</a>
+            </div>
+            <div class="sports_selection">
+                <div class="sports_menu">
+                     <a href="{% url "square:index" "soccer" %}" class="{% if selected_sport == 'soccer' %}active{% endif %}">soccer</a>
+                </div>
+                <div class="sports_menu">
+                    <a href="{% url "square:index" "basketball" %}" class="{% if selected_sport == 'basketball' %}active{% endif %}">basketball</a>
+                </div>
+                <div class="sports_menu">
+                    <a href="{% url "square:index" "tennis" %}" class="{% if selected_sport == 'tennis' %}active{% endif %}">tennis</a>
+                </div>
+            </div>
+            <div class="vip">
+                <a href="">VIP</a>
+            </div>
+        </div>
+        <div class="market_menu">
+              {% if menu %}
+                  {% for item in menu %}
+                      <div class="market"><a href="{% url 'square:index' selected_sport item %}">{{ item }}</a>
+                      </div>
+                  {% endfor %}
+              {% else %}
+                  <div class="market">No market available</div>
+              {% endif %}
+        </div>
+    </div>
+
+    {% block content %}{% endblock content %}
+    <div class="footer"><small>footer</small></div>
+
+</body>
+</html>

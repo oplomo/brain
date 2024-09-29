@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+  Match Predictions
+{% endblock title %}
+
+{% block content %}
+<div class="filter">
+    <div class="odd_filter">
+        <!-- Form for selecting the dynamic range of odds -->
+        <form action="" method="GET">
+            <label for="min_odds">Min Odds:</label>
+            <input type="number" id="min_odds" name="min_odds" min="1" max="4" step="0.1" value="1">
+            
+            <label for="max_odds">Max Odds:</label>
+            <input type="number" id="max_odds" name="max_odds" min="1" max="4" step="0.1" value="4">
+            
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+</div>
+
+<div class="structure">
+    <div class="option_menu">
+        <div class="option">today</div>
+        <div class="option">yesterday</div>
+        <div class="option">tomorrow</div>
+        <div class="option">home wins</div>
+        <div class="option">draws</div>
+        <div class="option">away wins</div>
+        <div class="option"><a href="{% url 'square:index' selected_sport "total_1_5(OVER/UNDER)" %}">soccer 1.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport "total(OVER/UNDER)" %}">soccer 2.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport "total_3_5(OVER/UNDER)" %}">soccer 3.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport "total_4_5(OVER/UNDER)" %}">soccer 4.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport "total_5_5(OVER/UNDER)" %}">soccer 5+ goals</a></div>
+        
+
+    <div class="square">
+        {% if matches %}
+        
+        <table>
+            <thead>
+                <tr class="table-header">
+                    {% for header in table_headers %}
+                        <th class="table-cell">{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in table_data %}
+                    <tr>
+                        <td>{{ data.sport_type }}</td>
+                        <td>{{ data.match_name }}</td>
+            
+                        <!-- Dynamically display probabilities or other match data -->
+                        {% for header in dynamic_headers %}
+                            {% with display_name=header.0 data_key=header.1 %}
+                                <td>{{ data|get_item:data_key }}</td>
+                            {% endwith %}
+                        {% endfor %}
+            
+                        <td>{{ data.prediction }}</td>
+                        <td>{{ data.odds }}</td>
+                        <td>{{ data.result }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+                    </table>
+                {% else %}
+            <p>No game under the selected sport category.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
