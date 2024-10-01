@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+  free football sure pediction
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="match_info_type">{{ sport_slug }}</div>
+<div class="match_info">
+<div class="home_info">{{ match.match.home_team }}</div>
+<div class="game_info"><span class="match_vs">VS</span> <br> <span class="match_time">{{ time }}</span>
+</div>
+<div class="away_info">{{ match.match.away_team }}</div>
+</div>
+
+<div class="match_info_market">
+<table border="1">
+    <thead>
+        <tr>
+            <th>Market</th>
+            <th>Prediction</th>
+            <th>Probability</th>
+            <th>Odds</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for market in headers %}
+        <tr>
+            <!-- Vertical header: Market name -->
+            <td>{{ market }}</td>
+
+            <!-- Data for each column: Prediction, Probability, Odds, Result -->
+            <td>{{ match_data|get_item:market|get_item:"prediction" }}</td>
+            <td>{{ match_data|get_item:market|get_item:"probability" }}</td>
+            <td>{{ match_data|get_item:market|get_item:"odds" }}</td>
+            <td>{{ match_data|get_item:market|get_item:"result" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content%}

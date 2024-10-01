@@ -7,38 +7,35 @@
 {% endblock title %}
 
 {% block content %}
-<div class="filter">
-    <div class="odd_filter">
-        <!-- Form for selecting the dynamic range of odds -->
-        <form action="" method="GET">
-            <label for="min_odds">Min Odds:</label>
-            <input type="number" id="min_odds" name="min_odds" min="1" max="4" step="0.1" value="1">
-            
-            <label for="max_odds">Max Odds:</label>
-            <input type="number" id="max_odds" name="max_odds" min="1" max="4" step="0.1" value="4">
-            
-            <button type="submit">Filter</button>
-        </form>
-    </div>
-</div>
+
 
 <div class="structure">
     <div class="option_menu">
-        <div class="option">today</div>
-        <div class="option">yesterday</div>
-        <div class="option">tomorrow</div>
-        <div class="option">home wins</div>
-        <div class="option">draws</div>
-        <div class="option">away wins</div>
-        <div class="option"><a href="{% url 'square:index' "soccer" "total_1_5(OVER/UNDER)" %}">soccer 1.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' "soccer" "total(OVER/UNDER)" %}">soccer 2.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' "soccer" "total_3_5(OVER/UNDER)" %}">soccer 3.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' "soccer" "total_4_5(OVER/UNDER)" %}">soccer 4.5 goals</a></div>
-        <div class="option"><a href="{% url 'square:index' "soccer" "total_5_5(OVER/UNDER)" %}">soccer 5+ goals</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport item 'today'  %}">today</a></div>
 
-        <div class="option"><a href="{% url 'square:index' "basketball" "home total" %}">home total goals</a></div>
-        <div class="option"><a href="{% url 'square:index' "basketball" "away total" %}">away total goals</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport item 'yesterday'  %}">yesterday</a></div>
+        <div class="option"><a href="{% url 'square:index' selected_sport item 'tomorrow'  %}">tomorrow</a></div>
 
+
+        <div class="option"><a href="{% url 'square:index' "soccer" "3 way(1X2)" day %}">3 way(1X2) soccer</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "bts(GG)" day %}">bts(GG)</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "cards" day %}">cards</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "corners" day %}">corners</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "double chance(12,1X,X2)" day %}">double chance(12,1X,X2)</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_1_5(OVER/UNDER)" day %}">soccer 1.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total(OVER/UNDER)" day %}">soccer 2.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_3_5(OVER/UNDER)" day %}">soccer 3.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_4_5(OVER/UNDER)" day %}">soccer 4.5 goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "total_5_5(OVER/UNDER)" day %}">soccer 5+ goals</a></div>
+
+        <div class="option"><a href="{% url 'square:index' "basketball" "3 way" day %}">3 way basketball</a></div>
+        <div class="option"><a href="{% url 'square:index' "basketball" "total overtime" day %}">total overtime</a></div>
+        <div class="option"><a href="{% url 'square:index' "basketball" "total halftime" day %}">total halftime</a></div>       
+        <div class="option"><a href="{% url 'square:index' "basketball" "home total" day %}">home total goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "basketball" "away total" day %}">away total goals</a></div>
+
+        <div class="option"><a href="{% url 'square:index' "tennis" "3 way" day %}">3 way tennis</a></div>
+        <div class="option"><a href="{% url 'square:index' "tennis" "total" day %}">total games</a></div>
 
     <div class="square">
         {% if matches %}
@@ -55,8 +52,14 @@
                 {% for data in table_data %}
                     <tr>
                         <td>{{ data.sport_type }}</td>
-                        <td>{{ data.match_name }}</td>
-            
+                        <td>{{ data.time }}</td>
+
+
+                        <td>
+                            <a href="{{ data.get_absolute_url }}">
+                                {{ data.match_name }}
+                            </a>
+                        </td>
                         <!-- Dynamically display probabilities or other match data -->
                         {% for header in dynamic_headers %}
                             {% with display_name=header.0 data_key=header.1 %}
@@ -77,5 +80,9 @@
         {% endif %}
     </div>
 </div>
+
+
+
+
 
 {% endblock content %}

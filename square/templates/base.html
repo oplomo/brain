@@ -33,11 +33,9 @@
         <div class="market_menu">
               {% if menu %}
                   {% for item in menu %}
-                      <div class="market"><a href="{% url 'square:index' selected_sport item %}">{{ item }}</a>
+                      <div class="market"><a href="{% url 'square:index' selected_sport item day %}">{{ item }}</a>
                       </div>
                   {% endfor %}
-              {% else %}
-                  <div class="market">No market available</div>
               {% endif %}
         </div>
     </div>

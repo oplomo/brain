@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import FootballPrediction, BasketballPrediction, TennisPrediction, Match
 import math
+from django.utils import timezone
+from datetime import timedelta
+from django.utils.text import slugify
 
 
-def index(request, selected=None, item=None):
+def index(request, selected=None, item=None, day="today"):
     # Updated sports menu
     sports_menu = {
         "soccer": [
@@ -22,18 +25,35 @@ def index(request, selected=None, item=None):
     selected = selected or "soccer"
     menu = sports_menu.get(selected, [])
 
+    # Get today's date and define start and end boundaries
+    today = timezone.now().date()
+
+    if day == "yesterday":
+        start_date = today - timedelta(days=1)
+        end_date = today
+    elif day == "today":
+        start_date = today
+        end_date = today + timedelta(days=1)
+    elif day == "tomorrow":
+        start_date = today + timedelta(days=1)
+        end_date = today + timedelta(days=2)
+    else:
+        # If day is something else, default to today
+        start_date = today
+        end_date = today + timedelta(days=1)
+
     # Determine the correct prediction model based on the selected sport
     if selected == "soccer":
         matches = FootballPrediction.objects.select_related("match").filter(
-            match__sport__name=selected
+            match__sport__name=selected, match__match_date__range=[start_date, end_date]
         )
     elif selected == "basketball":
         matches = BasketballPrediction.objects.select_related("match").filter(
-            match__sport__name=selected
+            match__sport__name=selected, match__match_date__range=[start_date, end_date]
         )
     elif selected == "tennis":
         matches = TennisPrediction.objects.select_related("match").filter(
-            match__sport__name=selected
+            match__sport__name=selected, match__match_date__range=[start_date, end_date]
         )
     else:
         matches = Match.objects.none()  # Empty queryset for unknown sports
@@ -41,6 +61,7 @@ def index(request, selected=None, item=None):
     # Initialize table headers and data
     table_headers = [
         "Sport Type",
+        "time",
         "Match Name",
         "Prediction",
         "Odds",
@@ -311,6 +332,7 @@ def index(request, selected=None, item=None):
     table_headers = (
         [
             "Sport Type",
+            "time",
             "Match Name",
         ]
         + options[:-1]  # Exclude the lambda (the last element)
@@ -320,83 +342,23 @@ def index(request, selected=None, item=None):
             "Result",
         ]
     )
-    dynamic_headers = table_headers[2:-3]
+    dynamic_headers = table_headers[3:-3]
 
     # Populate table data
     for match in matches:
         data = {
+            "pk": match.match.pk,
+            "home_team": match.match.home_team,
+            "away_team": match.match.away_team,
             "sport_type": match.match.sport.name,
+            "time": (match.match.match_date).strftime("%Y-%m-%d-%H:%M"),
             "match_name": match.match,
             "prediction": get_prediction(match, selected),
             "odds": get_odds(match, selected),
-            "result": (
-                match.gg_match_result
-                if selected == "soccer" and item == "bts(GG)"
-                else (
-                    match.o_2_5_match_result
-                    if selected == "soccer" and item == "total(OVER/UNDER)"
-                    else (
-                        match.o_1_5_match_result
-                        if selected == "soccer" and item == "total_1_5(OVER/UNDER)"
-                        else (
-                            match.o_3_5_match_result
-                            if selected == "soccer" and item == "total_3_5(OVER/UNDER)"
-                            else (
-                                match.o_4_5_match_result
-                                if selected == "soccer"
-                                and item == "total_4_5(OVER/UNDER)"
-                                else (
-                                    match.o_5_5_match_result
-                                    if selected == "soccer"
-                                    and item == "total_5_5(OVER/UNDER)"
-                                    else (
-                                        match.total_card_result
-                                        if selected == "soccer" and item == "cards"
-                                        else (
-                                            match.total_card_result
-                                            if selected == "soccer"
-                                            and item == "corners"
-                                            else (
-                                                match.dc_result
-                                                if selected == "double chance(12,1X,X2)"
-                                                else (
-                                                    match.tovertime_match_result
-                                                    if selected == "basketball"
-                                                    and item == "total overtime"
-                                                    else (
-                                                        match.thalftime_match_result
-                                                        if selected == "basketball"
-                                                        and item == "total halftime"
-                                                        else (
-                                                            match.t_hometeam_result
-                                                            if selected == "basketball"
-                                                            and item == "home total"
-                                                            else (
-                                                                match.t_awayteam_result
-                                                                if selected
-                                                                == "basketball"
-                                                                and item == "away total"
-                                                                else (
-                                                                    match.tgame_match_result
-                                                                    if selected
-                                                                    == "tennis"
-                                                                    and item == "total"
-                                                                    else match.three_way_match_result
-                                                                )
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            ),
+            "get_absolute_url": match.get_absolute_url(),
+            "result": get_match_result(match, selected, item),
         }
+
         if item == "bts(GG)":
             data["prediction"] = get_prediction_bts(match)
             data["odds"] = get_odds_bts(match)
@@ -452,6 +414,7 @@ def index(request, selected=None, item=None):
     table_headers = (
         [
             "Sport Type",
+            "time",
             "Match Name",
         ]
         + [name for name, _ in options[:-1]]
@@ -472,6 +435,8 @@ def index(request, selected=None, item=None):
             "table_data": table_data,
             "matches": matches,
             "dynamic_headers": dynamic_headers,
+            "item": item,
+            "day": day,
         },
     )
 
@@ -819,7 +784,7 @@ def get_odds_basketball_halftime_odds(match):
 def get_prediction_basketball_hometeam_total(match):
     """Determine the prediction for hometeam total basketball based on the probabilities."""
     if match.expected_goals_hometeam:
-        return f"HOME--{math.ceil(match.expected_goals_hometeam)}+  goals"
+        return f"{match.match.home_team}--{math.ceil(match.expected_goals_hometeam)}+  goals"
     else:
         return "---"
 
@@ -839,7 +804,7 @@ def get_odds_basketball_hometeam_odds(match):
 def get_prediction_basketball_awayteam_total(match):
     """Determine the prediction for away total basketball based on the probabilities."""
     if match.expected_goals_awayteam:
-        return f"AWAY--{math.ceil(match.expected_goals_awayteam)}+ goals"
+        return f"{match.match.away_team}--{math.ceil(match.expected_goals_awayteam)}+ goals"
     else:
         return "---"
 
@@ -874,3 +839,257 @@ def get_odds_tennis_total_odds(match):
             return "---"
     else:
         return "---"
+
+
+def get_match_result(match, selected, item):
+    if selected == "soccer":
+        if item == "bts(GG)":
+            return match.gg_match_result
+        elif item == "total(OVER/UNDER)":
+            return match.o_2_5_match_result
+        elif item == "total_1_5(OVER/UNDER)":
+            return match.o_1_5_match_result
+        elif item == "total_3_5(OVER/UNDER)":
+            return match.o_3_5_match_result
+        elif item == "total_4_5(OVER/UNDER)":
+            return match.o_4_5_match_result
+        elif item == "total_5_5(OVER/UNDER)":
+            return match.o_5_5_match_result
+        elif item == "cards":
+            return match.total_card_result
+        elif item == "corners":
+            return match.total_card_result
+        elif item == "double chance(12,1X,X2)":
+            return match.dc_result
+    elif selected == "basketball":
+        if item == "total overtime":
+            return match.tovertime_match_result
+        elif item == "total halftime":
+            return match.thalftime_match_result
+        elif item == "home total":
+            return match.t_hometeam_result
+        elif item == "away total":
+            return match.t_awayteam_result
+    elif selected == "tennis":
+        return match.tgame_match_result
+
+    return match.three_way_match_result  # Default return if no conditions met
+
+
+def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
+    match = get_object_or_404(FootballPrediction, pk=pk)
+
+    match_data = {
+        "winner": {
+            "prediction": get_prediction(match, match.match.sport.name),
+            "probability": (
+                math.ceil(match.home_team_win_probability)
+                if get_prediction(match, match.match.sport.name) == "1"
+                else (
+                    math.ceil(match.draw_probability)
+                    if get_prediction(match, match.match.sport.name) == "X"
+                    else (
+                        math.ceil(match.away_team_win_probability)
+                        if get_prediction(match, match.match.sport.name) == "2"
+                        else None
+                    )
+                )
+            ),
+            "odds": get_odds(match, match.match.sport.name),
+            "result": match.three_way_match_result,
+        },
+        "both teams to score(gg)": {
+            "prediction": get_prediction_bts(match),
+            "probability": (
+                math.ceil(match.gg_probability)
+                if get_prediction_bts(match) == "YES"
+                else (
+                    math.ceil(match.no_gg_probability)
+                    if get_prediction_bts(match) == "NO"
+                    else None
+                )
+            ),
+            "odds": get_odds_bts(match),
+            "result": match.gg_match_result,
+        },
+        "over 2.5": {
+            "prediction": get_prediction_ov(match),
+            "probability": (
+                math.ceil(match.over_2_5_probability)
+                if get_prediction_ov(match) == "OVER(+2.5)"
+                else (
+                    math.ceil(match.under_2_5_probability)
+                    if get_prediction_bts(match) == "UNDER(-2.5)"
+                    else None
+                )
+            ),
+            "odds": get_odds_ov(match),
+            "result": match.o_2_5_match_result,
+        },
+        "total corners": {
+            "prediction": get_prediction_corners(match),
+            "probability": (match.total_corners_probability),
+            "odds": get_odds_corners(match),
+            "result": match.total_corner_result,
+        },
+        "total cards": {
+            "prediction": get_prediction_cards(match),
+            "probability": (match.total_cards_probability),
+            "odds": get_odds_cards(match),
+            "result": match.total_card_result,
+        },
+        "double chance": {
+            "prediction": get_prediction_dc(match),
+            "probability": (
+                math.ceil(match.dc1x_probability)
+                if get_prediction_dc(match) == "1X"
+                else (
+                    match.dcx2_probability
+                    if get_prediction_dc(match) == "X2"
+                    else (
+                        match.dc12_probability
+                        if get_prediction_dc(match) == "12"
+                        else None
+                    )
+                )
+            ),
+            "odds": get_odds_dc(match),
+            "result": match.dc_result,
+        },
+    }
+    headers = []
+    for market_name, market_data in match_data.items():
+        # Only check for 'prediction' and 'probability'
+        if (
+            market_data["prediction"] is not None and market_data["prediction"] != "---"
+        ) and (
+            market_data["probability"] is not None
+            and market_data["probability"] != "---"
+        ):
+            headers.append(market_name)
+
+    context = {
+        "match": match,
+        "time": time,
+        "sport_slug": sport_slug,
+        "headers": headers,
+        "match_data": match_data,
+    }
+
+    return render(request, "public/footballview.html", context)
+
+
+def Tennisview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
+    match = get_object_or_404(TennisPrediction, pk=pk)
+    match_data = {
+        "winner": {
+            "prediction": get_prediction(match, match.match.sport.name),
+            "probability": (
+                math.ceil(match.home_team_win_probability)
+                if get_prediction(match, match.match.sport.name) == "1"
+                else (
+                    math.ceil(match.away_team_win_probability)
+                    if get_prediction(match, match.match.sport.name) == "2"
+                    else None
+                )
+            ),
+            "odds": get_odds(match, match.match.sport.name),
+            "result": match.three_way_match_result,
+        },
+        "total games": {
+            "prediction": get_prediction_tennis_total(match),
+            "probability": (match.total_games_probability),
+            "odds": get_odds_tennis_total_odds(match),
+            "result": match.tgame_match_result,
+        },
+    }
+    headers = []
+    for market_name, market_data in match_data.items():
+        # Only check for 'prediction' and 'probability'
+        if (
+            market_data["prediction"] is not None and market_data["prediction"] != "---"
+        ) and (
+            market_data["probability"] is not None
+            and market_data["probability"] != "---"
+        ):
+            headers.append(market_name)
+
+    context = {
+        "match": match,
+        "time": time,
+        "sport_slug": sport_slug,
+        "headers": headers,
+        "match_data": match_data,
+    }
+
+    return render(request, "public/tennisview.html", context)
+
+
+def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
+    match = get_object_or_404(BasketballPrediction, pk=pk)
+    match_data = {
+        "winner": {
+            "prediction": get_prediction(match, match.match.sport.name),
+            "probability": (
+                math.ceil(match.home_team_win_probability)
+                if get_prediction(match, match.match.sport.name) == "1"
+                else (
+                    math.ceil(match.draw_probability)
+                    if get_prediction(match, match.match.sport.name) == "X"
+                    else (
+                        math.ceil(match.away_team_win_probability)
+                        if get_prediction(match, match.match.sport.name) == "2"
+                        else None
+                    )
+                )
+            ),
+            "odds": get_odds(match, match.match.sport.name),
+            "result": match.three_way_match_result,
+        },
+        "total overtime": {
+            "prediction": get_prediction_basketball_overtime_total(match),
+            "probability": (match.expected_goals_overtime_probability),
+            "odds": get_odds_basketball_overtime_odds(match),
+            "result": match.tovertime_match_result,
+        },
+        "total halftime": {
+            "prediction": get_prediction_basketball_halftime_total(match),
+            "probability": (match.expected_goals_halftime_probability),
+            "odds": get_odds_basketball_halftime_odds(match),
+            "result": match.thalftime_match_result,
+        },
+        match.match.home_team
+        + " total": {
+            "prediction": get_prediction_basketball_hometeam_total(match),
+            "probability": (match.expected_goals_hometeam_probability),
+            "odds": get_odds_basketball_hometeam_odds(match),
+            "result": match.t_hometeam_result,
+        },
+        match.match.away_team
+        + " total": {
+            "prediction": get_prediction_basketball_awayteam_total(match),
+            "probability": (match.expected_goals_awayteam_probability),
+            "odds": get_odds_basketball_awayteam_odds(match),
+            "result": match.t_awayteam_result,
+        },
+    }
+    headers = []
+    for market_name, market_data in match_data.items():
+        # Only check for 'prediction' and 'probability'
+        if (
+            market_data["prediction"] is not None and market_data["prediction"] != "---"
+        ) and (
+            market_data["probability"] is not None
+            and market_data["probability"] != "---"
+        ):
+            headers.append(market_name)
+
+    context = {
+        "match": match,
+        "time": time,
+        "sport_slug": sport_slug,
+        "headers": headers,
+        "match_data": match_data,
+    }
+
+    return render(request, "public/basketballview.html", context)

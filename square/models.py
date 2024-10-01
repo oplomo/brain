@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.utils import timezone
+from django.urls import reverse
+from django.utils.text import slugify
 
 
 # Custom User model to extend with profile and VIP access status
@@ -51,7 +53,7 @@ class Match(models.Model):
     match_date = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.home_team} vs {self.away_team} - {self.sport.name}"
+        return f"{self.home_team} vs {self.away_team}"
 
     def get_prediction_model(self):
         """Return the appropriate prediction model based on sport."""
@@ -334,6 +336,17 @@ class FootballPrediction(MatchPredictionBase):
     def __str__(self):
         return f"Football Prediction for {self.match}"
 
+    def get_absolute_url(self):
+        home_team_slug = self.match.home_team
+        away_team_slug = self.match.away_team
+        sport_slug = self.match.sport.name
+        time_str = self.match.match_date.strftime("%Y-%m-%d-%H:%M")
+
+        return reverse(
+            "square:soccer_detail",
+            args=[self.pk, home_team_slug, away_team_slug, time_str, sport_slug],
+        )
+
 
 class TennisPrediction(MatchPredictionBase):
 
@@ -354,6 +367,22 @@ class TennisPrediction(MatchPredictionBase):
 
     def __str__(self):
         return f"Tennis Prediction for {self.match}"
+
+    def get_absolute_url(self):
+        home_team_slug = self.match.home_team
+        away_team_slug = self.match.home_team
+        sport_slug = self.match.sport.name
+        time_str = self.match.match_date.strftime("%Y-%m-%d-%H:%M")
+        return reverse(
+            "square:tennis_detail",
+            args=[
+                self.pk,
+                home_team_slug,
+                away_team_slug,
+                time_str,
+                sport_slug,
+            ],
+        )
 
 
 class BasketballPrediction(MatchPredictionBase):
@@ -402,7 +431,7 @@ class BasketballPrediction(MatchPredictionBase):
         choices=MatchPredictionBase.ResultChoices.choices,
         default=MatchPredictionBase.ResultChoices.WAITING,
     )
-    
+
     expected_goals_awayteam = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
@@ -422,6 +451,16 @@ class BasketballPrediction(MatchPredictionBase):
 
     def __str__(self):
         return f"Basketball Prediction for {self.match}"
+
+    def get_absolute_url(self):
+        home_team_slug = self.match.home_team
+        away_team_slug = self.match.home_team
+        sport_slug = self.match.sport.name
+        time_str = self.match.match_date.strftime("%Y-%m-%d-%H:%M")
+        return reverse(
+            "square:basketball_detail",
+            args=[self.pk, home_team_slug, away_team_slug, time_str, sport_slug],
+        )
 
 
 # VIP tips for users who purchase access
