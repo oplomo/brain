@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+      background-color: #808080;  /* Grey background */
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 30px;
+      padding-top: 30px;
+    }
+
+    .match-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .match-item {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .team-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .vs {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .match-date {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .messages {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #e3f2fd;
+      color: #0277bd;
+    }
+
+    .alert {
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 5px;
+      background-color: #ffecb3;
+      color: #f57c00;
+    }
+
+    .alert-info {
+      background-color: #bbdefb;
+      color: #1e88e5;
+    }
+  </style>
+  <h1>Matches Available for Prediction</h1>
+
+  <!-- Filter by today or tomorrow -->
+  
+
+  <div class="match-list">
+    {% if matches %}
+      {% for match in matches %}
+        <div class="match-item">
+          <!-- Home Team -->
+          <div class="team home-team">
+            <img src="{{ match.home_team_logo }}" alt="{{ match.home_team_name }} logo" class="team-logo">
+            <span class="team-name">{{ match.home_team_name }}</span>
+          </div>
+          
+          <!-- VS Text -->
+          <div class="vs">VS</div>
+          
+          <!-- Match Date -->
+          <p class="match-date">{{ match.date }}</p>
+          
+          <!-- Away Team -->
+          <div class="team away-team">
+            <img src="{{ match.away_team_logo }}" alt="{{ match.away_team_name }} logo" class="team-logo">
+            <span class="team-name">{{ match.away_team_name }}</span>
+          </div>
+        </div>
+      {% endfor %}
+
+      <form id="predict-all-form" action="{% url 'square:predict_all_matches' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="matches" id="matches-input">
+        <button type="submit">Predict All Matches</button>
+      </form>
+      
+      <script>
+        // Prepare the match data
+        const matches = [
+          {% for match in matches %}
+            {
+              "id": "{{ match.match_id }}",
+              "date": "{{ match.date }}",
+              "venue_city": "{{ match.venue_city }}",
+              "home_team_name": "{{ match.home_team_name }}",
+              "away_team_name": "{{ match.away_team_name }}",
+              "league": "{{ match.league.id }}",
+              "home_team_logo": "{{ match.home_team_logo }}",
+              "away_team_logo": "{{ match.away_team_logo }}"
+            },
+          {% endfor %}
+        ];
+      
+        // Convert the matches array to a JSON string and set it as the value of the hidden input field
+        document.getElementById('matches-input').value = JSON.stringify(matches);
+      </script>
+      
+      
+    {% else %}
+      <p>No matches available for prediction.</p>
+    {% endif %}
+  </div>
+
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+

@@ -30,4 +30,28 @@ urlpatterns = [
         views.Basketballview,
         name="basketball_detail",
     ),
+    path("manage sport create prediction tips betting/", views.office, name="office"),
+    path("refresh static database/", views.refresh, name="refresh"),
+    path(
+        "recreate football league database/",
+        views.recreate_football_league,
+        name="recreate_football_league",
+    ),
+    path("fetch-matches/", views.fetch_matches_view, name="fetch_matches"),
+    path(
+        "select_football_prediction/",
+        views.select_football_prediction,
+        name="select_football_prediction",
+    ),
+    path(
+        "start_soccer_prediction/<str:today>",
+        views.start_soccer_prediction,
+        name="start_soccer_prediction",
+    ),
+    path(
+        "start_soccer_prediction/<str:date>/",
+        views.start_soccer_prediction,
+        name="start_soccer_prediction",
+    ),
+    path("predict_all/", views.predict_all_matches, name="predict_all_matches"),
 ]

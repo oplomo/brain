@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Matches</title>
+</head>
+<body>
+    <h1><a href="{% url 'square:refresh' %}">refresh site</a></h1>
+
+    <h1>Fetch Matches</h1>
+    <form method="post" action="{% url 'square:fetch_matches' %}">
+        {% csrf_token %}
+        
+        <p>
+            <label for="fetch_date">Fetch Matches For:</label>
+            <select name="fetch_date" id="fetch_date">
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+            </select>
+        </p>
+
+        <button type="submit">Fetch Matches</button>
+    </form>
+
+    <a href="{% url "square:select_football_prediction" %}">select todays FOOTBALL prediction</a> <br>
+
+
+    <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
+    <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMMOROWW</a>
+
+</body>
+</html>
+

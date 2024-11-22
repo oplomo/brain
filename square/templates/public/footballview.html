@@ -9,7 +9,7 @@
 {% block content %}
 
 
-<div class="match_info_type">{{ sport_slug }}</div>
+<div class="current">{{ sport_slug }}</div>
 <div class="match_info">
 <div class="home_info">{{ match.match.home_team }}</div>
 <div class="game_info"><span class="match_vs">VS</span> <br> <span class="match_time">{{ time }}</span>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="match_info_market">
-<table border="1">
+<table border="1" class="square_table">
     <thead>
         <tr>
             <th>Market</th>
@@ -35,10 +35,10 @@
             <td>{{ market }}</td>
 
             <!-- Data for each column: Prediction, Probability, Odds, Result -->
-            <td>{{ match_data|get_item:market|get_item:"prediction" }}</td>
+            <td class="stress">{{ match_data|get_item:market|get_item:"prediction" }}</td>
             <td>{{ match_data|get_item:market|get_item:"probability" }}</td>
             <td>{{ match_data|get_item:market|get_item:"odds" }}</td>
-            <td>{{ match_data|get_item:market|get_item:"result" }}</td>
+            <td  class="{% if match_data|get_item:market|get_item:"result" == 'won' %}won {% elif match_data|get_item:market|get_item:"result" == "lost" %}lost{% endif %}">{{ match_data|get_item:market|get_item:"result" }}</td>
         </tr>
         {% endfor %}
     </tbody>

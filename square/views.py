@@ -1,5 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import FootballPrediction, BasketballPrediction, TennisPrediction, Match
+from .models import (
+    FootballPrediction,
+    SiteInformation,
+    BasketballPrediction,
+    TennisPrediction,
+    Match,
+)
 import math
 from django.utils import timezone
 from datetime import timedelta
@@ -8,6 +14,7 @@ from django.utils.text import slugify
 
 def index(request, selected=None, item=None, day="today"):
     # Updated sports menu
+    site = get_object_or_404(SiteInformation, pk=1)
     sports_menu = {
         "soccer": [
             "3 way(1X2)",
@@ -61,7 +68,6 @@ def index(request, selected=None, item=None, day="today"):
     # Initialize table headers and data
     table_headers = [
         "Sport Type",
-        "time",
         "Match Name",
         "Prediction",
         "Odds",
@@ -332,7 +338,6 @@ def index(request, selected=None, item=None, day="today"):
     table_headers = (
         [
             "Sport Type",
-            "time",
             "Match Name",
         ]
         + options[:-1]  # Exclude the lambda (the last element)
@@ -342,7 +347,7 @@ def index(request, selected=None, item=None, day="today"):
             "Result",
         ]
     )
-    dynamic_headers = table_headers[3:-3]
+    dynamic_headers = table_headers[2:-3]
 
     # Populate table data
     for match in matches:
@@ -414,7 +419,6 @@ def index(request, selected=None, item=None, day="today"):
     table_headers = (
         [
             "Sport Type",
-            "time",
             "Match Name",
         ]
         + [name for name, _ in options[:-1]]
@@ -437,6 +441,7 @@ def index(request, selected=None, item=None, day="today"):
             "dynamic_headers": dynamic_headers,
             "item": item,
             "day": day,
+            "site": site,
         },
     )
 
@@ -878,6 +883,7 @@ def get_match_result(match, selected, item):
 
 def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
     match = get_object_or_404(FootballPrediction, pk=pk)
+    site = get_object_or_404(SiteInformation, pk=1)
 
     match_data = {
         "winner": {
@@ -974,12 +980,14 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
         "sport_slug": sport_slug,
         "headers": headers,
         "match_data": match_data,
+        "site": site,
     }
 
     return render(request, "public/footballview.html", context)
 
 
 def Tennisview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
+    site = get_object_or_404(SiteInformation, pk=1)
     match = get_object_or_404(TennisPrediction, pk=pk)
     match_data = {
         "winner": {
@@ -1020,12 +1028,14 @@ def Tennisview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
         "sport_slug": sport_slug,
         "headers": headers,
         "match_data": match_data,
+        "site": site,
     }
 
     return render(request, "public/tennisview.html", context)
 
 
 def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
+    site = get_object_or_404(SiteInformation, pk=1)
     match = get_object_or_404(BasketballPrediction, pk=pk)
     match_data = {
         "winner": {
@@ -1090,6 +1100,298 @@ def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug
         "sport_slug": sport_slug,
         "headers": headers,
         "match_data": match_data,
+        "site": site,
     }
 
     return render(request, "public/basketballview.html", context)
+
+
+def office(request):
+    return render(request, "private/o.html")
+
+
+def refresh(request):
+    return render(request, "private/refresh.html")
+
+
+from django.http import HttpResponse
+import requests
+import json
+from datetime import datetime
+from backend.models import Country, Season, League
+
+
+def recreate_football_league(request):
+
+    # API details
+    url = "https://v3.football.api-sports.io/leagues"
+    headers = {
+        "x-rapidapi-key": "8f15eaf630b27aa1971df895e7ca6997",
+        "x-rapidapi-host": "v3.football.api-sports.io",
+    }
+
+    # Make the request
+    response = requests.get(url, headers=headers)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        leagues = response.json()["response"]
+
+        for league_data in leagues:
+            # Extract country information
+            country_data = league_data["country"]
+            country_name = country_data["name"]
+            country_code = country_data.get("code", None)
+            country_flag = country_data.get("flag", None)
+
+            # Check if the country already exists or create it
+            country, created = Country.objects.get_or_create(
+                name=country_name, defaults={"code": country_code, "flag": country_flag}
+            )
+
+            # Process seasons
+            for season_data in league_data["seasons"]:
+                season_year = season_data["year"]
+                season_start_date = datetime.strptime(
+                    season_data["start"], "%Y-%m-%d"
+                ).date()
+                season_end_date = datetime.strptime(
+                    season_data["end"], "%Y-%m-%d"
+                ).date()
+                season_current = season_data["current"]
+
+                # Check if the season already exists or create it
+                season, created = Season.objects.get_or_create(
+                    year=season_year,
+                    start_date=season_start_date,
+                    end_date=season_end_date,
+                    current=season_current,
+                )
+
+                # Process league information
+                league_name = league_data["league"]["name"]
+                league_type = league_data["league"]["type"]
+                league_logo = league_data["league"]["logo"]
+                league_id = league_data["league"]["id"]
+
+                # Check if the league already exists or create it
+                league, created = League.objects.get_or_create(
+                    league_id=league_id,
+                    defaults={
+                        "name": league_name,
+                        "type": league_type,
+                        "logo": league_logo,
+                        "country": country,
+                    },
+                )
+
+                # Add season to the league if it's not already added
+                league.seasons.add(season)
+
+    else:
+        return HttpResponse(
+            f"Failed with status code: {response.status_code}", status=400
+        )
+
+    return render(request, "private/success_recreate_football_league.html")
+
+
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from datetime import date, timedelta
+
+from backend.models import Match, MatchDate, League
+
+API_KEY = "8f15eaf630b27aa1971df895e7ca6997"
+API_URL = "https://v3.football.api-sports.io/fixtures"
+
+
+def fetch_matches_view(request):
+    if request.method == "POST":
+        fetch_date = request.POST.get("fetch_date")
+
+        if fetch_date:
+            # Determine the date to fetch
+            if fetch_date == "today":
+                target_date = date.today()
+            elif fetch_date == "tomorrow":
+                target_date = date.today() + timedelta(days=1)
+
+            # API request headers
+            headers = {"x-apisports-key": API_KEY}
+
+            # Fetch matches from the API
+            response = requests.get(f"{API_URL}?date={target_date}", headers=headers)
+            if response.status_code == 200:
+                data = response.json()
+                fixture_list = data.get("response", [])
+
+                # Save matches in the database
+                match_date_obj, _ = MatchDate.objects.get_or_create(date=target_date)
+                for fixture in fixture_list:
+                    fixture_info = fixture.get("fixture", {})
+                    league_info = fixture.get("league", {})
+                    home_team = fixture.get("teams", {}).get("home", {})
+                    away_team = fixture.get("teams", {}).get("away", {})
+
+                    # Fetch the league from the database
+                    league = League.objects.filter(
+                        league_id=league_info.get("id")
+                    ).first()
+                    if not league:
+                        # If league not found, log an error (or handle as needed)
+                        continue
+
+                    # Save the match
+                    Match.objects.update_or_create(
+                        match_id=fixture_info.get("id"),
+                        defaults={
+                            "date": fixture_info.get("date"),
+                            "referee": fixture_info.get("referee"),
+                            "timezone": fixture_info.get("timezone"),
+                            "match_date": match_date_obj,
+                            "venue_name": fixture_info.get("venue", {}).get(
+                                "name", "N/A"
+                            ),
+                            "venue_city": fixture_info.get("venue", {}).get(
+                                "city", "N/A"
+                            ),
+                            "home_team_name": home_team.get("name"),
+                            "home_team_logo": home_team.get("logo"),
+                            "away_team_name": away_team.get("name"),
+                            "away_team_logo": away_team.get("logo"),
+                            "league": league,
+                        },
+                    )
+                return JsonResponse(
+                    {
+                        "message": f"Matches for {target_date} fetched and saved successfully."
+                    }
+                )
+            else:
+                return JsonResponse(
+                    {"error": "Failed to fetch data from the API."}, status=400
+                )
+
+    return render(request, "private/o.html")
+
+
+from backend.models import Country, Season, League, Match, MatchDate
+
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from datetime import datetime, timedelta
+
+
+def select_football_prediction(request):
+    if request.method == "POST":
+        # Get selected match IDs from the form
+        selected_matches = request.POST.getlist("selected_matches")
+
+        # Ensure the user doesn't select more than 15 matches
+        if len(selected_matches) > 15:
+            messages.error(request, "You can only select up to 15 matches.")
+            return redirect("square:select_football_prediction")
+
+        # Update the 'to_be_predicted' field for the selected matches
+        for match_id in selected_matches:
+            match = Match.objects.get(id=match_id)
+            match.to_be_predicted = True
+            match.save()
+
+        # Display a success message with the selected matches
+        selected_match_names = Match.objects.filter(id__in=selected_matches)
+        match_names = ", ".join(
+            [
+                match.home_team_name + " vs " + match.away_team_name
+                for match in selected_match_names
+            ]
+        )
+        messages.success(
+            request,
+            f"The following matches have been successfully selected: {match_names}",
+        )
+
+        return redirect("square:select_football_prediction")
+
+    # Get today's date and tomorrow's date
+    today = datetime.today().date()
+    tomorrow = today + timedelta(days=1)
+
+    # Get the selected filter from the form (default is today's matches)
+    date_filter = request.GET.get("date_filter", "today")
+
+    # Fetch matches based on the date filter (today or tomorrow)
+    if date_filter == "today":
+        matches = Match.objects.filter(date__date=today, to_be_predicted=False)
+    elif date_filter == "tomorrow":
+        matches = Match.objects.filter(date__date=tomorrow, to_be_predicted=False)
+    else:
+        matches = Match.objects.filter(to_be_predicted=False)
+
+    return render(
+        request,
+        "private/select_football_prediction.html",
+        {
+            "matches": matches,
+            "today": today,
+            "tomorrow": tomorrow,
+            "date_filter": date_filter,
+        },
+    )
+
+
+from django.shortcuts import render
+from django.utils.timezone import localdate
+from datetime import timedelta
+
+from backend.models import Match
+
+
+def start_soccer_prediction(request, date):
+    today = localdate()
+    tomorrow = today + timedelta(days=1)
+
+    if date == "today":
+        matches = Match.objects.filter(date__date=today, to_be_predicted=True)
+    elif date == "tomorrow":
+        matches = Match.objects.filter(date__date=tomorrow, to_be_predicted=True)
+    else:
+        matches = Match.objects.filter(to_be_predicted=True)
+
+    return render(request, "private/start_soccer_prediction.html", {"matches": matches})
+
+
+import json
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from backend.adams_square import (
+    Jerusalem,
+)  # Importing the Jerusalem class from the script
+
+
+@csrf_exempt
+def predict_all_matches(request):
+    if request.method == "POST":
+        matches_data = request.POST.get("matches")
+        if matches_data:
+            try:
+                # Try parsing the matches data as JSON
+                matches = json.loads(matches_data)
+
+                # Create an instance of Jerusalem class
+                jerusalem = Jerusalem()
+
+                # Process each match and store data
+                for match in matches:
+                    jerusalem.receive_match(match)
+
+                # Return a response indicating success
+                return HttpResponse("Match details processed and stored.")
+            except json.JSONDecodeError:
+                return HttpResponse("Invalid JSON format.", status=400)
+        else:
+            return HttpResponse("No match data provided.", status=400)
+    else:
+        return HttpResponse("Invalid request method.", status=400)

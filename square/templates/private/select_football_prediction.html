@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <style>
+    body {
+      background-color: #f4f4f4;  /* Light grey background */
+      color: #333; /* Dark text for readability */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #444; /* Darker shade for the title */
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background-color: #fff; /* White background for forms */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+
+    label {
+      font-size: 16px;
+      margin-right: 10px;
+      color: #555; /* Light grey for labels */
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    button {
+      background-color: #007bff; /* Blue background for buttons */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .messages {
+      margin-top: 20px;
+      background-color: #f8d7da; /* Light red background for messages */
+      color: #721c24; /* Dark red text for messages */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .alert {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    .alert-success {
+      background-color: #d4edda; /* Green background for success messages */
+      color: #155724;
+    }
+
+    .alert-info {
+      background-color: #cce5ff; /* Blue background for info messages */
+      color: #004085;
+    }
+
+    .match-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .match-item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .match-item label {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .match-item:hover {
+      background-color: #f9f9f9; /* Light hover effect on match items */
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+
+  <h1>Select Matches for Prediction</h1>
+
+  <!-- Filter by today or tomorrow -->
+  <form method="GET">
+    {% csrf_token %}
+    <label for="today">Today's Matches</label>
+    <input type="radio" id="today" name="date_filter" value="today" {% if date_filter == 'today' %}checked{% endif %}>
+    
+    <label for="tomorrow">Tomorrow's Matches</label>
+    <input type="radio" id="tomorrow" name="date_filter" value="tomorrow" {% if date_filter == 'tomorrow' %}checked{% endif %}>
+    
+    <button type="submit">Filter</button>
+  </form>
+
+  <form method="POST">
+    {% csrf_token %}
+    
+    <div>
+      {% for match in matches %}
+        <div class="match-item">
+          <input type="checkbox" name="selected_matches" value="{{ match.id }}" id="match_{{ match.id }}">
+          <label for="match_{{ match.id }}">
+            {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }}
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        <a href="{% url 'square:office' %}">office</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

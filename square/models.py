@@ -516,3 +516,63 @@ class MatchView(models.Model):
 
     def __str__(self):
         return f"{self.user.username} viewed {self.match}"
+
+
+class SiteInformation(models.Model):
+    # Basic site info
+    site_name = models.CharField(max_length=255, help_text="The name of the website.")
+    site_description = models.TextField(
+        blank=True, help_text="A brief description of the website."
+    )
+    logo = models.ImageField(
+        upload_to="media/logos/", blank=True, null=True, help_text="The logo of the site."
+    )
+
+    # Policies and legal
+    privacy_policy = models.TextField(
+        blank=True, help_text="Privacy policy of the website."
+    )
+    terms_and_conditions = models.TextField(
+        blank=True, help_text="Terms and conditions of the website."
+    )
+
+    # Social media links
+    facebook_link = models.URLField(blank=True, help_text="Link to Facebook page.")
+    twitter_link = models.URLField(blank=True, help_text="Link to Twitter profile.")
+    instagram_link = models.URLField(blank=True, help_text="Link to Instagram profile.")
+    linkedin_link = models.URLField(blank=True, help_text="Link to LinkedIn profile.")
+    youtube_link = (models.URLField(blank=True, help_text="Link to YouTube channel."),)
+    telegram_link = (
+        models.URLField(blank=True, help_text="Link to telegram channel."),
+    )
+    reddit_link = models.URLField(blank=True, help_text="Link to reddit channel.")
+    discord_link = models.URLField(blank=True, help_text="Link to discord channel.")
+
+    # Contact information
+    contact_email = models.EmailField(
+        max_length=255, blank=True, help_text="Contact email for the site."
+    )
+    contact_phone = models.CharField(
+        max_length=20, blank=True, help_text="Contact phone number for the site."
+    )
+    address = models.TextField(
+        blank=True, help_text="Physical address of the site or organization."
+    )
+
+    # Other relevant fields
+    support_email = models.EmailField(
+        max_length=255, blank=True, help_text="Support email address."
+    )
+    about_us = models.TextField(
+        blank=True, help_text="Information about the website or company."
+    )
+    newsletter_link = models.URLField(
+        blank=True, help_text="Link to newsletter or subscription page."
+    )
+
+    # Metadata
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.site_name

@@ -1,16 +1,343 @@
-div{border:2px, solid black}
-
+div{bworder:2px, solid red}
 .sports_menu a.active {
     font-weight: bold;
     color: red;
+    font-size: 1.2em;
+    border-bottom: outset 3px blue;
 }
 
-table {
-    border-collapse: collapse; /* Ensures borders are collapsed into a single border */
-    width: 100%; /* Optional: Sets the table width to 100% */
+a{
+    text-decoration: none;
+    color: black;
+}
+.sports_menu a, .vip a, .market a{
+    color: black;
+    text-decoration: none;
+
+}
+.sports_menu, .vip, .market{
+  background-color: rgb(255, 255, 255);
+  border: 2px outset wheat;
 }
 
-th, td {
-    border: 1px solid black; /* Sets a 1px solid black border for table headers and cells */
-    padding: 8px; /* Optional: Adds some padding for better spacing */
+.sports_menu:hover, .vip:hover, .market:hover{
+    background-color: rgb(250, 176, 176);
+}
+.act{
+    font-weight: bold;
+    color: gold;
+}
+
+
+
+body{
+    background-color: rgba(28, 37, 31, 0.822);
+    position: relative;
+}
+
+.header{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+    background-image: url('../images/topimage.jpeg');
+
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+} 
+
+
+  
+
+
+.current{
+    margin: 20px 0px;
+    text-align: center;
+    padding: 10px;
+
+}
+.top_menu{
+    display: flex;
+    justify-content: space-around;
+    margin:10px 0px 20px;
+    margin: 10px;
+}
+
+.logo{
+    width:15%;
+    height: 30vh;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo a{
+width: 100%;
+height: 100%;
+}
+.logo a img{width: 100%;height: 100%;}
+.sports_selection{
+    flex-basis: 75%;
+    display: flex;
+    margin: 10px;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+.vip{
+    flex-basis: 5%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    height: fit-content;
+    dishplay: none;
+}
+
+.sports_menu{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.market_menu a{
+    display: inline;
+} 
+.market_menu{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.39);
+
+}
+
+
+.market{
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.structure{
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(to right,rgba(180, 243, 180, 0.671),rgba(62, 107, 62, 0.178),rgba(67, 68, 67, 0.158),rgba(10, 121, 79, 0.17));
+}
+
+.square{
+    margin: 15px 5%;
+    height: fit-content;
+    width: 78%;
+}
+
+.guide{
+    margin: 20px 0px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.option_menu{
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    overflow-y: scroll;
+    margin: 5px 10px;
+    background-color: rgba(116, 214, 116, 0.295);
+    width: 18%;
+     
+}
+
+.option_menu>*{
+    text-align: center;
+    padding: 5px;
+    margin: 5px 10px;
+ 
+}
+.option a{
+    text-decoration: none;
+    color: black;
+}
+
+.option{box-shadow: 5px 5px 5px 2px rgba(80, 133, 2, 0.575); }
+.option:hover{box-shadow: 5px 5px 5px 2px rgba(3, 69, 122, 0.925);
+     background-color: rgb(31, 186, 247);
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+
+     .match_info_type{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.match_info{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+}
+
+.home_info,.away_info{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game_info>*{
+    display: block;
+}
+.game_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.match_info_market{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.match_info_market table{
+    width: 50%;
+    margin: 10px 0px;
+}
+
+.square_table thead tr{
+   
+    background-color: rgba(128, 255, 0, 0.453);
+}
+
+.square_table{
+    border-spacing: 10px;
+}
+
+.square_table>*{
+    text-align: center;
+}
+
+.square_table thead tr th{
+    gap: 120px;
+    padding: 10px;
+    border-bottom-style: outset;
+    border-bottom-width: 2px;
+    border-bottom-color: orangered;    
+}
+
+.square_table thead tr th:nth-of-type(2){
+    min-width: 100px;
+}
+
+.square_table tbody tr td:nth-of-type(odd){
+  background-color: rgba(255, 166, 0, 0.452);
+  min-height: 50px;
+  font-weight: bolder;
+}
+
+.square_table tbody tr td:nth-of-type(even){
+    background-color: rgba(212, 185, 185, 0.541);
+    padding: 5px;
+    font-weight: bolder;
+    
+}
+.current{
+    font-size: 1.3em;
+    text-decoration: underline;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.stress {
+        background-color: rgba(255, 166, 0, 0.973) !important;
+        height: 50px !important;  
+      
+        font-size: 1.3em !important; 
+        color: rgb(21, 53, 2);
+        font-weight: 500; 
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+}
+
+.won{
+    /* background-color: green !important; */
+    color: rgb(3, 122, 3);
+    font-size: 1.2em;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+.lost{
+    /* background-color: red !important; */
+    color: rgb(138, 15, 15);
+    font-size: 1.2em;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.team_link{
+    /* line-height: 1.5em; */
+
+}
+.team_link a{
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.team_link a:hover{
+  color: rgb(88, 3, 3);
+  text-decoration: underline;
+}
+.match_time{
+font-variant: small-caps;
+font-size: 14px;
+}
+
+.match_info{
+    background-color: rgba(134, 158, 29, 0.178);
+}
+.home_info, .away_info{
+  font-size: 2.5em;
+  background-color: rgba(128, 255, 0, 0.438);
+  color: white;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 5px 5px 5px 5px black;
+  margin-bottom: 10px;
+}
+
+.match_vs{
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-weight: bolder;
+}
+
+.game_info .match_time{
+    color: white;
+}
+
+.toprar{
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    font-size: 2em;
+    font-weight: bolder;
+    position: fixed;
+    top: 90vh;
+    right: 30px;
+    z-index: 100;
 }

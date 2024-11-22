@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Matches</title>
+</head>
+<body>
+    <h1>Fetch Matches</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Fetch Matches</button>
+    </form>
+</body>
+</html>
