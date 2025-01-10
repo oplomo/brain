@@ -65,13 +65,16 @@ class Match(models.Model):
     # Team details
     home_team_name = models.CharField(max_length=100)
     home_team_logo = models.URLField(max_length=300, null=True, blank=True)
+    home_team_id = models.IntegerField(null=True, blank=True)
     away_team_name = models.CharField(max_length=100)
     away_team_logo = models.URLField(max_length=300, null=True, blank=True)
+    away_team_id = models.IntegerField(null=True, blank=True)
 
     # League relationship
     league = models.ForeignKey(
         "League", related_name="matches", on_delete=models.CASCADE
     )
     to_be_predicted = models.BooleanField(default=False)
+
     def __str__(self):
         return f"{self.home_team_name} vs {self.away_team_name} on {self.date}"

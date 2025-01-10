@@ -136,9 +136,11 @@
               "venue_city": "{{ match.venue_city }}",
               "home_team_name": "{{ match.home_team_name }}",
               "away_team_name": "{{ match.away_team_name }}",
-              "league": "{{ match.league.id }}",
+              "league": "{{ match.league.league_id }}",
               "home_team_logo": "{{ match.home_team_logo }}",
-              "away_team_logo": "{{ match.away_team_logo }}"
+              "away_team_logo": "{{ match.away_team_logo }}",
+              "home_team_id":"{{ match.home_team_id}}",
+              "away_team_id":"{{ match.away_team_id}}",
             },
           {% endfor %}
         ];

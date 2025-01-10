@@ -10,6 +10,7 @@ import math
 from django.utils import timezone
 from datetime import timedelta
 from django.utils.text import slugify
+import time
 
 
 def index(request, selected=None, item=None, day="today"):
@@ -1126,7 +1127,7 @@ def recreate_football_league(request):
     # API details
     url = "https://v3.football.api-sports.io/leagues"
     headers = {
-        "x-rapidapi-key": "8f15eaf630b27aa1971df895e7ca6997",
+        "x-rapidapi-key": "996c177462abec830c211f413c3bdaa8",
         "x-rapidapi-host": "v3.football.api-sports.io",
     }
 
@@ -1202,7 +1203,7 @@ from datetime import date, timedelta
 
 from backend.models import Match, MatchDate, League
 
-API_KEY = "8f15eaf630b27aa1971df895e7ca6997"
+API_KEY = "996c177462abec830c211f413c3bdaa8"
 API_URL = "https://v3.football.api-sports.io/fixtures"
 
 
@@ -1258,8 +1259,10 @@ def fetch_matches_view(request):
                             ),
                             "home_team_name": home_team.get("name"),
                             "home_team_logo": home_team.get("logo"),
+                            "home_team_id": home_team.get("id"),  # Added home team ID
                             "away_team_name": away_team.get("name"),
                             "away_team_logo": away_team.get("logo"),
+                            "away_team_id": away_team.get("id"),  # Added away team ID
                             "league": league,
                         },
                     )
@@ -1386,6 +1389,7 @@ def predict_all_matches(request):
                 # Process each match and store data
                 for match in matches:
                     jerusalem.receive_match(match)
+                    time.sleep(60)
 
                 # Return a response indicating success
                 return HttpResponse("Match details processed and stored.")
