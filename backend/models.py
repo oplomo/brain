@@ -78,3 +78,13 @@ class Match(models.Model):
 
     def __str__(self):
         return f"{self.home_team_name} vs {self.away_team_name} on {self.date}"
+
+
+
+class TaskProgress(models.Model):
+    task_id = models.CharField(max_length=255)
+    progress = models.FloatField(default=0)
+    last_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Task {self.task_id} - {self.progress}%"

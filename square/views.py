@@ -1374,6 +1374,10 @@ from backend.adams_square import (
 )  # Importing the Jerusalem class from the script
 
 
+
+from backend.tasks import fetch_data_for_matches, analyze_fetched_data
+
+
 @csrf_exempt
 def predict_all_matches(request):
     if request.method == "POST":
@@ -1381,21 +1385,48 @@ def predict_all_matches(request):
         if matches_data:
             try:
                 # Try parsing the matches data as JSON
-                matches = json.loads(matches_data)
-
-                # Create an instance of Jerusalem class
-                jerusalem = Jerusalem()
-
-                # Process each match and store data
-                for match in matches:
-                    jerusalem.receive_match(match)
-                    time.sleep(60)
-
-                # Return a response indicating success
-                return HttpResponse("Match details processed and stored.")
+                matches = json.loads(matches_data)          
+                
+            
+                result = fetch_data_for_matches.delay(matches)  # Send the whole list in a single task
+                task_id = result.id  # Get the task ID
+                
+                # Render a template to show the progress with the task ID
+                return render(request, 'private/data_progress.html', {'task_id': task_id})
             except json.JSONDecodeError:
                 return HttpResponse("Invalid JSON format.", status=400)
         else:
             return HttpResponse("No match data provided.", status=400)
     else:
         return HttpResponse("Invalid request method.", status=400)
+
+from django.http import JsonResponse, Http404
+from django.shortcuts import render
+from backend.models import TaskProgress
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def check_task_progress(request, task_id):
+    """Fetch progress for a specific task."""
+    try:
+        task_progress = TaskProgress.objects.filter(task_id=task_id).first()
+    except TaskProgress.DoesNotExist:
+        task_progress = None
+
+    if task_progress:
+        return JsonResponse({'status': 'In Progress', 'progress': task_progress.progress})
+    else:
+        return JsonResponse({'status': 'Failed or Not Started', 'progress': 0})
+
+
+def see_data_progress(request):
+    """Render the page to display progress for the most recent task."""
+    try:
+        task_progress = TaskProgress.objects.latest('last_updated')
+    except TaskProgress.DoesNotExist:
+        task_progress = None
+
+    progress = task_progress.progress if task_progress else 0
+    task_id = task_progress.task_id if task_progress else None
+
+    return render(request, 'private/data_progress.html', {'task_id': task_id, 'progress': progress})

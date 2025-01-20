@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Progress</title>
+    <style>
+        #progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            height: 30px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background-color: #4caf50;
+            width: 0;  /* Start at 0 to update dynamically */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Processing Matches...</h2>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <p id="progress-text">0% Completed</p> <!-- Start at 0% -->
+
+    <script>
+        // Function to check task progress
+        function checkProgress(taskId) {
+            fetch(`/private/check_task_progress/${taskId}/`)  // Ensure correct URL path
+                .then(response => response.json())
+                .then(data => {
+                    const progress = data.progress;
+
+                    // Update progress bar
+                    document.getElementById('progress-bar').style.width = progress + '%';
+                    document.getElementById('progress-text').innerText = progress.toFixed(2) + '% Completed';
+
+                    // Check progress every 2 seconds if task is still running
+                    if (progress < 100) {
+                        setTimeout(() => checkProgress(taskId), 2000);
+                    } else {
+                        document.getElementById('progress-text').innerText = "Task Completed!";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking task progress:', error);
+                });
+        }
+
+        // Get taskId from template context
+        const taskId = "{{ task_id }}";  
+        if (taskId) {
+            checkProgress(taskId);  // Start progress checking only if taskId is available
+        } else {
+            console.error('No task ID provided.');
+        }
+    </script>
+
+</body>
+</html>

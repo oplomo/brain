@@ -123,8 +123,7 @@ class siteinfoAdmin(admin.ModelAdmin):
 
 
 from django.contrib import admin
-from backend.models import Country, Season, League,Match, MatchDate
-
+from backend.models import Country, Season, League, Match, MatchDate
 
 
 class CountryAdmin(admin.ModelAdmin):
@@ -163,13 +162,22 @@ admin.site.register(Season, SeasonAdmin)
 admin.site.register(League, LeagueAdmin)
 
 
-
 # Admin class for Match model
 class MatchAdmin(admin.ModelAdmin):
-    list_display = ("match_id", "home_team_name", "away_team_name", "date", "referee", "timezone", "league", "match_date")
+    list_display = (
+        "match_id",
+        "home_team_name",
+        "away_team_name",
+        "date",
+        "referee",
+        "timezone",
+        "league",
+        "match_date",
+    )
     search_fields = ("home_team_name", "away_team_name", "match_id", "league__name")
     list_filter = ("date", "league", "match_date")
     ordering = ("date",)
+
 
 # Admin class for MatchDate model
 class MatchDateAdmin(admin.ModelAdmin):
@@ -177,6 +185,21 @@ class MatchDateAdmin(admin.ModelAdmin):
     search_fields = ("date",)
     ordering = ("date",)
 
+
 # Register models
 admin.site.register(Match, MatchAdmin)
 admin.site.register(MatchDate, MatchDateAdmin)
+
+from django.contrib import admin
+from backend.models import TaskProgress
+
+
+@admin.register(TaskProgress)
+class TaskProgressAdmin(admin.ModelAdmin):
+    list_display = (
+        "task_id",
+        "progress",
+        "last_updated",
+    )  # Fields to display in the admin list view
+    search_fields = ("task_id",)  # Allow searching by task ID
+    list_filter = ("last_updated",)  # Optional: Filter by last updated date

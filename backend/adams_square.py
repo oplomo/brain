@@ -10,7 +10,9 @@ import logging
 # Set up basic logging configuration
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 class Jerusalem:
@@ -130,9 +132,6 @@ class Jerusalem:
 
     #     return closest_forecast
 
-
-
-
     def fetch_forecast(self, city, target_time_utc):
         """
         Fetch the weather forecast for a given city at a specific time using OpenWeatherMap API
@@ -180,12 +179,13 @@ class Jerusalem:
                 continue
 
         if closest_forecast:
-            logger.info(f"Found closest forecast for {city} at {closest_forecast['dt_txt']}")
+            logger.info(
+                f"Found closest forecast for {city} at {closest_forecast['dt_txt']}"
+            )
         else:
             logger.warning(f"No valid forecast found for {city} at the specified time.")
 
         return closest_forecast
-
 
     # def fetch_match_odds(self, match_id):
     #     """
@@ -247,8 +247,6 @@ class Jerusalem:
     #         self.odds_error = "No odds data found"
     #         return None
 
-
-
     def fetch_match_odds(self, match_id):
         """
         Fetch match odds using the football API for the given match ID
@@ -309,7 +307,9 @@ class Jerusalem:
                 self.odds_error = "No odds data found"
                 return None
         except Exception as e:
-            logger.error(f"Error processing match odds data for match ID {match_id}: {e}")
+            logger.error(
+                f"Error processing match odds data for match ID {match_id}: {e}"
+            )
             self.odds_error = "Error processing odds data"
             return None
 
@@ -355,8 +355,6 @@ class Jerusalem:
     #         self.avg_goals = None
     #         self.avg_goals_error = f"Failed to fetch data: {e}"
 
-
-
     def fetch_average_goals_per_match(self, league_id):
         """
         Fetches the last `last` matches for the specified league and calculates the average goals per match.
@@ -390,7 +388,9 @@ class Jerusalem:
             if goals_per_match:
                 self.avg_goals = round(np.mean(goals_per_match), 3)
                 self.avg_goals_error = None
-                logger.info(f"Average goals per match for league {league_id}: {self.avg_goals}")
+                logger.info(
+                    f"Average goals per match for league {league_id}: {self.avg_goals}"
+                )
             else:
                 self.avg_goals = None
                 self.avg_goals_error = "No valid scores found in match data."
@@ -400,8 +400,6 @@ class Jerusalem:
             self.avg_goals = None
             self.avg_goals_error = f"Failed to fetch data: {e}"
             logger.error(f"Failed to fetch match data for league {league_id}: {e}")
-
-
 
     # def get_players_data_by_position(self, team_id):
     #     url = f"{self.BASE_URL}/players"
@@ -526,7 +524,7 @@ class Jerusalem:
                             if position not in position_classification:
                                 position_classification[position] = []
                             position_classification[position].append(player_entry)
-            
+
             print(f"Successfully classified players by position.")
             return position_classification
 
@@ -594,14 +592,15 @@ class Jerusalem:
     #         return None
 
     def fetch_fixture_players_data(self, fixture_id, team_id):
-       
 
         base_url = f"{self.BASE_URL}/fixtures/players"
         headers = self.HEADERS
         params = {"fixture": fixture_id}
 
         try:
-            print(f"Fetching player data for fixture ID: {fixture_id} and team ID: {team_id}")
+            print(
+                f"Fetching player data for fixture ID: {fixture_id} and team ID: {team_id}"
+            )
             response = requests.get(base_url, headers=headers, params=params)
             response.raise_for_status()  # Raise exception for HTTP errors
         except requests.RequestException as e:
@@ -739,7 +738,7 @@ class Jerusalem:
         This makes multiple requests to the API.
         """
         print(f"Fetching head-to-head statistics for teams {team1_id} vs {team2_id}.")
-        
+
         base_url = f"{self.BASE_URL}/fixtures/headtohead"
         headers = self.HEADERS
         params = {"h2h": f"{team1_id}-{team2_id}"}
@@ -753,7 +752,9 @@ class Jerusalem:
 
         try:
             data = response.json()
-            print(f"Successfully fetched head-to-head data. Processing {len(data)} items.")
+            print(
+                f"Successfully fetched head-to-head data. Processing {len(data)} items."
+            )
             sliced_data = dict(list(data.items())[1:])  # Skipping the first item
             fixtures = data.get("response", [])
             sorted_data = sorted(
@@ -776,12 +777,16 @@ class Jerusalem:
                     stats_response = requests.get(stats_url, headers=headers)
                     stats_response.raise_for_status()
                 except requests.RequestException as e:
-                    print(f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}")
+                    print(
+                        f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}"
+                    )
                     statistics = []
                 else:
                     stats_data = stats_response.json()
                     print(f"Fetched statistics for fixture ID: {fixture_id}.")
-                    sliced_stats = dict(list(stats_data.items())[1:])  # Skipping metadata
+                    sliced_stats = dict(
+                        list(stats_data.items())[1:]
+                    )  # Skipping metadata
                     statistics = [
                         {
                             "team": {
@@ -808,7 +813,9 @@ class Jerusalem:
                     }
                 )
 
-            print(f"Successfully processed head-to-head data for {len(results)} fixtures.")
+            print(
+                f"Successfully processed head-to-head data for {len(results)} fixtures."
+            )
             return {"fixtures": results}
         except (ValueError, KeyError) as e:
             print(f"Data processing error: {str(e)}")
@@ -817,13 +824,11 @@ class Jerusalem:
             print(f"Unexpected error occurred: {str(e)}")
             return {"error": f"Unexpected error: {str(e)}"}
 
-
     # def fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
     #     self, home_team_id, away_team_id, league_id
     # ):
     #     """
     #     Fetch and return head-to-head statistics between two football teams using the API-Sports service.
-
 
     #     Returns:
     #         list: A list of dictionaries containing fixture details and their statistics.
@@ -892,8 +897,10 @@ class Jerusalem:
         Returns:
             list: A list of dictionaries containing fixture details and their statistics.
         """
-        print(f"Fetching head-to-head data for home team {home_team_id} and away team {away_team_id} in league {league_id}.")
-        
+        print(
+            f"Fetching head-to-head data for home team {home_team_id} and away team {away_team_id} in league {league_id}."
+        )
+
         base_url = f"{self.BASE_URL}/fixtures/headtohead"
         headers = self.HEADERS
         params = {"h2h": f"{home_team_id}-{away_team_id}"}
@@ -908,7 +915,9 @@ class Jerusalem:
         try:
             data = response.json()
             fixtures = data.get("response", [])
-            print(f"Retrieved {len(fixtures)} fixtures. Filtering and processing data...")
+            print(
+                f"Retrieved {len(fixtures)} fixtures. Filtering and processing data..."
+            )
 
             # Sort fixtures by date, from most recent to oldest
             sorted_data = sorted(
@@ -932,7 +941,9 @@ class Jerusalem:
                         stats_response = requests.get(stats_url, headers=headers)
                         stats_response.raise_for_status()
                     except requests.RequestException as e:
-                        print(f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}")
+                        print(
+                            f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}"
+                        )
                         continue
 
                     stats_data = stats_response.json().get("response", [])
@@ -954,14 +965,9 @@ class Jerusalem:
             print(f"Data processing error: {str(e)}")
             return {"error": f"Data processing error: {str(e)}"}
 
-
-
-
     # def home_run_and_away_run(self, team_id, is_home=True):
     #     """
     #     Fetch past fixtures (home or away) for a specific team and return relevant data.
-
-
 
     #     Returns:
     #         list: A list of dictionaries containing fixture and statistics information.
@@ -1024,7 +1030,6 @@ class Jerusalem:
     #     else:
     #         return {"Error": f"Error: {response.status_code}, {response.text}"}
 
-
     def home_run_and_away_run(self, team_id, is_home=True):
         """
         Fetch past fixtures (home or away) for a specific team and return relevant data.
@@ -1054,7 +1059,9 @@ class Jerusalem:
         try:
             data = response.json()
             fixtures = data.get("response", [])
-            print(f"Retrieved {len(fixtures)} fixtures for team {team_id}. Filtering data...")
+            print(
+                f"Retrieved {len(fixtures)} fixtures for team {team_id}. Filtering data..."
+            )
 
             # Filter based on home/away and league_id
             filtered_fixtures = [
@@ -1091,7 +1098,9 @@ class Jerusalem:
                         for stat in stats_data.get("response", [])
                     ]
                 except requests.RequestException as e:
-                    fixture_data["Statistics Error"] = f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}"
+                    fixture_data["Statistics Error"] = (
+                        f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}"
+                    )
                     print(f"Statistics fetch error for fixture {fixture_id}: {str(e)}")
 
                 results.append(fixture_data)
@@ -1101,8 +1110,6 @@ class Jerusalem:
         except (ValueError, KeyError) as e:
             print(f"Data processing error: {str(e)}")
             return {"Error": f"Data processing error: {str(e)}"}
-
-
 
     # def get_last_five_fixtures(self, team_id):
     #     """Fetches the last five fixtures for a given team ID."""
@@ -1138,15 +1145,16 @@ class Jerusalem:
             response.raise_for_status()
             data = response.json()
             fixtures = data.get("response", [])
-            
+
             # Limit to the last five fixtures sorted by date in descending order
-            sorted_fixtures = sorted(fixtures, key=lambda x: x["fixture"]["date"], reverse=True)[:5]
+            sorted_fixtures = sorted(
+                fixtures, key=lambda x: x["fixture"]["date"], reverse=True
+            )[:5]
             self.fixture_response = sorted_fixtures
             return {"fixtures": sorted_fixtures}
         except requests.RequestException as e:
             print(f"Error fetching last five fixtures: {str(e)}")
             return {"Error": f"Request failed: {str(e)}"}
-
 
     def get_fixture_statistics(self, fixture_id):
         """
@@ -1171,8 +1179,6 @@ class Jerusalem:
             print(f"Error fetching statistics for fixture {fixture_id}: {str(e)}")
             return {"Error": f"Request failed: {str(e)}"}
 
-   
-   
     # def fetch_data_for_team(self, team_id, is_home=True):
     #     """Fetches last five fixtures and their statistics for a team."""
     #     number_of_games = 5
@@ -1243,7 +1249,9 @@ class Jerusalem:
                 # Store fixture details and statistics
                 stats_dict[fixture_id] = {
                     "fixture_details": fixture,
-                    "statistics": statistics.get("statistics", "No statistics available"),
+                    "statistics": statistics.get(
+                        "statistics", "No statistics available"
+                    ),
                 }
                 game_count += 1
         else:
@@ -1255,7 +1263,6 @@ class Jerusalem:
 
         return stats_dict
 
-    
     # def statistics_extraction(self):
     #     fixtures = self.last_five_home_fixtures
     #     # print(
@@ -1280,7 +1287,6 @@ class Jerusalem:
 
     #     return self.fixtures_data
 
-
     def statistics_extraction(self):
         """
         Extracts and stores statistics for the last five home fixtures.
@@ -1296,10 +1302,11 @@ class Jerusalem:
         for fixture in fixtures["response"]:
             fixture_id = fixture["fixture"]["id"]
             if fixture_id in self.home_stats_dict:
-                self.fixtures_data[fixture_id] = self.home_stats_dict[fixture_id]  # Store each fixture's stats
+                self.fixtures_data[fixture_id] = self.home_stats_dict[
+                    fixture_id
+                ]  # Store each fixture's stats
 
         return self.fixtures_data
-
 
     # def extract_teams_info_from_fixtures(self, fixtures_data):
     #     extracted_info = {}
@@ -1388,9 +1395,6 @@ class Jerusalem:
 
         return extracted_info
 
-
-
-
     # def get_first_away_and_home_fixtures(self, fixtures, team_name):
     #     first_away = None
     #     first_home = None
@@ -1425,8 +1429,6 @@ class Jerusalem:
 
     #     return first_away, first_home
 
-
-
     def get_first_away_and_home_fixtures(self, fixtures, team_name):
         first_away = None
         first_home = None
@@ -1434,9 +1436,12 @@ class Jerusalem:
         if not fixtures:
             logging.error("No fixtures provided.")
             return None, None
+        else:
+            print("yes$$$$$$$4 fixures provided and the  home team is ", team_name)
 
         # Loop through fixtures to find the first home and away games for the team
         for fixture_id, fixture in fixtures.items():
+            print("fixture items has this", fixtures.items())
             away_team = fixture.get("Teams", {}).get("Away Team", {})
             home_team = fixture.get("Teams", {}).get("Home Team", {})
 
@@ -1471,7 +1476,6 @@ class Jerusalem:
 
         return first_away, first_home
 
-
     # def teams_info(self):
     #     fix_d = self.statistics_extraction()
     #     # print("\n \n \n \nis this team info empty?", fix_d)
@@ -1492,10 +1496,6 @@ class Jerusalem:
     #     first_home = tim[1]
     #     return first_home
 
-
-
-
-
     def teams_info(self):
         """Fetches the team info by extracting it from fixtures data."""
         fix_d = self.statistics_extraction()  # Get fixture data
@@ -1514,11 +1514,15 @@ class Jerusalem:
     def first_away(self):
         """Fetches the first away fixture and returns it."""
         try:
-            tim = self.get_first_away_and_home_fixtures(self.teams_info(), self.team_name())
+            tim = self.get_first_away_and_home_fixtures(
+                self.teams_info(), self.team_name()
+            )
             if tim and tim[0]:
                 return tim[0]
             else:
-                logging.warning(f"First away fixture not found for team {self.team_name()}.")
+                logging.warning(
+                    f"First away fixture not found for team {self.team_name()}."
+                )
                 return None
         except Exception as e:
             logging.error(f"Error occurred while fetching first away fixture: {e}")
@@ -1527,16 +1531,19 @@ class Jerusalem:
     def first_home(self):
         """Fetches the first home fixture and returns it."""
         try:
-            tim = self.get_first_away_and_home_fixtures(self.teams_info(), self.team_name())
+            tim = self.get_first_away_and_home_fixtures(
+                self.teams_info(), self.team_name()
+            )
             if tim and tim[1]:
                 return tim[1]
             else:
-                logging.warning(f"First home fixture not found for team {self.team_name()}.")
+                logging.warning(
+                    f"First home fixture not found for team {self.team_name()}."
+                )
                 return None
         except Exception as e:
             logging.error(f"Error occurred while fetching first home fixture: {e}")
             return None
-  
 
     # def save_statistics(self, first_away, first_home, constant_team_id):
 
@@ -1586,7 +1593,7 @@ class Jerusalem:
     #                 self.mutual["away"]["guest_vs_home"]["home_data"] = stats
     #                 self.mutual["away"]["guest_vs_home"]["home_ratings"] = (
     #                     self.fetch_fixture_players_data(
-                            
+
     #                         self.fixtures_data[first_away["Fixture ID"]][
     #                             "fixture_details"
     #                         ]["fixture"]["id"],
@@ -1611,7 +1618,7 @@ class Jerusalem:
     #                 self.mutual["away"]["guest_vs_home"]["guest_data"] = stats
     #                 self.mutual["away"]["guest_vs_home"]["guest_ratings"] = (
     #                     self.fetch_fixture_players_data(
-                            
+
     #                         self.fixtures_data[first_away["Fixture ID"]][
     #                             "fixture_details"
     #                         ]["fixture"]["id"],
@@ -1656,7 +1663,7 @@ class Jerusalem:
     #                 self.mutual["home"]["home_vs_guest"]["home_data"] = stats
     #                 self.mutual["home"]["home_vs_guest"]["home_ratings"] = (
     #                     self.fetch_fixture_players_data(
-                            
+
     #                         self.fixtures_data[first_home["Fixture ID"]][
     #                             "fixture_details"
     #                         ]["fixture"]["id"],
@@ -1681,7 +1688,7 @@ class Jerusalem:
     #                 self.mutual["home"]["home_vs_guest"]["guest_data"] = stats
     #                 self.mutual["home"]["home_vs_guest"]["guest_ratings"] = (
     #                     self.fetch_fixture_players_data(
-                            
+
     #                         self.fixtures_data[first_home["Fixture ID"]][
     #                             "fixture_details"
     #                         ]["fixture"]["id"],
@@ -1694,21 +1701,24 @@ class Jerusalem:
 
     #     return self.mutual
 
-
-
-
     def save_statistics(self, first_away, first_home, constant_team_id):
         try:
             # Fetch statistics for First Away Fixture
-            logging.info("The first away reached this function and here it is --> %s", first_away)
+            logging.info(
+                "The first away reached this function and here it is --> %s", first_away
+            )
             logging.info("Then this is the first home --> %s", first_home)
-            logging.info("Constant ID is %s, Type: %s", constant_team_id, type(constant_team_id))
-            
+            logging.info(
+                "Constant ID is %s, Type: %s", constant_team_id, type(constant_team_id)
+            )
+
             constant_team_id = int(constant_team_id)
 
             # Fetch data for first away
             if self.fixtures_data[first_away["Fixture ID"]]:
-                teams = self.fixtures_data[first_away["Fixture ID"]]["statistics"]["response"]
+                teams = self.fixtures_data[first_away["Fixture ID"]]["statistics"][
+                    "response"
+                ]
                 for team in teams:
                     team_id = team["team"]["id"]
                     team_name = team["team"]["name"]
@@ -1719,30 +1729,53 @@ class Jerusalem:
                         dictna = {
                             "team_id": team_id,
                             "team_name": team_name,
-                            "fixture_data": self.fixtures_data[first_away["Fixture ID"]]["fixture_details"]["fixture"]["id"],
+                            "fixture_data": self.fixtures_data[
+                                first_away["Fixture ID"]
+                            ]["fixture_details"]["fixture"]["id"],
                         }
                         self.mutual["away"]["guest_vs_home"]["home_data"] = stats
                         self.mutual["away"]["guest_vs_home"]["home_ratings"] = (
-                            self.fetch_fixture_players_data(self.fixtures_data[first_away["Fixture ID"]]["fixture_details"]["fixture"]["id"], team_id)
+                            self.fetch_fixture_players_data(
+                                self.fixtures_data[first_away["Fixture ID"]][
+                                    "fixture_details"
+                                ]["fixture"]["id"],
+                                team_id,
+                            )
                         )
-                        self.mutual["away"]["guest_vs_home"]["match"]["home_name"] = f"home team name+++++---- {team_name}"
+                        self.mutual["away"]["guest_vs_home"]["match"][
+                            "home_name"
+                        ] = f"home team name+++++---- {team_name}"
                     elif team_id == first_away["Opponent Team ID"]:
                         dictna = {
                             "team_id": team_id,
                             "team_name": team_name,
-                            "fixture_data": self.fixtures_data[first_away["Fixture ID"]]["fixture_details"]["fixture"]["id"],
+                            "fixture_data": self.fixtures_data[
+                                first_away["Fixture ID"]
+                            ]["fixture_details"]["fixture"]["id"],
                         }
                         self.mutual["away"]["guest_vs_home"]["guest_data"] = stats
                         self.mutual["away"]["guest_vs_home"]["guest_ratings"] = (
-                            self.fetch_fixture_players_data(self.fixtures_data[first_away["Fixture ID"]]["fixture_details"]["fixture"]["id"], team_id)
+                            self.fetch_fixture_players_data(
+                                self.fixtures_data[first_away["Fixture ID"]][
+                                    "fixture_details"
+                                ]["fixture"]["id"],
+                                team_id,
+                            )
                         )
-                        self.mutual["away"]["guest_vs_home"]["match"]["guest_name"] = f"guest team name+++++++---- {team_name}"
+                        self.mutual["away"]["guest_vs_home"]["match"][
+                            "guest_name"
+                        ] = f"guest team name+++++++---- {team_name}"
             else:
-                logging.warning("No fixture data found for away fixture with ID: %s", first_away["Fixture ID"])
+                logging.warning(
+                    "No fixture data found for away fixture with ID: %s",
+                    first_away["Fixture ID"],
+                )
 
             # Fetch statistics for First Home Fixture
             if self.fixtures_data[first_home["Fixture ID"]]:
-                teams = self.fixtures_data[first_home["Fixture ID"]]["statistics"]["response"]
+                teams = self.fixtures_data[first_home["Fixture ID"]]["statistics"][
+                    "response"
+                ]
                 for team in teams:
                     team_id = team["team"]["id"]
                     team_name = team["team"]["name"]
@@ -1753,32 +1786,52 @@ class Jerusalem:
                         dictna = {
                             "team_id": team_id,
                             "team_name": team_name,
-                            "fixture_data": self.fixtures_data[first_home["Fixture ID"]]["fixture_details"]["fixture"]["id"],
+                            "fixture_data": self.fixtures_data[
+                                first_home["Fixture ID"]
+                            ]["fixture_details"]["fixture"]["id"],
                         }
                         self.mutual["home"]["home_vs_guest"]["home_data"] = stats
                         self.mutual["home"]["home_vs_guest"]["home_ratings"] = (
-                            self.fetch_fixture_players_data(self.fixtures_data[first_home["Fixture ID"]]["fixture_details"]["fixture"]["id"], team_id)
+                            self.fetch_fixture_players_data(
+                                self.fixtures_data[first_home["Fixture ID"]][
+                                    "fixture_details"
+                                ]["fixture"]["id"],
+                                team_id,
+                            )
                         )
-                        self.mutual["home"]["home_vs_guest"]["match"]["home_name"] = f"home team name+++++---- {team_name}"
+                        self.mutual["home"]["home_vs_guest"]["match"][
+                            "home_name"
+                        ] = f"home team name+++++---- {team_name}"
                     elif team_id == first_home["Opponent Team ID"]:
                         dictna = {
                             "team_id": team_id,
                             "team_name": team_name,
-                            "fixture_data": self.fixtures_data[first_home["Fixture ID"]]["fixture_details"]["fixture"]["id"],
+                            "fixture_data": self.fixtures_data[
+                                first_home["Fixture ID"]
+                            ]["fixture_details"]["fixture"]["id"],
                         }
                         self.mutual["home"]["home_vs_guest"]["guest_data"] = stats
                         self.mutual["home"]["home_vs_guest"]["guest_ratings"] = (
-                            self.fetch_fixture_players_data(self.fixtures_data[first_home["Fixture ID"]]["fixture_details"]["fixture"]["id"], team_id)
+                            self.fetch_fixture_players_data(
+                                self.fixtures_data[first_home["Fixture ID"]][
+                                    "fixture_details"
+                                ]["fixture"]["id"],
+                                team_id,
+                            )
                         )
-                        self.mutual["home"]["home_vs_guest"]["match"]["guest_name"] = f"guest team name+++++++---- {team_name}"
+                        self.mutual["home"]["home_vs_guest"]["match"][
+                            "guest_name"
+                        ] = f"guest team name+++++++---- {team_name}"
             else:
-                logging.warning("No fixture data found for home fixture with ID: %s", first_home["Fixture ID"])
+                logging.warning(
+                    "No fixture data found for home fixture with ID: %s",
+                    first_home["Fixture ID"],
+                )
 
         except Exception as e:
             logging.error("An error occurred while saving statistics: %s", str(e))
 
         return self.mutual
-
 
     def h_team_id(self):
         return self.home_team_id
@@ -1786,8 +1839,6 @@ class Jerusalem:
     # def unown_mutual(self):
     #     mutual = self.save_statistics(self.first_away, self.first_home, self.h_team_id)
     #     return mutual
-
-    
 
     # def fetch_h2h_data(self, h2h_combination):
     #     """
@@ -1843,7 +1894,6 @@ class Jerusalem:
     #         logger.exception(f"An error occurred: {e}")
     #         return None
 
-
     def fetch_h2h_data(self, h2h_combination):
         """
         Fetches the most recent past head-to-head fixture data for the given combination of teams.
@@ -1871,7 +1921,9 @@ class Jerusalem:
                 past_fixtures = [
                     fixture
                     for fixture in fixtures
-                    if datetime.strptime(fixture["fixture"]["date"], "%Y-%m-%dT%H:%M:%S%z")
+                    if datetime.strptime(
+                        fixture["fixture"]["date"], "%Y-%m-%dT%H:%M:%S%z"
+                    )
                     <= now
                 ]
 
@@ -1881,22 +1933,22 @@ class Jerusalem:
 
                 # Sort past fixtures by date (most recent first)
                 past_fixtures.sort(
-                    key=lambda x: datetime.strptime(x["fixture"]["date"], "%Y-%m-%dT%H:%M:%S%z"),
+                    key=lambda x: datetime.strptime(
+                        x["fixture"]["date"], "%Y-%m-%dT%H:%M:%S%z"
+                    ),
                     reverse=True,
                 )
 
                 logger.info(f"Most recent past fixture: {past_fixtures[0]}")
                 return past_fixtures[0]  # Return the most recent past fixture
             else:
-                logger.error(f"Error fetching H2H data: {response.status_code} - {response.text}")
+                logger.error(
+                    f"Error fetching H2H data: {response.status_code} - {response.text}"
+                )
                 return None
         except Exception as e:
             logger.exception("An error occurred while fetching H2H data.")
             return None
-
-
-
-
 
     # def populate_mutual(
     #     self,
@@ -2016,12 +2068,12 @@ class Jerusalem:
     #     return self.mutual
 
     def populate_mutual(
-            self,
-            first_away_id,
-            first_home_id,
-            constant_team_id=None,
-            constant_team_name=None,
-        ):
+        self,
+        first_away_id,
+        first_home_id,
+        constant_team_id=None,
+        constant_team_name=None,
+    ):
         try:
             # Fetch H2H for first_away_id
             constant_team_id = self.away_team_id
@@ -2041,21 +2093,33 @@ class Jerusalem:
                         stats = stat["statistics"]
                         logger.info(f"Processing away fixture for team: {team_name}")
 
-                        if team_id == int(constant_team_id):  # Stats for the constant team
+                        if team_id == int(
+                            constant_team_id
+                        ):  # Stats for the constant team
                             self.mutual["away"]["guest_vs_away"]["away_data"] = stats
                             self.mutual["away"]["guest_vs_away"]["away_ratings"] = (
-                                self.fetch_fixture_players_data(fixture_id_away, team_id)
+                                self.fetch_fixture_players_data(
+                                    fixture_id_away, team_id
+                                )
                             )
-                            self.mutual["away"]["guest_vs_away"]["match"]["away_name"] = f"away team name+++++---- {team_name}"
+                            self.mutual["away"]["guest_vs_away"]["match"][
+                                "away_name"
+                            ] = f"away team name+++++---- {team_name}"
                         elif team_id == first_away_id:  # Stats for the opponent
                             self.mutual["away"]["guest_vs_away"]["guest_data"] = stats
                             self.mutual["away"]["guest_vs_away"]["guest_ratings"] = (
-                                self.fetch_fixture_players_data(fixture_id_away, team_id)
+                                self.fetch_fixture_players_data(
+                                    fixture_id_away, team_id
+                                )
                             )
-                            self.mutual["away"]["guest_vs_away"]["match"]["guest_name"] = f"guest team name+++++++---- {team_name}"
+                            self.mutual["away"]["guest_vs_away"]["match"][
+                                "guest_name"
+                            ] = f"guest team name+++++++---- {team_name}"
 
                     except KeyError as e:
-                        logger.error(f"Missing expected data in away fixture stats: {e}")
+                        logger.error(
+                            f"Missing expected data in away fixture stats: {e}"
+                        )
                         continue  # Skip to next iteration on error
 
             # Fetch H2H for first_home_id
@@ -2073,21 +2137,33 @@ class Jerusalem:
                         stats = stat["statistics"]
                         logger.info(f"Processing home fixture for team: {team_name}")
 
-                        if team_id == int(constant_team_id):  # Stats for the constant team
+                        if team_id == int(
+                            constant_team_id
+                        ):  # Stats for the constant team
                             self.mutual["home"]["away_vs_guest"]["away_data"] = stats
                             self.mutual["home"]["away_vs_guest"]["away_ratings"] = (
-                                self.fetch_fixture_players_data(fixture_id_home, team_id)
+                                self.fetch_fixture_players_data(
+                                    fixture_id_home, team_id
+                                )
                             )
-                            self.mutual["home"]["away_vs_guest"]["match"]["away_name"] = f"away team name+++++---- {team_name}"
+                            self.mutual["home"]["away_vs_guest"]["match"][
+                                "away_name"
+                            ] = f"away team name+++++---- {team_name}"
                         elif team_id == first_home_id:  # Stats for the opponent
                             self.mutual["home"]["away_vs_guest"]["guest_data"] = stats
                             self.mutual["home"]["away_vs_guest"]["guest_ratings"] = (
-                                self.fetch_fixture_players_data(fixture_id_home, team_id)
+                                self.fetch_fixture_players_data(
+                                    fixture_id_home, team_id
+                                )
                             )
-                            self.mutual["home"]["away_vs_guest"]["match"]["guest_name"] = f"guest team name+++++++---- {team_name}"
+                            self.mutual["home"]["away_vs_guest"]["match"][
+                                "guest_name"
+                            ] = f"guest team name+++++++---- {team_name}"
 
                     except KeyError as e:
-                        logger.error(f"Missing expected data in home fixture stats: {e}")
+                        logger.error(
+                            f"Missing expected data in home fixture stats: {e}"
+                        )
                         continue  # Skip to next iteration on error
 
             else:
@@ -2098,8 +2174,6 @@ class Jerusalem:
         except Exception as e:
             logger.exception(f"An error occurred while populating mutual data: {e}")
             return self.mutual
-
-
 
     # def first_away_id(self):
     #     first_away_id = self.first_away()
@@ -2114,7 +2188,9 @@ class Jerusalem:
     def first_away_id(self):
         try:
             first_away_id = self.first_away()
-            first_away_id = first_away_id.get("Opponent Team ID", None)  # Safely access the ID
+            first_away_id = first_away_id.get(
+                "Opponent Team ID", None
+            )  # Safely access the ID
             if first_away_id is None:
                 logger.error("Opponent Team ID for away team not found.")
             return first_away_id
@@ -2125,7 +2201,9 @@ class Jerusalem:
     def first_home_id(self):
         try:
             first_home_id = self.first_home()
-            first_home_id = first_home_id.get("Opponent Team ID", None)  # Safely access the ID
+            first_home_id = first_home_id.get(
+                "Opponent Team ID", None
+            )  # Safely access the ID
             if first_home_id is None:
                 logger.error("Opponent Team ID for home team not found.")
             return first_home_id
@@ -2133,167 +2211,163 @@ class Jerusalem:
             logger.exception(f"Error fetching first home team ID: {e}")
             return None
 
-  
-#     def receive_match(self, match_data):
-#         """
-#         This method receives match data and stores it in instance variables
-#         """
-#         self.match_id = match_data.get("id")
-#         self.date = match_data.get("date")
-#         self.venue = match_data.get("venue")
-#         self.city = match_data.get("venue_city")
-#         self.league_id = match_data.get("league")
-#         self.home_team_name = match_data.get("home_team_name")
-#         self.away_team_name = match_data.get("away_team_name")
-#         self.home_team_logo = match_data.get("home_team_logo")
-#         self.away_team_logo = match_data.get("away_team_logo")
-#         self.home_team_id = match_data.get("home_team_id")
-#         self.away_team_id = match_data.get("away_team_id")
+    #     def receive_match(self, match_data):
+    #         """
+    #         This method receives match data and stores it in instance variables
+    #         """
+    #         self.match_id = match_data.get("id")
+    #         self.date = match_data.get("date")
+    #         self.venue = match_data.get("venue")
+    #         self.city = match_data.get("venue_city")
+    #         self.league_id = match_data.get("league")
+    #         self.home_team_name = match_data.get("home_team_name")
+    #         self.away_team_name = match_data.get("away_team_name")
+    #         self.home_team_logo = match_data.get("home_team_logo")
+    #         self.away_team_logo = match_data.get("away_team_logo")
+    #         self.home_team_id = match_data.get("home_team_id")
+    #         self.away_team_id = match_data.get("away_team_id")
 
-#         # Fetch and store weather data
-#         forecast = self.fetch_forecast(self.city, self.date)
-#         if forecast:
-#             temperature_kelvin = forecast["main"]["temp"]
-#             temperature_celsius = temperature_kelvin - 273.15
-#             feels_like_kelvin = forecast["main"]["feels_like"]
-#             feels_like_celsius = feels_like_kelvin - 273.15
-#             humidity = forecast["main"]["humidity"]
-#             weather_description = forecast["weather"][0]["description"]
-#             wind_speed = forecast["wind"]["speed"]
-#             rain = forecast.get("rain", {}).get("3h", 0)
+    #         # Fetch and store weather data
+    #         forecast = self.fetch_forecast(self.city, self.date)
+    #         if forecast:
+    #             temperature_kelvin = forecast["main"]["temp"]
+    #             temperature_celsius = temperature_kelvin - 273.15
+    #             feels_like_kelvin = forecast["main"]["feels_like"]
+    #             feels_like_celsius = feels_like_kelvin - 273.15
+    #             humidity = forecast["main"]["humidity"]
+    #             weather_description = forecast["weather"][0]["description"]
+    #             wind_speed = forecast["wind"]["speed"]
+    #             rain = forecast.get("rain", {}).get("3h", 0)
 
-#             self.weather = {
-#                 "temperature": round(temperature_celsius, 2),
-#                 "feels_like": round(feels_like_celsius, 2),
-#                 "humidity": humidity,
-#                 "weather_description": weather_description.capitalize(),
-#                 "wind_speed": wind_speed,
-#                 "rain": rain,
-#             }
-#         else:
-#             self.weather = None
-#             self.weather_error = "Weather data not available."
+    #             self.weather = {
+    #                 "temperature": round(temperature_celsius, 2),
+    #                 "feels_like": round(feels_like_celsius, 2),
+    #                 "humidity": humidity,
+    #                 "weather_description": weather_description.capitalize(),
+    #                 "wind_speed": wind_speed,
+    #                 "rain": rain,
+    #             }
+    #         else:
+    #             self.weather = None
+    #             self.weather_error = "Weather data not available."
 
-#         # Fetch and store match odds
-#         odds = self.fetch_match_odds(self.match_id)
-#         # odds = None
-#         if odds:
-#             self.odds = odds
-#         else:
-#             self.odds = None
+    #         # Fetch and store match odds
+    #         odds = self.fetch_match_odds(self.match_id)
+    #         # odds = None
+    #         if odds:
+    #             self.odds = odds
+    #         else:
+    #             self.odds = None
 
-#         avg_goals = self.fetch_average_goals_per_match(league_id=self.league_id)
-#         # avg_goals = None
-#         if avg_goals:
-#             self.avg_goals = avg_goals
-#         else:
-#             avg_goals = None
+    #         avg_goals = self.fetch_average_goals_per_match(league_id=self.league_id)
+    #         # avg_goals = None
+    #         if avg_goals:
+    #             self.avg_goals = avg_goals
+    #         else:
+    #             avg_goals = None
 
-#         h2h_data = self.fetch_head_to_head_statistics(
-#             self.home_team_id, self.away_team_id
-#         )
-#         # h2h_data = None
-#         if h2h_data:
-#             self.h2h = h2h_data
+    #         h2h_data = self.fetch_head_to_head_statistics(
+    #             self.home_team_id, self.away_team_id
+    #         )
+    #         # h2h_data = None
+    #         if h2h_data:
+    #             self.h2h = h2h_data
 
-#         head_to_head_statistics_with_home_at_home_and_away_at_away = (
-#             self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
-#                 self.home_team_id, self.away_team_id, self.league_id
-#             )
-#         )
+    #         head_to_head_statistics_with_home_at_home_and_away_at_away = (
+    #             self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
+    #                 self.home_team_id, self.away_team_id, self.league_id
+    #             )
+    #         )
 
-#         # head_to_head_statistics_with_home_at_home_and_away_at_away = None
-#         if head_to_head_statistics_with_home_at_home_and_away_at_away:
-#             self.head_to_head_statistics_with_home_at_home_and_away_at_away = (
-#                 head_to_head_statistics_with_home_at_home_and_away_at_away
-#             )
+    #         # head_to_head_statistics_with_home_at_home_and_away_at_away = None
+    #         if head_to_head_statistics_with_home_at_home_and_away_at_away:
+    #             self.head_to_head_statistics_with_home_at_home_and_away_at_away = (
+    #                 head_to_head_statistics_with_home_at_home_and_away_at_away
+    #             )
 
-#         print("trying to avoid api request imit")
-#         time.sleep(60)
+    #         print("trying to avoid api request imit")
+    #         time.sleep(60)
 
-#         home_run = self.home_run_and_away_run(self.home_team_id, True)
-#         if home_run:
-#             self.home_run = home_run
-#         away_run = self.home_run_and_away_run(self.away_team_id, False)
-#         if away_run:
-#             self.away_run = away_run
+    #         home_run = self.home_run_and_away_run(self.home_team_id, True)
+    #         if home_run:
+    #             self.home_run = home_run
+    #         away_run = self.home_run_and_away_run(self.away_team_id, False)
+    #         if away_run:
+    #             self.away_run = away_run
 
-#         print(
-#             "immited to 4 games,waiting for a minitue as we fetch home run and away run"
-#         )
-#         time.sleep(60)
-#         home_team_player_ratings_sesason = self.get_players_data_by_position(
-#             self.home_team_id
-#         )
-#         if home_team_player_ratings_sesason:
-#             self.home_team_player_ratings_sesason = home_team_player_ratings_sesason
+    #         print(
+    #             "immited to 4 games,waiting for a minitue as we fetch home run and away run"
+    #         )
+    #         time.sleep(60)
+    #         home_team_player_ratings_sesason = self.get_players_data_by_position(
+    #             self.home_team_id
+    #         )
+    #         if home_team_player_ratings_sesason:
+    #             self.home_team_player_ratings_sesason = home_team_player_ratings_sesason
 
-#         away_team_player_ratings_sesason = self.get_players_data_by_position(
-#             self.away_team_id
-#         )
-#         if away_team_player_ratings_sesason:
-#             self.away_team_player_ratings_sesason = away_team_player_ratings_sesason
+    #         away_team_player_ratings_sesason = self.get_players_data_by_position(
+    #             self.away_team_id
+    #         )
+    #         if away_team_player_ratings_sesason:
+    #             self.away_team_player_ratings_sesason = away_team_player_ratings_sesason
 
-#         # print("Fetching data for the home team...")
+    #         # print("Fetching data for the home team...")
 
-#         home_stats_dict = self.fetch_data_for_team(self.home_team_id, is_home=True)
-#         # home_stats_dict = None
-#         if home_stats_dict:
-#             self.home_stats_dict = home_stats_dict
-#             # print(
-#             #     "this is the nature of the home start dict 444444444444444444444444444444 ",
-#             #     self.home_stats_dict,
-#             # )# debugging statement
-#         else:
-#             self.home_stats_dict = None
+    #         home_stats_dict = self.fetch_data_for_team(self.home_team_id, is_home=True)
+    #         # home_stats_dict = None
+    #         if home_stats_dict:
+    #             self.home_stats_dict = home_stats_dict
+    #             # print(
+    #             #     "this is the nature of the home start dict 444444444444444444444444444444 ",
+    #             #     self.home_stats_dict,
+    #             # )# debugging statement
+    #         else:
+    #             self.home_stats_dict = None
 
-#         print("Waiting for one minute before fetching data for the away team...")
-#         time.sleep(
-#             60
-#         )  # **************************************************************************************************************************
-#         print("Fetching data for the away team...")
-#         away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
-#         # away_stats_dict = None
-#         if away_stats_dict:
-#             self.away_stats_dict = away_stats_dict
+    #         print("Waiting for one minute before fetching data for the away team...")
+    #         time.sleep(
+    #             60
+    #         )  # **************************************************************************************************************************
+    #         print("Fetching data for the away team...")
+    #         away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
+    #         # away_stats_dict = None
+    #         if away_stats_dict:
+    #             self.away_stats_dict = away_stats_dict
 
-#         else:
-#             self.away_stats_dict = None
+    #         else:
+    #             self.away_stats_dict = None
 
-#         self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
-#         time.sleep(60)
-#         self.populate_mutual(self.first_away_id(), self.first_home_id())
-#         self.every_data = {
-#     "fixture": f"{self.home_team_name} vs {self.away_team_name}",
-#     "match_id": self.match_id,
-#     "match_date": self.date,
-#     "venue": self.venue,
-#     "city": self.city,
-#     "league_id": self.league_id,
-#     "home_team_name": self.home_team_name,
-#     "away_team_name": self.away_team_name,
-#     "home_team_logo": self.home_team_logo,
-#     "away_team_logo": self.away_team_logo,
-#     "home_team_id": self.home_team_id,
-#     "away_team_id": self.away_team_id,
-#     "weather": self.weather,
-#     "odds": self.odds,
-#     "average_league_goals": self.avg_goals,
-#     "head_to_head_data": self.h2h,
-#     "head_to_head_statistics_with_home_at_home_and_away_at_away": self.head_to_head_statistics_with_home_at_home_and_away_at_away,
-#     "home_run": self.home_run,
-#     "away_run": self.away_run,
-#     "home_team_player_ratings_sesason": self.home_team_player_ratings_sesason,
-#     "away_team_player_ratings_sesason": self.away_team_player_ratings_sesason,
-#     "home_last_five_fixture_and_stats": self.home_stats_dict,
-#     "away_last_five_fixture_and_stats": self.away_stats_dict,
-#     "mutual": self.mutual,
-# }
-#         self.save_every_data_to_file()
-#         self.print_match_details()
-
-
-
+    #         self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
+    #         time.sleep(60)
+    #         self.populate_mutual(self.first_away_id(), self.first_home_id())
+    #         self.every_data = {
+    #     "fixture": f"{self.home_team_name} vs {self.away_team_name}",
+    #     "match_id": self.match_id,
+    #     "match_date": self.date,
+    #     "venue": self.venue,
+    #     "city": self.city,
+    #     "league_id": self.league_id,
+    #     "home_team_name": self.home_team_name,
+    #     "away_team_name": self.away_team_name,
+    #     "home_team_logo": self.home_team_logo,
+    #     "away_team_logo": self.away_team_logo,
+    #     "home_team_id": self.home_team_id,
+    #     "away_team_id": self.away_team_id,
+    #     "weather": self.weather,
+    #     "odds": self.odds,
+    #     "average_league_goals": self.avg_goals,
+    #     "head_to_head_data": self.h2h,
+    #     "head_to_head_statistics_with_home_at_home_and_away_at_away": self.head_to_head_statistics_with_home_at_home_and_away_at_away,
+    #     "home_run": self.home_run,
+    #     "away_run": self.away_run,
+    #     "home_team_player_ratings_sesason": self.home_team_player_ratings_sesason,
+    #     "away_team_player_ratings_sesason": self.away_team_player_ratings_sesason,
+    #     "home_last_five_fixture_and_stats": self.home_stats_dict,
+    #     "away_last_five_fixture_and_stats": self.away_stats_dict,
+    #     "mutual": self.mutual,
+    # }
+    #         self.save_every_data_to_file()
+    #         self.print_match_details()
 
     def receive_match(self, match_data):
         """
@@ -2352,13 +2426,21 @@ class Jerusalem:
                 self.avg_goals = None
 
             # Fetch head-to-head data
-            h2h_data = self.fetch_head_to_head_statistics(self.home_team_id, self.away_team_id)
+            h2h_data = self.fetch_head_to_head_statistics(
+                self.home_team_id, self.away_team_id
+            )
             if h2h_data:
                 self.h2h = h2h_data
             time.sleep(60)
-            head_to_head_statistics_with_home_at_home_and_away_at_away = self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(self.home_team_id, self.away_team_id, self.league_id)
+            head_to_head_statistics_with_home_at_home_and_away_at_away = (
+                self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
+                    self.home_team_id, self.away_team_id, self.league_id
+                )
+            )
             if head_to_head_statistics_with_home_at_home_and_away_at_away:
-                self.head_to_head_statistics_with_home_at_home_and_away_at_away = head_to_head_statistics_with_home_at_home_and_away_at_away
+                self.head_to_head_statistics_with_home_at_home_and_away_at_away = (
+                    head_to_head_statistics_with_home_at_home_and_away_at_away
+                )
 
             # Avoid API rate limit
             logger.info("Pausing to avoid API rate limit...")
@@ -2374,11 +2456,15 @@ class Jerusalem:
             time.sleep(60)
             # Fetch player ratings data
             logger.info("Fetching player ratings data for home and away teams...")
-            home_team_player_ratings_sesason = self.get_players_data_by_position(self.home_team_id)
+            home_team_player_ratings_sesason = self.get_players_data_by_position(
+                self.home_team_id
+            )
             if home_team_player_ratings_sesason:
                 self.home_team_player_ratings_sesason = home_team_player_ratings_sesason
 
-            away_team_player_ratings_sesason = self.get_players_data_by_position(self.away_team_id)
+            away_team_player_ratings_sesason = self.get_players_data_by_position(
+                self.away_team_id
+            )
             if away_team_player_ratings_sesason:
                 self.away_team_player_ratings_sesason = away_team_player_ratings_sesason
 
@@ -2393,7 +2479,7 @@ class Jerusalem:
             # Avoid API rate limit again
             logger.info("Pausing for 1 minute before fetching away team stats...")
             time.sleep(60)
-            
+
             logger.info("Fetching away team statistics...")
             away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
             if away_stats_dict:
@@ -2410,7 +2496,7 @@ class Jerusalem:
 
             # Gather all the data for the match
             self.every_data = {
-                "match_details":{
+                "match_details": {
                     "fixture": f"{self.home_team_name} vs {self.away_team_name}",
                     "match_id": self.match_id,
                     "match_date": self.date,
@@ -2422,7 +2508,8 @@ class Jerusalem:
                     "home_team_logo": self.home_team_logo,
                     "away_team_logo": self.away_team_logo,
                     "home_team_id": self.home_team_id,
-                    "away_team_id": self.away_team_id},    
+                    "away_team_id": self.away_team_id,
+                },
                 "weather": self.weather,
                 "odds": self.odds,
                 "average_league_goals": self.avg_goals,
@@ -2439,12 +2526,14 @@ class Jerusalem:
 
             # Save all match data to a file
             self.save_every_data_to_file()
-            
+
             # Print match details
             self.print_match_details()
 
         except Exception as e:
-            logger.exception(f"Error processing match data for match_id: {self.match_id} - {e}")
+            logger.exception(
+                f"Error processing match data for match_id: {self.match_id} - {e}"
+            )
 
     # def print_match_details(self):
     #     """
@@ -2536,7 +2625,6 @@ class Jerusalem:
     #         f"saving mutual in a fie named {self.home_team_name} vs {self.away_team_name} data ------------------------------------------------------"
     #     )
 
-       
     # def save_every_data_to_file(self):
     #     filename = f"{self.home_team_name} vs {self.away_team_name} every_data.json"
     #     try:
@@ -2545,10 +2633,6 @@ class Jerusalem:
     #         print(f"EVERY Data successfully written to {filename}")
     #     except Exception as e:
     #         print(f"Error writing to file: {e}")
-
-
-
-
 
     def print_match_details(self):
         """
@@ -2577,7 +2661,7 @@ class Jerusalem:
 
             if self.odds:
                 logger.info("Match Odds Data is present:")
-                
+
             else:
                 logger.warning("Match Odds Data: Not available")
                 if self.odds_error:
@@ -2586,17 +2670,25 @@ class Jerusalem:
             if self.avg_goals:
                 logger.info(f"Avg Goals Per Match: {self.avg_goals}")
             else:
-                logger.error(f"Error: {self.avg_goals_error}, League ID: {self.league_id}")
+                logger.error(
+                    f"Error: {self.avg_goals_error}, League ID: {self.league_id}"
+                )
 
             if self.h2h:
-                logger.info("Head-to-Head Data with statistics and player performances present:")
+                logger.info(
+                    "Head-to-Head Data with statistics and player performances present:"
+                )
             else:
-                logger.warning("No head-to-head data available with statistics and performances")
+                logger.warning(
+                    "No head-to-head data available with statistics and performances"
+                )
 
             if self.head_to_head_statistics_with_home_at_home_and_away_at_away:
                 logger.info("Head-to-Head Statistics with Home and Away Data present:")
             else:
-                logger.warning("No data for head-to-head statistics with home and away data")
+                logger.warning(
+                    "No data for head-to-head statistics with home and away data"
+                )
 
             if self.home_run:
                 logger.info("\n Last 3 Home Fixtures present")
@@ -2623,8 +2715,10 @@ class Jerusalem:
             # logger.info(f"Last Five Statistics - AWAY TEAM:")
             # logger.info(json.dumps(self.away_stats_dict, indent=4))
 
-            logger.info(f"Saving mutual data in a file named {self.home_team_name} vs {self.away_team_name} data")
-        
+            logger.info(
+                f"Saving mutual data in a file named {self.home_team_name} vs {self.away_team_name} data"
+            )
+
         except Exception as e:
             logger.error(f"An error occurred while printing match details: {e}")
 
@@ -2641,4 +2735,3 @@ class Jerusalem:
 # API key and base URL
 api_key = "996c177462abec830c211f413c3bdaa8"
 base_url = "https://v3.football.api-sports.io"
-
