@@ -1,0 +1,85 @@
+{
+    "match_details": {
+        "fixture": "Al Zoma Khartoum vs Umm Mughad",
+        "match_id": "1333874",
+        "match_date": "Jan. 28, 2025, midnight",
+        "venue": null,
+        "city": "Dongola",
+        "league_id": "402",
+        "home_team_name": "Al Zoma Khartoum",
+        "away_team_name": "Umm Mughad",
+        "home_team_logo": "https://media.api-sports.io/football/teams/20466.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/25524.png",
+        "home_team_id": "20466",
+        "away_team_id": "25524"
+    },
+    "weather": {
+        "temperature": 16.63,
+        "feels_like": 15.18,
+        "humidity": 32,
+        "weather_description": "Clear sky",
+        "wind_speed": 5.24,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": null,
+    "head_to_head_data": {
+        "fixtures": []
+    },
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

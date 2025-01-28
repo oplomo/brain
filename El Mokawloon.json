@@ -1,0 +1,85 @@
+{
+    "match_details": {
+        "fixture": "El Mokawloon vs Tersana",
+        "match_id": "1310158",
+        "match_date": "Jan. 28, 2025, 12:30 p.m.",
+        "venue": null,
+        "city": "Cairo",
+        "league_id": "887",
+        "home_team_name": "El Mokawloon",
+        "away_team_name": "Tersana",
+        "home_team_logo": "https://media.api-sports.io/football/teams/1575.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/15739.png",
+        "home_team_id": "1575",
+        "away_team_id": "15739"
+    },
+    "weather": {
+        "temperature": 16.42,
+        "feels_like": 15.66,
+        "humidity": 59,
+        "weather_description": "Broken clouds",
+        "wind_speed": 4.52,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": null,
+    "head_to_head_data": {
+        "fixtures": []
+    },
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

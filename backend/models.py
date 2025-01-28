@@ -80,11 +80,16 @@ class Match(models.Model):
         return f"{self.home_team_name} vs {self.away_team_name} on {self.date}"
 
 
-
 class TaskProgress(models.Model):
     task_id = models.CharField(max_length=255)
     progress = models.FloatField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
+    successful = models.PositiveIntegerField(default=0)
+    failed = models.PositiveIntegerField(default=0)
+    total = models.PositiveIntegerField(default=0)
+
+    def to_be_processed(self):
+        return self.total - (self.successful + self.failed)
 
     def __str__(self):
         return f"Task {self.task_id} - {self.progress}%"

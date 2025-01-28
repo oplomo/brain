@@ -1,12 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Matches</title>
+    <style>
+        /* Overall body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: azure;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header styling */
+        h1 {
+            color: Green; /* Pink color for the header */
+            
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 30px;
+        }
+
+        /* Link styling */
+        a {
+            color: gsreen; /* Pink color for the links */
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #d81b60; /* Slightly darker pink on hover */
+        }
+
+        /* Form styling */
+        form {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form p {
+            margin: 15px 0;
+        }
+
+        label {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #e91e63; /* Pink color for the button */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #d81b60; /* Slightly darker pink on hover */
+        }
+
+        /* Style for links below the form */
+        .links-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .links-container a {
+            display: inline-block;
+            margin: 10px;
+            color: #e91e63; /* Pink color for the links */
+            font-size: 1.2rem;
+        }
+
+        .links-container a:hover {
+            color: #d81b60; /* Slightly darker pink on hover */
+        }
+    </style>
 </head>
 <body>
+
     <h1><a href="{% url 'square:refresh' %}">refresh site</a></h1>
 
     <h1>Fetch Matches</h1>
+
     <form method="post" action="{% url 'square:fetch_matches' %}">
         {% csrf_token %}
         
@@ -21,13 +117,12 @@
         <button type="submit">Fetch Matches</button>
     </form>
 
-    <a href="{% url "square:select_football_prediction" %}">select todays FOOTBALL prediction</a> <br>
-
-
-    <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
-    <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMMOROWW</a>
-    <a href="{% url "square:see_data_progress" %}">see_data_progress</a>
+    <div class="links-container">
+        <a href="{% url 'square:select_football_prediction' %}">select todays FOOTBALL prediction</a> <br>
+        <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
+        <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMORROW</a> <br>
+        <a href="{% url 'square:see_data_progress' %}">see_data_progress</a>
+    </div>
 
 </body>
 </html>
-

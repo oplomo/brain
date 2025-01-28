@@ -1,0 +1,85 @@
+{
+    "match_details": {
+        "fixture": "Raadsan vs Gaadiidka",
+        "match_id": "1319915",
+        "match_date": "Jan. 28, 2025, 12:30 p.m.",
+        "venue": null,
+        "city": "Mogadishu",
+        "league_id": "846",
+        "home_team_name": "Raadsan",
+        "away_team_name": "Gaadiidka",
+        "home_team_logo": "https://media.api-sports.io/football/teams/16814.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/16809.png",
+        "home_team_id": "16814",
+        "away_team_id": "16809"
+    },
+    "weather": {
+        "temperature": 24.42,
+        "feels_like": 25.03,
+        "humidity": 81,
+        "weather_description": "Overcast clouds",
+        "wind_speed": 8.47,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": null,
+    "head_to_head_data": {
+        "fixtures": []
+    },
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

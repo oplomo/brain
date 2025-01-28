@@ -53,9 +53,25 @@ class SportAdmin(admin.ModelAdmin):
 # Register the Match model
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
-    list_display = ("home_team", "away_team", "sport", "match_date")
-    search_fields = ("home_team", "away_team", "sport__name")
-    list_filter = ("sport", "match_date")
+    list_display = (
+        "match_id",
+        "date",
+        "home_team_id",
+        "home_team",
+        "away_team_id",
+        "away_team",
+        "league",
+        "sport",
+    )
+    search_fields = (
+        "match_id",
+        "home_team_id",
+        "home_team",
+        "away_team_id",
+        "away_team",
+        "sport__name",
+    )
+    list_filter = ("sport", "match_date", "league")
 
 
 # Register the FootballPrediction model
@@ -190,7 +206,6 @@ class MatchDateAdmin(admin.ModelAdmin):
 admin.site.register(Match, MatchAdmin)
 admin.site.register(MatchDate, MatchDateAdmin)
 
-from django.contrib import admin
 from backend.models import TaskProgress
 
 
@@ -199,7 +214,12 @@ class TaskProgressAdmin(admin.ModelAdmin):
     list_display = (
         "task_id",
         "progress",
-        "last_updated",
+        "successful",
+        "failed",
+        "total",
     )  # Fields to display in the admin list view
     search_fields = ("task_id",)  # Allow searching by task ID
     list_filter = ("last_updated",)  # Optional: Filter by last updated date
+
+    def __str__(self):
+        return f"Task {self.task_id} - Processed: {self.successful + self.failed}, Success: {self.successful}, Fail: {self.failed}, Total to be processed: {self.Total}"

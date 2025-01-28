@@ -6,6 +6,8 @@ import numpy as np
 import time
 import json
 import logging
+from .grace_isha import analyze_data
+
 
 # Set up basic logging configuration
 logging.basicConfig(level=logging.INFO)
@@ -43,7 +45,8 @@ class Jerusalem:
         self.weather_error = None  # Will store any weather errors
         self.odds = None  # Will store the match odds data
         self.odds_error = None  # Will store any odds errors
-        self.avg_goals = None  # Average goals per match
+
+        self.avg_goals_stats = {}
         self.avg_goals_error = None  # Error message for average goals
         self.last_five_home_fixtures = None
         self.last_five_away_fixtures = None
@@ -58,6 +61,7 @@ class Jerusalem:
         self.fixtures_data = {}
         self.statistics_response = None
         self.fixture_response = None
+        self.predictions = {}
         self.every_data = {}
         self.mutual = {
             "away": {
@@ -94,44 +98,6 @@ class Jerusalem:
             },
         }
 
-    # def fetch_forecast(self, city, target_time_utc):
-    #     """
-    #     Fetch the weather forecast for a given city at a specific time using OpenWeatherMap API
-    #     """
-    #     url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={Jerusalem.WEATHER_API_KEY}"
-
-    #     try:
-    #         target_time = parser.parse(target_time_utc)
-    #     except ValueError as e:
-    #         print(f"Error parsing date: {e}")
-    #         return None
-
-    #     try:
-    #         response = requests.get(url)
-    #         response.raise_for_status()  # Raise error if the response code isn't 200
-    #     except requests.exceptions.RequestException as e:
-    #         print(f"Failed to retrieve forecast for {city}: {e}")
-    #         return None
-
-    #     data = response.json()
-
-    #     if "list" not in data:
-    #         print(f"Unexpected response format for {city}.")
-    #         return None
-
-    #     closest_forecast = None
-    #     smallest_diff = timedelta.max
-
-    #     for forecast in data["list"]:
-    #         forecast_time = parser.parse(forecast["dt_txt"])
-    #         time_diff = abs(forecast_time - target_time)
-
-    #         if time_diff < smallest_diff:
-    #             smallest_diff = time_diff
-    #             closest_forecast = forecast
-
-    #     return closest_forecast
-
     def fetch_forecast(self, city, target_time_utc):
         """
         Fetch the weather forecast for a given city at a specific time using OpenWeatherMap API
@@ -140,6 +106,14 @@ class Jerusalem:
 
         # Parse the target time from UTC string
         try:
+            if "noon" in target_time_utc.lower():
+                # Set target time to noon (12:00 PM)
+                target_time_utc = target_time_utc.replace("noon", "12:00 PM")
+            elif "midnight" in target_time_utc.lower():
+                # Set target time to midnight (12:00 AM)
+                target_time_utc = target_time_utc.replace("midnight", "12:00 AM")
+
+            # Parse the target time from UTC string
             target_time = parser.parse(target_time_utc)
             logger.info(f"Target time parsed successfully: {target_time}")
         except ValueError as e:
@@ -186,6 +160,44 @@ class Jerusalem:
             logger.warning(f"No valid forecast found for {city} at the specified time.")
 
         return closest_forecast
+
+    def get_match_prediction(self, fixture_id):
+
+        base_url = "https://v3.football.api-sports.io/predictions"
+
+        # Set up the headers with your API key
+        headers = self.HEADERS
+
+        # Define the parameters for the request
+        params = {"fixture": fixture_id}
+
+        try:
+            # Make the API request
+            response = requests.get(base_url, headers=headers, params=params)
+
+            # Check if the request was successful
+            response.raise_for_status()  # Will raise an HTTPError if the status code is not 200
+            data = response.json()
+
+            # Check if predictions are in the response
+            predictions = data.get("response", [])
+            if predictions:
+                return predictions
+            else:
+                return {"error": "No predictions available for this fixture."}
+
+        except requests.exceptions.HTTPError as http_err:
+            return {
+                "error": f"HTTP error occurred: {http_err}"
+            }  # HTTP error (e.g., 404, 500)
+        except requests.exceptions.RequestException as req_err:
+            return {
+                "error": f"Request error occurred: {req_err}"
+            }  # Any other error with the request
+        except Exception as err:
+            return {
+                "error": f"An unexpected error occurred: {err}"
+            }  # Catch other unexpected errors
 
     # def fetch_match_odds(self, match_id):
     #     """
@@ -357,8 +369,8 @@ class Jerusalem:
 
     def fetch_average_goals_per_match(self, league_id):
         """
-        Fetches the last `last` matches for the specified league and calculates the average goals per match.
-        Stores the results in `self.avg_goals` or error in `self.avg_goals_error`.
+        Fetches match data for the specified league and calculates average, standard deviation,
+        and median goals per match. Stores results or error messages in instance variables.
         """
         statistics_url = "https://v3.football.api-sports.io/fixtures"
         headers = self.HEADERS
@@ -372,7 +384,6 @@ class Jerusalem:
 
             if not match_data:
                 logger.warning(f"No match data found for league ID {league_id}")
-                self.avg_goals = None
                 self.avg_goals_error = "No match data available for the league."
                 return
 
@@ -386,20 +397,30 @@ class Jerusalem:
                     goals_per_match.append(home_goals + away_goals)
 
             if goals_per_match:
-                self.avg_goals = round(np.mean(goals_per_match), 3)
+                avg_goals = round(np.mean(goals_per_match), 3)
+                std_dev_goals = round(np.std(goals_per_match), 3)
+                median_goals = round(np.median(goals_per_match), 3)
                 self.avg_goals_error = None
                 logger.info(
-                    f"Average goals per match for league {league_id}: {self.avg_goals}"
+                    f"Statistics for league {league_id}:\n"
+                    f"Average goals per match: {avg_goals}\n"
+                    f"Standard deviation: {std_dev_goals}\n"
+                    f"Median goals per match: {median_goals}"
                 )
             else:
-                self.avg_goals = None
+                avg_goals = std_dev_goals = median_goals = None
                 self.avg_goals_error = "No valid scores found in match data."
                 logger.warning(f"No valid scores found for league ID {league_id}")
 
         except requests.exceptions.RequestException as e:
-            self.avg_goals = None
+            avg_goals = std_dev_goals = median_goals = None
             self.avg_goals_error = f"Failed to fetch data: {e}"
             logger.error(f"Failed to fetch match data for league {league_id}: {e}")
+        return {
+            "avg_goals": avg_goals,
+            "std_dev_goals": std_dev_goals,
+            "median_goals": median_goals,
+        }
 
     # def get_players_data_by_position(self, team_id):
     #     url = f"{self.BASE_URL}/players"
@@ -1296,7 +1317,7 @@ class Jerusalem:
         """
         fixtures = self.last_five_home_fixtures
         if not fixtures or not fixtures.get("response"):
-            print("No fixtures found for the team.")
+            print("No fixtures£££££££££££££££££ found for the team.")
             return {}
 
         for fixture in fixtures["response"]:
@@ -1437,7 +1458,10 @@ class Jerusalem:
             logging.error("No fixtures provided.")
             return None, None
         else:
-            print("yes$$$$$$$4 fixures provided and the  home team is ", team_name)
+            print(
+                "yes££££££££££££££££££££££££££££ fixures provided and the  home team is ",
+                team_name,
+            )
 
         # Loop through fixtures to find the first home and away games for the team
         for fixture_id, fixture in fixtures.items():
@@ -1467,12 +1491,25 @@ class Jerusalem:
 
             # If both first away and home games are found, break the loop
             if first_away and first_home:
+                print(
+                    "this is first awayyy££££££££££££££££££££££££££",
+                    first_away,
+                    "\n",
+                    type(first_away),
+                    "\n first home",
+                    first_home,
+                    type(first_home),
+                )
                 break
 
         if not first_away:
-            logging.warning(f"First away fixture not found for team {team_name}.")
+            logging.warning(
+                f"First away fixture not found for team£££££££££££££££££££ {team_name}."
+            )
         if not first_home:
-            logging.warning(f"First home fixture not found for team {team_name}.")
+            logging.warning(
+                f"First home fixture not found for teamEEEEEEEEEEEEEEEEEEEEE {team_name}."
+            )
 
         return first_away, first_home
 
@@ -1500,11 +1537,13 @@ class Jerusalem:
         """Fetches the team info by extracting it from fixtures data."""
         fix_d = self.statistics_extraction()  # Get fixture data
         if not fix_d:
-            logging.error("No fixture data available.")
+            logging.error("No fixture data available££££££££££££££££££££££££.")
             return None
         teams_info = self.extract_teams_info_from_fixtures(fix_d)
         if not teams_info:
-            logging.error("Failed to extract team information from fixtures.")
+            logging.error(
+                "Failed££££££££££££££££££ to extract team information from fixtures."
+            )
         return teams_info
 
     def team_name(self):
@@ -1531,6 +1570,10 @@ class Jerusalem:
     def first_home(self):
         """Fetches the first home fixture and returns it."""
         try:
+            teams_info = self.teams_info()
+            team_name = self.team_name()
+            logging.debug(f"Teams Info£££££££££££££££££££££££££££: {teams_info}")
+            logging.debug(f"Team Name££££££££££££££££££££££££££££: {team_name}")
             tim = self.get_first_away_and_home_fixtures(
                 self.teams_info(), self.team_name()
             )
@@ -2207,9 +2250,17 @@ class Jerusalem:
             if first_home_id is None:
                 logger.error("Opponent Team ID for home team not found.")
             return first_home_id
+        except AttributeError as e:
+            logger.exception(
+                "AttributeError: An issue with accessing properties or methods occurred."
+            )
+        except TypeError as e:
+            logger.exception(
+                "TypeError: Likely caused by incorrect type handling or method calls."
+            )
         except Exception as e:
-            logger.exception(f"Error fetching first home team ID: {e}")
-            return None
+            logger.exception(f"Unhandled error fetching first home team ID: {e}")
+        return None
 
     #     def receive_match(self, match_data):
     #         """
@@ -2419,11 +2470,13 @@ class Jerusalem:
                 self.odds = None
 
             # Fetch and store average goals per match
-            avg_goals = self.fetch_average_goals_per_match(league_id=self.league_id)
-            if avg_goals:
-                self.avg_goals = avg_goals
+            avg_goals_stats = self.fetch_average_goals_per_match(
+                league_id=self.league_id
+            )
+            if avg_goals_stats:
+                self.avg_goals_stats = avg_goals_stats
             else:
-                self.avg_goals = None
+                self.avg_goals_stats = None
 
             # Fetch head-to-head data
             h2h_data = self.fetch_head_to_head_statistics(
@@ -2431,7 +2484,7 @@ class Jerusalem:
             )
             if h2h_data:
                 self.h2h = h2h_data
-            time.sleep(60)
+            # time.sleep(60)#RETURN
             head_to_head_statistics_with_home_at_home_and_away_at_away = (
                 self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
                     self.home_team_id, self.away_team_id, self.league_id
@@ -2444,16 +2497,17 @@ class Jerusalem:
 
             # Avoid API rate limit
             logger.info("Pausing to avoid API rate limit...")
-            time.sleep(60)
+            # time.sleep(60)#RETURN
 
             # Fetch home and away run data
             home_run = self.home_run_and_away_run(self.home_team_id, True)
             if home_run:
                 self.home_run = home_run
+
             away_run = self.home_run_and_away_run(self.away_team_id, False)
             if away_run:
                 self.away_run = away_run
-            time.sleep(60)
+            # time.sleep(60)#RETURN
             # Fetch player ratings data
             logger.info("Fetching player ratings data for home and away teams...")
             home_team_player_ratings_sesason = self.get_players_data_by_position(
@@ -2478,7 +2532,7 @@ class Jerusalem:
 
             # Avoid API rate limit again
             logger.info("Pausing for 1 minute before fetching away team stats...")
-            time.sleep(60)
+            # time.sleep(60)#RETURN
 
             logger.info("Fetching away team statistics...")
             away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
@@ -2489,7 +2543,12 @@ class Jerusalem:
 
             # Save all the statistics
             self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
-            time.sleep(60)
+            predictions = self.get_match_prediction(self.match_id)
+            if predictions:
+                self.predictions = predictions
+            else:
+                None
+            # time.sleep(60)#RETURN
 
             # Populate mutual statistics
             self.populate_mutual(self.first_away_id(), self.first_home_id())
@@ -2512,7 +2571,7 @@ class Jerusalem:
                 },
                 "weather": self.weather,
                 "odds": self.odds,
-                "average_league_goals": self.avg_goals,
+                "average_league_goals": self.avg_goals_stats,
                 "head_to_head_data": self.h2h,
                 "head_to_head_statistics_with_home_at_home_and_away_at_away": self.head_to_head_statistics_with_home_at_home_and_away_at_away,
                 "home_run": self.home_run,
@@ -2521,15 +2580,17 @@ class Jerusalem:
                 "away_team_player_ratings_sesason": self.away_team_player_ratings_sesason,
                 "home_last_five_fixture_and_stats": self.home_stats_dict,
                 "away_last_five_fixture_and_stats": self.away_stats_dict,
+                "predictions": self.predictions,
                 "mutual": self.mutual,
             }
 
-            # Save all match data to a file
-            self.save_every_data_to_file()
-
             # Print match details
             self.print_match_details()
+            print(
+                "EVERY Data successfully passed to analyze_data.---->----->--->--->--->---->---->---->---->---->----->--->--->--->---->---->---->---->"
+            )
 
+            return self.every_data
         except Exception as e:
             logger.exception(
                 f"Error processing match data for match_id: {self.match_id} - {e}"
@@ -2667,8 +2728,8 @@ class Jerusalem:
                 if self.odds_error:
                     logger.error(f"Error: {self.odds_error}")
 
-            if self.avg_goals:
-                logger.info(f"Avg Goals Per Match: {self.avg_goals}")
+            if self.avg_goals_stats:
+                logger.info(f"Avg Goals Per Match: {self.avg_goals_stats}")
             else:
                 logger.error(
                     f"Error: {self.avg_goals_error}, League ID: {self.league_id}"
@@ -2699,7 +2760,10 @@ class Jerusalem:
                 logger.info("\n Last 3 Away Fixtures present")
             else:
                 logger.warning("Failed to get data for away_run")
-
+            if self.predictions:
+                logger.info("\n predictions are present")
+            else:
+                logger.info("\n no predictions data")
             # logger.info(f"Home Team Ratings: {self.home_team_name}")
             # logger.info(json.dumps(self.home_team_player_ratings_season, indent=4))
             # logger.info(f"Away Team Ratings: {self.away_team_name}")
@@ -2721,15 +2785,6 @@ class Jerusalem:
 
         except Exception as e:
             logger.error(f"An error occurred while printing match details: {e}")
-
-    def save_every_data_to_file(self):
-        filename = f"{self.home_team_name} vs {self.away_team_name} every_data.json"
-        try:
-            with open(filename, "w", encoding="utf-8") as file:
-                json.dump(self.every_data, file, indent=4)
-            logger.info(f"EVERY Data successfully written to {filename}")
-        except Exception as e:
-            logger.error(f"Error writing to file {filename}: {e}")
 
 
 # API key and base URL

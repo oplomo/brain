@@ -46,11 +46,45 @@ class Sport(models.Model):
 
 
 # Model for matches (soccer, basketball, tennis)
+from backend.models import MatchDate, League
+
+
 class Match(models.Model):
+
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+    match_id = models.IntegerField(unique=True, blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)
+    referee = models.CharField(max_length=100, null=True, blank=True)
+    timezone = models.CharField(max_length=50, default="UTC")
+    match_date = models.ForeignKey(
+        MatchDate, related_name="mechis", on_delete=models.CASCADE
+    )
+
+    # Venue details
+    venue_name = models.CharField(max_length=100, null=True, blank=True)
+    venue_city = models.CharField(max_length=100, null=True, blank=True)
+
     home_team = models.CharField(max_length=100)
+    home_team_logo = models.URLField(max_length=300, null=True, blank=True)
+    home_team_id = models.IntegerField(null=True, blank=True)
     away_team = models.CharField(max_length=100)
-    match_date = models.DateTimeField()
+    away_team_logo = models.URLField(max_length=300, null=True, blank=True)
+    away_team_id = models.IntegerField(null=True, blank=True)
+
+    league = models.ForeignKey(
+        League,
+        related_name="League_matches",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+    # Weather details
+    temperature = models.FloatField(null=True, blank=True)
+    feels_like = models.FloatField(null=True, blank=True)
+    humidity = models.FloatField(null=True, blank=True)
+    weather_description = models.CharField(max_length=255, null=True, blank=True)
+    wind_speed = models.FloatField(null=True, blank=True)
+    rain = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.home_team} vs {self.away_team}"
@@ -291,6 +325,14 @@ class FootballPrediction(MatchPredictionBase):
         choices=MatchPredictionBase.ResultChoices.choices,
         default=MatchPredictionBase.ResultChoices.WAITING,
     )
+    home_team_goals = models.IntegerField(blank=True, null=True)
+    away_team_goals = models.IntegerField(blank=True, null=True)
+    correct_score_odds = models.CharField(max_length=50, blank=True, null=True)
+    correct_score_result = models.CharField(
+        max_length=50,
+        choices=MatchPredictionBase.ResultChoices.choices,
+        default=MatchPredictionBase.ResultChoices.WAITING,
+    )
 
     def save(self, *args, **kwargs):
         # Make sure the probabilities are set
@@ -525,7 +567,10 @@ class SiteInformation(models.Model):
         blank=True, help_text="A brief description of the website."
     )
     logo = models.ImageField(
-        upload_to="media/logos/", blank=True, null=True, help_text="The logo of the site."
+        upload_to="media/logos/",
+        blank=True,
+        null=True,
+        help_text="The logo of the site.",
     )
 
     # Policies and legal

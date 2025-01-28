@@ -1374,7 +1374,6 @@ from backend.adams_square import (
 )  # Importing the Jerusalem class from the script
 
 
-
 from backend.tasks import fetch_data_for_matches, analyze_fetched_data
 
 
@@ -1385,14 +1384,17 @@ def predict_all_matches(request):
         if matches_data:
             try:
                 # Try parsing the matches data as JSON
-                matches = json.loads(matches_data)          
-                
-            
-                result = fetch_data_for_matches.delay(matches)  # Send the whole list in a single task
+                matches = json.loads(matches_data)
+
+                result = fetch_data_for_matches.delay(
+                    matches
+                )  # Send the whole list in a single task
                 task_id = result.id  # Get the task ID
-                
+
                 # Render a template to show the progress with the task ID
-                return render(request, 'private/data_progress.html', {'task_id': task_id})
+                return render(
+                    request, "private/data_progress.html", {"fetch_task_id": task_id}
+                )
             except json.JSONDecodeError:
                 return HttpResponse("Invalid JSON format.", status=400)
         else:
@@ -1400,10 +1402,10 @@ def predict_all_matches(request):
     else:
         return HttpResponse("Invalid request method.", status=400)
 
-from django.http import JsonResponse, Http404
-from django.shortcuts import render
+
 from backend.models import TaskProgress
 from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 def check_task_progress(request, task_id):
@@ -1411,22 +1413,53 @@ def check_task_progress(request, task_id):
     try:
         task_progress = TaskProgress.objects.filter(task_id=task_id).first()
     except TaskProgress.DoesNotExist:
-        task_progress = None
+        return JsonResponse({"status": "Failed or Not Started", "progress": 0})
 
     if task_progress:
-        return JsonResponse({'status': 'In Progress', 'progress': task_progress.progress})
+        response_data = {
+            "status": "In Progress",
+            "progress": task_progress.progress,
+            "successful": task_progress.successful,
+            "failed": task_progress.failed,
+            "to_be_processed": task_progress.to_be_processed(),
+            "total": task_progress.total,
+        }
+        return JsonResponse(response_data)
     else:
-        return JsonResponse({'status': 'Failed or Not Started', 'progress': 0})
+        return JsonResponse({"status": "Failed or Not Started", "progress": 0})
 
 
 def see_data_progress(request):
-    """Render the page to display progress for the most recent task."""
+    """Render the page to display progress for the most recent fetch and analyze tasks."""
     try:
-        task_progress = TaskProgress.objects.latest('last_updated')
+        # Fetch the latest task progress for fetching data and analyzing data
+        task_progress = TaskProgress.objects.latest("last_updated")
     except TaskProgress.DoesNotExist:
         task_progress = None
 
-    progress = task_progress.progress if task_progress else 0
-    task_id = task_progress.task_id if task_progress else None
+    # Extract progress details for the analyze task (default to 0 if not available)
+    if task_progress:
+        progress = task_progress.progress
+        successful = task_progress.successful
+        failed = task_progress.failed
+        to_be_processed = task_progress.to_be_processed()
+        total = task_progress.total
+        fetch_task_id = task_progress.task_id
+    else:
+        total_processed = successful = failed = to_be_processed = 0
+        fetch_task_id = None
 
-    return render(request, 'private/data_progress.html', {'task_id': task_id, 'progress': progress})
+    # Pass task details to the template
+    return render(
+        request,
+        "private/data_progress.html",
+        {
+            "total": total,
+            "progress": progress,
+            "analyze_task_id": fetch_task_id,
+            "total_processed": total,
+            "successful": successful,
+            "failed": failed,
+            "to_be_processed": to_be_processed,
+        },
+    )
