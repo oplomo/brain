@@ -74,7 +74,7 @@
                             {% endwith %}
                         {% endfor %}
             
-                        <td class="stress">{{ data.prediction }}</td>
+                        <td class="stress">{{ data.prediction }} <br> {{data.home_team_score}}:{{data.away_team_score}}</td>
                         <td>{{ data.odds }}</td>
                         <td class="{% if data.result == 'won' %}won {% elif data.result == "lost" %}lost{% endif %}">{{ data.result }}</td>
                     </tr>

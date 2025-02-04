@@ -5,12 +5,17 @@ from .models import (
     BasketballPrediction,
     TennisPrediction,
     Match,
+    Sport,
 )
 import math
 from django.utils import timezone
 from datetime import timedelta
 from django.utils.text import slugify
 import time
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 def index(request, selected=None, item=None, day="today"):
@@ -33,15 +38,18 @@ def index(request, selected=None, item=None, day="today"):
     selected = selected or "soccer"
     menu = sports_menu.get(selected, [])
 
+    print(f"Selected sport: {selected}")
+    print(f"Available menu options for {selected}: {menu}")
+
     # Get today's date and define start and end boundaries
-    today = timezone.now().date()
+    today = datetime.now().date()
 
     if day == "yesterday":
         start_date = today - timedelta(days=1)
-        end_date = today
+        end_date = start_date
     elif day == "today":
         start_date = today
-        end_date = today + timedelta(days=1)
+        end_date = start_date + timedelta(days=1)
     elif day == "tomorrow":
         start_date = today + timedelta(days=1)
         end_date = today + timedelta(days=2)
@@ -50,18 +58,23 @@ def index(request, selected=None, item=None, day="today"):
         start_date = today
         end_date = today + timedelta(days=1)
 
+    print(f"Start date: {start_date}, End date: {end_date}")
     # Determine the correct prediction model based on the selected sport
     if selected == "soccer":
         matches = FootballPrediction.objects.select_related("match").filter(
-            match__sport__name=selected, match__match_date__range=[start_date, end_date]
+            match__sport__name="soccer",
+            match__match_date__date__range=[start_date, end_date],
         )
+
     elif selected == "basketball":
         matches = BasketballPrediction.objects.select_related("match").filter(
-            match__sport__name=selected, match__match_date__range=[start_date, end_date]
+            match__sport__name=selected,
+            match__match_date__date__range=[start_date, end_date],  # ✅ Fix applied
         )
     elif selected == "tennis":
         matches = TennisPrediction.objects.select_related("match").filter(
-            match__sport__name=selected, match__match_date__range=[start_date, end_date]
+            match__sport__name=selected,
+            match__match_date__date__range=[start_date, end_date],  # ✅ Fix applied
         )
     else:
         matches = Match.objects.none()  # Empty queryset for unknown sports
@@ -355,9 +368,22 @@ def index(request, selected=None, item=None, day="today"):
         data = {
             "pk": match.match.pk,
             "home_team": match.match.home_team,
+            "home_team_logo": match.match.home_team_logo,
+            "home_team_score": match.home_team_expected_goals,
+            "away_team_score": match.away_team_expected_goals,
             "away_team": match.match.away_team,
+            "away_team_logo": match.match.away_team_logo,
             "sport_type": match.match.sport.name,
-            "time": (match.match.match_date).strftime("%Y-%m-%d-%H:%M"),
+            "Temperature": match.match.temperature,
+            "Feels_like": match.match.feels_like,
+            "Humidity": match.match.humidity,
+            "Weather description": match.match.weather_description,
+            "Wind speed": match.match.wind_speed,
+            "time": (
+                match.match.match_date.date.strftime("%Y-%m-%d")
+                if match.match.match_date
+                else "N/A"
+            ),
             "match_name": match.match,
             "prediction": get_prediction(match, selected),
             "odds": get_odds(match, selected),

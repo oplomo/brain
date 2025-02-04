@@ -101,7 +101,7 @@ class Match(models.Model):
 
 
 class MatchPredictionBase(models.Model):
-    match = models.ForeignKey("Match", on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, to_field="match_id", on_delete=models.CASCADE)
 
     class ResultChoices(models.TextChoices):
         WAITING = "waiting", "Waiting"
@@ -112,6 +112,7 @@ class MatchPredictionBase(models.Model):
     home_team_win_probability = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
+    home_team_expected_goals=models.IntegerField(null=True,blank=True)
     home_team_win_odds = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
@@ -124,6 +125,8 @@ class MatchPredictionBase(models.Model):
     away_team_win_probability = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
+    away_team_expected_goals=models.IntegerField(null=True,blank=True)
+
     away_team_win_odds = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
@@ -382,7 +385,11 @@ class FootballPrediction(MatchPredictionBase):
         home_team_slug = self.match.home_team
         away_team_slug = self.match.away_team
         sport_slug = self.match.sport.name
-        time_str = self.match.match_date.strftime("%Y-%m-%d-%H:%M")
+        time_str = (
+            self.match.match_date.date.strftime("%Y-%m-%d")
+            if self.match.match_date
+            else "N/A"
+        )
 
         return reverse(
             "square:soccer_detail",

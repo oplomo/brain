@@ -764,19 +764,16 @@ class Jerusalem:
         headers = self.HEADERS
         params = {"h2h": f"{team1_id}-{team2_id}"}
 
-        try:
-            response = requests.get(base_url, headers=headers, params=params)
-            response.raise_for_status()  # Raise error for HTTP issues
-        except requests.RequestException as e:
-            print(f"Request failed: {str(e)}")
-            return {"error": f"Failed to fetch head-to-head data: {str(e)}"}
+        # Counter for API requests
+        api_request_count = 0
 
         try:
+            # First API request
+            response = requests.get(base_url, headers=headers, params=params)
+            response.raise_for_status()
+            api_request_count += 1  # Increment counter
+
             data = response.json()
-            print(
-                f"Successfully fetched head-to-head data. Processing {len(data)} items."
-            )
-            sliced_data = dict(list(data.items())[1:])  # Skipping the first item
             fixtures = data.get("response", [])
             sorted_data = sorted(
                 fixtures, key=lambda x: parser.parse(x["fixture"]["date"]), reverse=True
@@ -793,10 +790,20 @@ class Jerusalem:
                 goals = fixture["goals"]
                 date = fixture["fixture"]["date"]
 
+                # Fixture statistics request
                 stats_url = f"https://v3.football.api-sports.io/fixtures/statistics?fixture={fixture_id}"
                 try:
                     stats_response = requests.get(stats_url, headers=headers)
                     stats_response.raise_for_status()
+                    api_request_count += 1  # Increment counter
+
+                    # Check limit and pause if needed
+                    if api_request_count == 8:
+                        print(
+                            "API limit approaching. first pause in the fetch_head_to_head_statistics def ,Pausing for a while..."
+                        )
+                        time.sleep(60)  # MUST RETURN
+
                 except requests.RequestException as e:
                     print(
                         f"Failed to fetch statistics for fixture {fixture_id}: {str(e)}"
@@ -804,10 +811,6 @@ class Jerusalem:
                     statistics = []
                 else:
                     stats_data = stats_response.json()
-                    print(f"Fetched statistics for fixture ID: {fixture_id}.")
-                    sliced_stats = dict(
-                        list(stats_data.items())[1:]
-                    )  # Skipping metadata
                     statistics = [
                         {
                             "team": {
@@ -821,6 +824,17 @@ class Jerusalem:
                         }
                         for stat in stats_data.get("response", [])
                     ]
+
+                    # Increment counter for player performance requests
+                    for stat in stats_data.get("response", []):
+                        api_request_count += 1
+                        if api_request_count == 8:
+                            print(
+                                "API limit approaching. Pausing for a while. second 2nd pause, not so neccesary thoug, when seeing payer ratings in h2h data carry 5..."
+                            )
+                            time.sleep(
+                                60
+                            )  # MUST RETURN  # Pause for 60 seconds before continuing
 
                 results.append(
                     {
@@ -838,6 +852,10 @@ class Jerusalem:
                 f"Successfully processed head-to-head data for {len(results)} fixtures."
             )
             return {"fixtures": results}
+
+        except requests.RequestException as e:
+            print(f"Request failed: {str(e)}")
+            return {"error": f"Failed to fetch head-to-head data: {str(e)}"}
         except (ValueError, KeyError) as e:
             print(f"Data processing error: {str(e)}")
             return {"error": f"Data processing error: {str(e)}"}
@@ -928,6 +946,10 @@ class Jerusalem:
 
         try:
             response = requests.get(base_url, headers=headers, params=params)
+            print(
+                "we are pausing for the 3rd time,before h2h with h at h and a at a carry 5"
+            )
+            time.sleep(60)  # MUST RETURN
             response.raise_for_status()  # Raise an error for bad status codes
         except requests.RequestException as e:
             print(f"Failed to fetch head-to-head data: {str(e)}")
@@ -1134,11 +1156,11 @@ class Jerusalem:
 
     # def get_last_five_fixtures(self, team_id):
     #     """Fetches the last five fixtures for a given team ID."""
-    #     url = f"{self.BASE_URL}/fixtures"
-    #     params = {"team": team_id, "season": 2021}
-    #     response = requests.get(url, headers=self.HEADERS, params=params)
-    #     self.fixture_response = response.json()
-    #     return response.json()
+    # url = f"{self.BASE_URL}/fixtures"
+    # params = {"team": team_id, "season": 2021}
+    # response = requests.get(url, headers=self.HEADERS, params=params)
+    # self.fixture_response = response.json()
+    # return response.json()
 
     # def get_fixture_statistics(self, fixture_id):
     #     """Fetches statistics for a specific fixture ID."""
@@ -1149,33 +1171,25 @@ class Jerusalem:
     #     return response.json()
 
     def get_last_five_fixtures(self, team_id):
-        """
-        Fetches the last five fixtures for a given team ID.
-
-        Args:
-            team_id (int): The ID of the team.
-
-        Returns:
-            dict: A dictionary containing the response data or an error message.
-        """
+        """Fetches the last five fixtures for a given team ID."""
         url = f"{self.BASE_URL}/fixtures"
         params = {"team": team_id, "season": 2021}
 
         try:
             response = requests.get(url, headers=self.HEADERS, params=params)
-            response.raise_for_status()
-            data = response.json()
-            fixtures = data.get("response", [])
+            response.raise_for_status()  # Check for HTTP errors
+            self.fixture_response = response.json()  # Parse JSON response
+            return response.json()
 
-            # Limit to the last five fixtures sorted by date in descending order
-            sorted_fixtures = sorted(
-                fixtures, key=lambda x: x["fixture"]["date"], reverse=True
-            )[:5]
-            self.fixture_response = sorted_fixtures
-            return {"fixtures": sorted_fixtures}
-        except requests.RequestException as e:
-            print(f"Error fetching last five fixtures: {str(e)}")
-            return {"Error": f"Request failed: {str(e)}"}
+        except (
+            requests.exceptions.RequestException
+        ) as e:  # Handle request errors (network, timeouts, etc.)
+            print(f"Error fetching fixtures for team ID {team_id}: {str(e)}")
+            return {}  # Return empty dict in case of error
+
+        except ValueError as e:  # Handle errors in decoding JSON
+            print(f"Error decoding JSON response: {str(e)}")
+            return {}  # Return empty dict in case of error
 
     def get_fixture_statistics(self, fixture_id):
         """
@@ -1249,18 +1263,18 @@ class Jerusalem:
             dict: A dictionary mapping fixture IDs to fixture details and statistics.
         """
         number_of_games = 5
-        fixtures_data = self.get_last_five_fixtures(team_id)
+        fixtures = self.get_last_five_fixtures(team_id)
         stats_dict = {}
         game_count = 0
 
-        fixtures = fixtures_data.get("fixtures", [])  # Safely access fixtures list
-        if fixtures:
+        if fixtures.get("response"):
             if is_home:
                 self.last_five_home_fixtures = fixtures
             else:
                 self.last_five_away_fixtures = fixtures
-
-            for fixture in fixtures:
+            print("the 5th pause to aoid api imit carry 2.......")
+            time.sleep(60)  # MUST RETURN
+            for fixture in fixtures["response"]:
                 if game_count >= number_of_games:
                     break
 
@@ -1270,9 +1284,7 @@ class Jerusalem:
                 # Store fixture details and statistics
                 stats_dict[fixture_id] = {
                     "fixture_details": fixture,
-                    "statistics": statistics.get(
-                        "statistics", "No statistics available"
-                    ),
+                    "statistics": statistics,
                 }
                 game_count += 1
         else:
@@ -1319,13 +1331,28 @@ class Jerusalem:
         if not fixtures or not fixtures.get("response"):
             print("No fixtures£££££££££££££££££ found for the team.")
             return {}
+        if fixtures:
+            print("&&&&&&&&&&&&&&& yes fixtures are avaiabe")
+        else:
+            print("&&&&&&&&&&&&&&&&&&&& no fixture my friend")
+        if fixtures.get("response"):
+            print("&&&&&&&&&&&&&&& yes fixtures.get(response) are avaiabe")
 
-        for fixture in fixtures["response"]:
-            fixture_id = fixture["fixture"]["id"]
-            if fixture_id in self.home_stats_dict:
-                self.fixtures_data[fixture_id] = self.home_stats_dict[
-                    fixture_id
-                ]  # Store each fixture's stats
+            for fixture in fixtures["response"]:
+                fixture_id = fixture["fixture"]["id"]
+                if fixture_id in self.home_stats_dict:
+                    print(
+                        "this are the home stat dicts&&&&&&",
+                        self.home_stats_dict.keys(),
+                    )
+                    print("&&&&&& just registered a fix", fixture_id)
+                    statistics = self.home_stats_dict[fixture_id]  # introduced
+                    self.fixtures_data[fixture_id] = (
+                        statistics  # Store each fixture's stats
+                    )
+
+        else:
+            print("&&&&&&&&&&&&&&&&&&&& no fixtures.get(response) my friend")
 
         return self.fixtures_data
 
@@ -1389,30 +1416,40 @@ class Jerusalem:
         if not fixtures_data:
             print("No fixture data available.")
             return None
+        else:
+            print("&&&&&&&&&&&&&&& oh yes fix data is avaiabe")
+            print("this is the data source:", fixture_data)
+            for fixture_id, fixture_data in fixtures_data.items():
+                statistics = fixture_data.get("statistics", {})
+                if statistics:
+                    print("&&&&&&&&& the statts are avaiabe too")
+                else:
+                    print("no stats my dear &&&&&&&&&&")
+                response = statistics.get("response", [])
+                if response:
+                    print("&&&&&&&&&&&&&& the response for this ia avaiabe")
+                else:
+                    print("&&&&&&&&&&&&&&&&&& no response to show")
 
-        for fixture_id, fixture_data in fixtures_data.items():
-            statistics = fixture_data.get("statistics", {})
-            response = statistics.get("response", [])
+                fixture_info = {"Fixture ID": fixture_id, "Teams": {}}
 
-            fixture_info = {"Fixture ID": fixture_id, "Teams": {}}
+                if len(response) >= 2:
+                    home_team = response[0].get("team", {})
+                    away_team = response[1].get("team", {})
 
-            if len(response) >= 2:
-                home_team = response[0].get("team", {})
-                away_team = response[1].get("team", {})
+                    fixture_info["Teams"]["Home Team"] = {
+                        "Team Name": home_team.get("name", "Unknown"),
+                        "Team ID": home_team.get("id", "Unknown"),
+                    }
+                    fixture_info["Teams"]["Away Team"] = {
+                        "Team Name": away_team.get("name", "Unknown"),
+                        "Team ID": away_team.get("id", "Unknown"),
+                    }
 
-                fixture_info["Teams"]["Home Team"] = {
-                    "Team Name": home_team.get("name", "Unknown"),
-                    "Team ID": home_team.get("id", "Unknown"),
-                }
-                fixture_info["Teams"]["Away Team"] = {
-                    "Team Name": away_team.get("name", "Unknown"),
-                    "Team ID": away_team.get("id", "Unknown"),
-                }
+                else:
+                    print(f"Fixture {fixture_id} does not have enough team data.")
 
-            else:
-                print(f"Fixture {fixture_id} does not have enough team data.")
-
-            extracted_info[fixture_id] = fixture_info
+                extracted_info[fixture_id] = fixture_info
 
         return extracted_info
 
@@ -1456,51 +1493,59 @@ class Jerusalem:
 
         if not fixtures:
             logging.error("No fixtures provided.")
+            print("nooooooooo fixtures&&&&&&&&&&&&&&")
             return None, None
         else:
             print(
                 "yes££££££££££££££££££££££££££££ fixures provided and the  home team is ",
                 team_name,
             )
-
-        # Loop through fixtures to find the first home and away games for the team
-        for fixture_id, fixture in fixtures.items():
-            print("fixture items has this", fixtures.items())
-            away_team = fixture.get("Teams", {}).get("Away Team", {})
-            home_team = fixture.get("Teams", {}).get("Home Team", {})
-
-            if not away_team or not home_team:
-                logging.warning(f"Missing team information in fixture ID {fixture_id}.")
-                continue
-
-            # Check if the team is the away team
-            if away_team.get("Team Name") == team_name and first_away is None:
-                first_away = {
-                    "Fixture ID": fixture_id,
-                    "Opponent Team ID": home_team.get("Team ID"),
-                    "Opponent Team Name": home_team.get("Team Name"),
-                }
-
-            # Check if the team is the home team
-            if home_team.get("Team Name") == team_name and first_home is None:
-                first_home = {
-                    "Fixture ID": fixture_id,
-                    "Opponent Team ID": away_team.get("Team ID"),
-                    "Opponent Team Name": away_team.get("Team Name"),
-                }
-
-            # If both first away and home games are found, break the loop
-            if first_away and first_home:
+            # Loop through fixtures to find the first home and away games for the team
+            for fixture_id, fixture in fixtures.items():
                 print(
-                    "this is first awayyy££££££££££££££££££££££££££",
-                    first_away,
-                    "\n",
-                    type(first_away),
-                    "\n first home",
-                    first_home,
-                    type(first_home),
+                    "fixture&&&&&&&&&&&&&&& items has this, trancuated to 2",
                 )
-                break
+
+                away_team = fixture.get("Teams", {}).get("Away Team", {})
+                home_team = fixture.get("Teams", {}).get("Home Team", {})
+
+                if not away_team or not home_team:
+                    logging.warning(
+                        f"Missing team information in fixture ID {fixture_id}."
+                    )
+                    print(
+                        f"Missing&&&&&&&&&& team information in fixture ID {fixture_id}."
+                    )
+                    continue
+
+                # Check if the team is the away team
+                if away_team.get("Team Name") == team_name and first_away is None:
+                    first_away = {
+                        "Fixture ID": fixture_id,
+                        "Opponent Team ID": home_team.get("Team ID"),
+                        "Opponent Team Name": home_team.get("Team Name"),
+                    }
+
+                # Check if the team is the home team
+                if home_team.get("Team Name") == team_name and first_home is None:
+                    first_home = {
+                        "Fixture ID": fixture_id,
+                        "Opponent Team ID": away_team.get("Team ID"),
+                        "Opponent Team Name": away_team.get("Team Name"),
+                    }
+
+                # If both first away and home games are found, break the loop
+                if first_away and first_home:
+                    print(
+                        "this is first awayyy££££££££££££££££££££££££££",
+                        first_away,
+                        "\n",
+                        type(first_away),
+                        "\n first home",
+                        first_home,
+                        type(first_home),
+                    )
+                    break
 
         if not first_away:
             logging.warning(
@@ -1539,11 +1584,16 @@ class Jerusalem:
         if not fix_d:
             logging.error("No fixture data available££££££££££££££££££££££££.")
             return None
+        else:
+            print("&&&&&&&&&&&yes, extracted fix_d")
         teams_info = self.extract_teams_info_from_fixtures(fix_d)
         if not teams_info:
             logging.error(
                 "Failed££££££££££££££££££ to extract team information from fixtures."
             )
+            print("Failed&&&&&&&&&&&&&&& to extract team information from fixtures.")
+        else:
+            print("&&&&&&&&&&&yes, extracted team_info")
         return teams_info
 
     def team_name(self):
@@ -1561,6 +1611,9 @@ class Jerusalem:
             else:
                 logging.warning(
                     f"First away fixture not found for team {self.team_name()}."
+                )
+                print(
+                    f"First away&&&&&&&&&&&&&&&&& fixture not found for team {self.team_name()}."
                 )
                 return None
         except Exception as e:
@@ -2164,7 +2217,10 @@ class Jerusalem:
                             f"Missing expected data in away fixture stats: {e}"
                         )
                         continue  # Skip to next iteration on error
-
+            print(
+                "pausing for the 6th time fot the api free tier respect,,carryyy 0...................dince this is the ast pause, we have used ony 3................."
+            )
+            time.sleep(60)  # MUST RETURN
             # Fetch H2H for first_home_id
             h2h_home_combination = f"{constant_team_id}-{first_home_id}"
             latest_fixture_home = self.fetch_h2h_data(h2h_home_combination)
@@ -2428,7 +2484,7 @@ class Jerusalem:
             # Basic match data assignment
             self.match_id = match_data.get("id")
             self.date = match_data.get("date")
-            self.venue = match_data.get("venue")
+            self.venue = match_data.get("venue_name")
             self.city = match_data.get("venue_city")
             self.league_id = match_data.get("league")
             self.home_team_name = match_data.get("home_team_name")
@@ -2484,7 +2540,6 @@ class Jerusalem:
             )
             if h2h_data:
                 self.h2h = h2h_data
-            # time.sleep(60)#RETURN
             head_to_head_statistics_with_home_at_home_and_away_at_away = (
                 self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
                     self.home_team_id, self.away_team_id, self.league_id
@@ -2495,20 +2550,18 @@ class Jerusalem:
                     head_to_head_statistics_with_home_at_home_and_away_at_away
                 )
 
-            # Avoid API rate limit
-            logger.info("Pausing to avoid API rate limit...")
-            # time.sleep(60)#RETURN
-
             # Fetch home and away run data
             home_run = self.home_run_and_away_run(self.home_team_id, True)
             if home_run:
                 self.home_run = home_run
-
+            print(
+                "pausing for the 4rth time before fetching away run, carry is 0........"
+            )
+            time.sleep(60)  # MUST RETURN
             away_run = self.home_run_and_away_run(self.away_team_id, False)
             if away_run:
                 self.away_run = away_run
-            # time.sleep(60)#RETURN
-            # Fetch player ratings data
+
             logger.info("Fetching player ratings data for home and away teams...")
             home_team_player_ratings_sesason = self.get_players_data_by_position(
                 self.home_team_id
@@ -2522,17 +2575,13 @@ class Jerusalem:
             if away_team_player_ratings_sesason:
                 self.away_team_player_ratings_sesason = away_team_player_ratings_sesason
 
-            # Fetch team stats for home and away teams
+            # Fetch team stats for home and away teams,1//21/21/21/21/2
             logger.info("Fetching home team statistics...")
             home_stats_dict = self.fetch_data_for_team(self.home_team_id, is_home=True)
             if home_stats_dict:
                 self.home_stats_dict = home_stats_dict
             else:
                 self.home_stats_dict = None
-
-            # Avoid API rate limit again
-            logger.info("Pausing for 1 minute before fetching away team stats...")
-            # time.sleep(60)#RETURN
 
             logger.info("Fetching away team statistics...")
             away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
@@ -2542,13 +2591,13 @@ class Jerusalem:
                 self.away_stats_dict = None
 
             # Save all the statistics
-            self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
             predictions = self.get_match_prediction(self.match_id)
             if predictions:
                 self.predictions = predictions
             else:
                 None
-            # time.sleep(60)#RETURN
+
+            self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
 
             # Populate mutual statistics
             self.populate_mutual(self.first_away_id(), self.first_home_id())
@@ -2595,105 +2644,6 @@ class Jerusalem:
             logger.exception(
                 f"Error processing match data for match_id: {self.match_id} - {e}"
             )
-
-    # def print_match_details(self):
-    #     """
-    #     This method prints the stored match details
-    #     """
-    #     print(f"league_id--{self.league_id}")
-    #     print(f"Match ID: {self.match_id}")
-    #     print(f"match:{self.home_team_name} vs {self.away_team_name}")
-    #     print(f"Date: {self.date}")
-    #     print(f"Venue: {self.venue}")
-    #     print(f"City: {self.city}")
-
-    #     if self.weather:
-    #         print("Weather Data:")
-    #         print(f"  - Temperature: {self.weather['temperature']}°C")
-    #         print(f"  - Feels Like: {self.weather['feels_like']}°C")
-    #         print(f"  - Humidity: {self.weather['humidity']}%")
-    #         print(f"  - Weather: {self.weather['weather_description']}")
-    #         print(f"  - Wind Speed: {self.weather['wind_speed']} m/s")
-    #         print(f"  - Rain Volume: {self.weather['rain']} mm")
-    #     else:
-    #         print("Weather Data: Not available")
-    #         if self.weather_error:
-    #             print(f"Error: {self.weather_error}")
-
-    #     if self.odds:
-    #         print("Match Odds Data:")
-    #         pprint.pprint(self.odds)
-    #     else:
-    #         print("Match Odds Data: Not available")
-    #         if self.odds_error:
-    #             print(f"Error: {self.odds_error}")
-    #     if self.avg_goals:
-    #         print(f"avg_goals_per_match--{self.avg_goals}")
-    #     else:
-    #         print(f"error--{self.avg_goals_error},{self.league_id}")
-    #     if self.h2h:
-    #         print(
-    #             "this head to head data with statistics and perfomace of payers \n\n",
-    #             self.h2h,
-    #         )
-    #     else:
-    #         print("no  head to head data avaiabe with th statistics and perfomances")
-
-    #     if self.head_to_head_statistics_with_home_at_home_and_away_at_away:
-    #         print(
-    #             "the data for head_to_head_statistics_with_home_at_home_and_away_at_away is here:\n\n",
-    #             self.head_to_head_statistics_with_home_at_home_and_away_at_away,
-    #         )
-    #     else:
-    #         print(
-    #             "no data for head_to_head_statistics_with_home_at_home_and_away_at_away"
-    #         )
-
-    #     if self.home_run:
-    #         print("\n--- Last 3 Home Fixtures ---")
-    #         print(json.dumps(self.home_run, indent=4))
-    #     else:
-    #         print("faied to get data for home_run")
-
-    #     if self.away_run:
-    #         print("\n--- Last 3 away Fixtures ---")
-    #         print(json.dumps(self.away_run, indent=4))
-    #     else:
-    #         print("faied to get data for away_run")
-
-    #     print(
-    #         "HHHHHHOOOOOMMMMMMEEEEEEEEEE  RRRRRRRRRRAAAAAAATTTTTTTTTTTTTIIIIIIINNNNNNNNNNGGGGGGGGSSSSSSSSSSS",
-    #         self.home_team_name,
-    #     )
-    #     print(self.home_team_player_ratings_sesason)
-    #     print(
-    #         "AAAAAWWWAYYYYYYYYYYYY  RRRRRRRRRRRRRAAAAAAAATTTTTTTTTTIIIIIIIIIIINNNNNNNNNNNNGGGGGGGSSSSSSSSSSSSSS",
-    #         self.away_team_name,
-    #     )
-    #     print(self.away_team_player_ratings_sesason)
-
-    #     print(f"last five fixture HOME............................")
-    #     print(json.dumps(self.last_five_home_fixtures, indent=4))
-    #     print(f"last five fixture AWAY............................")
-    #     print(json.dumps(self.last_five_away_fixtures, indent=4))
-    #     print(f"last five statistics HOME TEAM............................")
-    #     print(json.dumps(self.home_stats_dict, indent=4))
-    #     print(f"last five statistics AWAY TEAM............................")
-    #     print(json.dumps(self.away_stats_dict, indent=4)) #shoud buncommented to chec data
-    #     print("-------------------------------------------------------------------")
-
-    #     print(
-    #         f"saving mutual in a fie named {self.home_team_name} vs {self.away_team_name} data ------------------------------------------------------"
-    #     )
-
-    # def save_every_data_to_file(self):
-    #     filename = f"{self.home_team_name} vs {self.away_team_name} every_data.json"
-    #     try:
-    #         with open(filename, "w", encoding="utf-8") as file:
-    #             json.dump(self.every_data, file, indent=4)
-    #         print(f"EVERY Data successfully written to {filename}")
-    #     except Exception as e:
-    #         print(f"Error writing to file: {e}")
 
     def print_match_details(self):
         """
