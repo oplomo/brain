@@ -7,6 +7,7 @@ from backend.grace_isha import analyze_data
 
 logger = logging.getLogger(__name__)
 
+
 @shared_task(bind=True)
 def fetch_data_for_matches(self, matches):
     """Fetches data for matches, tracks progress, and calculates successful and failed tasks."""
@@ -44,8 +45,7 @@ def fetch_data_for_matches(self, matches):
                 "progress": progress,
                 "successful": success_count,
                 "failed": failure_count,
-                "total":total_matches,
-                
+                "total": total_matches,
             },
         )
 
@@ -61,9 +61,9 @@ def fetch_data_for_matches(self, matches):
             },
         )
 
-        # Simulate a time-consuming task (example delay)
-        time.sleep(6)
-
+        if (idx + 1) % 10 == 0:
+            logger.info("Reached 10 requests, pausing for 60 seconds...")
+            time.sleep(62)
     logger.info("Task completed")
     return {
         "status": "Task completed",
@@ -82,10 +82,10 @@ def analyze_fetched_data(every_data):
 
         # Analyze the data using an external function
         analyzer = analyze_data()
-        analyzer.save_every_data(every_data)
+        fin = analyzer.save_every_data(every_data)
 
         logger.info("Data analysis successful.")
-        return True
+        return fin
     except Exception as e:
         logger.error(f"Data analysis failed: {e}")
         return False

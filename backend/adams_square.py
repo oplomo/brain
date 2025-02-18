@@ -199,78 +199,55 @@ class Jerusalem:
                 "error": f"An unexpected error occurred: {err}"
             }  # Catch other unexpected errors
 
-    # def fetch_match_odds(self, match_id):
-    #     """
-    #     Fetch match odds using the football API for the given match ID
-    #     """
-    #     url = Jerusalem.ODDS_API_URL
-    #     headers = {
-    #         "x-rapidapi-host": "v3.football.api-sports.io",
-    #         "x-rapidapi-key": Jerusalem.FOOTBALL_API_KEY,
-    #     }
-    #     params = {"fixture": match_id}
-
-    #     try:
-    #         response = requests.get(url, headers=headers, params=params)
-    #         response.raise_for_status()  # Raise error if the response code isn't 200
-    #     except requests.exceptions.RequestException as e:
-    #         print(f"Failed to retrieve match odds for match {match_id}: {e}")
-    #         self.odds_error = "Odds data not available"
-    #         return None
-
-    #     data = response.json()
-
-    #     if data.get("response"):
-    #         odds_comparison = {}
-    #         target_bookmakers = ["Bet365"]
-    #         target_bet_names = [
-    #             "Match Winner",
-    #             "Home/Away",
-    #             "Goals Over/Under",
-    #             "Goals Over/Under First Half",
-    #             "Goals Over/Under - Second Half",
-    #             "Both Teams Score",
-    #             "Win to Nil - Home",
-    #             "Win to Nil - Away",
-    #             "Exact Score",
-    #             "Correct Score - First Half",
-    #             "Correct Score - Second Half",
-    #             "Double Chance",
-    #             "First Half Winner",
-    #             "Total - Home",
-    #             "Total - Away",
-    #             "Both Teams Score - First Half",
-    #             "Both Teams To Score - Second Half",
-    #             "Corners Over Under",
-    #         ]
-
-    #         for bookmaker in data["response"][0]["bookmakers"]:
-    #             if bookmaker["name"] in target_bookmakers:
-    #                 odds_comparison[bookmaker["name"]] = {}
-
-    #                 for bet in bookmaker["bets"]:
-    #                     if bet["name"] in target_bet_names:
-    #                         odds_comparison[bookmaker["name"]][bet["name"]] = bet[
-    #                             "values"
-    #                         ]
-
-    #         return odds_comparison
-    #     else:
-    #         self.odds_error = "No odds data found"
-    #         return None
-
     def fetch_match_odds(self, match_id):
         """
-        Fetch match odds using the football API for the given match ID
+        Fetch match odds using the football API for the given match ID.
         """
         url = Jerusalem.ODDS_API_URL
         headers = self.HEADERS
         params = {"fixture": match_id}
+        bookmakers_priority = [
+            "Bet365",
+            "NordicBet",
+            "Marathonbet",
+            "William Hill",
+            "10Bet",
+            "Dafabet",
+            "1xBet",
+            "Unibet",
+            "Betfair",
+            "Tipico",
+            "Betano",
+            "SBO",
+            "Pinnacle",
+            "Betsson",
+        ]
+        target_bet_names = [
+            "Match Winner",
+            "Home/Away",
+            "Goals Over/Under",
+            "Goals Over/Under First Half",
+            "Goals Over/Under - Second Half",
+            "Both Teams Score",
+            "Win to Nil - Home",
+            "Win to Nil - Away",
+            "Exact Score",
+            "Correct Score - First Half",
+            "Correct Score - Second Half",
+            "Double Chance",
+            "First Half Winner",
+            "Total - Home",
+            "Total - Away",
+            "Both Teams Score - First Half",
+            "Both Teams To Score - Second Half",
+            "Corners Over Under",
+            "Cards Over/Under",
+        ]
 
         try:
             logger.info(f"Fetching match odds for match ID: {match_id}")
             response = requests.get(url, headers=headers, params=params)
-            response.raise_for_status()  # Raise error if the response code isn't 200
+            response.raise_for_status()
         except requests.exceptions.RequestException as e:
             logger.error(f"Failed to retrieve match odds for match {match_id}: {e}")
             self.odds_error = "Odds data not available"
@@ -278,46 +255,32 @@ class Jerusalem:
 
         try:
             data = response.json()
-
-            if data.get("response"):
-                odds_comparison = {}
-                target_bookmakers = ["Bet365"]
-                target_bet_names = [
-                    "Match Winner",
-                    "Home/Away",
-                    "Goals Over/Under",
-                    "Goals Over/Under First Half",
-                    "Goals Over/Under - Second Half",
-                    "Both Teams Score",
-                    "Win to Nil - Home",
-                    "Win to Nil - Away",
-                    "Exact Score",
-                    "Correct Score - First Half",
-                    "Correct Score - Second Half",
-                    "Double Chance",
-                    "First Half Winner",
-                    "Total - Home",
-                    "Total - Away",
-                    "Both Teams Score - First Half",
-                    "Both Teams To Score - Second Half",
-                    "Corners Over Under",
-                ]
-
-                for bookmaker in data["response"][0]["bookmakers"]:
-                    if bookmaker["name"] in target_bookmakers:
-                        odds_comparison[bookmaker["name"]] = {}
-
-                        for bet in bookmaker["bets"]:
-                            if bet["name"] in target_bet_names:
-                                odds_comparison[bookmaker["name"]][bet["name"]] = bet[
-                                    "values"
-                                ]
-                logger.info(f"Match odds for match ID {match_id} fetched successfully")
-                return odds_comparison
-            else:
+            if not data.get("response"):
                 logger.warning(f"No odds data found for match ID {match_id}")
                 self.odds_error = "No odds data found"
                 return None
+
+            for bookmaker in bookmakers_priority:
+                for entry in data["response"][0]["bookmakers"]:
+                    if entry["name"] == bookmaker:
+                        odds_comparison = {bookmaker: {}}
+                        for bet in entry["bets"]:
+                            if bet["name"] in target_bet_names:
+                                odds_comparison[bookmaker][bet["name"]] = bet["values"]
+
+                        if odds_comparison[bookmaker]:
+                            print(f"Odds found from {bookmaker}")
+                            logger.info(
+                                f"Match odds for match ID {match_id} found from {bookmaker}"
+                            )
+                            return odds_comparison
+
+            logger.warning(
+                f"No odds data found for match ID {match_id} from any source"
+            )
+            self.odds_error = "No odds available from any source"
+            return None
+
         except Exception as e:
             logger.error(
                 f"Error processing match odds data for match ID {match_id}: {e}"
@@ -2526,81 +2489,81 @@ class Jerusalem:
                 self.odds = None
 
             # Fetch and store average goals per match
-            avg_goals_stats = self.fetch_average_goals_per_match(
-                league_id=self.league_id
-            )
-            if avg_goals_stats:
-                self.avg_goals_stats = avg_goals_stats
-            else:
-                self.avg_goals_stats = None
+            # avg_goals_stats = self.fetch_average_goals_per_match(
+            #     league_id=self.league_id
+            # )
+            # if avg_goals_stats:
+            #     self.avg_goals_stats = avg_goals_stats
+            # else:
+            #     self.avg_goals_stats = None
 
-            # Fetch head-to-head data
-            h2h_data = self.fetch_head_to_head_statistics(
-                self.home_team_id, self.away_team_id
-            )
-            if h2h_data:
-                self.h2h = h2h_data
-            head_to_head_statistics_with_home_at_home_and_away_at_away = (
-                self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
-                    self.home_team_id, self.away_team_id, self.league_id
-                )
-            )
-            if head_to_head_statistics_with_home_at_home_and_away_at_away:
-                self.head_to_head_statistics_with_home_at_home_and_away_at_away = (
-                    head_to_head_statistics_with_home_at_home_and_away_at_away
-                )
+            # # Fetch head-to-head data
+            # h2h_data = self.fetch_head_to_head_statistics(
+            #     self.home_team_id, self.away_team_id
+            # )
+            # if h2h_data:
+            #     self.h2h = h2h_data
+            # head_to_head_statistics_with_home_at_home_and_away_at_away = (
+            #     self.fetch_head_to_head_statistics_with_home_at_home_and_away_at_away(
+            #         self.home_team_id, self.away_team_id, self.league_id
+            #     )
+            # )
+            # if head_to_head_statistics_with_home_at_home_and_away_at_away:
+            #     self.head_to_head_statistics_with_home_at_home_and_away_at_away = (
+            #         head_to_head_statistics_with_home_at_home_and_away_at_away
+            #     )
 
-            # Fetch home and away run data
-            home_run = self.home_run_and_away_run(self.home_team_id, True)
-            if home_run:
-                self.home_run = home_run
-            print(
-                "pausing for the 4rth time before fetching away run, carry is 0........"
-            )
-            time.sleep(60)  # MUST RETURN
-            away_run = self.home_run_and_away_run(self.away_team_id, False)
-            if away_run:
-                self.away_run = away_run
+            # # Fetch home and away run data
+            # home_run = self.home_run_and_away_run(self.home_team_id, True)
+            # if home_run:
+            #     self.home_run = home_run
+            # print(
+            #     "pausing for the 4rth time before fetching away run, carry is 0........"
+            # )
+            # time.sleep(60)  # MUST RETURN
+            # away_run = self.home_run_and_away_run(self.away_team_id, False)
+            # if away_run:
+            #     self.away_run = away_run
 
-            logger.info("Fetching player ratings data for home and away teams...")
-            home_team_player_ratings_sesason = self.get_players_data_by_position(
-                self.home_team_id
-            )
-            if home_team_player_ratings_sesason:
-                self.home_team_player_ratings_sesason = home_team_player_ratings_sesason
+            # logger.info("Fetching player ratings data for home and away teams...")
+            # home_team_player_ratings_sesason = self.get_players_data_by_position(
+            #     self.home_team_id
+            # )
+            # if home_team_player_ratings_sesason:
+            #     self.home_team_player_ratings_sesason = home_team_player_ratings_sesason
 
-            away_team_player_ratings_sesason = self.get_players_data_by_position(
-                self.away_team_id
-            )
-            if away_team_player_ratings_sesason:
-                self.away_team_player_ratings_sesason = away_team_player_ratings_sesason
+            # away_team_player_ratings_sesason = self.get_players_data_by_position(
+            #     self.away_team_id
+            # )
+            # if away_team_player_ratings_sesason:
+            #     self.away_team_player_ratings_sesason = away_team_player_ratings_sesason
 
-            # Fetch team stats for home and away teams,1//21/21/21/21/2
-            logger.info("Fetching home team statistics...")
-            home_stats_dict = self.fetch_data_for_team(self.home_team_id, is_home=True)
-            if home_stats_dict:
-                self.home_stats_dict = home_stats_dict
-            else:
-                self.home_stats_dict = None
+            # # Fetch team stats for home and away teams,1//21/21/21/21/2
+            # logger.info("Fetching home team statistics...")
+            # home_stats_dict = self.fetch_data_for_team(self.home_team_id, is_home=True)
+            # if home_stats_dict:
+            #     self.home_stats_dict = home_stats_dict
+            # else:
+            #     self.home_stats_dict = None
 
-            logger.info("Fetching away team statistics...")
-            away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
-            if away_stats_dict:
-                self.away_stats_dict = away_stats_dict
-            else:
-                self.away_stats_dict = None
+            # logger.info("Fetching away team statistics...")
+            # away_stats_dict = self.fetch_data_for_team(self.away_team_id, is_home=False)
+            # if away_stats_dict:
+            #     self.away_stats_dict = away_stats_dict
+            # else:
+            #     self.away_stats_dict = None
 
-            # Save all the statistics
+            # # Save all the statistics
             predictions = self.get_match_prediction(self.match_id)
             if predictions:
                 self.predictions = predictions
             else:
                 None
 
-            self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
+            # self.save_statistics(self.first_away(), self.first_home(), self.h_team_id())
 
-            # Populate mutual statistics
-            self.populate_mutual(self.first_away_id(), self.first_home_id())
+            # # Populate mutual statistics
+            # self.populate_mutual(self.first_away_id(), self.first_home_id())
 
             # Gather all the data for the match
             self.every_data = {

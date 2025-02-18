@@ -11,6 +11,7 @@ from .models import (
     Purchase,
     MatchView,
     SiteInformation,
+    Fixture,
 )
 from django.contrib.auth.admin import UserAdmin
 
@@ -223,3 +224,20 @@ class TaskProgressAdmin(admin.ModelAdmin):
 
     def __str__(self):
         return f"Task {self.task_id} - Processed: {self.successful + self.failed}, Success: {self.successful}, Fail: {self.failed}, Total to be processed: {self.Total}"
+
+
+class FixtureAdmin(admin.ModelAdmin):
+    list_display = (
+        "fixture_id",
+        "fixture_date",
+        "status_short",
+        "team_home",
+        "team_away",
+        "score_fulltime_home",
+        "score_fulltime_away",
+    )
+    search_fields = ("team_home", "team_away", "status_short")
+    list_filter = ("fixture_date", "status_short")
+
+
+admin.site.register(Fixture, FixtureAdmin)

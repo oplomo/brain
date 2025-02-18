@@ -628,3 +628,15 @@ class SiteInformation(models.Model):
 
     def __str__(self):
         return self.site_name
+
+class Fixture(models.Model):
+    fixture_id = models.IntegerField(unique=True)
+    fixture_date = models.DateTimeField()
+    status_short = models.CharField(max_length=10)
+    team_home = models.CharField(max_length=255)
+    team_away = models.CharField(max_length=255)
+    score_fulltime_home = models.IntegerField(null=True, blank=True)
+    score_fulltime_away = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.team_home} vs {self.team_away} ({self.status_short})"
