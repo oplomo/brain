@@ -1,0 +1,2069 @@
+{
+    "match_details": {
+        "fixture": "Saint Etienne vs Angers",
+        "match_id": "1213950",
+        "match_date": "Feb. 22, 2025, 6 p.m.",
+        "venue": null,
+        "city": "Saint-\u00c8tienne",
+        "league_id": "61",
+        "home_team_name": "Saint Etienne",
+        "away_team_name": "Angers",
+        "home_team_logo": "https://media.api-sports.io/football/teams/1063.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/77.png",
+        "home_team_id": "1063",
+        "away_team_id": "77"
+    },
+    "weather": null,
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.35"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.40"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.00"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "1.67"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.10"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "1.91"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.91"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "3.40"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.05"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "6.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.12"
+                },
+                {
+                    "value": "Over 7.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 7.5",
+                    "odd": "1.00"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.04"
+                },
+                {
+                    "value": "Over 6.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 6.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Goals Over/Under First Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.08"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "2.75"
+                }
+            ],
+            "Goals Over/Under - Second Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.00"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.73"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.20"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.05"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.22"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Both Teams Score": [
+                {
+                    "value": "Yes",
+                    "odd": "1.70"
+                },
+                {
+                    "value": "No",
+                    "odd": "2.05"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "8.50"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "9.50"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "6.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "0:6",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "1:6",
+                    "odd": "451.00"
+                },
+                {
+                    "value": "2:5",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "2:6",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "3:4",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "6:0",
+                    "odd": "301.00"
+                },
+                {
+                    "value": "6:1",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "6:2",
+                    "odd": "401.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "3:5",
+                    "odd": "301.00"
+                },
+                {
+                    "value": "5:3",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "4:4",
+                    "odd": "201.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "7.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "5.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "351.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.30"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.57"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "3.00"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.50"
+                }
+            ],
+            "Total - Home": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.62"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "5.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.17"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.03"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.25"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Total - Away": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.62"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.44"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "6.50"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.11"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.02"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Both Teams Score - First Half": [
+                {
+                    "value": "Yes",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.18"
+                }
+            ],
+            "Both Teams To Score - Second Half": [
+                {
+                    "value": "Yes",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.33"
+                }
+            ],
+            "Corners Over Under": [
+                {
+                    "value": "Over 8.5",
+                    "odd": "1.67"
+                },
+                {
+                    "value": "Under 8.5",
+                    "odd": "2.10"
+                },
+                {
+                    "value": "Over 9",
+                    "odd": "1.90"
+                },
+                {
+                    "value": "Under 9",
+                    "odd": "1.90"
+                },
+                {
+                    "value": "Over 9.5",
+                    "odd": "2.10"
+                },
+                {
+                    "value": "Under 9.5",
+                    "odd": "1.67"
+                }
+            ],
+            "Cards Over/Under": [
+                {
+                    "value": "Over 3.5",
+                    "odd": "1.62"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.62"
+                },
+                {
+                    "value": "Under 4.0",
+                    "odd": "1.90"
+                },
+                {
+                    "value": "Over 4.0",
+                    "odd": "1.90"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 77,
+                    "name": "Angers",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-1.5",
+                    "away": "-1.5"
+                },
+                "advice": "Double chance : draw or Angers",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 61,
+                "name": "Ligue 1",
+                "country": "France",
+                "logo": "https://media.api-sports.io/football/leagues/61.png",
+                "flag": "https://media.api-sports.io/flags/fr.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 1063,
+                    "name": "Saint Etienne",
+                    "logo": "https://media.api-sports.io/football/teams/1063.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "13%",
+                        "att": "29%",
+                        "def": "7%",
+                        "goals": {
+                            "for": {
+                                "total": 4,
+                                "average": "0.8"
+                            },
+                            "against": {
+                                "total": 13,
+                                "average": "2.6"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "LLLWLDWLLWLWLLLWLDDLLL",
+                        "fixtures": {
+                            "played": {
+                                "home": 10,
+                                "away": 12,
+                                "total": 22
+                            },
+                            "wins": {
+                                "home": 5,
+                                "away": 0,
+                                "total": 5
+                            },
+                            "draws": {
+                                "home": 1,
+                                "away": 2,
+                                "total": 3
+                            },
+                            "loses": {
+                                "home": 4,
+                                "away": 10,
+                                "total": 14
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 11,
+                                    "away": 9,
+                                    "total": 20
+                                },
+                                "average": {
+                                    "home": "1.1",
+                                    "away": "0.8",
+                                    "total": "0.9"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "19.05%"
+                                    },
+                                    "16-30": {
+                                        "total": 1,
+                                        "percentage": "4.76%"
+                                    },
+                                    "31-45": {
+                                        "total": 1,
+                                        "percentage": "4.76%"
+                                    },
+                                    "46-60": {
+                                        "total": 8,
+                                        "percentage": "38.10%"
+                                    },
+                                    "61-75": {
+                                        "total": 2,
+                                        "percentage": "9.52%"
+                                    },
+                                    "76-90": {
+                                        "total": 5,
+                                        "percentage": "23.81%"
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 13,
+                                        "under": 9
+                                    },
+                                    "1.5": {
+                                        "over": 5,
+                                        "under": 17
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 20
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 22
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 22
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 11,
+                                    "away": 39,
+                                    "total": 50
+                                },
+                                "average": {
+                                    "home": "1.1",
+                                    "away": "3.3",
+                                    "total": "2.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 7,
+                                        "percentage": "14.29%"
+                                    },
+                                    "16-30": {
+                                        "total": 9,
+                                        "percentage": "18.37%"
+                                    },
+                                    "31-45": {
+                                        "total": 7,
+                                        "percentage": "14.29%"
+                                    },
+                                    "46-60": {
+                                        "total": 8,
+                                        "percentage": "16.33%"
+                                    },
+                                    "61-75": {
+                                        "total": 9,
+                                        "percentage": "18.37%"
+                                    },
+                                    "76-90": {
+                                        "total": 8,
+                                        "percentage": "16.33%"
+                                    },
+                                    "91-105": {
+                                        "total": 1,
+                                        "percentage": "2.04%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 19,
+                                        "under": 3
+                                    },
+                                    "1.5": {
+                                        "over": 13,
+                                        "under": 9
+                                    },
+                                    "2.5": {
+                                        "over": 6,
+                                        "under": 16
+                                    },
+                                    "3.5": {
+                                        "over": 6,
+                                        "under": 16
+                                    },
+                                    "4.5": {
+                                        "over": 3,
+                                        "under": 19
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 1,
+                                "draws": 2,
+                                "loses": 3
+                            },
+                            "wins": {
+                                "home": "3-1",
+                                "away": null
+                            },
+                            "loses": {
+                                "home": "0-2",
+                                "away": "8-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 3,
+                                    "away": 2
+                                },
+                                "against": {
+                                    "home": 2,
+                                    "away": 8
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 3,
+                            "away": 0,
+                            "total": 3
+                        },
+                        "failed_to_score": {
+                            "home": 4,
+                            "away": 5,
+                            "total": 9
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 3,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 3
+                        },
+                        "lineups": [
+                            {
+                                "formation": "4-3-3",
+                                "played": 11
+                            },
+                            {
+                                "formation": "4-1-4-1",
+                                "played": 6
+                            },
+                            {
+                                "formation": "5-4-1",
+                                "played": 3
+                            },
+                            {
+                                "formation": "4-2-3-1",
+                                "played": 1
+                            },
+                            {
+                                "formation": "3-5-2",
+                                "played": 1
+                            }
+                        ],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 2,
+                                    "percentage": "4.76%"
+                                },
+                                "16-30": {
+                                    "total": 4,
+                                    "percentage": "9.52%"
+                                },
+                                "31-45": {
+                                    "total": 7,
+                                    "percentage": "16.67%"
+                                },
+                                "46-60": {
+                                    "total": 8,
+                                    "percentage": "19.05%"
+                                },
+                                "61-75": {
+                                    "total": 14,
+                                    "percentage": "33.33%"
+                                },
+                                "76-90": {
+                                    "total": 4,
+                                    "percentage": "9.52%"
+                                },
+                                "91-105": {
+                                    "total": 3,
+                                    "percentage": "7.14%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "46-60": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 77,
+                    "name": "Angers",
+                    "logo": "https://media.api-sports.io/football/teams/77.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "47%",
+                        "att": "29%",
+                        "def": "71%",
+                        "goals": {
+                            "for": {
+                                "total": 4,
+                                "average": "0.8"
+                            },
+                            "against": {
+                                "total": 4,
+                                "average": "0.8"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "LLLDDLDDWWLLWLLWWWLDLW",
+                        "fixtures": {
+                            "played": {
+                                "home": 11,
+                                "away": 11,
+                                "total": 22
+                            },
+                            "wins": {
+                                "home": 3,
+                                "away": 4,
+                                "total": 7
+                            },
+                            "draws": {
+                                "home": 2,
+                                "away": 3,
+                                "total": 5
+                            },
+                            "loses": {
+                                "home": 6,
+                                "away": 4,
+                                "total": 10
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 14,
+                                    "away": 9,
+                                    "total": 23
+                                },
+                                "average": {
+                                    "home": "1.3",
+                                    "away": "0.8",
+                                    "total": "1.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 3,
+                                        "percentage": "13.64%"
+                                    },
+                                    "16-30": {
+                                        "total": 3,
+                                        "percentage": "13.64%"
+                                    },
+                                    "31-45": {
+                                        "total": 1,
+                                        "percentage": "4.55%"
+                                    },
+                                    "46-60": {
+                                        "total": 3,
+                                        "percentage": "13.64%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "22.73%"
+                                    },
+                                    "76-90": {
+                                        "total": 2,
+                                        "percentage": "9.09%"
+                                    },
+                                    "91-105": {
+                                        "total": 5,
+                                        "percentage": "22.73%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 15,
+                                        "under": 7
+                                    },
+                                    "1.5": {
+                                        "over": 5,
+                                        "under": 17
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 20
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 21
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 22
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 21,
+                                    "away": 10,
+                                    "total": 31
+                                },
+                                "average": {
+                                    "home": "1.9",
+                                    "away": "0.9",
+                                    "total": "1.4"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 2,
+                                        "percentage": "6.25%"
+                                    },
+                                    "16-30": {
+                                        "total": 9,
+                                        "percentage": "28.13%"
+                                    },
+                                    "31-45": {
+                                        "total": 4,
+                                        "percentage": "12.50%"
+                                    },
+                                    "46-60": {
+                                        "total": 5,
+                                        "percentage": "15.63%"
+                                    },
+                                    "61-75": {
+                                        "total": 6,
+                                        "percentage": "18.75%"
+                                    },
+                                    "76-90": {
+                                        "total": 3,
+                                        "percentage": "9.38%"
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "9.38%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 17,
+                                        "under": 5
+                                    },
+                                    "1.5": {
+                                        "over": 8,
+                                        "under": 14
+                                    },
+                                    "2.5": {
+                                        "over": 4,
+                                        "under": 18
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 20
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 22
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 3,
+                                "draws": 2,
+                                "loses": 3
+                            },
+                            "wins": {
+                                "home": "4-2",
+                                "away": "1-3"
+                            },
+                            "loses": {
+                                "home": "1-4",
+                                "away": "2-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 3
+                                },
+                                "against": {
+                                    "home": 4,
+                                    "away": 2
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 2,
+                            "away": 3,
+                            "total": 5
+                        },
+                        "failed_to_score": {
+                            "home": 3,
+                            "away": 4,
+                            "total": 7
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 3,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 3
+                        },
+                        "lineups": [
+                            {
+                                "formation": "4-2-3-1",
+                                "played": 19
+                            },
+                            {
+                                "formation": "5-3-2",
+                                "played": 3
+                            }
+                        ],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 3,
+                                    "percentage": "10.00%"
+                                },
+                                "16-30": {
+                                    "total": 2,
+                                    "percentage": "6.67%"
+                                },
+                                "31-45": {
+                                    "total": 8,
+                                    "percentage": "26.67%"
+                                },
+                                "46-60": {
+                                    "total": 7,
+                                    "percentage": "23.33%"
+                                },
+                                "61-75": {
+                                    "total": 4,
+                                    "percentage": "13.33%"
+                                },
+                                "76-90": {
+                                    "total": 5,
+                                    "percentage": "16.67%"
+                                },
+                                "91-105": {
+                                    "total": 1,
+                                    "percentage": "3.33%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "16-30": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "22%",
+                    "away": "78%"
+                },
+                "att": {
+                    "home": "50%",
+                    "away": "50%"
+                },
+                "def": {
+                    "home": "24%",
+                    "away": "76%"
+                },
+                "poisson_distribution": {
+                    "home": "48%",
+                    "away": "52%"
+                },
+                "h2h": {
+                    "home": "60%",
+                    "away": "40%"
+                },
+                "goals": {
+                    "home": "53%",
+                    "away": "47%"
+                },
+                "total": {
+                    "home": "42.8%",
+                    "away": "57.2%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1213826,
+                        "referee": "M. Bollengier",
+                        "timezone": "UTC",
+                        "date": "2024-10-26T15:00:00+00:00",
+                        "timestamp": 1729954800,
+                        "periods": {
+                            "first": 1729954800,
+                            "second": 1729958400
+                        },
+                        "venue": {
+                            "id": 634,
+                            "name": "Stade Raymond Kopa",
+                            "city": "Angers"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 5
+                        }
+                    },
+                    "league": {
+                        "id": 61,
+                        "name": "Ligue 1",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/61.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 9",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 4,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 4,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1046123,
+                        "referee": "N. Rainville",
+                        "timezone": "UTC",
+                        "date": "2024-02-17T14:00:00+00:00",
+                        "timestamp": 1708178400,
+                        "periods": {
+                            "first": 1708178400,
+                            "second": 1708182000
+                        },
+                        "venue": {
+                            "id": 634,
+                            "name": "Stade Raymond Kopa",
+                            "city": "Angers"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 25",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 3
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 3
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1045994,
+                        "referee": "G. Paradis",
+                        "timezone": "UTC",
+                        "date": "2023-10-30T19:45:00+00:00",
+                        "timestamp": 1698695100,
+                        "periods": {
+                            "first": 1698695100,
+                            "second": 1698698700
+                        },
+                        "venue": {
+                            "id": 676,
+                            "name": "Stade Geoffroy-Guichard",
+                            "city": "Saint-\u00c8tienne"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 12",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 890972,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2022-07-23T15:00:00+00:00",
+                        "timestamp": 1658588400,
+                        "periods": {
+                            "first": 1658588400,
+                            "second": 1658592000
+                        },
+                        "venue": {
+                            "id": 2114,
+                            "name": "Stade des Rives du Thouet",
+                            "city": "Saumur"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 667,
+                        "name": "Friendlies Clubs",
+                        "country": "World",
+                        "logo": "https://media.api-sports.io/football/leagues/667.png",
+                        "flag": null,
+                        "season": 2022,
+                        "round": "Club Friendlies 3",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 4,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 4,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 718541,
+                        "referee": "C. Turpin",
+                        "timezone": "UTC",
+                        "date": "2022-01-26T18:00:00+00:00",
+                        "timestamp": 1643220000,
+                        "periods": {
+                            "first": 1643220000,
+                            "second": 1643223600
+                        },
+                        "venue": {
+                            "id": 634,
+                            "name": "Stade Raymond-Kopa",
+                            "city": "Angers"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 61,
+                        "name": "Ligue 1",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/61.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2021,
+                        "round": "Regular Season - 20",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 718460,
+                        "referee": "A. Gautier",
+                        "timezone": "UTC",
+                        "date": "2021-10-22T19:00:00+00:00",
+                        "timestamp": 1634929200,
+                        "periods": {
+                            "first": 1634929200,
+                            "second": 1634932800
+                        },
+                        "venue": {
+                            "id": 676,
+                            "name": "Stade Geoffroy-Guichard",
+                            "city": "Saint-\u00c8tienne"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 61,
+                        "name": "Ligue 1",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/61.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2021,
+                        "round": "Regular Season - 11",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 571755,
+                        "referee": "B. Millot",
+                        "timezone": "UTC",
+                        "date": "2021-03-13T12:00:00+00:00",
+                        "timestamp": 1615636800,
+                        "periods": {
+                            "first": 1615636800,
+                            "second": 1615640400
+                        },
+                        "venue": {
+                            "id": 634,
+                            "name": "Stade Raymond-Kopa",
+                            "city": "Angers"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 61,
+                        "name": "Ligue 1",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/61.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 29",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 571607,
+                        "referee": "J. Miguelgorry",
+                        "timezone": "UTC",
+                        "date": "2020-12-11T20:00:00+00:00",
+                        "timestamp": 1607716800,
+                        "periods": {
+                            "first": 1607716800,
+                            "second": 1607720400
+                        },
+                        "venue": {
+                            "id": 676,
+                            "name": "Stade Geoffroy-Guichard",
+                            "city": "Saint-\u00c8tienne"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 61,
+                        "name": "Ligue 1",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/61.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 14",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 604038,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2020-08-15T15:00:00+00:00",
+                        "timestamp": 1597503600,
+                        "periods": {
+                            "first": 1597503600,
+                            "second": 1597507200
+                        },
+                        "venue": {
+                            "id": 634,
+                            "name": "Stade Raymond-Kopa",
+                            "city": "Angers"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 667,
+                        "name": "Friendlies Clubs",
+                        "country": "World",
+                        "logo": "https://media.api-sports.io/football/leagues/667.png",
+                        "flag": null,
+                        "season": 2020,
+                        "round": "Club Friendlies 3",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 157746,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2020-04-26T18:00:00+00:00",
+                        "timestamp": 1587924000,
+                        "periods": {
+                            "first": null,
+                            "second": null
+                        },
+                        "venue": {
+                            "id": 676,
+                            "name": "Stade Geoffroy-Guichard",
+                            "city": "Saint-\u00c8tienne"
+                        },
+                        "status": {
+                            "long": "Match Cancelled",
+                            "short": "CANC",
+                            "elapsed": null,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 61,
+                        "name": "Ligue 1",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/61.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2019,
+                        "round": "Regular Season - 34",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1063,
+                            "name": "Saint Etienne",
+                            "logo": "https://media.api-sports.io/football/teams/1063.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 77,
+                            "name": "Angers",
+                            "logo": "https://media.api-sports.io/football/teams/77.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": null,
+                        "away": null
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "fulltime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

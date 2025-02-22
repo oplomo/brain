@@ -11,10 +11,32 @@
 
 <div class="current">{{ sport_slug }}</div>
 <div class="match_info">
-<div class="home_info">{{ match.match.home_team }}</div>
-<div class="game_info"><span class="match_vs">VS</span> <br> <span class="match_time">{{ time }}</span>
+    <div style="display: flex; align-items: center;">
+        <div class="home_info" style="display: inline;margin-right:10px;">{{ match.match.home_team }}</div>
+        <div class="t_badge" style="height: 100px; width: 100px; text-align: center;">
+            <img src="{{ match.match.home_team_logo }}" alt="Team Logo" 
+                 style="width: 100px; height: 100px; object-fit: contain; border-radius: 8px; display: block; margin: auto;">
+        </div>
+    </div>
+    
+<div class="game_info"> 
+    <span style="color: white;font-size:2.5em;font-weight:bold;background-color: indigo;padding:5px 10px;">
+        {% if home_score is not None %}{{ home_score }}{% endif %} - {% if away_score is not None %}{{ away_score }}{% endif %}
+    </span>
+    <span class="match_vs">VS</span><br>
+     <span class="match_time">{{ time }}</span> <br>
+     <span><u>wind speed </u>&nbsp;<i class="fa-solid fa-wind"></i>&rarr; {{match.match.wind_speed}}m/s&nbsp;
+        <u>weather condition</u>&nbsp;<i class="fa-solid fa-cloud"></i>&rarr;{{match.match.weather_description}} <br><br>
+        <u>temperature(feels like)</u> &nbsp;<i class="fa-solid fa-temperature-three-quarters"></i>&rarr;{{match.match.feels_like}}<sup>0</sup>c &nbsp 
+        <u>humidity</u> &nbsp;<i class="fa-solid fa-droplet"></i>&rarr;{{match.match.humidity}}%</span>
 </div>
-<div class="away_info">{{ match.match.away_team }}</div>
+<div>  <div style="display: flex; align-items: center;">
+    <div class="home_info" style="display: inline; margin:35% 10px; 0px 0px">{{ match.match.away_team }}</div>
+    <div class="t_badge" style="height: 100px; width: 100px; text-align: center;">
+        <img src="{{ match.match.away_team_logo }}" alt="Team Logo" 
+             style="width: 100px; height: 100px; object-fit: contain; border-radius: 8px; display: block; margin: auto;">
+    </div>
+</div></div>
 </div>
 
 <div class="match_info_market">
@@ -25,7 +47,6 @@
             <th>Prediction</th>
             <th>Probability</th>
             <th>Odds</th>
-            <th>Result</th>
         </tr>
     </thead>
     <tbody>
@@ -38,7 +59,6 @@
             <td class="stress">{{ match_data|get_item:market|get_item:"prediction" }}</td>
             <td>{{ match_data|get_item:market|get_item:"probability" }}</td>
             <td>{{ match_data|get_item:market|get_item:"odds" }}</td>
-            <td  class="{% if match_data|get_item:market|get_item:"result" == 'won' %}won {% elif match_data|get_item:market|get_item:"result" == "lost" %}lost{% endif %}">{{ match_data|get_item:market|get_item:"result" }}</td>
         </tr>
         {% endfor %}
     </tbody>

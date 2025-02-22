@@ -98,7 +98,6 @@
     </style>
 </head>
 <body>
-
     <h1><a href="{% url 'square:refresh' %}">refresh site</a></h1>
 
     <h1>Fetch Matches</h1>
@@ -111,6 +110,9 @@
             <select name="fetch_date" id="fetch_date">
                 <option value="today">Today</option>
                 <option value="tomorrow">Tomorrow</option>
+                <option value="yesterday">yesterday</option>
+
+                
             </select>
         </p>
 
@@ -122,6 +124,7 @@
         <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
         <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMORROW</a> <br>
         <a href="{% url 'square:see_data_progress' %}">see_data_progress</a>
+      
     </div>
 
 </body>

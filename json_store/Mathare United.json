@@ -1,0 +1,83 @@
+{
+    "match_details": {
+        "fixture": "Mathare United vs Police",
+        "match_id": "1303760",
+        "match_date": "Feb. 20, 2025, noon",
+        "venue": null,
+        "city": "Nairobi",
+        "league_id": "276",
+        "home_team_name": "Mathare United",
+        "away_team_name": "Police",
+        "home_team_logo": "https://media.api-sports.io/football/teams/2463.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/8560.png",
+        "home_team_id": "2463",
+        "away_team_id": "8560"
+    },
+    "weather": {
+        "temperature": 29.62,
+        "feels_like": 27.84,
+        "humidity": 15,
+        "weather_description": "Few clouds",
+        "wind_speed": 6.37,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

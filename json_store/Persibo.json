@@ -1,0 +1,1194 @@
+{
+    "match_details": {
+        "fixture": "Persibo vs Persegres Gresik United",
+        "match_id": "1338567",
+        "match_date": "Feb. 21, 2025, 8:30 a.m.",
+        "venue": null,
+        "city": "Bojonegoro",
+        "league_id": "275",
+        "home_team_name": "Persibo",
+        "away_team_name": "Persegres Gresik United",
+        "home_team_logo": "https://media.api-sports.io/football/teams/15814.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/15800.png",
+        "home_team_id": "15814",
+        "away_team_id": "15800"
+    },
+    "weather": {
+        "temperature": 24.35,
+        "feels_like": 25.27,
+        "humidity": 93,
+        "weather_description": "Overcast clouds",
+        "wind_speed": 1.18,
+        "rain": 0
+    },
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.50"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.10"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.70"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "1.80"
+                },
+                {
+                    "value": "Away",
+                    "odd": "1.91"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 2.5",
+                    "odd": "2.10"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.70"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "6.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "8.50"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "81.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "2.50"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "4.75"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "81.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.44"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.50"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "3.10"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.05"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.40"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 15800,
+                    "name": "Persegres Gresik United",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-2.5",
+                    "away": "-2.5"
+                },
+                "advice": "Double chance : draw or Persegres Gresik United",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 275,
+                "name": "Liga 2",
+                "country": "Indonesia",
+                "logo": "https://media.api-sports.io/football/leagues/275.png",
+                "flag": "https://media.api-sports.io/flags/id.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 15814,
+                    "name": "Persibo",
+                    "logo": "https://media.api-sports.io/football/teams/15814.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "40%",
+                        "att": "64%",
+                        "def": "18%",
+                        "goals": {
+                            "for": {
+                                "total": 7,
+                                "average": "1.4"
+                            },
+                            "against": {
+                                "total": 9,
+                                "average": "1.8"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WWWWWDDLLWLLWLWLWLLW",
+                        "fixtures": {
+                            "played": {
+                                "home": 10,
+                                "away": 10,
+                                "total": 20
+                            },
+                            "wins": {
+                                "home": 8,
+                                "away": 2,
+                                "total": 10
+                            },
+                            "draws": {
+                                "home": 1,
+                                "away": 1,
+                                "total": 2
+                            },
+                            "loses": {
+                                "home": 1,
+                                "away": 7,
+                                "total": 8
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 23,
+                                    "away": 10,
+                                    "total": 33
+                                },
+                                "average": {
+                                    "home": "2.3",
+                                    "away": "1.0",
+                                    "total": "1.7"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 5,
+                                        "percentage": "14.71%"
+                                    },
+                                    "16-30": {
+                                        "total": 7,
+                                        "percentage": "20.59%"
+                                    },
+                                    "31-45": {
+                                        "total": 5,
+                                        "percentage": "14.71%"
+                                    },
+                                    "46-60": {
+                                        "total": 3,
+                                        "percentage": "8.82%"
+                                    },
+                                    "61-75": {
+                                        "total": 9,
+                                        "percentage": "26.47%"
+                                    },
+                                    "76-90": {
+                                        "total": 3,
+                                        "percentage": "8.82%"
+                                    },
+                                    "91-105": {
+                                        "total": 2,
+                                        "percentage": "5.88%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 14,
+                                        "under": 6
+                                    },
+                                    "1.5": {
+                                        "over": 11,
+                                        "under": 9
+                                    },
+                                    "2.5": {
+                                        "over": 4,
+                                        "under": 16
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 19
+                                    },
+                                    "4.5": {
+                                        "over": 1,
+                                        "under": 19
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 6,
+                                    "away": 20,
+                                    "total": 26
+                                },
+                                "average": {
+                                    "home": "0.6",
+                                    "away": "2.0",
+                                    "total": "1.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "17.39%"
+                                    },
+                                    "16-30": {
+                                        "total": 3,
+                                        "percentage": "13.04%"
+                                    },
+                                    "31-45": {
+                                        "total": 3,
+                                        "percentage": "13.04%"
+                                    },
+                                    "46-60": {
+                                        "total": 3,
+                                        "percentage": "13.04%"
+                                    },
+                                    "61-75": {
+                                        "total": 4,
+                                        "percentage": "17.39%"
+                                    },
+                                    "76-90": {
+                                        "total": 2,
+                                        "percentage": "8.70%"
+                                    },
+                                    "91-105": {
+                                        "total": 4,
+                                        "percentage": "17.39%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 14,
+                                        "under": 6
+                                    },
+                                    "1.5": {
+                                        "over": 7,
+                                        "under": 13
+                                    },
+                                    "2.5": {
+                                        "over": 4,
+                                        "under": 16
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 19
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 20
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 5,
+                                "draws": 2,
+                                "loses": 2
+                            },
+                            "wins": {
+                                "home": "7-0",
+                                "away": "2-3"
+                            },
+                            "loses": {
+                                "home": "2-3",
+                                "away": "3-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 7,
+                                    "away": 3
+                                },
+                                "against": {
+                                    "home": 3,
+                                    "away": 4
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 6,
+                            "away": 0,
+                            "total": 6
+                        },
+                        "failed_to_score": {
+                            "home": 1,
+                            "away": 5,
+                            "total": 6
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 1,
+                                    "percentage": "2.27%"
+                                },
+                                "16-30": {
+                                    "total": 5,
+                                    "percentage": "11.36%"
+                                },
+                                "31-45": {
+                                    "total": 6,
+                                    "percentage": "13.64%"
+                                },
+                                "46-60": {
+                                    "total": 6,
+                                    "percentage": "13.64%"
+                                },
+                                "61-75": {
+                                    "total": 8,
+                                    "percentage": "18.18%"
+                                },
+                                "76-90": {
+                                    "total": 11,
+                                    "percentage": "25.00%"
+                                },
+                                "91-105": {
+                                    "total": 7,
+                                    "percentage": "15.91%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": 2,
+                                    "percentage": "100.00%"
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 15800,
+                    "name": "Persegres Gresik United",
+                    "logo": "https://media.api-sports.io/football/teams/15800.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "53%",
+                        "att": "73%",
+                        "def": "45%",
+                        "goals": {
+                            "for": {
+                                "total": 8,
+                                "average": "1.6"
+                            },
+                            "against": {
+                                "total": 6,
+                                "average": "1.2"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "LWLDWDLWWWLDLWWLWDDLW",
+                        "fixtures": {
+                            "played": {
+                                "home": 11,
+                                "away": 10,
+                                "total": 21
+                            },
+                            "wins": {
+                                "home": 7,
+                                "away": 2,
+                                "total": 9
+                            },
+                            "draws": {
+                                "home": 3,
+                                "away": 2,
+                                "total": 5
+                            },
+                            "loses": {
+                                "home": 1,
+                                "away": 6,
+                                "total": 7
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 19,
+                                    "away": 9,
+                                    "total": 28
+                                },
+                                "average": {
+                                    "home": "1.7",
+                                    "away": "0.9",
+                                    "total": "1.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 1,
+                                        "percentage": "3.45%"
+                                    },
+                                    "16-30": {
+                                        "total": 4,
+                                        "percentage": "13.79%"
+                                    },
+                                    "31-45": {
+                                        "total": 5,
+                                        "percentage": "17.24%"
+                                    },
+                                    "46-60": {
+                                        "total": 5,
+                                        "percentage": "17.24%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "17.24%"
+                                    },
+                                    "76-90": {
+                                        "total": 5,
+                                        "percentage": "17.24%"
+                                    },
+                                    "91-105": {
+                                        "total": 4,
+                                        "percentage": "13.79%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 16,
+                                        "under": 5
+                                    },
+                                    "1.5": {
+                                        "over": 8,
+                                        "under": 13
+                                    },
+                                    "2.5": {
+                                        "over": 3,
+                                        "under": 18
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 20
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 21
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 10,
+                                    "away": 14,
+                                    "total": 24
+                                },
+                                "average": {
+                                    "home": "0.9",
+                                    "away": "1.4",
+                                    "total": "1.1"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "17.39%"
+                                    },
+                                    "16-30": {
+                                        "total": 4,
+                                        "percentage": "17.39%"
+                                    },
+                                    "31-45": {
+                                        "total": 3,
+                                        "percentage": "13.04%"
+                                    },
+                                    "46-60": {
+                                        "total": 5,
+                                        "percentage": "21.74%"
+                                    },
+                                    "61-75": {
+                                        "total": 1,
+                                        "percentage": "4.35%"
+                                    },
+                                    "76-90": {
+                                        "total": 3,
+                                        "percentage": "13.04%"
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "13.04%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 15,
+                                        "under": 6
+                                    },
+                                    "1.5": {
+                                        "over": 7,
+                                        "under": 14
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 19
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 21
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 21
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 3,
+                                "draws": 2,
+                                "loses": 1
+                            },
+                            "wins": {
+                                "home": "3-0",
+                                "away": "0-2"
+                            },
+                            "loses": {
+                                "home": "0-1",
+                                "away": "3-1"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 2
+                                },
+                                "against": {
+                                    "home": 2,
+                                    "away": 3
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 4,
+                            "away": 2,
+                            "total": 6
+                        },
+                        "failed_to_score": {
+                            "home": 2,
+                            "away": 3,
+                            "total": 5
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 3,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 3
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 2,
+                                    "percentage": "4.35%"
+                                },
+                                "16-30": {
+                                    "total": 3,
+                                    "percentage": "6.52%"
+                                },
+                                "31-45": {
+                                    "total": 4,
+                                    "percentage": "8.70%"
+                                },
+                                "46-60": {
+                                    "total": 12,
+                                    "percentage": "26.09%"
+                                },
+                                "61-75": {
+                                    "total": 6,
+                                    "percentage": "13.04%"
+                                },
+                                "76-90": {
+                                    "total": 9,
+                                    "percentage": "19.57%"
+                                },
+                                "91-105": {
+                                    "total": 10,
+                                    "percentage": "21.74%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "43%",
+                    "away": "57%"
+                },
+                "att": {
+                    "home": "47%",
+                    "away": "53%"
+                },
+                "def": {
+                    "home": "40%",
+                    "away": "60%"
+                },
+                "poisson_distribution": {
+                    "home": "78%",
+                    "away": "22%"
+                },
+                "h2h": {
+                    "home": "33%",
+                    "away": "67%"
+                },
+                "goals": {
+                    "home": "40%",
+                    "away": "60%"
+                },
+                "total": {
+                    "home": "46.8%",
+                    "away": "53.2%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1338544,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2025-01-28T08:30:00+00:00",
+                        "timestamp": 1738053000,
+                        "periods": {
+                            "first": 1738053000,
+                            "second": 1738056600
+                        },
+                        "venue": {
+                            "id": 20296,
+                            "name": "Stadion Gelora Joko Samudro",
+                            "city": "Gresik"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 8
+                        }
+                    },
+                    "league": {
+                        "id": 275,
+                        "name": "Liga 2",
+                        "country": "Indonesia",
+                        "logo": "https://media.api-sports.io/football/leagues/275.png",
+                        "flag": "https://media.api-sports.io/flags/id.svg",
+                        "season": 2024,
+                        "round": "Relegation Round - 2",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 15800,
+                            "name": "Persegres Gresik United",
+                            "logo": "https://media.api-sports.io/football/teams/15800.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 15814,
+                            "name": "Persibo",
+                            "logo": "https://media.api-sports.io/football/teams/15814.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 4,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 4,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1301749,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-11-15T08:30:00+00:00",
+                        "timestamp": 1731659400,
+                        "periods": {
+                            "first": 1731659400,
+                            "second": 1731663000
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": null,
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 8
+                        }
+                    },
+                    "league": {
+                        "id": 275,
+                        "name": "Liga 2",
+                        "country": "Indonesia",
+                        "logo": "https://media.api-sports.io/football/leagues/275.png",
+                        "flag": "https://media.api-sports.io/flags/id.svg",
+                        "season": 2024,
+                        "round": "1st Round - 12",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 15800,
+                            "name": "Persegres Gresik United",
+                            "logo": "https://media.api-sports.io/football/teams/15800.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 15814,
+                            "name": "Persibo",
+                            "logo": "https://media.api-sports.io/football/teams/15814.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1301639,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-09-07T08:30:00+00:00",
+                        "timestamp": 1725697800,
+                        "periods": {
+                            "first": 1725697800,
+                            "second": 1725701400
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": null,
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 275,
+                        "name": "Liga 2",
+                        "country": "Indonesia",
+                        "logo": "https://media.api-sports.io/football/leagues/275.png",
+                        "flag": "https://media.api-sports.io/flags/id.svg",
+                        "season": 2024,
+                        "round": "1st Round - 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 15814,
+                            "name": "Persibo",
+                            "logo": "https://media.api-sports.io/football/teams/15814.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 15800,
+                            "name": "Persegres Gresik United",
+                            "logo": "https://media.api-sports.io/football/teams/15800.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

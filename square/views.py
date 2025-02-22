@@ -6,6 +6,7 @@ from .models import (
     TennisPrediction,
     Match,
     Sport,
+    Fixture,
 )
 import math
 from django.utils import timezone
@@ -29,6 +30,7 @@ def index(request, selected=None, item=None, day="today"):
             "cards",
             "corners",
             "double chance(12,1X,X2)",
+            "correct_score",
         ],
         "basketball": ["3 way", "total overtime", "total halftime"],
         "tennis": ["3 way", "total"],
@@ -230,6 +232,16 @@ def index(request, selected=None, item=None, day="today"):
                     )
                 },
             ],
+            "correct_score": [
+                lambda match: {
+                    "correct_score": (
+                        f"{match.home_team_goals}-{match.away_team_goals}"
+                        if match.home_team_goals is not None
+                        and match.away_team_goals is not None
+                        else "Waiting..."
+                    )
+                },
+            ],
             "double chance(12,1X,X2)": [
                 ("1X \n probability|normalized probability %", "dc1x_probability"),
                 ("X2 \n probability|normalized probability %", "dcx2_probability"),
@@ -370,6 +382,8 @@ def index(request, selected=None, item=None, day="today"):
             "home_team": match.match.home_team,
             "home_team_logo": match.match.home_team_logo,
             "home_team_score": match.home_team_expected_goals,
+            "home_res": match.home_team_goals,
+            "away_res": match.away_team_goals,
             "away_team_score": match.away_team_expected_goals,
             "away_team": match.match.away_team,
             "away_team_logo": match.match.away_team_logo,
@@ -380,9 +394,9 @@ def index(request, selected=None, item=None, day="today"):
             "Weather description": match.match.weather_description,
             "Wind speed": match.match.wind_speed,
             "time": (
-                match.match.match_date.date.strftime("%Y-%m-%d")
-                if match.match.match_date
-                else "N/A"
+                match.match.date.strftime("%H:%M:%S")
+                if match.match.date and isinstance(match.match.date, datetime)
+                else None
             ),
             "match_name": match.match,
             "prediction": get_prediction(match, selected),
@@ -409,6 +423,9 @@ def index(request, selected=None, item=None, day="today"):
         elif item == "total_5_5(OVER/UNDER)":
             data["prediction"] = get_prediction_ov_5_5(match)
             data["odds"] = get_odds_ov_5_5(match)
+        elif item == "correct_score":
+            data["prediction"] = get_correctd_score(match)
+            data["odds"] = get_correct_odds(match)
         elif item == "cards":
             data["prediction"] = get_prediction_cards(match)
             data["odds"] = get_odds_cards(match)
@@ -433,6 +450,7 @@ def index(request, selected=None, item=None, day="today"):
         elif item == "total":
             data["prediction"] = get_prediction_tennis_total(match)
             data["odds"] = get_odds_tennis_total_odds(match)
+
         else:
             data["prediction"] = get_prediction(match, selected)
             data["odds"] = get_odds(match, selected)
@@ -546,6 +564,15 @@ def get_prediction_bts(match):
             return "NO"  # Not both teams to score
     else:
         return "---"
+
+
+def get_correctd_score(match):
+
+    return f"{match.home_team_expected_goals}-{match.away_team_expected_goals}"
+
+
+def get_correct_odds(match):
+    return "---"
 
 
 def get_odds_bts(match):
@@ -912,6 +939,8 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
     match = get_object_or_404(FootballPrediction, pk=pk)
     site = get_object_or_404(SiteInformation, pk=1)
 
+    home_score = match.home_team_goals
+    away_score = match.away_team_goals
     match_data = {
         "winner": {
             "prediction": get_prediction(match, match.match.sport.name),
@@ -929,7 +958,6 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
                 )
             ),
             "odds": get_odds(match, match.match.sport.name),
-            "result": match.three_way_match_result,
         },
         "both teams to score(gg)": {
             "prediction": get_prediction_bts(match),
@@ -943,7 +971,6 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
                 )
             ),
             "odds": get_odds_bts(match),
-            "result": match.gg_match_result,
         },
         "over 2.5": {
             "prediction": get_prediction_ov(match),
@@ -957,19 +984,21 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
                 )
             ),
             "odds": get_odds_ov(match),
-            "result": match.o_2_5_match_result,
         },
         "total corners": {
             "prediction": get_prediction_corners(match),
             "probability": (match.total_corners_probability),
             "odds": get_odds_corners(match),
-            "result": match.total_corner_result,
         },
         "total cards": {
             "prediction": get_prediction_cards(match),
             "probability": (match.total_cards_probability),
             "odds": get_odds_cards(match),
-            "result": match.total_card_result,
+        },
+        "correct_score": {
+            "prediction": get_correctd_score(match),
+            "probability": "N/A",
+            "odds": get_correct_odds(match),
         },
         "double chance": {
             "prediction": get_prediction_dc(match),
@@ -987,7 +1016,6 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
                 )
             ),
             "odds": get_odds_dc(match),
-            "result": match.dc_result,
         },
     }
     headers = []
@@ -1008,6 +1036,8 @@ def footballview(request, pk, home_team_slug, away_team_slug, time, sport_slug):
         "headers": headers,
         "match_data": match_data,
         "site": site,
+        "home_score": home_score,
+        "away_score": away_score,
     }
 
     return render(request, "public/footballview.html", context)
@@ -1227,7 +1257,9 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from datetime import date, timedelta
 
-from backend.models import Match, MatchDate, League
+from backend.models import MatchDate, League
+from backend.models import Match as M
+
 
 API_KEY = "996c177462abec830c211f413c3bdaa8"
 API_URL = "https://v3.football.api-sports.io/fixtures"
@@ -1243,6 +1275,8 @@ def fetch_matches_view(request):
                 target_date = date.today()
             elif fetch_date == "tomorrow":
                 target_date = date.today() + timedelta(days=1)
+            elif fetch_date == "yesterday":
+                target_date = date.today() - timedelta(days=1)
 
             # API request headers
             headers = {"x-apisports-key": API_KEY}
@@ -1270,7 +1304,7 @@ def fetch_matches_view(request):
                         continue
 
                     # Save the match
-                    Match.objects.update_or_create(
+                    M.objects.update_or_create(
                         match_id=fixture_info.get("id"),
                         defaults={
                             "date": fixture_info.get("date"),
@@ -1305,7 +1339,7 @@ def fetch_matches_view(request):
     return render(request, "private/o.html")
 
 
-from backend.models import Country, Season, League, Match, MatchDate
+from backend.models import Country, Season, League, MatchDate
 
 
 from django.shortcuts import render, redirect
@@ -1325,12 +1359,12 @@ def select_football_prediction(request):
 
         # Update the 'to_be_predicted' field for the selected matches
         for match_id in selected_matches:
-            match = Match.objects.get(id=match_id)
+            match = M.objects.get(id=match_id)
             match.to_be_predicted = True
             match.save()
 
         # Display a success message with the selected matches
-        selected_match_names = Match.objects.filter(id__in=selected_matches)
+        selected_match_names = M.objects.filter(id__in=selected_matches)
         match_names = ", ".join(
             [
                 match.home_team_name + " vs " + match.away_team_name
@@ -1353,11 +1387,11 @@ def select_football_prediction(request):
 
     # Fetch matches based on the date filter (today or tomorrow)
     if date_filter == "today":
-        matches = Match.objects.filter(date__date=today, to_be_predicted=False)
+        matches = M.objects.filter(date__date=today, to_be_predicted=False)
     elif date_filter == "tomorrow":
-        matches = Match.objects.filter(date__date=tomorrow, to_be_predicted=False)
+        matches = M.objects.filter(date__date=tomorrow, to_be_predicted=False)
     else:
-        matches = Match.objects.filter(to_be_predicted=False)
+        matches = M.objects.filter(to_be_predicted=False)
 
     return render(
         request,
@@ -1375,19 +1409,17 @@ from django.shortcuts import render
 from django.utils.timezone import localdate
 from datetime import timedelta
 
-from backend.models import Match
-
 
 def start_soccer_prediction(request, date):
     today = localdate()
     tomorrow = today + timedelta(days=1)
 
     if date == "today":
-        matches = Match.objects.filter(date__date=today, to_be_predicted=True)
+        matches = M.objects.filter(date__date=today, to_be_predicted=True)
     elif date == "tomorrow":
-        matches = Match.objects.filter(date__date=tomorrow, to_be_predicted=True)
+        matches = M.objects.filter(date__date=tomorrow, to_be_predicted=True)
     else:
-        matches = Match.objects.filter(to_be_predicted=True)
+        matches = M.objects.filter(to_be_predicted=True)
 
     return render(request, "private/start_soccer_prediction.html", {"matches": matches})
 
@@ -1469,6 +1501,7 @@ def see_data_progress(request):
         successful = task_progress.successful
         failed = task_progress.failed
         to_be_processed = task_progress.to_be_processed()
+
         total = task_progress.total
         fetch_task_id = task_progress.task_id
     else:
@@ -1488,4 +1521,42 @@ def see_data_progress(request):
             "failed": failed,
             "to_be_processed": to_be_processed,
         },
+    )
+
+
+from django.shortcuts import render
+from .models import Match, Fixture, FootballPrediction
+
+
+def update_matches_with_fixtures(request):
+    matches = Match.objects.filter(updated=False)
+    fixtures = Fixture.objects.filter(status_short="FT")
+
+    fixture_map = {
+        fixture.fixture_id: fixture for fixture in fixtures
+    }  # Create a fixture lookup dictionary
+
+    for match in matches:
+        if match.match_id in fixture_map:  # Check if match_id exists in fixture
+            fixture = fixture_map[match.match_id]
+
+            # Update FootballPrediction fields
+            football_prediction = FootballPrediction.objects.filter(match=match).first()
+            if football_prediction:
+                football_prediction.home_team_expected_goals = (
+                    fixture.score_fulltime_home
+                )
+                football_prediction.away_team_expected_goals = (
+                    fixture.score_fulltime_away
+                )
+                football_prediction.save()
+
+            # Mark match as updated
+            match.updated = True
+            match.save()
+
+    return render(
+        request,
+        "matches_fixtures_list.html",
+        {"matches": matches, "fixtures": fixtures},
     )

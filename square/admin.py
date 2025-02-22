@@ -11,6 +11,7 @@ from .models import (
     Purchase,
     MatchView,
     SiteInformation,
+    ResultDate,
     Fixture,
 )
 from django.contrib.auth.admin import UserAdmin
@@ -241,3 +242,12 @@ class FixtureAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Fixture, FixtureAdmin)
+
+
+class ResultDateAdmin(admin.ModelAdmin):
+    list_display = ("date",)
+    search_fields = ("date",)
+    list_filter = ("date",)
+
+
+admin.site.register(ResultDate, ResultDateAdmin)

@@ -1,0 +1,83 @@
+{
+    "match_details": {
+        "fixture": "Austria Vienna vs Red Bull Salzburg",
+        "match_id": "1218683",
+        "match_date": "Feb. 22, 2025, 4 p.m.",
+        "venue": null,
+        "city": "Wien",
+        "league_id": "218",
+        "home_team_name": "Austria Vienna",
+        "away_team_name": "Red Bull Salzburg",
+        "home_team_logo": "https://media.api-sports.io/football/teams/601.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/571.png",
+        "home_team_id": "601",
+        "away_team_id": "571"
+    },
+    "weather": {
+        "temperature": 6.29,
+        "feels_like": 2.52,
+        "humidity": 40,
+        "weather_description": "Clear sky",
+        "wind_speed": 6.03,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

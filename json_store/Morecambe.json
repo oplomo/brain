@@ -1,0 +1,83 @@
+{
+    "match_details": {
+        "fixture": "Morecambe vs Walsall",
+        "match_id": "1217338",
+        "match_date": "Feb. 22, 2025, 12:30 p.m.",
+        "venue": null,
+        "city": "Morecambe, Lancashire",
+        "league_id": "42",
+        "home_team_name": "Morecambe",
+        "away_team_name": "Walsall",
+        "home_team_logo": "https://media.api-sports.io/football/teams/1375.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/1342.png",
+        "home_team_id": "1375",
+        "away_team_id": "1342"
+    },
+    "weather": {
+        "temperature": 7.77,
+        "feels_like": 4.13,
+        "humidity": 90,
+        "weather_description": "Light rain",
+        "wind_speed": 6.83,
+        "rain": 0.21
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

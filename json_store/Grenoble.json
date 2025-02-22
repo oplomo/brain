@@ -1,0 +1,2014 @@
+{
+    "match_details": {
+        "fixture": "Grenoble vs Guingamp",
+        "match_id": "1212649",
+        "match_date": "Feb. 21, 2025, 7 p.m.",
+        "venue": null,
+        "city": "Grenoble",
+        "league_id": "62",
+        "home_team_name": "Grenoble",
+        "away_team_name": "Guingamp",
+        "home_team_logo": "https://media.api-sports.io/football/teams/101.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/90.png",
+        "home_team_id": "101",
+        "away_team_id": "90"
+    },
+    "weather": {
+        "temperature": 3.93,
+        "feels_like": 1.46,
+        "humidity": 85,
+        "weather_description": "Overcast clouds",
+        "wind_speed": 2.7,
+        "rain": 0
+    },
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "3.00"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.10"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.30"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "2.10"
+                },
+                {
+                    "value": "Away",
+                    "odd": "1.67"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "3.00"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "2.15"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.67"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.25"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.07"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.08"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.02"
+                },
+                {
+                    "value": "Over 6.5",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "Under 6.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Goals Over/Under First Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.06"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.44"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "2.62"
+                }
+            ],
+            "Goals Over/Under - Second Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.62"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "5.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.17"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.04"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.25"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.75"
+                }
+            ],
+            "Both Teams Score": [
+                {
+                    "value": "Yes",
+                    "odd": "1.83"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.83"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "8.50"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "6.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "7.50"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "9.50"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "0:6",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "1:6",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "2:5",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "3:4",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "3:5",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "4:4",
+                    "odd": "301.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "5.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "2.62"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "301.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.57"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.36"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.05"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.10"
+                }
+            ],
+            "Total - Home": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "3.00"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.08"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Total - Away": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.50"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.50"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "6.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.12"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.02"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.30"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.40"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Both Teams Score - First Half": [
+                {
+                    "value": "Yes",
+                    "odd": "5.50"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.14"
+                }
+            ],
+            "Both Teams To Score - Second Half": [
+                {
+                    "value": "Yes",
+                    "odd": "3.50"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.28"
+                }
+            ],
+            "Corners Over Under": [
+                {
+                    "value": "Over 9.5",
+                    "odd": "2.00"
+                },
+                {
+                    "value": "Under 9.5",
+                    "odd": "1.80"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 90,
+                    "name": "Guingamp",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-2.5",
+                    "away": "-2.5"
+                },
+                "advice": "Double chance : draw or Guingamp",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 62,
+                "name": "Ligue 2",
+                "country": "France",
+                "logo": "https://media.api-sports.io/football/leagues/62.png",
+                "flag": "https://media.api-sports.io/flags/fr.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 101,
+                    "name": "Grenoble",
+                    "logo": "https://media.api-sports.io/football/teams/101.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "67%",
+                        "att": "88%",
+                        "def": "38%",
+                        "goals": {
+                            "for": {
+                                "total": 7,
+                                "average": "1.4"
+                            },
+                            "against": {
+                                "total": 5,
+                                "average": "1.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WLDWWLWLWLDLLDLLWWWLWDW",
+                        "fixtures": {
+                            "played": {
+                                "home": 12,
+                                "away": 11,
+                                "total": 23
+                            },
+                            "wins": {
+                                "home": 7,
+                                "away": 3,
+                                "total": 10
+                            },
+                            "draws": {
+                                "home": 3,
+                                "away": 1,
+                                "total": 4
+                            },
+                            "loses": {
+                                "home": 2,
+                                "away": 7,
+                                "total": 9
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 17,
+                                    "away": 12,
+                                    "total": 29
+                                },
+                                "average": {
+                                    "home": "1.4",
+                                    "away": "1.1",
+                                    "total": "1.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 2,
+                                        "percentage": "6.67%"
+                                    },
+                                    "16-30": {
+                                        "total": 2,
+                                        "percentage": "6.67%"
+                                    },
+                                    "31-45": {
+                                        "total": 5,
+                                        "percentage": "16.67%"
+                                    },
+                                    "46-60": {
+                                        "total": 7,
+                                        "percentage": "23.33%"
+                                    },
+                                    "61-75": {
+                                        "total": 8,
+                                        "percentage": "26.67%"
+                                    },
+                                    "76-90": {
+                                        "total": 3,
+                                        "percentage": "10.00%"
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "10.00%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 14,
+                                        "under": 9
+                                    },
+                                    "1.5": {
+                                        "over": 8,
+                                        "under": 15
+                                    },
+                                    "2.5": {
+                                        "over": 5,
+                                        "under": 18
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 21
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 23
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 9,
+                                    "away": 18,
+                                    "total": 27
+                                },
+                                "average": {
+                                    "home": "0.8",
+                                    "away": "1.6",
+                                    "total": "1.2"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "15.38%"
+                                    },
+                                    "16-30": {
+                                        "total": 2,
+                                        "percentage": "7.69%"
+                                    },
+                                    "31-45": {
+                                        "total": 5,
+                                        "percentage": "19.23%"
+                                    },
+                                    "46-60": {
+                                        "total": 6,
+                                        "percentage": "23.08%"
+                                    },
+                                    "61-75": {
+                                        "total": 6,
+                                        "percentage": "23.08%"
+                                    },
+                                    "76-90": {
+                                        "total": 1,
+                                        "percentage": "3.85%"
+                                    },
+                                    "91-105": {
+                                        "total": 2,
+                                        "percentage": "7.69%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 15,
+                                        "under": 8
+                                    },
+                                    "1.5": {
+                                        "over": 9,
+                                        "under": 14
+                                    },
+                                    "2.5": {
+                                        "over": 3,
+                                        "under": 20
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 23
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 23
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 3,
+                                "draws": 1,
+                                "loses": 2
+                            },
+                            "wins": {
+                                "home": "3-0",
+                                "away": "0-4"
+                            },
+                            "loses": {
+                                "home": "0-2",
+                                "away": "3-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 3,
+                                    "away": 4
+                                },
+                                "against": {
+                                    "home": 2,
+                                    "away": 3
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 5,
+                            "away": 3,
+                            "total": 8
+                        },
+                        "failed_to_score": {
+                            "home": 4,
+                            "away": 5,
+                            "total": 9
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 2,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 2
+                        },
+                        "lineups": [
+                            {
+                                "formation": "4-2-3-1",
+                                "played": 6
+                            },
+                            {
+                                "formation": "4-1-4-1",
+                                "played": 5
+                            },
+                            {
+                                "formation": "5-3-2",
+                                "played": 5
+                            },
+                            {
+                                "formation": "4-4-2",
+                                "played": 2
+                            },
+                            {
+                                "formation": "4-3-3",
+                                "played": 1
+                            },
+                            {
+                                "formation": "4-4-1-1",
+                                "played": 1
+                            },
+                            {
+                                "formation": "3-4-1-2",
+                                "played": 1
+                            },
+                            {
+                                "formation": "3-1-4-2",
+                                "played": 1
+                            },
+                            {
+                                "formation": "5-4-1",
+                                "played": 1
+                            }
+                        ],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 4,
+                                    "percentage": "10.81%"
+                                },
+                                "16-30": {
+                                    "total": 5,
+                                    "percentage": "13.51%"
+                                },
+                                "31-45": {
+                                    "total": 3,
+                                    "percentage": "8.11%"
+                                },
+                                "46-60": {
+                                    "total": 9,
+                                    "percentage": "24.32%"
+                                },
+                                "61-75": {
+                                    "total": 10,
+                                    "percentage": "27.03%"
+                                },
+                                "76-90": {
+                                    "total": 4,
+                                    "percentage": "10.81%"
+                                },
+                                "91-105": {
+                                    "total": 2,
+                                    "percentage": "5.41%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "76-90": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 90,
+                    "name": "Guingamp",
+                    "logo": "https://media.api-sports.io/football/teams/90.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "60%",
+                        "att": "88%",
+                        "def": "50%",
+                        "goals": {
+                            "for": {
+                                "total": 7,
+                                "average": "1.4"
+                            },
+                            "against": {
+                                "total": 4,
+                                "average": "0.8"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WWLWDLWLLLWWLWWLDWWWLWL",
+                        "fixtures": {
+                            "played": {
+                                "home": 12,
+                                "away": 11,
+                                "total": 23
+                            },
+                            "wins": {
+                                "home": 6,
+                                "away": 6,
+                                "total": 12
+                            },
+                            "draws": {
+                                "home": 2,
+                                "away": 0,
+                                "total": 2
+                            },
+                            "loses": {
+                                "home": 4,
+                                "away": 5,
+                                "total": 9
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 23,
+                                    "away": 15,
+                                    "total": 38
+                                },
+                                "average": {
+                                    "home": "1.9",
+                                    "away": "1.4",
+                                    "total": "1.7"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 6,
+                                        "percentage": "15.38%"
+                                    },
+                                    "16-30": {
+                                        "total": 4,
+                                        "percentage": "10.26%"
+                                    },
+                                    "31-45": {
+                                        "total": 7,
+                                        "percentage": "17.95%"
+                                    },
+                                    "46-60": {
+                                        "total": 6,
+                                        "percentage": "15.38%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "12.82%"
+                                    },
+                                    "76-90": {
+                                        "total": 8,
+                                        "percentage": "20.51%"
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "7.69%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 18,
+                                        "under": 5
+                                    },
+                                    "1.5": {
+                                        "over": 10,
+                                        "under": 13
+                                    },
+                                    "2.5": {
+                                        "over": 8,
+                                        "under": 15
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 21
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 23
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 13,
+                                    "away": 15,
+                                    "total": 28
+                                },
+                                "average": {
+                                    "home": "1.1",
+                                    "away": "1.4",
+                                    "total": "1.2"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 6,
+                                        "percentage": "22.22%"
+                                    },
+                                    "16-30": {
+                                        "total": 1,
+                                        "percentage": "3.70%"
+                                    },
+                                    "31-45": {
+                                        "total": 2,
+                                        "percentage": "7.41%"
+                                    },
+                                    "46-60": {
+                                        "total": 9,
+                                        "percentage": "33.33%"
+                                    },
+                                    "61-75": {
+                                        "total": 6,
+                                        "percentage": "22.22%"
+                                    },
+                                    "76-90": {
+                                        "total": 2,
+                                        "percentage": "7.41%"
+                                    },
+                                    "91-105": {
+                                        "total": 1,
+                                        "percentage": "3.70%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 14,
+                                        "under": 9
+                                    },
+                                    "1.5": {
+                                        "over": 7,
+                                        "under": 16
+                                    },
+                                    "2.5": {
+                                        "over": 5,
+                                        "under": 18
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 21
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 23
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 3,
+                                "draws": 1,
+                                "loses": 3
+                            },
+                            "wins": {
+                                "home": "4-0",
+                                "away": "1-4"
+                            },
+                            "loses": {
+                                "home": "0-3",
+                                "away": "4-1"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 4
+                                },
+                                "against": {
+                                    "home": 4,
+                                    "away": 4
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 5,
+                            "away": 4,
+                            "total": 9
+                        },
+                        "failed_to_score": {
+                            "home": 3,
+                            "away": 2,
+                            "total": 5
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 1,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 1
+                        },
+                        "lineups": [
+                            {
+                                "formation": "4-4-2",
+                                "played": 20
+                            },
+                            {
+                                "formation": "4-2-3-1",
+                                "played": 2
+                            },
+                            {
+                                "formation": "3-4-2-1",
+                                "played": 1
+                            }
+                        ],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 1,
+                                    "percentage": "3.70%"
+                                },
+                                "16-30": {
+                                    "total": 5,
+                                    "percentage": "18.52%"
+                                },
+                                "31-45": {
+                                    "total": 4,
+                                    "percentage": "14.81%"
+                                },
+                                "46-60": {
+                                    "total": 5,
+                                    "percentage": "18.52%"
+                                },
+                                "61-75": {
+                                    "total": 6,
+                                    "percentage": "22.22%"
+                                },
+                                "76-90": {
+                                    "total": 4,
+                                    "percentage": "14.81%"
+                                },
+                                "91-105": {
+                                    "total": 2,
+                                    "percentage": "7.41%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": 1,
+                                    "percentage": "100.00%"
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "53%",
+                    "away": "47%"
+                },
+                "att": {
+                    "home": "50%",
+                    "away": "50%"
+                },
+                "def": {
+                    "home": "44%",
+                    "away": "56%"
+                },
+                "poisson_distribution": {
+                    "home": "59%",
+                    "away": "41%"
+                },
+                "h2h": {
+                    "home": "38%",
+                    "away": "62%"
+                },
+                "goals": {
+                    "home": "40%",
+                    "away": "60%"
+                },
+                "total": {
+                    "home": "47.3%",
+                    "away": "52.7%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1212542,
+                        "referee": "G. Kubler",
+                        "timezone": "UTC",
+                        "date": "2024-11-02T19:00:00+00:00",
+                        "timestamp": 1730574000,
+                        "periods": {
+                            "first": 1730574000,
+                            "second": 1730577600
+                        },
+                        "venue": {
+                            "id": 650,
+                            "name": "Stade du Roudourou",
+                            "city": "Guingamp"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 6
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 12",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 3,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 3,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1046178,
+                        "referee": "K. Abed",
+                        "timezone": "UTC",
+                        "date": "2024-03-30T18:00:00+00:00",
+                        "timestamp": 1711821600,
+                        "periods": {
+                            "first": 1711821600,
+                            "second": 1711825200
+                        },
+                        "venue": {
+                            "id": 649,
+                            "name": "Stade des Alpes",
+                            "city": "Grenoble"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 30",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1045975,
+                        "referee": "A. Taleb",
+                        "timezone": "UTC",
+                        "date": "2023-10-07T17:00:00+00:00",
+                        "timestamp": 1696698000,
+                        "periods": {
+                            "first": 1696698000,
+                            "second": 1696701600
+                        },
+                        "venue": {
+                            "id": 650,
+                            "name": "Stade du Roudourou",
+                            "city": "Guingamp"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 10",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 872218,
+                        "referee": "G. Paradis",
+                        "timezone": "UTC",
+                        "date": "2023-06-02T18:45:00+00:00",
+                        "timestamp": 1685731500,
+                        "periods": {
+                            "first": 1685731500,
+                            "second": 1685735100
+                        },
+                        "venue": {
+                            "id": 649,
+                            "name": "Stade des Alpes",
+                            "city": "Grenoble"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 38",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 872052,
+                        "referee": "F. Benchabane",
+                        "timezone": "UTC",
+                        "date": "2023-01-13T19:45:00+00:00",
+                        "timestamp": 1673639100,
+                        "periods": {
+                            "first": 1673639100,
+                            "second": 1673642700
+                        },
+                        "venue": {
+                            "id": 650,
+                            "name": "Stade du Roudourou",
+                            "city": "Guingamp"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 19",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 4
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 4
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 719856,
+                        "referee": "G. Paradis",
+                        "timezone": "UTC",
+                        "date": "2022-01-15T18:00:00+00:00",
+                        "timestamp": 1642269600,
+                        "periods": {
+                            "first": 1642269600,
+                            "second": 1642273200
+                        },
+                        "venue": {
+                            "id": 650,
+                            "name": "Stade du Roudourou",
+                            "city": "Guingamp"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2021,
+                        "round": "Regular Season - 21",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 719681,
+                        "referee": "J. Miguelgorry",
+                        "timezone": "UTC",
+                        "date": "2021-08-07T17:00:00+00:00",
+                        "timestamp": 1628355600,
+                        "periods": {
+                            "first": 1628355600,
+                            "second": 1628359200
+                        },
+                        "venue": {
+                            "id": 2016,
+                            "name": "Stade Jean Laville",
+                            "city": "Gueugnon"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2021,
+                        "round": "Regular Season - 3",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 568308,
+                        "referee": "Benjamin Lepaysant, France",
+                        "timezone": "UTC",
+                        "date": "2021-02-02T19:00:00+00:00",
+                        "timestamp": 1612292400,
+                        "periods": {
+                            "first": 1612292400,
+                            "second": 1612296000
+                        },
+                        "venue": {
+                            "id": 649,
+                            "name": "Stade des Alpes",
+                            "city": "Grenoble"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 23",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 568123,
+                        "referee": "Sylvain Palhies, France",
+                        "timezone": "UTC",
+                        "date": "2020-09-26T17:00:00+00:00",
+                        "timestamp": 1601139600,
+                        "periods": {
+                            "first": 1601139600,
+                            "second": 1601143200
+                        },
+                        "venue": {
+                            "id": 650,
+                            "name": "Stade du Roudourou",
+                            "city": "Guingamp"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 5",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 158171,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2020-05-15T18:00:00+00:00",
+                        "timestamp": 1589565600,
+                        "periods": {
+                            "first": null,
+                            "second": null
+                        },
+                        "venue": {
+                            "id": 649,
+                            "name": "Stade des Alpes (Grenoble)",
+                            "city": "Grenoble"
+                        },
+                        "status": {
+                            "long": "Match Cancelled",
+                            "short": "CANC",
+                            "elapsed": null,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 62,
+                        "name": "Ligue 2",
+                        "country": "France",
+                        "logo": "https://media.api-sports.io/football/leagues/62.png",
+                        "flag": "https://media.api-sports.io/flags/fr.svg",
+                        "season": 2019,
+                        "round": "Regular Season - 38",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 101,
+                            "name": "Grenoble",
+                            "logo": "https://media.api-sports.io/football/teams/101.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 90,
+                            "name": "Guingamp",
+                            "logo": "https://media.api-sports.io/football/teams/90.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": null,
+                        "away": null
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "fulltime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

@@ -118,7 +118,7 @@
         <div class="match-item">
           <input type="checkbox" name="selected_matches" value="{{ match.id }}" id="match_{{ match.id }}">
           <label for="match_{{ match.id }}">
-            {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }}
+            {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }} &nbsp&nbsp&nbsp&nbsp<span style="color:indigo">{{match.league}}</span>
           </label>
         </div>
       {% endfor %}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
+from datetime import date
 
 
 # Custom User model to extend with profile and VIP access status
@@ -70,7 +71,9 @@ class Match(models.Model):
     away_team = models.CharField(max_length=100)
     away_team_logo = models.URLField(max_length=300, null=True, blank=True)
     away_team_id = models.IntegerField(null=True, blank=True)
-
+    updated = models.BooleanField(default=False)
+    is_premium = models.BooleanField(default=False)
+    gold_bar = models.CharField(max_length=50, default="N/A")
     league = models.ForeignKey(
         League,
         related_name="League_matches",
@@ -112,7 +115,7 @@ class MatchPredictionBase(models.Model):
     home_team_win_probability = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
-    home_team_expected_goals=models.IntegerField(null=True,blank=True)
+    home_team_expected_goals = models.IntegerField(null=True, blank=True)
     home_team_win_odds = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
@@ -125,7 +128,7 @@ class MatchPredictionBase(models.Model):
     away_team_win_probability = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
-    away_team_expected_goals=models.IntegerField(null=True,blank=True)
+    away_team_expected_goals = models.IntegerField(null=True, blank=True)
 
     away_team_win_odds = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
@@ -386,7 +389,7 @@ class FootballPrediction(MatchPredictionBase):
         away_team_slug = self.match.away_team
         sport_slug = self.match.sport.name
         time_str = (
-            self.match.match_date.date.strftime("%Y-%m-%d")
+            self.match.match_date.date.strftime("%H:%M:%S")
             if self.match.match_date
             else "N/A"
         )
@@ -629,6 +632,19 @@ class SiteInformation(models.Model):
     def __str__(self):
         return self.site_name
 
+
+class ResultDate(models.Model):
+    date = models.DateField()  # Store just the date (not datetime)
+
+    def __str__(self):
+        return str(self.date)
+
+
+def get_default_result_date():
+    result_date, created = ResultDate.objects.get_or_create(date=date.today())
+    return result_date.id
+
+
 class Fixture(models.Model):
     fixture_id = models.IntegerField(unique=True)
     fixture_date = models.DateTimeField()
@@ -636,7 +652,13 @@ class Fixture(models.Model):
     team_home = models.CharField(max_length=255)
     team_away = models.CharField(max_length=255)
     score_fulltime_home = models.IntegerField(null=True, blank=True)
-    score_fulltime_away = models.IntegerField()
+    score_fulltime_away = models.IntegerField(null=True, blank=True)
+    result_date = models.ForeignKey(
+        ResultDate,
+        on_delete=models.CASCADE,
+        related_name="fixtures",
+        default=get_default_result_date,
+    )
 
     def __str__(self):
         return f"{self.team_home} vs {self.team_away} ({self.status_short})"

@@ -1,0 +1,83 @@
+{
+    "match_details": {
+        "fixture": "Austria Klagenfurt vs Grazer AK",
+        "match_id": "1218685",
+        "match_date": "Feb. 22, 2025, 4 p.m.",
+        "venue": null,
+        "city": "Klagenfurt am W\u00f6rthersee",
+        "league_id": "218",
+        "home_team_name": "Austria Klagenfurt",
+        "away_team_name": "Grazer AK",
+        "home_team_logo": "https://media.api-sports.io/football/teams/1405.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/4256.png",
+        "home_team_id": "1405",
+        "away_team_id": "4256"
+    },
+    "weather": {
+        "temperature": 7.01,
+        "feels_like": 7.01,
+        "humidity": 75,
+        "weather_description": "Few clouds",
+        "wind_speed": 0.95,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "No predictions available for this fixture."
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

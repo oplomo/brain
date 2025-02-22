@@ -53,7 +53,11 @@ urlpatterns = [
         views.start_soccer_prediction,
         name="start_soccer_prediction",
     ),
-    path('private/check_task_progress/<uuid:task_id>/', views.check_task_progress, name='check_task_progress'),
-    path("see_data_progress",views.see_data_progress,name="see_data_progress"),
+    path(
+        "private/check_task_progress/<uuid:task_id>/",
+        views.check_task_progress,
+        name="check_task_progress",
+    ),
+    path("see_data_progress", views.see_data_progress, name="see_data_progress"),
     path("predict_all/", views.predict_all_matches, name="predict_all_matches"),
 ]

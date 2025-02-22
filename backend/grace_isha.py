@@ -10,7 +10,12 @@ from django.db import transaction
 import math
 import numpy as np
 import os
-
+import random
+from rich.console import Console
+from rich.progress import track
+from rich.text import Text
+from termcolor import colored
+import pyfiglet
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,6 +29,8 @@ class analyze_data:
         # Initialize an empty dictionary to hold the data
         self.data_store = {}
         # Fields from MatchPredictionBase
+        self.is_premium = {}
+        self.premium_part = None
 
         self.match = None
         self.win_probability_team_1 = 46
@@ -97,29 +104,55 @@ class analyze_data:
         self.dcx2_odds = None
 
     def save_every_data(self, data):
-        print("waiting for 15 minutes to see if data coection sti goes on")
-
         success = True
         self.data_store = data  # Store the data
         print("Data has been saved for analysis.")
         self.save_every_data_to_file()
+        try:
+            self.asign_odds()
+            print("Odds have been assigned")
+        except Exception as e:
+            print(f"Error in asign_odds: {e}")
+        # Ensure both functions execute even if one fails
+        try:
+            odds_prediction = self.predict_based_on_odds()
+        except Exception as e:
+            print(f"Error in predict_based_on_odds: {e}")
+            odds_prediction = None  # Assign None if the function fails
 
-        self.save_to_self(
-            self.predict_based_on_odds(), self.predict_based_api_predictions()
-        )
-        self.save_to_database()
+        try:
+            api_prediction = self.predict_based_api_predictions()
+        except Exception as e:
+            print(f"Error in predict_based_api_predictions: {e}")
+            api_prediction = None  # Assign None if the function fails
 
-        self.asign_odds()
-        print("odd have been assignd")
+        try:
+            self.save_to_self(odds_prediction, api_prediction)
+        except Exception as e:
+            print(f"Error in save_to_self: {e}")
 
-        success = self.save_football_prediction()
-        if success:
-            print(
-                "FootballPrediction saved successfully!@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!"
-            )
-        return success
+        try:
+            self.save_to_database()
+        except Exception as e:
+            print(f"Error in save_to_database: {e}")
+
+        try:
+            success = self.save_football_prediction()
+            if success:
+                print(
+                    "FootballPrediction saved successfully!@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!"
+                )
+            return success
+        except Exception as e:
+            print(f"Error in save_football_prediction: {e}")
+            return False
 
     def save_to_database(self):
+        deal = False
+        gold = "N/A"
+        if self.is_premium:
+            deal = True
+            gold = self.is_premium["where"]
         try:
             match_details = self.data_store.get("match_details", {})
             weather = self.data_store.get("weather") or {}
@@ -188,6 +221,8 @@ class analyze_data:
                 away_team=match_details.get("away_team_name"),
                 away_team_logo=match_details.get("away_team_logo"),
                 away_team_id=match_details.get("away_team_id"),
+                is_premium=deal,
+                gold_bar=gold,
                 league=league,
                 date=match_date,
                 temperature=weather.get("temperature"),
@@ -208,88 +243,113 @@ class analyze_data:
             return False
 
     def asign_odds(self):
-        source = self.data_store.get("odds", {}).get("Bet365", {})
-        match_winner_odds = source.get("Match Winner", [])
-        if len(match_winner_odds) >= 3:  # Ensure there are enough elements
-            self.team_1_win_odds = float(match_winner_odds[0].get("odd", 0))
-            self.draw_odds = float(match_winner_odds[1].get("odd", 0))
-            self.team_2_win_odds = float(match_winner_odds[2].get("odd", 0))
-        else:
-            self.team_1_win_odds = self.draw_odds = self.team_2_win_odds = (
-                None  # Handle missing data
-            )
-        goals_odds = source.get("Goals Over/Under", [])
+        bookmakers = [
+            "Bet365",
+            "NordicBet",
+            "Marathonbet",
+            "William Hill",
+            "10Bet",
+            "Dafabet",
+            "1xBet",
+            "Unibet",
+            "Betfair",
+            "Tipico",
+            "Betano",
+            "SBO",
+            "Pinnacle",
+            "Betsson",
+        ]
 
-        # Define the range we are interested in (1.5 to 5.5)
-        target_values = {
-            "Over 1.5",
-            "Under 1.5",
-            "Over 2.5",
-            "Under 2.5",
-            "Over 3.5",
-            "Under 3.5",
-            "Over 4.5",
-            "Under 4.5",
-            "Over 5.5",
-            "Under 5.5",
-        }
+        try:
+            s = self.data_store.get("odds") or {}
+            source = {}
 
-        # Initialize a dictionary with default values to handle missing data
-        over_under_odds = {key: None for key in target_values}
+            # ✅ Check if the bookmaker exists in the dictionary keys
+            for bookmaker in bookmakers:
+                if bookmaker in s:
+                    source = s[bookmaker]
+                    break
+            match_winner_odds = source.get("Match Winner") or []
 
-        # Populate dictionary if values exist
-        for entry in goals_odds:
-            value = entry.get("value")
-            odd = entry.get("odd")
-            if value in target_values and odd is not None:
-                over_under_odds[value] = float(odd)
+            # Handle Match Winner Odds
+            if isinstance(match_winner_odds, list) and len(match_winner_odds) >= 3:
+                self.team_1_win_odds = float(match_winner_odds[0].get("odd", 0) or 0)
+                self.draw_odds = float(match_winner_odds[1].get("odd", 0) or 0)
+                self.team_2_win_odds = float(match_winner_odds[2].get("odd", 0) or 0)
+            else:
+                self.team_1_win_odds = self.draw_odds = self.team_2_win_odds = None
 
-        # Assign to class attributes
-        self.over_1_5_odds = over_under_odds["Over 1.5"]
-        self.under_1_5_odds = over_under_odds["Under 1.5"]
-        self.over_2_5_odds = over_under_odds["Over 2.5"]
-        self.under_2_5_odds = over_under_odds["Under 2.5"]
-        self.over_3_5_odds = over_under_odds["Over 3.5"]
-        self.under_3_5_odds = over_under_odds["Under 3.5"]
-        self.over_4_5_odds = over_under_odds["Over 4.5"]
-        self.under_4_5_odds = over_under_odds["Under 4.5"]
-        self.over_5_5_odds = over_under_odds["Over 5.5"]
-        self.under_5_5_odds = over_under_odds["Under 5.5"]
+            # Handle Goals Over/Under Odds
+            goals_odds = source.get("Goals Over/Under") or []
+            target_values = {
+                "Over 1.5",
+                "Under 1.5",
+                "Over 2.5",
+                "Under 2.5",
+                "Over 3.5",
+                "Under 3.5",
+                "Over 4.5",
+                "Under 4.5",
+                "Over 5.5",
+                "Under 5.5",
+            }
+            over_under_odds = {key: None for key in target_values}
 
-        bts_odds = source.get("Both Teams Score", [])
+            for entry in goals_odds:
+                if isinstance(entry, dict):
+                    value = entry.get("value")
+                    odd = entry.get("odd")
+                    if value in target_values and odd is not None:
+                        over_under_odds[value] = float(odd)
 
-        # Initialize default values
-        self.gg_odds = None
-        self.no_gg_odds = None
+            self.over_1_5_odds = over_under_odds["Over 1.5"]
+            self.under_1_5_odds = over_under_odds["Under 1.5"]
+            self.over_2_5_odds = over_under_odds["Over 2.5"]
+            self.under_2_5_odds = over_under_odds["Under 2.5"]
+            self.over_3_5_odds = over_under_odds["Over 3.5"]
+            self.under_3_5_odds = over_under_odds["Under 3.5"]
+            self.over_4_5_odds = over_under_odds["Over 4.5"]
+            self.under_4_5_odds = over_under_odds["Under 4.5"]
+            self.over_5_5_odds = over_under_odds["Over 5.5"]
+            self.under_5_5_odds = over_under_odds["Under 5.5"]
 
-        # Populate values if they exist
-        for entry in bts_odds:
-            value = entry.get("value")
-            odd = entry.get("odd")
+            # Handle Both Teams to Score Odds
+            bts_odds = source.get("Both Teams Score") or []
+            self.gg_odds = self.no_gg_odds = None
+            for entry in bts_odds:
+                if isinstance(entry, dict):
+                    value = entry.get("value")
+                    odd = entry.get("odd")
+                    if value == "Yes" and odd is not None:
+                        self.gg_odds = float(odd)
+                    elif value == "No" and odd is not None:
+                        self.no_gg_odds = float(odd)
 
-            if value == "Yes" and odd is not None:
-                self.gg_odds = float(odd)
-            elif value == "No" and odd is not None:
-                self.no_gg_odds = float(odd)
+            # Handle Double Chance Odds
+            double_chance_odds = source.get("Double Chance") or []
+            self.dc1x_odds = self.dc12_odds = self.dcx2_odds = None
+            for entry in double_chance_odds:
+                if isinstance(entry, dict):
+                    value = entry.get("value")
+                    odd = entry.get("odd")
+                    if value == "Home/Draw" and odd is not None:
+                        self.dc1x_odds = float(odd)
+                    elif value == "Home/Away" and odd is not None:
+                        self.dc12_odds = float(odd)
+                    elif value == "Draw/Away" and odd is not None:
+                        self.dcx2_odds = float(odd)
 
-        double_chance_odds = source.get("Double Chance", [])
-
-        # Initialize default values
-        self.dc1x_odds = None
-        self.dc12_odds = None
-        self.dcx2_odds = None
-
-        # Populate values if they exist
-        for entry in double_chance_odds:
-            value = entry.get("value")
-            odd = entry.get("odd")
-
-            if value == "Home/Draw" and odd is not None:
-                self.double_chance_home_draw = float(odd)
-            elif value == "Home/Away" and odd is not None:
-                self.dc12_odds = float(odd)
-            elif value == "Draw/Away" and odd is not None:
-                self.dcx2_odds = float(odd)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            # Optionally reset all attributes to None if a critical error occurs
+            self.team_1_win_odds = self.draw_odds = self.team_2_win_odds = None
+            self.over_1_5_odds = self.under_1_5_odds = None
+            self.over_2_5_odds = self.under_2_5_odds = None
+            self.over_3_5_odds = self.under_3_5_odds = None
+            self.over_4_5_odds = self.under_4_5_odds = None
+            self.over_5_5_odds = self.under_5_5_odds = None
+            self.gg_odds = self.no_gg_odds = None
+            self.dc1x_odds = self.dc12_odds = self.dcx2_odds = None
 
     def save_football_prediction(self):
         try:
@@ -387,12 +447,19 @@ class analyze_data:
         """Rounds numbers: below .5 rounds down, .5 and above rounds up."""
         return math.floor(number) if number % 1 < 0.5 else math.ceil(number)
 
+    def truncate(self, number, decimals=2):
+        """Truncates a number to a fixed number of decimal places without rounding."""
+        factor = 10**decimals
+        return math.floor(number * factor) / factor
+
     def calculate_goal_percentages(self, expected_goals_team1, expected_goals_team2):
         # Define thresholds
         thresholds = [1.5, 2.5, 3.5, 4.5, 5.5]
 
         # Calculate total expected goals
-        total_expected_goals = expected_goals_team1 + expected_goals_team2
+        total_expected_goals = (abs(self.custom_round(expected_goals_team1))) + (
+            abs(self.custom_round(expected_goals_team2))
+        )
 
         # Store probabilities
         probabilities = {}
@@ -408,8 +475,8 @@ class analyze_data:
             return round(100 * (1 - math.exp(-alpha * diff)), 2)
 
         def gg_prob(expected_goals_team1, expected_goals_team2):
-            home_ex = expected_goals_team1 - 0.5
-            away_ex = expected_goals_team2 - 0.5
+            home_ex = self.truncate(expected_goals_team1) - 0.5
+            away_ex = self.truncate((expected_goals_team2)) - 0.5
             alpha = 0.06
             gg = {}
 
@@ -457,151 +524,116 @@ class analyze_data:
         return probabilities
 
     def generate_three_way_prob(self, home_expected_g, away_expected_g):
-
         three_way = {}
 
-        def map_difference_to_strength(
-            difference, min_diff=1, max_diff=5, min_strength=0.8, max_strength=2.8
-        ):
-            """Maps the difference to a strength value using linear interpolation."""
-            m = (max_strength - min_strength) / (max_diff - min_diff)  # Slope
-            c = min_strength - (m * min_diff)  # Intercept
-            return (
-                m * difference + c if difference >= min_diff else 0
-            )  # Ensure non-negative mapping
+        def custom_mapping(value):
+            """Maps values and returns corresponding percentage."""
+            if value <= 0:
+                mapped_value = 0.49
+            elif 0 < value <= 0.9:
+                mapped_value = round(0.49 - (0.39 * value / 0.9), 8)
+            elif 1 <= value <= 3.5:
+                mapped_value = round(-0.1 - ((0.39 * (value - 1)) / (3.5 - 1)), 8)
+            else:
+                mapped_value = -0.49
+
+            # Convert mapped_value to percentage
+            percentage = round((51.28205128 * mapped_value) - 3.128205128, 2)
+            return percentage
 
         def custom_round(number):
             """Rounds numbers: below .5 rounds down, .5 and above rounds up."""
             return math.floor(number) if number % 1 < 0.5 else math.ceil(number)
 
-        def process_values(val1, val2):
-            # parameters are home_expected_g,away_expected_g
-            # Store the max and min values
-            great, low = max(val1, val2), min(val1, val2)
+        def subtract_bigger_from_smaller(a, b):
+            """
+            Rounds 'a' and 'b' first. If they round to the same number, negate the difference.
+            Otherwise, subtract the bigger from the smaller and return the absolute value.
+            """
+            a_rounded = custom_round(a)
+            b_rounded = custom_round(b)
 
-            # Round off values
-            low_rounded = custom_round(low)
-            great_rounded = custom_round(great)
-
-            # Calculate absolute gain/loss
-            low_change = abs(low_rounded - low)
-            great_change = abs(great_rounded - great)
-
-            # Sum of gains/losses
-            result = low_change + great_change
-
-            # Calculate difference and map to strength
-            difference = abs(great_rounded - low_rounded)
-            strength = map_difference_to_strength(difference)
-
-            # Adjust result using strength
-            final_result = result - strength
-
-            return {
-                "difference": difference,
-                "strength": strength,
-                "final_result": final_result,
-            }
-
-        def calculate_percentage(value):
-            """Maps values to percentages with different scales for positive and negative values."""
-
-            # Handle positive values [0, 0.9] → [100%, 0%]
-            if value == 0:
-                value = 0.1
-            elif value > 0:
-
-                if value > 0.9:
-                    value = 0.8
-                if value + 0.01 >= 0.9:
-                    value = 0.8  # Cap at 0.9
-                percentage = 100 - (value / 0.9) * 100
-
-            # Handle negative values [-0.1, -3.5] → [-0.1%, -100%]
+            if a_rounded != b_rounded:
+                # Negate the difference if the rounded values are the same
+                res = 1 + abs(min(a, b) - max(a, b))
             else:
-                if value < -0.9:
-                    value = -0.9  # Cap at -3.5
-                percentage = -(abs(value) / 0.9) * 100
+                res = min(a, b) - max(a, b)
 
-            return round(percentage, 3)
+            res = abs(res)
+            return res
 
-        def calculate_percentage_strength(val1, val2):
-            total = val1 + val2
-            if total == 0:
-                return 0, 0  # Avoid division by zero
+        def calculate_percentages(h_ratio, a_ratio):
+            # Step 1: Calculate H and A based on ratios
+            H = h_ratio
+            A = a_ratio
 
-            percentage1 = (val1 / total) * 100
-            percentage2 = (val2 / total) * 100
+            # Step 2: Compute D based on some_function()
+            func_value = custom_mapping(subtract_bigger_from_smaller(h_ratio, a_ratio))
+            if func_value >= 0:
+                D = max(H, A) + ((max(H, A) * func_value / 100) * 4)
+            else:
+                D = (H + A) / 2 - (abs(func_value / 100) * 4)
+                if D < 0:
+                    D = 0.3  # Set to 0.3 if negative
 
-            return round(percentage1, 2), round(percentage2, 2)
+            # Step 3: Normalize so that H + D + A = 100%
+            total = H + D + A
+            H_percent = round((H / total) * 100)
+            D_percent = round((D / total) * 100)
+            A_percent = round((A / total) * 100)
 
-        def normalize_probabilities(A, B, C):
-            assert A + B == 100, "A and B must sum to 100%"
+            # Ensure they sum to 100
+            diff = 100 - (H_percent + D_percent + A_percent)
+            if diff != 0:
+                # Adjust the one with the largest decimal before rounding
+                decimals = {
+                    "H": (H / total) * 100 - math.floor((H / total) * 100),
+                    "D": (D / total) * 100 - math.floor((D / total) * 100),
+                    "A": (A / total) * 100 - math.floor((A / total) * 100),
+                }
+                # Sort by largest decimal for adjustment
+                for key, _ in sorted(
+                    decimals.items(), key=lambda x: x[1], reverse=(diff > 0)
+                ):
+                    if diff == 0:
+                        break
+                    if key == "H":
+                        H_percent += diff
+                    elif key == "D":
+                        D_percent += diff
+                    else:
+                        A_percent += diff
+                    diff = 100 - (H_percent + D_percent + A_percent)
 
-            # Step 1: Initial normalization
-            total = A + B + C
-            A_prime = (A / 185) * 100
-            B_prime = (B / 185) * 100
-            C_prime = (C / 185) * 100
-            print(A_prime, B_prime, C_prime)
-            # Step 2: Ensure C' is greater than both A' and B'
-            max_AB = max(A_prime, B_prime)
+            # Ensure no two values are equal
+            percentages = [("H", H_percent), ("D", D_percent), ("A", A_percent)]
+            values = [H_percent, D_percent, A_percent]
+            duplicates = True
 
-            C_prime = max_AB + (
-                (C * 21) / 100
-            )  # Slightly above the highest between A' and B'
+            while duplicates:
+                duplicates = False
+                seen = set()
+                for i in range(len(values)):
+                    if values[i] in seen:
+                        duplicates = True
+                        # Adjust by +1 or -1 ensuring total still 100
+                        adjust_index = random.choice(
+                            [j for j in range(len(values)) if j != i]
+                        )
+                        if values[i] < 100:
+                            values[i] += 1
+                            values[adjust_index] -= 1
+                    seen.add(values[i])
+            H_percent, D_percent, A_percent = values
 
-            # Step 3: Cap C' at 60% if needed
-            if C_prime > 55:
-                C_prime = 55
-                remaining = 100 - C_prime  # Remaining percentage to be distributed
+            return H_percent, D_percent, A_percent
 
-                # Preserve A and B ratio
-                scaling_factor = remaining / (A + B)
-                A_prime = A * scaling_factor
-                B_prime = B * scaling_factor
-
-            return round(A_prime, 2), round(B_prime, 2), round(C_prime, 2)
-
-        def normalize_percentages(percentages):
-            total = sum(percentages.values())
-            if total == 100:
-                return percentages  # Already normalized
-
-            difference = 100 - total
-            sorted_items = sorted(percentages.items(), key=lambda x: x[1], reverse=True)
-
-            # Distribute the difference starting from the lowest percentage
-            distribution_order = sorted_items[::-1]  # Reverse order (lowest first)
-
-            for i, (key, value) in enumerate(distribution_order):
-                share = (
-                    (len(distribution_order) - i)
-                    / sum(range(1, len(distribution_order) + 1))
-                    * difference
-                )
-                percentages[key] += round(share)
-
-            # Final adjustment to fix any rounding errors
-            final_total = sum(percentages.values())
-            if final_total != 100:
-                percentages[distribution_order[0][0]] += (
-                    100 - final_total
-                )  # Adjust lowest one
-
-            return percentages
-
-        dict_for_decC = process_values(home_expected_g, away_expected_g)
-        percent_for_C = calculate_percentage(dict_for_decC.get("final_result", 0))
-        percent1, percent2 = calculate_percentage_strength(
+        H_percent, D_percent, A_percent = calculate_percentages(
             home_expected_g, away_expected_g
         )
-        A_prime, B_prime, C_prime = normalize_probabilities(
-            percent1, percent2, percent_for_C
-        )
-        raw_percantages = {"home": A_prime, "away": B_prime, "draw": C_prime}
-        three_way = normalize_percentages(raw_percantages)
-
+        three_way["home"] = H_percent
+        three_way["draw"] = D_percent
+        three_way["away"] = A_percent
         return three_way
 
     def predict_based_on_odds(self):
@@ -907,8 +939,6 @@ class analyze_data:
 
             return relative_probs
 
-        odds_prediction = {}
-
         # Given probabilities
         probabilities = adjusted_probabilities.get("Goals Over/Under", {})
         corner_prob = adjusted_probabilities.get("Corners Over Under", {})
@@ -917,11 +947,164 @@ class analyze_data:
 
         corner_probs = calculate_relative_probabilities(corner_prob)
 
-        odds_prediction["home_final_mean"] = home_mean
-        odds_prediction["away_final_mean"] = away_mean
-        odds_prediction["corners"] = best_threshold_Corners_Over_Under
-        odds_prediction["cards"] = best_threshold_cards_Yellow_Cards_Over_Under
+        odds_prediction = {}
 
+        # Check if the variables are available (not None) and assign to the dictionary
+        odds_prediction["home_final_mean"] = (
+            home_mean if home_mean is not None else None
+        )
+        odds_prediction["away_final_mean"] = (
+            away_mean if away_mean is not None else None
+        )
+        odds_prediction["corners"] = (
+            best_threshold_Corners_Over_Under
+            if best_threshold_Corners_Over_Under is not None
+            else None
+        )
+        odds_prediction["cards"] = (
+            best_threshold_cards_Yellow_Cards_Over_Under
+            if best_threshold_cards_Yellow_Cards_Over_Under is not None
+            else None
+        )
+
+        def premium_three_way(home, away, home_odd, away_odd):
+            home_odd = float(home_odd)
+            away_odd = float(away_odd)
+            home_diff = home - away
+            away_diff = away - home
+
+            if (
+                home_diff > 0.7
+                and away < 0.4
+                and (away_odd - home_odd) > 2
+                and home_odd > 1.4
+            ) or (
+                away_diff > 1
+                and home < 0.4
+                and (home_odd - away_odd) > 2.5
+                and away_odd > 1.4
+            ):
+                return True
+            else:
+                return False
+
+        try:
+            is_premium_three = premium_three_way(
+                odds_prediction["home_final_mean"],
+                odds_prediction["away_final_mean"],
+                self.team_1_win_odds,
+                self.team_2_win_odds,
+            )
+        except KeyError as e:
+            print(f"KeyError: Missing key {e} in odds_prediction.")
+        except TypeError as e:
+            print(f"TypeError: Invalid type in premium_three_way call - {e}.")
+        except Exception as e:
+            print(f"Unexpected error in premium_three_way: {e}")
+            is_premium_three = None
+
+        if is_premium_three:
+            self.is_premium["where"] = "three_way"
+
+        def is_premium_bts(home, away, home_odd, draw_odd, away_odd, gg_odd, no_gg_odd):
+            home_odd = float(home_odd)
+            draw_odd = float(draw_odd)
+            away_odd = float(away_odd)
+            gg_odd = float(gg_odd)
+            no_gg_odd = float(no_gg_odd)
+            # Condition 1: Both home and away > 0.75, draw_odd is lowest, gg_odd > no_gg_odd and > 1.5
+            condition_one = (
+                home > 0.75
+                and away > 0.75
+                and draw_odd < home_odd
+                and draw_odd < away_odd
+                and gg_odd > no_gg_odd
+                and gg_odd > 1.4
+            )
+
+            # Condition 2: Either home or away < 0.35, draw_odd not lowest, gg_odd < no_gg_odd and no_gg_odd > 1.5
+            condition_two = (
+                (home < 0.35 or away < 0.35)
+                and not (draw_odd < home_odd and draw_odd < away_odd)
+                and gg_odd < no_gg_odd
+                and no_gg_odd > 1.4
+            )
+
+            return condition_one or condition_two
+
+        try:
+            is_premium_gg = is_premium_bts(
+                odds_prediction["home_final_mean"],
+                odds_prediction["away_final_mean"],
+                self.team_1_win_odds,
+                self.draw_odds,
+                self.team_2_win_odds,
+                self.gg_odds,
+                self.no_gg_odds,
+            )
+        except KeyError as e:
+            print(f"KeyError: Missing key {e} in odds_prediction.")
+        except TypeError as e:
+            print(f"TypeError: Invalid type used in is_premium_bts call - {e}.")
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            is_premium_gg = None
+
+        if is_premium_gg:
+            self.is_premium["where"] = "gg"
+
+        def is_premium_o25(
+            home, away, home_odd, draw_odd, away_odd, over_odd, under_odd
+        ):
+            addition = home + away
+            home_odd = float(home_odd)
+            draw_odd = float(draw_odd)
+            away_odd = float(away_odd)
+            over_odd = float(over_odd)
+            under_odd = float(under_odd)
+            # Condition 1: addition - 2.5 > 0.6, draw_odd is lowest, over_odd > under_odd and over_odd > 1.5
+            condition_one = (
+                (addition - 2.5) > 0.6
+                and draw_odd < home_odd
+                and draw_odd < away_odd
+                and over_odd > under_odd
+                and over_odd > 1.4
+            )
+
+            # Condition 2: 2.5 - addition > 0.8, draw_odd not lowest, under_odd > over_odd and under_odd > 1.5
+            condition_two = (
+                (2.5 - addition) > 0.8
+                and not (draw_odd < home_odd and draw_odd < away_odd)
+                and under_odd > over_odd
+                and under_odd > 1.5
+            )
+
+            return condition_one or condition_two
+
+        try:
+            is_premium_ou25 = is_premium_o25(
+                odds_prediction["home_final_mean"],
+                odds_prediction["away_final_mean"],
+                self.team_1_win_odds,
+                self.draw_odds,
+                self.team_2_win_odds,
+                self.over_2_5_odds,
+                self.under_2_5_odds,
+            )
+        except KeyError as e:
+            print(f"KeyError: Missing key {e} in odds_prediction.")
+        except TypeError as e:
+            print(f"TypeError: Invalid type used in is_premium_o25 call - {e}.")
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            is_premium_ou25 - None
+
+        if is_premium_ou25:
+            self.is_premium["where"] = "gg"
+        if self.is_premium:
+            console = Console()
+            banner = pyfiglet.figlet_format("GOD JUST \t\t GAVE US\t\t SOME GOLD HERE")
+            console.print(f"[bold red]{banner}[/bold red]")
         print(
             "HURAYYYYY!!£$%^&*()!!£$%^&*()!!£$%^&*()!!£$%^&*()!!£$%^&*() tested approved and trusted"
         )
@@ -1008,7 +1191,7 @@ class analyze_data:
         home_portion, away_portion = distribute_draw_probability(data_store)
 
         # Compute expected goals
-        expected_g = home_goals + away_goals
+        expected_g = (home_goals + away_goals) / 2
 
         # Compute weighted means with error handling
         try:
@@ -1091,7 +1274,7 @@ class analyze_data:
                     home_goals_for_average, away_goals_against_average
                 )
                 away_to_score = calculate_geometric_mean_for(
-                    home_goals_against_average, away_goals_for_total
+                    home_goals_against_average, away_goals_for_average
                 )
 
                 home_goal_list.append(home_to_score)
@@ -1116,8 +1299,12 @@ class analyze_data:
                     return 0
 
             try:
-                home_att_deff = deff_att_comparison(home_att, away_def)
-                away_att_deff = deff_att_comparison(away_att, home_def)
+                home_att_deff = math.sqrt(
+                    deff_att_comparison(home_att, away_def)
+                )  # newnewnew
+                away_att_deff = math.sqrt(
+                    deff_att_comparison(away_att, home_def)
+                )  # newnewnew
 
                 home_goal_list.append(home_att_deff)
                 home_goal_list.append(
@@ -1259,27 +1446,23 @@ class analyze_data:
 
                 home_goal_list.append(
                     (
-                        ((home_form_win_rate) / 100)
-                        + (home_form_win_rate / 100) * (home_mean + away_mean)
+                        (home_form_win_rate / 100)
+                        * (
+                            ((float(home_goals_for_average) + home_mean) / 2)
+                            + ((float(away_goals_for_average) + away_mean) / 2)
+                        )
                     )
-                    / 2
                 )
                 away_goal_list.append(
                     (
-                        ((away_form_win_rate) / 100)
-                        + (away_form_win_rate / 100) * (home_mean + away_mean)
+                        (away_form_win_rate / 100)
+                        * (
+                            ((float(away_goals_for_average) + away_mean) / 2)
+                            + ((float(home_goals_for_average) + home_mean) / 2)
+                        )
                     )
-                    / 2
                 )
-                home_goal_list.append((home_form_win_rate / 10) / 1.6)
-                away_goal_list.append((away_form_win_rate / 10) / 1.6)
 
-                if home_form_win_rate > away_form_win_rate:
-                    home_goal_list.append(home_mean + away_mean)
-                    away_goal_list.append(0)
-                elif away_form_win_rate > home_form_win_rate:
-                    home_goal_list.append(0)
-                    away_goal_list.append(home_mean + away_mean)
             except Exception as e:
                 print(f"Error calculating goal lists: {e}")
 
@@ -1327,61 +1510,43 @@ class analyze_data:
             except KeyError:
                 away_goal_list.extend([0, 0])
 
-            try:
-                home_goal_list.append(
-                    home_league_data["biggest"]["goals"]["for"]["home"]
-                )
-            except KeyError:
-                home_goal_list.append(0)
-
-            try:
-                away_goal_list.append(
-                    away_league_data["biggest"]["goals"]["for"]["away"]
-                )
-            except KeyError:
-                away_goal_list.append(0)
-
-            try:
-                home_goal_list.append(
-                    away_league_data["biggest"]["goals"]["against"]["away"]
-                )
-            except KeyError:
-                home_goal_list.append(0)
-
-            try:
-                away_goal_list.append(
-                    home_league_data["biggest"]["goals"]["against"]["home"]
-                )
-            except KeyError:
-                away_goal_list.append(0)
-
             def calculate_total_cards(cards):
                 try:
-                    total_yellow = sum(
+                    yellow_totals = [
                         value["total"]
                         for value in cards.get("yellow", {}).values()
                         if isinstance(value, dict) and value.get("total") is not None
-                    )
-                    total_red = sum(
+                    ]
+                    red_totals = [
                         value["total"]
                         for value in cards.get("red", {}).values()
                         if isinstance(value, dict) and value.get("total") is not None
+                    ]
+
+                    average_yellow = (
+                        sum(yellow_totals) / len(yellow_totals) if yellow_totals else 0
                     )
-                    return total_yellow + total_red
-                except (TypeError, AttributeError):
+                    average_red = sum(red_totals) / len(red_totals) if red_totals else 0
+                    return average_yellow + average_red
+                except (TypeError, AttributeError, ZeroDivisionError):
                     return 0
 
             try:
                 total_expected_card = (
-                    data_store["predictions"][0]["teams"]["home"]["league"]["fixtures"][
-                        "played"
-                    ]["total"]
-                ) / (
-                    calculate_total_cards(
-                        data_store["predictions"][0]["teams"]["home"]["league"]["cards"]
-                    )
-                    + calculate_total_cards(
-                        data_store["predictions"][0]["teams"]["away"]["league"]["cards"]
+                    (
+                        (
+                            calculate_total_cards(
+                                data_store["predictions"][0]["teams"]["home"]["league"][
+                                    "cards"
+                                ]
+                            )
+                            + calculate_total_cards(
+                                data_store["predictions"][0]["teams"]["away"]["league"][
+                                    "cards"
+                                ]
+                            )
+                        )
+                        - 2
                     )
                     if calculate_total_cards(
                         data_store["predictions"][0]["teams"]["home"]["league"]["cards"]
@@ -1421,7 +1586,12 @@ class analyze_data:
                 home_comp, away_comp = 0, 0
 
             print("total_expected_card -", total_expected_card)
-
+            home_goal_list.append(
+                (home_comp / 100) * (home_mean + away_mean)
+            )  # newnewnew
+            away_goal_list.append(
+                (away_comp / 100) * (home_mean + away_mean)
+            )  # newnewnew
             try:
                 home_float_data = [float(x) for x in home_goal_list]
                 home_final_mean = np.mean(home_float_data) if home_float_data else 0
@@ -1454,12 +1624,22 @@ class analyze_data:
 
             print("API-PREDICTIONS \n")
             api_prediction = {}
-            api_prediction["home_final_mean"] = home_final_mean
-            api_prediction["away_final_mean"] = away_final_mean
-            api_prediction["corners"] = None
-            api_prediction["cards"] = total_expected_card
 
-            print("prediction_based on api", api_prediction)
+            # Check if the variables are available (not None) and assign to the dictionary
+            api_prediction["home_final_mean"] = (
+                home_final_mean if home_final_mean is not None else None
+            )
+            api_prediction["away_final_mean"] = (
+                away_final_mean if away_final_mean is not None else None
+            )
+            api_prediction["corners"] = (
+                None  # You already assigned None explicitly for corners
+            )
+            api_prediction["cards"] = (
+                total_expected_card if total_expected_card is not None else None
+            )
+
+            print("prediction_based_on_api", api_prediction)
             return api_prediction
 
         try:
@@ -1469,15 +1649,24 @@ class analyze_data:
         return api_prediction
 
     def save_to_self(self, *args):
+        def custom_round(number):
+            """Rounds numbers: below .5 rounds down, .5 and above rounds up."""
+            return math.floor(number) if number % 1 < 0.5 else math.ceil(number)
+
+        def truncate(number, decimals=2):
+            """Truncates a number to a fixed number of decimal places without rounding."""
+            factor = 10**decimals
+            return math.floor(number * factor) / factor
+
         weather_man = []
         weather_impact = {
             "Clear sky": {
                 "effect": "Ideal conditions, high visibility, good ball control",
-                "goal_change": +5,
+                "goal_change": +2,
             },
             "Few clouds": {
                 "effect": "Minimal effect, slightly cooler conditions",
-                "goal_change": +5,
+                "goal_change": +2,
             },
             "Scattered clouds": {
                 "effect": "Little effect, normal play",
@@ -1493,7 +1682,7 @@ class analyze_data:
             },
             "Light rain": {
                 "effect": "Slightly slippery pitch, minor passing difficulty",
-                "goal_change": +7,
+                "goal_change": +5,
             },
             "Moderate rain": {
                 "effect": "Slower ball movement, harder dribbling",
@@ -1602,7 +1791,7 @@ class analyze_data:
                 "range": (46, 60),
                 "effects_on_players": "Optimal endurance, best oxygen intake",
                 "effects_on_ball": "Better ball control",
-                "goal_impact": 5,  # More goals expected
+                "goal_impact": 3,  # More goals expected
             },
             "high": {
                 "range": (61, 75),
@@ -1625,28 +1814,46 @@ class analyze_data:
         }
         feels_like_impact = {
             "extremely_cold": {
-                "range": (-30, -16),
+                "range": (-30, -23),
                 "effects_on_players": "Severe risk of hypothermia, frostbite, slow movement, high injury risk",
                 "effects_on_ball": "Ball becomes stiff and less responsive",
-                "goal_impact": -10,  # Significantly fewer goals expected
+                "goal_impact": -15,  # Significantly fewer goals expected
+            },
+            "somehow_very_cold": {
+                "range": (-22, -11),
+                "effects_on_players": "Muscle stiffness, reduced flexibility, slower play",
+                "effects_on_ball": "Less bounce, harder to control",
+                "goal_impact": -11,
             },
             "very_cold": {
-                "range": (-15, 0),
+                "range": (-11, 0),
                 "effects_on_players": "Muscle stiffness, reduced flexibility, slower play",
                 "effects_on_ball": "Less bounce, harder to control",
                 "goal_impact": -8,
             },
+            "shiver": {
+                "range": (0.1, 4.5),
+                "effects_on_players": "Slightly reduced mobility, but generally good conditions",
+                "effects_on_ball": "Normal behavior, slightly harder surface",
+                "goal_impact": -5,
+            },
             "cold": {
-                "range": (0.1, 15),
+                "range": (4.6, 10),
                 "effects_on_players": "Slightly reduced mobility, but generally good conditions",
                 "effects_on_ball": "Normal behavior, slightly harder surface",
                 "goal_impact": -3,
             },
-            "mild": {
-                "range": (16, 30),
+            "somehow_mild": {
+                "range": (10.1, 22),
                 "effects_on_players": "Optimal playing conditions, players perform at their best",
                 "effects_on_ball": "Best ball control and movement",
-                "goal_impact": 5,  # More goals expected
+                "goal_impact": 1,  # More goals expected
+            },
+            "mild": {
+                "range": (22.1, 30),
+                "effects_on_players": "Optimal playing conditions, players perform at their best",
+                "effects_on_ball": "Best ball control and movement",
+                "goal_impact": 3,  # More goals expected
             },
             "warm": {
                 "range": (31, 45),
@@ -1715,10 +1922,10 @@ class analyze_data:
         if self.data_store.get("weather", {}):
             weather_data = self.data_store["weather"]
 
-            feels_like = weather_data.get("feels_like", 0.0)
-            humidity = weather_data.get("humidity", 50)
+            feels_like = custom_round(float(weather_data.get("feels_like", 0.0)))
+            humidity = custom_round(float(weather_data.get("humidity", 50)))
             weather_description = weather_data.get("weather_description", "Clear sky")
-            wind_speed = weather_data.get("wind_speed", 1)
+            wind_speed = custom_round(float(weather_data.get("wind_speed", 1)))
 
             def get_goal_impact(value, source):
                 """Finds the goal impact based on the given value and predefined source ranges"""
@@ -1754,28 +1961,30 @@ class analyze_data:
 
         list_of_prediction_dicts = []
         for v in args:
-            list_of_prediction_dicts.append(v)
+            if isinstance(v, dict):  # Only append if v is a dictionary
+                list_of_prediction_dicts.append(v)
+            else:
+                print(f"Warning: Skipping invalid entry (not a dict): {v}")
+
         list_of_home_mean = []
         list_of_away_mean = []
         list_of_corners = []
         list_of_cards = []
 
         for prediction in list_of_prediction_dicts:
-            for key, value in prediction.items():
-                if key == "home_final_mean":
-                    if isinstance(value, (int, float)):  # Ensure value is a number
+            if prediction is not None and isinstance(prediction, dict):
+                for key, value in prediction.items():
+                    if key == "home_final_mean" and isinstance(value, (int, float)):
                         list_of_home_mean.append(value)
-                elif key == "away_final_mean":
-                    if isinstance(value, (int, float)):
+                    elif key == "away_final_mean" and isinstance(value, (int, float)):
                         list_of_away_mean.append(value)
-                elif key == "corners":
-                    if isinstance(value, (int, float)):
+                    elif key == "corners" and isinstance(value, (int, float)):
                         list_of_corners.append(value)
-                elif key == "cards":
-                    if isinstance(value, (int, float)):
+                    elif key == "cards" and isinstance(value, (int, float)):
                         list_of_cards.append(value)
+            else:
+                print(f"Warning: Skipping invalid prediction entry: {prediction}")
 
-        # Function to safely calculate mean, ignoring invalid values
         def safe_mean(data_list):
             cleaned_list = [
                 x for x in data_list if isinstance(x, (int, float))
@@ -1790,11 +1999,25 @@ class analyze_data:
         corners_mean = safe_mean(list_of_corners)
         cards_mean = safe_mean(list_of_cards)
 
-        home_mean = home_mean + (weather_fine)
-        away_mean = away_mean + (weather_fine)
+        if weather_fine is not None:
+            home_mean += weather_fine
+            away_mean += weather_fine
+        else:
+            home_mean += 0
+            away_mean += 0
 
-        threeway = self.generate_three_way_prob(home_mean, away_mean)
-        over_under = self.calculate_goal_percentages(home_mean, away_mean)
+        home_mean = truncate(home_mean, 1)
+        away_mean = truncate(away_mean, 1)
+        if home_mean < 0:
+            home_mean = 0
+        if away_mean < 0:
+            away_mean = 0
+
+        if home_mean is not None and away_mean is not None:
+            threeway = self.generate_three_way_prob(home_mean, away_mean)
+            over_under = self.calculate_goal_percentages(home_mean, away_mean)
+        else:
+            print("Error: 'home_mean' and 'away_mean' must be provided.")
 
         self.gg_probability = self.custom_round(
             over_under.get("bts", {}).get("bts", "N/A")
@@ -1834,18 +2057,22 @@ class analyze_data:
 
         self.home_team_expected_goals = abs(self.custom_round(home_mean))
         self.away_team_expected_goals = abs(self.custom_round(away_mean))
+
         print(
             "\t\t\t\t home_mean----", home_mean, ">>>>>", away_mean, "------ away_mean"
         )
+        print("\n" + "=" * 80)
+        print("🚀🔬 **ADVANCED PREDICTIVE ANALYSIS IN PROGRESS... STAND BACK!** 🔬🚀")
+        print("-" * 80)
         print(
-            self.data_store["match_details"]["home_team_name"],
-            "-",
-            self.home_team_expected_goals,
-            ":",
-            self.away_team_expected_goals,
-            "-",
-            self.data_store["match_details"]["away_team_name"],
+            f"📊📡 HIGH-PRECISION MATCH SIMULATION RESULTS 📡📊\n"
+            f"⚽ {self.data_store['match_details']['home_team_name'].upper()} ⚔️"
+            f" {round(self.home_team_expected_goals, 3)} 🔥 : 🔥"
+            f" {round(self.away_team_expected_goals, 3)} ⚔️ {self.data_store['match_details']['away_team_name'].upper()} ⚽"
         )
+        print("-" * 80)
+        print("💾💡 **DATA CRUNCHING COMPLETE! RESULTS READY FOR DEEP INSIGHTS!** 💡💾")
+        print("=" * 80 + "\n")
 
         self.win_probability_team_1 = threeway.get("home")
         self.win_probability_team_2 = threeway.get("away")

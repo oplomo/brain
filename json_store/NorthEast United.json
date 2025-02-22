@@ -1,0 +1,2034 @@
+{
+    "match_details": {
+        "fixture": "NorthEast United vs Bengaluru",
+        "match_id": "1312179",
+        "match_date": "Feb. 21, 2025, 2 p.m.",
+        "venue": null,
+        "city": "Shillong, Meghalaya",
+        "league_id": "323",
+        "home_team_name": "NorthEast United",
+        "away_team_name": "Bengaluru",
+        "home_team_logo": "https://media.api-sports.io/football/teams/3479.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/3472.png",
+        "home_team_id": "3479",
+        "away_team_id": "3472"
+    },
+    "weather": {
+        "temperature": 9.75,
+        "feels_like": 9.24,
+        "humidity": 77,
+        "weather_description": "Scattered clouds",
+        "wind_speed": 1.62,
+        "rain": 0
+    },
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.00"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.40"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.10"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "1.53"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.38"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.20"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "1.67"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "2.15"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "2.62"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.44"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.03"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "5.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.17"
+                },
+                {
+                    "value": "Over 7.5",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "Under 7.5",
+                    "odd": "1.00"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.06"
+                },
+                {
+                    "value": "Over 6.5",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "Under 6.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Goals Over/Under First Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.50"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.50"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "6.50"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.11"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.02"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.25"
+                }
+            ],
+            "Goals Over/Under - Second Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.83"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.83"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.25"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.07"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.18"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Both Teams Score": [
+                {
+                    "value": "Yes",
+                    "odd": "1.57"
+                },
+                {
+                    "value": "No",
+                    "odd": "2.25"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "9.50"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "7.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "1:6",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "2:5",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "3:4",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "6:0",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "6:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "6:2",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "3:5",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "5:3",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "5:4",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "4:4",
+                    "odd": "151.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "7.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "5.50"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "301.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.67"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.62"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.30"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.75"
+                }
+            ],
+            "Total - Home": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.83"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.83"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.25"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.06"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.18"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Total - Away": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.50"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.50"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "6.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.12"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.02"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.30"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.40"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Both Teams Score - First Half": [
+                {
+                    "value": "Yes",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.22"
+                }
+            ],
+            "Both Teams To Score - Second Half": [
+                {
+                    "value": "Yes",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.40"
+                }
+            ],
+            "Corners Over Under": [
+                {
+                    "value": "Over 10",
+                    "odd": "1.82"
+                },
+                {
+                    "value": "Under 10",
+                    "odd": "1.98"
+                },
+                {
+                    "value": "Over 10.5",
+                    "odd": "2.00"
+                },
+                {
+                    "value": "Under 10.5",
+                    "odd": "1.73"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 3479,
+                    "name": "NorthEast United",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-2.5",
+                    "away": "-2.5"
+                },
+                "advice": "Double chance : NorthEast United or draw",
+                "percent": {
+                    "home": "45%",
+                    "draw": "45%",
+                    "away": "10%"
+                }
+            },
+            "league": {
+                "id": 323,
+                "name": "Indian Super League",
+                "country": "India",
+                "logo": "https://media.api-sports.io/football/leagues/323.png",
+                "flag": "https://media.api-sports.io/flags/in.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 3479,
+                    "name": "NorthEast United",
+                    "logo": "https://media.api-sports.io/football/teams/3479.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "53%",
+                        "att": "67%",
+                        "def": "58%",
+                        "goals": {
+                            "for": {
+                                "total": 8,
+                                "average": "1.6"
+                            },
+                            "against": {
+                                "total": 5,
+                                "average": "1.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WLDDLWWDWLLWWDDDDWDLW",
+                        "fixtures": {
+                            "played": {
+                                "home": 10,
+                                "away": 11,
+                                "total": 21
+                            },
+                            "wins": {
+                                "home": 3,
+                                "away": 5,
+                                "total": 8
+                            },
+                            "draws": {
+                                "home": 4,
+                                "away": 4,
+                                "total": 8
+                            },
+                            "loses": {
+                                "home": 3,
+                                "away": 2,
+                                "total": 5
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 17,
+                                    "away": 22,
+                                    "total": 39
+                                },
+                                "average": {
+                                    "home": "1.7",
+                                    "away": "2.0",
+                                    "total": "1.9"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 10,
+                                        "percentage": "27.03%"
+                                    },
+                                    "16-30": {
+                                        "total": 5,
+                                        "percentage": "13.51%"
+                                    },
+                                    "31-45": {
+                                        "total": 3,
+                                        "percentage": "8.11%"
+                                    },
+                                    "46-60": {
+                                        "total": 4,
+                                        "percentage": "10.81%"
+                                    },
+                                    "61-75": {
+                                        "total": 4,
+                                        "percentage": "10.81%"
+                                    },
+                                    "76-90": {
+                                        "total": 10,
+                                        "percentage": "27.03%"
+                                    },
+                                    "91-105": {
+                                        "total": 1,
+                                        "percentage": "2.70%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 16,
+                                        "under": 5
+                                    },
+                                    "1.5": {
+                                        "over": 12,
+                                        "under": 9
+                                    },
+                                    "2.5": {
+                                        "over": 6,
+                                        "under": 15
+                                    },
+                                    "3.5": {
+                                        "over": 3,
+                                        "under": 18
+                                    },
+                                    "4.5": {
+                                        "over": 2,
+                                        "under": 19
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 13,
+                                    "away": 14,
+                                    "total": 27
+                                },
+                                "average": {
+                                    "home": "1.3",
+                                    "away": "1.3",
+                                    "total": "1.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "13.79%"
+                                    },
+                                    "16-30": {
+                                        "total": 2,
+                                        "percentage": "6.90%"
+                                    },
+                                    "31-45": {
+                                        "total": 2,
+                                        "percentage": "6.90%"
+                                    },
+                                    "46-60": {
+                                        "total": 5,
+                                        "percentage": "17.24%"
+                                    },
+                                    "61-75": {
+                                        "total": 7,
+                                        "percentage": "24.14%"
+                                    },
+                                    "76-90": {
+                                        "total": 6,
+                                        "percentage": "20.69%"
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "10.34%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 15,
+                                        "under": 6
+                                    },
+                                    "1.5": {
+                                        "over": 9,
+                                        "under": 12
+                                    },
+                                    "2.5": {
+                                        "over": 3,
+                                        "under": 18
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 21
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 21
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 2,
+                                "draws": 4,
+                                "loses": 2
+                            },
+                            "wins": {
+                                "home": "5-0",
+                                "away": "2-5"
+                            },
+                            "loses": {
+                                "home": "0-2",
+                                "away": "3-2"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 5,
+                                    "away": 5
+                                },
+                                "against": {
+                                    "home": 3,
+                                    "away": 3
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 2,
+                            "away": 4,
+                            "total": 6
+                        },
+                        "failed_to_score": {
+                            "home": 3,
+                            "away": 2,
+                            "total": 5
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 1,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 1
+                        },
+                        "lineups": [
+                            {
+                                "formation": "4-2-3-1",
+                                "played": 21
+                            }
+                        ],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 4,
+                                    "percentage": "8.51%"
+                                },
+                                "16-30": {
+                                    "total": 8,
+                                    "percentage": "17.02%"
+                                },
+                                "31-45": {
+                                    "total": 5,
+                                    "percentage": "10.64%"
+                                },
+                                "46-60": {
+                                    "total": 6,
+                                    "percentage": "12.77%"
+                                },
+                                "61-75": {
+                                    "total": 9,
+                                    "percentage": "19.15%"
+                                },
+                                "76-90": {
+                                    "total": 9,
+                                    "percentage": "19.15%"
+                                },
+                                "91-105": {
+                                    "total": 6,
+                                    "percentage": "12.77%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": 1,
+                                    "percentage": "25.00%"
+                                },
+                                "61-75": {
+                                    "total": 1,
+                                    "percentage": "25.00%"
+                                },
+                                "76-90": {
+                                    "total": 1,
+                                    "percentage": "25.00%"
+                                },
+                                "91-105": {
+                                    "total": 1,
+                                    "percentage": "25.00%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 3472,
+                    "name": "Bengaluru",
+                    "logo": "https://media.api-sports.io/football/teams/3472.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "27%",
+                        "att": "67%",
+                        "def": "33%",
+                        "goals": {
+                            "for": {
+                                "total": 8,
+                                "average": "1.6"
+                            },
+                            "against": {
+                                "total": 8,
+                                "average": "1.6"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WWWDWWLDWLWDWLLDLLLW",
+                        "fixtures": {
+                            "played": {
+                                "home": 10,
+                                "away": 10,
+                                "total": 20
+                            },
+                            "wins": {
+                                "home": 6,
+                                "away": 3,
+                                "total": 9
+                            },
+                            "draws": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            },
+                            "loses": {
+                                "home": 2,
+                                "away": 5,
+                                "total": 7
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 21,
+                                    "away": 15,
+                                    "total": 36
+                                },
+                                "average": {
+                                    "home": "2.1",
+                                    "away": "1.5",
+                                    "total": "1.8"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 7,
+                                        "percentage": "20.59%"
+                                    },
+                                    "16-30": {
+                                        "total": 4,
+                                        "percentage": "11.76%"
+                                    },
+                                    "31-45": {
+                                        "total": 4,
+                                        "percentage": "11.76%"
+                                    },
+                                    "46-60": {
+                                        "total": 4,
+                                        "percentage": "11.76%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "14.71%"
+                                    },
+                                    "76-90": {
+                                        "total": 6,
+                                        "percentage": "17.65%"
+                                    },
+                                    "91-105": {
+                                        "total": 4,
+                                        "percentage": "11.76%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 16,
+                                        "under": 4
+                                    },
+                                    "1.5": {
+                                        "over": 12,
+                                        "under": 8
+                                    },
+                                    "2.5": {
+                                        "over": 6,
+                                        "under": 14
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 18
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 20
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 10,
+                                    "away": 18,
+                                    "total": 28
+                                },
+                                "average": {
+                                    "home": "1.0",
+                                    "away": "1.8",
+                                    "total": "1.4"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 5,
+                                        "percentage": "16.67%"
+                                    },
+                                    "16-30": {
+                                        "total": 4,
+                                        "percentage": "13.33%"
+                                    },
+                                    "31-45": {
+                                        "total": 1,
+                                        "percentage": "3.33%"
+                                    },
+                                    "46-60": {
+                                        "total": 7,
+                                        "percentage": "23.33%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "16.67%"
+                                    },
+                                    "76-90": {
+                                        "total": 5,
+                                        "percentage": "16.67%"
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "10.00%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 14,
+                                        "under": 6
+                                    },
+                                    "1.5": {
+                                        "over": 9,
+                                        "under": 11
+                                    },
+                                    "2.5": {
+                                        "over": 4,
+                                        "under": 16
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 19
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 20
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 3,
+                                "draws": 1,
+                                "loses": 3
+                            },
+                            "wins": {
+                                "home": "3-0",
+                                "away": "2-4"
+                            },
+                            "loses": {
+                                "home": "2-3",
+                                "away": "3-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 4
+                                },
+                                "against": {
+                                    "home": 3,
+                                    "away": 4
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 5,
+                            "away": 1,
+                            "total": 6
+                        },
+                        "failed_to_score": {
+                            "home": 1,
+                            "away": 3,
+                            "total": 4
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 3,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 3
+                        },
+                        "lineups": [
+                            {
+                                "formation": "4-3-3",
+                                "played": 15
+                            },
+                            {
+                                "formation": "4-4-2",
+                                "played": 4
+                            },
+                            {
+                                "formation": "3-5-2",
+                                "played": 1
+                            }
+                        ],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 4,
+                                    "percentage": "10.53%"
+                                },
+                                "16-30": {
+                                    "total": 1,
+                                    "percentage": "2.63%"
+                                },
+                                "31-45": {
+                                    "total": 6,
+                                    "percentage": "15.79%"
+                                },
+                                "46-60": {
+                                    "total": 11,
+                                    "percentage": "28.95%"
+                                },
+                                "61-75": {
+                                    "total": 2,
+                                    "percentage": "5.26%"
+                                },
+                                "76-90": {
+                                    "total": 5,
+                                    "percentage": "13.16%"
+                                },
+                                "91-105": {
+                                    "total": 9,
+                                    "percentage": "23.68%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "67%",
+                    "away": "33%"
+                },
+                "att": {
+                    "home": "50%",
+                    "away": "50%"
+                },
+                "def": {
+                    "home": "62%",
+                    "away": "38%"
+                },
+                "poisson_distribution": {
+                    "home": "60%",
+                    "away": "40%"
+                },
+                "h2h": {
+                    "home": "25%",
+                    "away": "75%"
+                },
+                "goals": {
+                    "home": "42%",
+                    "away": "58%"
+                },
+                "total": {
+                    "home": "51.0%",
+                    "away": "49.0%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1296734,
+                        "referee": "Pratik Mondal, India",
+                        "timezone": "UTC",
+                        "date": "2024-11-08T14:00:00+00:00",
+                        "timestamp": 1731074400,
+                        "periods": {
+                            "first": 1731074400,
+                            "second": 1731078000
+                        },
+                        "venue": {
+                            "id": 2275,
+                            "name": "Sree Kanteerava Stadium",
+                            "city": "Bangalore"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 7
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 8",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1131693,
+                        "referee": "R. Gupta",
+                        "timezone": "UTC",
+                        "date": "2023-12-24T12:00:00+00:00",
+                        "timestamp": 1703419200,
+                        "periods": {
+                            "first": 1703419200,
+                            "second": 1703422800
+                        },
+                        "venue": {
+                            "id": 2275,
+                            "name": "Sree Kanteerava Stadium",
+                            "city": "Bangalore"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 11",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1131668,
+                        "referee": "R. Gupta",
+                        "timezone": "UTC",
+                        "date": "2023-11-26T14:30:00+00:00",
+                        "timestamp": 1701009000,
+                        "periods": {
+                            "first": 1701009000,
+                            "second": 1701012600
+                        },
+                        "venue": {
+                            "id": 2280,
+                            "name": "Indira Gandhi Athletic Stadium",
+                            "city": "Guwahati"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 7",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 953901,
+                        "referee": "P. Mondal",
+                        "timezone": "UTC",
+                        "date": "2023-01-06T14:00:00+00:00",
+                        "timestamp": 1673013600,
+                        "periods": {
+                            "first": 1673013600,
+                            "second": 1673017200
+                        },
+                        "venue": {
+                            "id": 2280,
+                            "name": "Indira Gandhi Athletic Stadium",
+                            "city": "Guwahati"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 14",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 953836,
+                        "referee": "R. Gupta",
+                        "timezone": "UTC",
+                        "date": "2022-10-08T14:00:00+00:00",
+                        "timestamp": 1665237600,
+                        "periods": {
+                            "first": 1665237600,
+                            "second": 1665241200
+                        },
+                        "venue": {
+                            "id": 2275,
+                            "name": "Sree Kanteerava Stadium",
+                            "city": "Bangalore"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 820017,
+                        "referee": "R. Venkatesh",
+                        "timezone": "UTC",
+                        "date": "2022-02-18T14:00:00+00:00",
+                        "timestamp": 1645192800,
+                        "periods": {
+                            "first": 1645192800,
+                            "second": 1645196400
+                        },
+                        "venue": {
+                            "id": 2280,
+                            "name": "Jawaharlal Nehru Stadium",
+                            "city": "Margao, Goa"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2021,
+                        "round": "Regular Season - 18",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 793247,
+                        "referee": "R. Gupta",
+                        "timezone": "UTC",
+                        "date": "2021-11-20T14:00:00+00:00",
+                        "timestamp": 1637416800,
+                        "periods": {
+                            "first": 1637416800,
+                            "second": 1637420400
+                        },
+                        "venue": {
+                            "id": 2275,
+                            "name": "GMC Athletic Stadium",
+                            "city": "Bambolim, Goa"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2021,
+                        "round": "Regular Season - 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 4,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 3,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 4,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 655493,
+                        "referee": "Tejas Nagvenkar, India",
+                        "timezone": "UTC",
+                        "date": "2021-01-12T14:00:00+00:00",
+                        "timestamp": 1610460000,
+                        "periods": {
+                            "first": 1610460000,
+                            "second": 1610463600
+                        },
+                        "venue": {
+                            "id": 2270,
+                            "name": "Tilak Maidan Stadium",
+                            "city": "Vasco da Gama, Goa"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 12",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 646082,
+                        "referee": "Tejas Nagvenkar, India",
+                        "timezone": "UTC",
+                        "date": "2020-12-08T14:00:00+00:00",
+                        "timestamp": 1607436000,
+                        "periods": {
+                            "first": 1607436000,
+                            "second": 1607439600
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Jawaharlal Nehru Stadium",
+                            "city": "Margao"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 5",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 240463,
+                        "referee": "U. Bora",
+                        "timezone": "UTC",
+                        "date": "2019-12-18T12:30:00+00:00",
+                        "timestamp": 1576672200,
+                        "periods": {
+                            "first": 1576672200,
+                            "second": 1576675800
+                        },
+                        "venue": {
+                            "id": 2280,
+                            "name": "Indira Gandhi Athletic Stadium",
+                            "city": "Guwahati"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 323,
+                        "name": "Indian Super League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/323.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2019,
+                        "round": "Regular Season - 9",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3479,
+                            "name": "NorthEast United",
+                            "logo": "https://media.api-sports.io/football/teams/3479.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 3472,
+                            "name": "Bengaluru",
+                            "logo": "https://media.api-sports.io/football/teams/3472.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

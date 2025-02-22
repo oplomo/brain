@@ -1,0 +1,76 @@
+{
+    "match_details": {
+        "fixture": "Royal AM vs Kaizer Chiefs",
+        "match_id": "1302424",
+        "match_date": "Feb. 21, 2025, 5:30 p.m.",
+        "venue": null,
+        "city": "Pietermaritzburg, KN",
+        "league_id": "288",
+        "home_team_name": "Royal AM",
+        "away_team_name": "Kaizer Chiefs",
+        "home_team_logo": "https://media.api-sports.io/football/teams/10566.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/2691.png",
+        "home_team_id": "10566",
+        "away_team_id": "2691"
+    },
+    "weather": null,
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": {
+        "error": "Request error occurred: HTTPSConnectionPool(host='v3.football.api-sports.io', port=443): Max retries exceeded with url: /predictions?fixture=1302424 (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000026ACD334C20>: Failed to resolve 'v3.football.api-sports.io' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

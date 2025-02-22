@@ -30,6 +30,8 @@
         <div class="option"><a href="{% url 'square:index' "soccer" "total_3_5(OVER/UNDER)" day %}">soccer 3.5 goals</a></div>
         <div class="option"><a href="{% url 'square:index' "soccer" "total_4_5(OVER/UNDER)" day %}">soccer 4.5 goals</a></div>
         <div class="option"><a href="{% url 'square:index' "soccer" "total_5_5(OVER/UNDER)" day %}">soccer 5+ goals</a></div>
+        <div class="option"><a href="{% url 'square:index' "soccer" "correct_score" day %}">correct_score</a></div>
+
       
         <div class="guide">BASKETBALL</div>
 
@@ -44,48 +46,84 @@
         <div class="option"><a href="{% url 'square:index' "tennis" "3 way" day %}">3 way tennis</a></div>
         <div class="option"><a href="{% url 'square:index' "tennis" "total" day %}">total games</a></div>
     </div>
+
     <div class="square">
+        <button id="hide_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Hide Probabilities</button>
+    
         {% if matches %}
-        
         <table class="square_table">
             <thead>
                 <tr class="table-header">
-                    {% for header in table_headers %}
-                        <th class="table-cell">{{ header }}</th>
+                    <th class="table-cell">Sport Type</th>
+                    <th class="table-cell">Match Info</th>
+    
+                    <!-- Dynamic headers with a class for JavaScript targeting -->
+                    {% for header in dynamic_headers %}
+                        <th class="table-cell probability-header">{{ header.0 }}</th>
                     {% endfor %}
+    
+                    <th class="table-cell">Prediction</th>
+                    <th class="table-cell">Odds</th>
+                    <th class="table-cell">Result</th>
                 </tr>
             </thead>
             <tbody>
                 {% for data in table_data %}
                     <tr>
                         <td>{{ data.sport_type }}</td>
-
-
+    
                         <td class="team_link">
                             <a href="{{ data.get_absolute_url }}">
                                {{ data.match_name }}
-                            </a><br> <br> <span class="match_time">[{{ data.time }}]</span>
-
+                            </a><br><br><span class="match_time">{{ data.time }}</span>
                         </td>
+    
                         <!-- Dynamically display probabilities or other match data -->
                         {% for header in dynamic_headers %}
                             {% with display_name=header.0 data_key=header.1 %}
-                                <td>{{ data|get_item:data_key }}</td>
+                                <td class="probability">{{ data|get_item:data_key }}</td>
                             {% endwith %}
                         {% endfor %}
-            
-                        <td class="stress">{{ data.prediction }} <br> {{data.home_team_score}}:{{data.away_team_score}}</td>
+    
+                        <td class="stress">{{ data.prediction }} </td>
                         <td>{{ data.odds }}</td>
-                        <td class="{% if data.result == 'won' %}won {% elif data.result == "lost" %}lost{% endif %}">{{ data.result }}</td>
+                        <td class="resut">
+                            {% if data.home_res is not None and data.away_res is not None %}
+                                {{ data.home_res }} - {{ data.away_res }}
+                            {% else %}
+                                Waiting
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
-            
-                    </table>
-                {% else %}
+        </table>
+        {% else %}
             <p>No game under the selected sport category.</p>
         {% endif %}
     </div>
+    
+    <script>
+        const toggleButton = document.getElementById("hide_probabilities");
+        const probabilityCells = document.querySelectorAll(".probability");
+        const probabilityHeaders = document.querySelectorAll(".probability-header");
+    
+        let isVisible = true;
+    
+        toggleButton.addEventListener("click", function() {
+            probabilityCells.forEach(cell => {
+                cell.style.display = isVisible ? "none" : "table-cell";
+            });
+    
+            probabilityHeaders.forEach(header => {
+                header.style.display = isVisible ? "none" : "table-cell";
+            });
+    
+            toggleButton.textContent = isVisible ? "Show Probabilities" : "Hide Probabilities";
+            isVisible = !isVisible;
+        });
+    </script>
+    
 </div>
 
 
