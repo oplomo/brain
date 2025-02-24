@@ -25,6 +25,7 @@ def debug_task(self):
 app.conf.beat_schedule = {
     "update-fixtures-daily": {
         "task": "backend.tasks.run_fixtures_update",  # Task path in square app
+        # "schedule": crontab(minute="*/3"),  # Every 4 minutes
         "schedule": crontab(minute="30", hour="*/2", day_of_week="*"),
     },
     "update-fix-every-4-minutes": {

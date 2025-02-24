@@ -60,4 +60,9 @@ urlpatterns = [
     ),
     path("see_data_progress", views.see_data_progress, name="see_data_progress"),
     path("predict_all/", views.predict_all_matches, name="predict_all_matches"),
+    path("jeruqsore/premium/", views.premium, name="premium"),
+    path("destroy_premium/", views.destroy_premium, name="destroy_premium"),
+    path("recreate_premium/", views.recreate_premium, name="recreate_premium"),
+    path('payment/', views.payment_page, name='payment_page'),
+    path('payment/callback/', views.payment_callback, name='payment_callback'),
 ]

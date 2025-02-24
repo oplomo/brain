@@ -1,0 +1,957 @@
+{
+    "match_details": {
+        "fixture": "Jubilo Iwata vs Honda",
+        "match_id": "1349295",
+        "match_date": "Feb. 23, 2025, 2 a.m.",
+        "venue": null,
+        "city": "Iwata",
+        "league_id": "667",
+        "home_team_name": "Jubilo Iwata",
+        "away_team_name": "Honda",
+        "home_team_logo": "https://media.api-sports.io/football/teams/280.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/7123.png",
+        "home_team_id": "280",
+        "away_team_id": "7123"
+    },
+    "weather": {
+        "temperature": 7.12,
+        "feels_like": 3.44,
+        "humidity": 37,
+        "weather_description": "Scattered clouds",
+        "wind_speed": 6.41,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 280,
+                    "name": "Jubilo Iwata",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": "-2.5",
+                "goals": {
+                    "home": "-1.5",
+                    "away": null
+                },
+                "advice": "Combo Double chance : Jubilo Iwata or draw and -2.5 goals",
+                "percent": {
+                    "home": "50%",
+                    "draw": "50%",
+                    "away": "0%"
+                }
+            },
+            "league": {
+                "id": 667,
+                "name": "Friendlies Clubs",
+                "country": "World",
+                "logo": "https://media.api-sports.io/football/leagues/667.png",
+                "flag": null,
+                "season": 2025
+            },
+            "teams": {
+                "home": {
+                    "id": 280,
+                    "name": "Jubilo Iwata",
+                    "logo": "https://media.api-sports.io/football/teams/280.png",
+                    "last_5": {
+                        "played": 3,
+                        "form": "78%",
+                        "att": "23%",
+                        "def": "92%",
+                        "goals": {
+                            "for": {
+                                "total": 3,
+                                "average": "1.0"
+                            },
+                            "against": {
+                                "total": 1,
+                                "average": "0.3"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WWD",
+                        "fixtures": {
+                            "played": {
+                                "home": 3,
+                                "away": 0,
+                                "total": 3
+                            },
+                            "wins": {
+                                "home": 2,
+                                "away": 0,
+                                "total": 2
+                            },
+                            "draws": {
+                                "home": 1,
+                                "away": 0,
+                                "total": 1
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 3,
+                                    "away": 0,
+                                    "total": 3
+                                },
+                                "average": {
+                                    "home": "1.0",
+                                    "away": "0.0",
+                                    "total": "1.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 3,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 1,
+                                    "away": 0,
+                                    "total": 1
+                                },
+                                "average": {
+                                    "home": "0.3",
+                                    "away": "0.0",
+                                    "total": "0.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 1,
+                                        "under": 2
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 3
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 2,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": "1-0",
+                                "away": null
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 1,
+                                    "away": 0
+                                },
+                                "against": {
+                                    "home": 1,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 2,
+                            "away": 0,
+                            "total": 2
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 7123,
+                    "name": "Honda",
+                    "logo": "https://media.api-sports.io/football/teams/7123.png",
+                    "last_5": {
+                        "played": 0,
+                        "form": "0%",
+                        "att": "0%",
+                        "def": "0%",
+                        "goals": {
+                            "for": {
+                                "total": 0,
+                                "average": "0.0"
+                            },
+                            "against": {
+                                "total": 0,
+                                "average": "0.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": null,
+                        "fixtures": {
+                            "played": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "wins": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 0,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": null,
+                                "away": null
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 0,
+                                    "away": 0
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "100%",
+                    "away": "0%"
+                },
+                "att": {
+                    "home": "100%",
+                    "away": "0%"
+                },
+                "def": {
+                    "home": "0%",
+                    "away": "100%"
+                },
+                "poisson_distribution": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "h2h": {
+                    "home": "71%",
+                    "away": "29%"
+                },
+                "goals": {
+                    "home": "60%",
+                    "away": "40%"
+                },
+                "total": {
+                    "home": "65.5%",
+                    "away": "34.5%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1305913,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-09-22T06:00:00+00:00",
+                        "timestamp": 1726984800,
+                        "periods": {
+                            "first": 1726984800,
+                            "second": 1726988400
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Yamaha Okubo Ground",
+                            "city": "Iwata"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 667,
+                        "name": "Friendlies Clubs",
+                        "country": "World",
+                        "logo": "https://media.api-sports.io/football/leagues/667.png",
+                        "flag": null,
+                        "season": 2024,
+                        "round": "Club Friendlies 3",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 280,
+                            "name": "Jubilo Iwata",
+                            "logo": "https://media.api-sports.io/football/teams/280.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 7123,
+                            "name": "Honda",
+                            "logo": "https://media.api-sports.io/football/teams/7123.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 3,
+                        "away": 3
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "fulltime": {
+                            "home": 3,
+                            "away": 3
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 707956,
+                        "referee": "M. Iemoto",
+                        "timezone": "UTC",
+                        "date": "2021-07-07T09:30:00+00:00",
+                        "timestamp": 1625650200,
+                        "periods": {
+                            "first": 1625650200,
+                            "second": 1625653800
+                        },
+                        "venue": {
+                            "id": 963,
+                            "name": "Yamaha Stadium",
+                            "city": "Iwata"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 102,
+                        "name": "Emperor Cup",
+                        "country": "Japan",
+                        "logo": "https://media.api-sports.io/football/leagues/102.png",
+                        "flag": "https://media.api-sports.io/flags/jp.svg",
+                        "season": 2021,
+                        "round": "3rd Round",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 7123,
+                            "name": "Honda",
+                            "logo": "https://media.api-sports.io/football/teams/7123.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 280,
+                            "name": "Jubilo Iwata",
+                            "logo": "https://media.api-sports.io/football/teams/280.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 4
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 3
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 4
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 412662,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2017-06-21T10:00:00+00:00",
+                        "timestamp": 1498039200,
+                        "periods": {
+                            "first": 1498039200,
+                            "second": 1498042800
+                        },
+                        "venue": {
+                            "id": 963,
+                            "name": "Yamaha Stadium",
+                            "city": "Iwata"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "PEN",
+                            "elapsed": 120,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 102,
+                        "name": "Emperor Cup",
+                        "country": "Japan",
+                        "logo": "https://media.api-sports.io/football/leagues/102.png",
+                        "flag": "https://media.api-sports.io/flags/jp.svg",
+                        "season": 2017,
+                        "round": "2nd Round",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 280,
+                            "name": "Jubilo Iwata",
+                            "logo": "https://media.api-sports.io/football/teams/280.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 7123,
+                            "name": "Honda",
+                            "logo": "https://media.api-sports.io/football/teams/7123.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": 5,
+                            "away": 4
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

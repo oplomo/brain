@@ -1,0 +1,2058 @@
+{
+    "match_details": {
+        "fixture": "FC Cincinnati vs New York Red Bulls",
+        "match_id": "1326236",
+        "match_date": "Feb. 23, 2025, 12:30 a.m.",
+        "venue": null,
+        "city": "Cincinnati, Ohio",
+        "league_id": "253",
+        "home_team_name": "FC Cincinnati",
+        "away_team_name": "New York Red Bulls",
+        "home_team_logo": "https://media.api-sports.io/football/teams/2242.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/1602.png",
+        "home_team_id": "2242",
+        "away_team_id": "1602"
+    },
+    "weather": {
+        "temperature": -2.91,
+        "feels_like": -5.9,
+        "humidity": 72,
+        "weather_description": "Clear sky",
+        "wind_speed": 2.04,
+        "rain": 0
+    },
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.00"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.60"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.60"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "1.44"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.62"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.25"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "3.75"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "1.85"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.95"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.05"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "6.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.12"
+                },
+                {
+                    "value": "Over 7.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 7.5",
+                    "odd": "1.00"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.04"
+                },
+                {
+                    "value": "Over 6.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 6.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Goals Over/Under First Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "7.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.10"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.00"
+                }
+            ],
+            "Goals Over/Under - Second Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.91"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.80"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.22"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.05"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.20"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Both Teams Score": [
+                {
+                    "value": "Yes",
+                    "odd": "1.70"
+                },
+                {
+                    "value": "No",
+                    "odd": "2.05"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "8.50"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "6.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "1:6",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "2:5",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "3:4",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "6:0",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "6:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "6:2",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "3:5",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "4:5",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "5:3",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "5:4",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "6:3",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "4:4",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "7:0",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "7:1",
+                    "odd": "501.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "3.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "7.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "5.50"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "301.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "401.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "501.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.80"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.62"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Away",
+                    "odd": "4.00"
+                }
+            ],
+            "Total - Home": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.91"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.80"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.22"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.06"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.20"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Total - Away": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.08"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Both Teams Score - First Half": [
+                {
+                    "value": "Yes",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.18"
+                }
+            ],
+            "Both Teams To Score - Second Half": [
+                {
+                    "value": "Yes",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.33"
+                }
+            ],
+            "Corners Over Under": [
+                {
+                    "value": "Over 9.5",
+                    "odd": "1.88"
+                },
+                {
+                    "value": "Under 9.5",
+                    "odd": "1.92"
+                }
+            ],
+            "Cards Over/Under": [
+                {
+                    "value": "Over 4.5",
+                    "odd": "1.91"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.80"
+                },
+                {
+                    "value": "Under 4.0",
+                    "odd": "2.10"
+                },
+                {
+                    "value": "Over 4.0",
+                    "odd": "1.70"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 1602,
+                    "name": "New York Red Bulls",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": null,
+                    "away": null
+                },
+                "advice": "Double chance : draw or New York Red Bulls",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 253,
+                "name": "Major League Soccer",
+                "country": "USA",
+                "logo": "https://media.api-sports.io/football/leagues/253.png",
+                "flag": "https://media.api-sports.io/flags/us.svg",
+                "season": 2025
+            },
+            "teams": {
+                "home": {
+                    "id": 2242,
+                    "name": "FC Cincinnati",
+                    "logo": "https://media.api-sports.io/football/teams/2242.png",
+                    "last_5": {
+                        "played": 0,
+                        "form": "0%",
+                        "att": "0%",
+                        "def": "0%",
+                        "goals": {
+                            "for": {
+                                "total": 0,
+                                "average": "0.0"
+                            },
+                            "against": {
+                                "total": 0,
+                                "average": "0.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": null,
+                        "fixtures": {
+                            "played": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "wins": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 0,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": null,
+                                "away": null
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 0,
+                                    "away": 0
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 1602,
+                    "name": "New York Red Bulls",
+                    "logo": "https://media.api-sports.io/football/teams/1602.png",
+                    "last_5": {
+                        "played": 0,
+                        "form": "0%",
+                        "att": "0%",
+                        "def": "0%",
+                        "goals": {
+                            "for": {
+                                "total": 0,
+                                "average": "0.0"
+                            },
+                            "against": {
+                                "total": 0,
+                                "average": "0.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": null,
+                        "fixtures": {
+                            "played": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "wins": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 0,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": null,
+                                "away": null
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 0,
+                                    "away": 0
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "att": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "def": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "poisson_distribution": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "h2h": {
+                    "home": "38%",
+                    "away": "62%"
+                },
+                "goals": {
+                    "home": "50%",
+                    "away": "50%"
+                },
+                "total": {
+                    "home": "44.0%",
+                    "away": "56.0%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1151109,
+                        "referee": "T. Unkel",
+                        "timezone": "UTC",
+                        "date": "2024-07-20T23:30:00+00:00",
+                        "timestamp": 1721518200,
+                        "periods": {
+                            "first": 1721518200,
+                            "second": 1721521800
+                        },
+                        "venue": {
+                            "id": 1619,
+                            "name": "Red Bull Arena",
+                            "city": "Harrison, New Jersey"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 36",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 3,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 3,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1150839,
+                        "referee": "D. Fischer",
+                        "timezone": "UTC",
+                        "date": "2024-04-06T23:30:00+00:00",
+                        "timestamp": 1712446200,
+                        "periods": {
+                            "first": 1712446200,
+                            "second": 1712449800
+                        },
+                        "venue": {
+                            "id": 19229,
+                            "name": "TQL Stadium",
+                            "city": "Cincinnati, Ohio"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 10",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1140398,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2023-11-11T19:00:00+00:00",
+                        "timestamp": 1699729200,
+                        "periods": {
+                            "first": null,
+                            "second": null
+                        },
+                        "venue": {
+                            "id": 19229,
+                            "name": "TQL Stadium",
+                            "city": "Cincinnati, Ohio"
+                        },
+                        "status": {
+                            "long": "Match Cancelled",
+                            "short": "CANC",
+                            "elapsed": null,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2023,
+                        "round": "MLS Cup - Round 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": null,
+                        "away": null
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "fulltime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1140396,
+                        "referee": "V. Rivas",
+                        "timezone": "UTC",
+                        "date": "2023-11-04T23:00:00+00:00",
+                        "timestamp": 1699138800,
+                        "periods": {
+                            "first": 1699138800,
+                            "second": 1699142400
+                        },
+                        "venue": {
+                            "id": 1619,
+                            "name": "Red Bull Arena",
+                            "city": "Harrison, New Jersey"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "PEN",
+                            "elapsed": 120,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2023,
+                        "round": "MLS Cup - Round 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "penalty": {
+                            "home": 7,
+                            "away": 8
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1140394,
+                        "referee": "R. Vazquez",
+                        "timezone": "UTC",
+                        "date": "2023-10-30T00:00:00+00:00",
+                        "timestamp": 1698624000,
+                        "periods": {
+                            "first": 1698624000,
+                            "second": 1698627600
+                        },
+                        "venue": {
+                            "id": 19229,
+                            "name": "TQL Stadium",
+                            "city": "Cincinnati, Ohio"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2023,
+                        "round": "MLS Cup - Round 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 3,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 3,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 981214,
+                        "referee": "C. Penso",
+                        "timezone": "UTC",
+                        "date": "2023-10-04T23:30:00+00:00",
+                        "timestamp": 1696462200,
+                        "periods": {
+                            "first": 1696462200,
+                            "second": 1696465800
+                        },
+                        "venue": {
+                            "id": 19229,
+                            "name": "TQL Stadium",
+                            "city": "Cincinnati, Ohio"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 47",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 981087,
+                        "referee": "L. Szpala",
+                        "timezone": "UTC",
+                        "date": "2023-07-12T23:30:00+00:00",
+                        "timestamp": 1689204600,
+                        "periods": {
+                            "first": 1689204600,
+                            "second": 1689208200
+                        },
+                        "venue": {
+                            "id": 1619,
+                            "name": "Red Bull Arena",
+                            "city": "Harrison, New Jersey"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 32",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1026888,
+                        "referee": "F. Bazakos",
+                        "timezone": "UTC",
+                        "date": "2023-05-23T23:30:00+00:00",
+                        "timestamp": 1684884600,
+                        "periods": {
+                            "first": 1684884600,
+                            "second": 1684888200
+                        },
+                        "venue": {
+                            "id": 1619,
+                            "name": "Red Bull Arena",
+                            "city": "Harrison, New Jersey"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "PEN",
+                            "elapsed": 120,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 257,
+                        "name": "US Open Cup",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/257.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2023,
+                        "round": "Round of 16",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "penalty": {
+                            "home": 3,
+                            "away": 5
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 965511,
+                        "referee": "A. Chilowicz",
+                        "timezone": "UTC",
+                        "date": "2022-10-15T16:00:00+00:00",
+                        "timestamp": 1665849600,
+                        "periods": {
+                            "first": 1665849600,
+                            "second": 1665853200
+                        },
+                        "venue": {
+                            "id": 1619,
+                            "name": "Red Bull Arena",
+                            "city": "Harrison, New Jersey"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2022,
+                        "round": "MLS Cup - Round 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 817075,
+                        "referee": "I. Elfath",
+                        "timezone": "UTC",
+                        "date": "2022-08-20T22:00:00+00:00",
+                        "timestamp": 1661032800,
+                        "periods": {
+                            "first": 1661032800,
+                            "second": 1661036400
+                        },
+                        "venue": {
+                            "id": 1619,
+                            "name": "Red Bull Arena",
+                            "city": "Harrison, New Jersey"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 253,
+                        "name": "Major League Soccer",
+                        "country": "USA",
+                        "logo": "https://media.api-sports.io/football/leagues/253.png",
+                        "flag": "https://media.api-sports.io/flags/us.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 36",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 1602,
+                            "name": "New York Red Bulls",
+                            "logo": "https://media.api-sports.io/football/teams/1602.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 2242,
+                            "name": "FC Cincinnati",
+                            "logo": "https://media.api-sports.io/football/teams/2242.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

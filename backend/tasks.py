@@ -157,7 +157,7 @@ def fetch_data_for_matches(self, matches):
             },
         )
 
-        if (idx + 1) % 10 == 0:
+        if (idx + 1) % 5 == 0:
             logger.info("Reached 10 requests, pausing for 60 seconds...")
             time.sleep(62)
     logger.info("Task completed")

@@ -13,6 +13,7 @@ from .models import (
     SiteInformation,
     ResultDate,
     Fixture,
+    Payment,
 )
 from django.contrib.auth.admin import UserAdmin
 
@@ -73,7 +74,7 @@ class MatchAdmin(admin.ModelAdmin):
         "away_team",
         "sport__name",
     )
-    list_filter = ("sport", "match_date", "league")
+    list_filter = ("sport", "match_date", "league", "is_premium")
 
 
 # Register the FootballPrediction model
@@ -251,3 +252,13 @@ class ResultDateAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ResultDate, ResultDateAdmin)
+
+
+# admin.py
+
+
+@admin.register(Payment)
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ("reference", "access_token", "verified", "date_paid")
+    list_filter = ("verified", "date_paid")
+    search_fields = ("reference", "access_token")

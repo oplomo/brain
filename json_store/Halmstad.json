@@ -1,0 +1,1592 @@
+{
+    "match_details": {
+        "fixture": "Halmstad vs Landskrona BoIS",
+        "match_id": "1320423",
+        "match_date": "Feb. 24, 2025, 5:30 p.m.",
+        "venue": null,
+        "city": "G\u00f6teborg",
+        "league_id": "115",
+        "home_team_name": "Halmstad",
+        "away_team_name": "Landskrona BoIS",
+        "home_team_logo": "https://media.api-sports.io/football/teams/766.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/2176.png",
+        "home_team_id": "766",
+        "away_team_id": "2176"
+    },
+    "weather": {
+        "temperature": 5.14,
+        "feels_like": 0.51,
+        "humidity": 97,
+        "weather_description": "Moderate rain",
+        "wind_speed": 7.54,
+        "rain": 3.97
+    },
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "1.90"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.50"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.70"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.75"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "3.50"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "1.90"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.90"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.05"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "6.50"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.11"
+                },
+                {
+                    "value": "Over 7.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 7.5",
+                    "odd": "1.00"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.03"
+                },
+                {
+                    "value": "Over 6.5",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "Under 6.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Goals Over/Under First Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.75"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.40"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.08"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.36"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "3.00"
+                }
+            ],
+            "Goals Over/Under - Second Half": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "2.00"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.73"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.20"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.05"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.22"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                }
+            ],
+            "Both Teams Score": [
+                {
+                    "value": "Yes",
+                    "odd": "1.75"
+                },
+                {
+                    "value": "No",
+                    "odd": "2.00"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "7.50"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "8.50"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "7.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "12.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "301.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "2:5",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "3:4",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "6:0",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "6:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "6:2",
+                    "odd": "251.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "3:5",
+                    "odd": "401.00"
+                },
+                {
+                    "value": "5:3",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "6:3",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "4:4",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "7:0",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "7:1",
+                    "odd": "501.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "151.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "3.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "6.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "501.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "451.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.28"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.91"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.50"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.20"
+                },
+                {
+                    "value": "Away",
+                    "odd": "4.33"
+                }
+            ],
+            "Total - Home": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "1.91"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.80"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "4.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.22"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.06"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.18"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "Over 4.5",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "Under 4.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 5.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 5.5",
+                    "odd": "1.00"
+                }
+            ],
+            "Total - Away": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "9.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.07"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.01"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.44"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "2.62"
+                }
+            ],
+            "Both Teams Score - First Half": [
+                {
+                    "value": "Yes",
+                    "odd": "4.50"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.18"
+                }
+            ],
+            "Both Teams To Score - Second Half": [
+                {
+                    "value": "Yes",
+                    "odd": "3.25"
+                },
+                {
+                    "value": "No",
+                    "odd": "1.33"
+                }
+            ],
+            "Corners Over Under": [
+                {
+                    "value": "Over 9.5",
+                    "odd": "1.82"
+                },
+                {
+                    "value": "Under 9.5",
+                    "odd": "1.98"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 766,
+                    "name": "Halmstad",
+                    "comment": null
+                },
+                "win_or_draw": false,
+                "under_over": "+1.5",
+                "goals": {
+                    "home": "-5.5",
+                    "away": "-1.5"
+                },
+                "advice": "Combo Winner : Halmstad and +1.5 goals",
+                "percent": {
+                    "home": "45%",
+                    "draw": "45%",
+                    "away": "10%"
+                }
+            },
+            "league": {
+                "id": 115,
+                "name": "Svenska Cupen",
+                "country": "Sweden",
+                "logo": "https://media.api-sports.io/football/leagues/115.png",
+                "flag": "https://media.api-sports.io/flags/se.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 766,
+                    "name": "Halmstad",
+                    "logo": "https://media.api-sports.io/football/teams/766.png",
+                    "last_5": {
+                        "played": 2,
+                        "form": "100%",
+                        "att": "35%",
+                        "def": "100%",
+                        "goals": {
+                            "for": {
+                                "total": 6,
+                                "average": "3.0"
+                            },
+                            "against": {
+                                "total": 0,
+                                "average": "0.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WW",
+                        "fixtures": {
+                            "played": {
+                                "home": 1,
+                                "away": 1,
+                                "total": 2
+                            },
+                            "wins": {
+                                "home": 1,
+                                "away": 1,
+                                "total": 2
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 4,
+                                    "away": 2,
+                                    "total": 6
+                                },
+                                "average": {
+                                    "home": "4.0",
+                                    "away": "2.0",
+                                    "total": "3.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 1,
+                                        "percentage": "16.67%"
+                                    },
+                                    "16-30": {
+                                        "total": 2,
+                                        "percentage": "33.33%"
+                                    },
+                                    "31-45": {
+                                        "total": 1,
+                                        "percentage": "16.67%"
+                                    },
+                                    "46-60": {
+                                        "total": 1,
+                                        "percentage": "16.67%"
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": 1,
+                                        "percentage": "16.67%"
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 2,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 2,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 2,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": "4-0",
+                                "away": "0-2"
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 2
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 1,
+                            "away": 1,
+                            "total": 2
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 2176,
+                    "name": "Landskrona BoIS",
+                    "logo": "https://media.api-sports.io/football/teams/2176.png",
+                    "last_5": {
+                        "played": 2,
+                        "form": "50%",
+                        "att": "12%",
+                        "def": "76%",
+                        "goals": {
+                            "for": {
+                                "total": 2,
+                                "average": "1.0"
+                            },
+                            "against": {
+                                "total": 4,
+                                "average": "2.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WL",
+                        "fixtures": {
+                            "played": {
+                                "home": 0,
+                                "away": 2,
+                                "total": 2
+                            },
+                            "wins": {
+                                "home": 0,
+                                "away": 1,
+                                "total": 1
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 1,
+                                "total": 1
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 2,
+                                    "total": 2
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "1.0",
+                                    "total": "1.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": 2,
+                                        "percentage": "100.00%"
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "1.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 4,
+                                    "total": 4
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "2.0",
+                                    "total": "2.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": 1,
+                                        "percentage": "25.00%"
+                                    },
+                                    "61-75": {
+                                        "total": 2,
+                                        "percentage": "50.00%"
+                                    },
+                                    "76-90": {
+                                        "total": 1,
+                                        "percentage": "25.00%"
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "1.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "2.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 1
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 2
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 1,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": null,
+                                "away": "0-2"
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": "4-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 0,
+                                    "away": 2
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 4
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 0,
+                            "away": 1,
+                            "total": 1
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 1,
+                            "total": 1
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "31-45": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "67%",
+                    "away": "33%"
+                },
+                "att": {
+                    "home": "75%",
+                    "away": "25%"
+                },
+                "def": {
+                    "home": "100%",
+                    "away": "0%"
+                },
+                "poisson_distribution": {
+                    "home": "100%",
+                    "away": "0%"
+                },
+                "h2h": {
+                    "home": "64%",
+                    "away": "36%"
+                },
+                "goals": {
+                    "home": "56%",
+                    "away": "44%"
+                },
+                "total": {
+                    "home": "65.5%",
+                    "away": "34.5%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 829489,
+                        "referee": "T. Olofsson",
+                        "timezone": "UTC",
+                        "date": "2022-07-30T18:00:00+00:00",
+                        "timestamp": 1659204000,
+                        "periods": {
+                            "first": 1659204000,
+                            "second": 1659207600
+                        },
+                        "venue": {
+                            "id": 1512,
+                            "name": "\u00d6rjans Vall",
+                            "city": "Halmstad"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 114,
+                        "name": "Superettan",
+                        "country": "Sweden",
+                        "logo": "https://media.api-sports.io/football/leagues/114.png",
+                        "flag": "https://media.api-sports.io/flags/se.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 16",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 766,
+                            "name": "Halmstad",
+                            "logo": "https://media.api-sports.io/football/teams/766.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 2176,
+                            "name": "Landskrona BoIS",
+                            "logo": "https://media.api-sports.io/football/teams/2176.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 829462,
+                        "referee": "F. Hansson",
+                        "timezone": "UTC",
+                        "date": "2022-07-12T17:00:00+00:00",
+                        "timestamp": 1657645200,
+                        "periods": {
+                            "first": 1657645200,
+                            "second": 1657648800
+                        },
+                        "venue": {
+                            "id": 1936,
+                            "name": "Landskrona Idrottsplats",
+                            "city": "Landskrona"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 114,
+                        "name": "Superettan",
+                        "country": "Sweden",
+                        "logo": "https://media.api-sports.io/football/leagues/114.png",
+                        "flag": "https://media.api-sports.io/flags/se.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 13",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 2176,
+                            "name": "Landskrona BoIS",
+                            "logo": "https://media.api-sports.io/football/teams/2176.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 766,
+                            "name": "Halmstad",
+                            "logo": "https://media.api-sports.io/football/teams/766.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 73551,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2018-09-25T17:00:00+00:00",
+                        "timestamp": 1537894800,
+                        "periods": {
+                            "first": 1537894800,
+                            "second": 1537898400
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "\u00d6rjans Vall (Halmstad)",
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 114,
+                        "name": "Superettan",
+                        "country": "Sweden",
+                        "logo": "https://media.api-sports.io/football/leagues/114.png",
+                        "flag": "https://media.api-sports.io/flags/se.svg",
+                        "season": 2018,
+                        "round": "Regular Season - 24",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 766,
+                            "name": "Halmstad",
+                            "logo": "https://media.api-sports.io/football/teams/766.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 2176,
+                            "name": "Landskrona BoIS",
+                            "logo": "https://media.api-sports.io/football/teams/2176.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 73677,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2018-05-23T17:00:00+00:00",
+                        "timestamp": 1527094800,
+                        "periods": {
+                            "first": 1527094800,
+                            "second": 1527098400
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Landskrona Idrottsplats (Landskrona)",
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 114,
+                        "name": "Superettan",
+                        "country": "Sweden",
+                        "logo": "https://media.api-sports.io/football/leagues/114.png",
+                        "flag": "https://media.api-sports.io/flags/se.svg",
+                        "season": 2018,
+                        "round": "Regular Season - 9",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 2176,
+                            "name": "Landskrona BoIS",
+                            "logo": "https://media.api-sports.io/football/teams/2176.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 766,
+                            "name": "Halmstad",
+                            "logo": "https://media.api-sports.io/football/teams/766.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

@@ -9,7 +9,28 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="shortcut icon" href="{{site.logo.url}}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/1ca4691ddb.js" crossorigin="anonymous"></script>
-
+    <style>
+      .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+      }
+      .alert.success {
+        background-color: #4CAF50;
+      }
+      .alert.info {
+        background-color: #2196F3;
+      }
+      .alert.error {
+        background-color: #f44336;
+      }
+      .alert.warning {
+        background-color: #ff9800;
+      }
+    </style>
+    
 </head>
 <body>
     {% if messages %}
@@ -29,7 +50,7 @@
             </div>
             <div class="sports_selection">
                 
-                     <a href="{% url "square:index" "soccer" %}" class="{% if selected_sport == 'soccer' %}active{% endif %}"><div class="sports_menu">soccer</div></a>
+                     {% comment %} <a href="{% url "square:index" "soccer" %}" class="{% if selected_sport == 'soccer' %}active{% endif %}"><div class="sports_menu">soccer</div></a>
                 
                 
                     <a href="{% url "square:index" "basketball" %}" class="{% if selected_sport == 'basketball' %}active{% endif %}"><div class="sports_menu">basketball</div></a>
@@ -37,24 +58,33 @@
                
                     <a href="{% url "square:index" "tennis" %}" class="{% if selected_sport == 'tennis' %}active{% endif %}">
                         <div class="sports_menu">tennis </div></a>
-                
+                 {% endcomment %}
             </div>
-            <div class="vip">
-                <a href="">VIP</a>
+            <div class="vip"style="border:outset;">
+                <a href="{% url "square:premium" %}"style="text-align:center;color:green;font:bold">premium tips</a>
             </div>
         </div>
         <div class="market_menu">
               {% if menu %}
                   {% for item in menu %}
                       <a href="{% url 'square:index' selected_sport item day %}" style="display:block;"> <div class="market">{{ item }}</div></a>
-                      </div>
                   {% endfor %}
               {% endif %}
         </div>
     </div>
 
     {% block content %}{% endblock content %}
-    <div class="footer"><small>footer</small></div>
+    <div class="footer">
+      <a href="{{ site_info.facebook_link }}" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <i class="fa-brands fa-telegram"></i>
+      <i class="fa-solid fa-envelope"></i>
+      <i class="fa-brands fa-tiktok"></i>
+      <i class="fa-brands fa-square-twitter"></i>
+      
+
+    </div>
    <a href="#hder"><div class="toprar">&uarr;</div></a>
 </body>
 </html>

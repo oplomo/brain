@@ -1,0 +1,817 @@
+{
+    "match_details": {
+        "fixture": "Al-Magd vs Shabab Al-Ghar",
+        "match_id": "1345261",
+        "match_date": "Feb. 24, 2025, 1:30 p.m.",
+        "venue": null,
+        "city": "None",
+        "league_id": "584",
+        "home_team_name": "Al-Magd",
+        "away_team_name": "Shabab Al-Ghar",
+        "home_team_logo": "https://media.api-sports.io/football/teams/25455.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/25456.png",
+        "home_team_id": "25455",
+        "away_team_id": "25456"
+    },
+    "weather": {
+        "temperature": 9.01,
+        "feels_like": 9.01,
+        "humidity": 82,
+        "weather_description": "Overcast clouds",
+        "wind_speed": 0.98,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 25456,
+                    "name": "Shabab Al-Ghar",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-2.5",
+                    "away": "-2.5"
+                },
+                "advice": "Double chance : draw or Shabab Al-Ghar",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 584,
+                "name": "Premier League",
+                "country": "Libya",
+                "logo": "https://media.api-sports.io/football/leagues/584.png",
+                "flag": "https://media.api-sports.io/flags/ly.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 25455,
+                    "name": "Al-Magd",
+                    "logo": "https://media.api-sports.io/football/teams/25455.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "53%",
+                        "att": "58%",
+                        "def": "67%",
+                        "goals": {
+                            "for": {
+                                "total": 7,
+                                "average": "1.4"
+                            },
+                            "against": {
+                                "total": 4,
+                                "average": "0.8"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "LLWWLLLLDDWW",
+                        "fixtures": {
+                            "played": {
+                                "home": 6,
+                                "away": 6,
+                                "total": 12
+                            },
+                            "wins": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            },
+                            "draws": {
+                                "home": 1,
+                                "away": 1,
+                                "total": 2
+                            },
+                            "loses": {
+                                "home": 3,
+                                "away": 3,
+                                "total": 6
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 8,
+                                    "away": 8,
+                                    "total": 16
+                                },
+                                "average": {
+                                    "home": "1.3",
+                                    "away": "1.3",
+                                    "total": "1.3"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 1,
+                                        "percentage": "33.33%"
+                                    },
+                                    "16-30": {
+                                        "total": 1,
+                                        "percentage": "33.33%"
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": 1,
+                                        "percentage": "33.33%"
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 9,
+                                        "under": 3
+                                    },
+                                    "1.5": {
+                                        "over": 4,
+                                        "under": 8
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 10
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 11
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 12
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 8,
+                                    "away": 14,
+                                    "total": 22
+                                },
+                                "average": {
+                                    "home": "1.3",
+                                    "away": "2.3",
+                                    "total": "1.8"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 10,
+                                        "under": 2
+                                    },
+                                    "1.5": {
+                                        "over": 6,
+                                        "under": 6
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 10
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 11
+                                    },
+                                    "4.5": {
+                                        "over": 1,
+                                        "under": 11
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 2,
+                                "draws": 2,
+                                "loses": 4
+                            },
+                            "wins": {
+                                "home": "3-0",
+                                "away": "3-4"
+                            },
+                            "loses": {
+                                "home": "0-2",
+                                "away": "7-1"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 3,
+                                    "away": 4
+                                },
+                                "against": {
+                                    "home": 2,
+                                    "away": 7
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 1,
+                            "away": 1,
+                            "total": 2
+                        },
+                        "failed_to_score": {
+                            "home": 1,
+                            "away": 2,
+                            "total": 3
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 25456,
+                    "name": "Shabab Al-Ghar",
+                    "logo": "https://media.api-sports.io/football/teams/25456.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "60%",
+                        "att": "42%",
+                        "def": "75%",
+                        "goals": {
+                            "for": {
+                                "total": 5,
+                                "average": "1.0"
+                            },
+                            "against": {
+                                "total": 3,
+                                "average": "0.6"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "DWDWDLWDDWD",
+                        "fixtures": {
+                            "played": {
+                                "home": 6,
+                                "away": 5,
+                                "total": 11
+                            },
+                            "wins": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            },
+                            "draws": {
+                                "home": 3,
+                                "away": 3,
+                                "total": 6
+                            },
+                            "loses": {
+                                "home": 1,
+                                "away": 0,
+                                "total": 1
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 6,
+                                    "away": 6,
+                                    "total": 12
+                                },
+                                "average": {
+                                    "home": "1.0",
+                                    "away": "1.2",
+                                    "total": "1.1"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 2,
+                                        "percentage": "20.00%"
+                                    },
+                                    "16-30": {
+                                        "total": 1,
+                                        "percentage": "10.00%"
+                                    },
+                                    "31-45": {
+                                        "total": 2,
+                                        "percentage": "20.00%"
+                                    },
+                                    "46-60": {
+                                        "total": 1,
+                                        "percentage": "10.00%"
+                                    },
+                                    "61-75": {
+                                        "total": 1,
+                                        "percentage": "10.00%"
+                                    },
+                                    "76-90": {
+                                        "total": 3,
+                                        "percentage": "30.00%"
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 8,
+                                        "under": 3
+                                    },
+                                    "1.5": {
+                                        "over": 4,
+                                        "under": 7
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 11
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 11
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 11
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 4,
+                                    "away": 4,
+                                    "total": 8
+                                },
+                                "average": {
+                                    "home": "0.7",
+                                    "away": "0.8",
+                                    "total": "0.7"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": 2,
+                                        "percentage": "40.00%"
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": 2,
+                                        "percentage": "40.00%"
+                                    },
+                                    "61-75": {
+                                        "total": 1,
+                                        "percentage": "20.00%"
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 5,
+                                        "under": 6
+                                    },
+                                    "1.5": {
+                                        "over": 3,
+                                        "under": 8
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 11
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 11
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 11
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 1,
+                                "draws": 2,
+                                "loses": 1
+                            },
+                            "wins": {
+                                "home": "2-0",
+                                "away": "1-2"
+                            },
+                            "loses": {
+                                "home": "1-2",
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 2,
+                                    "away": 2
+                                },
+                                "against": {
+                                    "home": 2,
+                                    "away": 2
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 4,
+                            "away": 2,
+                            "total": 6
+                        },
+                        "failed_to_score": {
+                            "home": 2,
+                            "away": 1,
+                            "total": 3
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 2,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 2
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "47%",
+                    "away": "53%"
+                },
+                "att": {
+                    "home": "58%",
+                    "away": "42%"
+                },
+                "def": {
+                    "home": "43%",
+                    "away": "57%"
+                },
+                "poisson_distribution": {
+                    "home": "32%",
+                    "away": "68%"
+                },
+                "h2h": {
+                    "home": "0%",
+                    "away": "100%"
+                },
+                "goals": {
+                    "home": "0%",
+                    "away": "100%"
+                },
+                "total": {
+                    "home": "45.0%",
+                    "away": "55.0%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1330508,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2025-01-03T13:30:00+00:00",
+                        "timestamp": 1735911000,
+                        "periods": {
+                            "first": 1735911000,
+                            "second": 1735914600
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": null,
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 584,
+                        "name": "Premier League",
+                        "country": "Libya",
+                        "logo": "https://media.api-sports.io/football/leagues/584.png",
+                        "flag": "https://media.api-sports.io/flags/ly.svg",
+                        "season": 2024,
+                        "round": "West - 5",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 25456,
+                            "name": "Shabab Al-Ghar",
+                            "logo": "https://media.api-sports.io/football/teams/25456.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 25455,
+                            "name": "Al-Magd",
+                            "logo": "https://media.api-sports.io/football/teams/25455.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

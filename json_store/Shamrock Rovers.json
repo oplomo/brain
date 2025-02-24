@@ -1,24 +1,24 @@
 {
     "match_details": {
-        "fixture": "Shamrock Rovers vs Molde",
-        "match_id": "1325911",
-        "match_date": "Feb. 20, 2025, 8 p.m.",
+        "fixture": "Shamrock Rovers vs Cork City",
+        "match_id": "1340530",
+        "match_date": "Feb. 23, 2025, 6 p.m.",
         "venue": null,
         "city": "Dublin",
-        "league_id": "848",
+        "league_id": "357",
         "home_team_name": "Shamrock Rovers",
-        "away_team_name": "Molde",
+        "away_team_name": "Cork City",
         "home_team_logo": "https://media.api-sports.io/football/teams/652.png",
-        "away_team_logo": "https://media.api-sports.io/football/teams/329.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/653.png",
         "home_team_id": "652",
-        "away_team_id": "329"
+        "away_team_id": "653"
     },
     "weather": {
-        "temperature": 12.6,
-        "feels_like": 11.46,
-        "humidity": 59,
-        "weather_description": "Clear sky",
-        "wind_speed": 1.99,
+        "temperature": 15.31,
+        "feels_like": 14.31,
+        "humidity": 54,
+        "weather_description": "Broken clouds",
+        "wind_speed": 1.14,
         "rain": 0
     },
     "odds": {
@@ -26,51 +26,51 @@
             "Match Winner": [
                 {
                     "value": "Home",
-                    "odd": "6.00"
+                    "odd": "1.55"
                 },
                 {
                     "value": "Draw",
-                    "odd": "4.00"
+                    "odd": "3.90"
                 },
                 {
                     "value": "Away",
-                    "odd": "1.57"
+                    "odd": "5.00"
                 }
             ],
             "Home/Away": [
                 {
                     "value": "Home",
-                    "odd": "4.33"
+                    "odd": "1.22"
                 },
                 {
                     "value": "Away",
-                    "odd": "1.20"
+                    "odd": "4.00"
                 }
             ],
             "Goals Over/Under": [
                 {
                     "value": "Over 1.5",
-                    "odd": "1.28"
+                    "odd": "1.30"
                 },
                 {
                     "value": "Under 1.5",
-                    "odd": "3.50"
-                },
-                {
-                    "value": "Over 2.5",
-                    "odd": "1.90"
-                },
-                {
-                    "value": "Under 2.5",
-                    "odd": "1.90"
-                },
-                {
-                    "value": "Over 3.5",
                     "odd": "3.40"
                 },
                 {
+                    "value": "Over 2.5",
+                    "odd": "1.95"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.85"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "3.50"
+                },
+                {
                     "value": "Under 3.5",
-                    "odd": "1.30"
+                    "odd": "1.28"
                 },
                 {
                     "value": "Over 0.5",
@@ -82,19 +82,11 @@
                 },
                 {
                     "value": "Over 4.5",
-                    "odd": "6.50"
+                    "odd": "7.00"
                 },
                 {
                     "value": "Under 4.5",
-                    "odd": "1.11"
-                },
-                {
-                    "value": "Over 7.5",
-                    "odd": "51.00"
-                },
-                {
-                    "value": "Under 7.5",
-                    "odd": "1.00"
+                    "odd": "1.10"
                 },
                 {
                     "value": "Over 5.5",
@@ -116,11 +108,11 @@
             "Goals Over/Under First Half": [
                 {
                     "value": "Over 1.5",
-                    "odd": "2.75"
+                    "odd": "3.00"
                 },
                 {
                     "value": "Under 1.5",
-                    "odd": "1.40"
+                    "odd": "1.36"
                 },
                 {
                     "value": "Over 2.5",
@@ -132,7 +124,7 @@
                 },
                 {
                     "value": "Over 3.5",
-                    "odd": "21.00"
+                    "odd": "23.00"
                 },
                 {
                     "value": "Under 3.5",
@@ -150,253 +142,229 @@
             "Goals Over/Under - Second Half": [
                 {
                     "value": "Over 1.5",
-                    "odd": "2.00"
+                    "odd": "2.10"
                 },
                 {
                     "value": "Under 1.5",
-                    "odd": "1.73"
+                    "odd": "1.67"
                 },
                 {
                     "value": "Over 2.5",
-                    "odd": "4.33"
+                    "odd": "4.50"
                 },
                 {
                     "value": "Under 2.5",
-                    "odd": "1.20"
+                    "odd": "1.18"
                 },
                 {
                     "value": "Over 3.5",
-                    "odd": "11.00"
+                    "odd": "13.00"
                 },
                 {
                     "value": "Under 3.5",
-                    "odd": "1.05"
+                    "odd": "1.04"
                 },
                 {
                     "value": "Over 0.5",
-                    "odd": "1.22"
+                    "odd": "1.25"
                 },
                 {
                     "value": "Under 0.5",
-                    "odd": "4.00"
-                },
-                {
-                    "value": "Over 4.5",
-                    "odd": "26.00"
-                },
-                {
-                    "value": "Under 4.5",
-                    "odd": "1.01"
+                    "odd": "3.75"
                 }
             ],
             "Both Teams Score": [
                 {
                     "value": "Yes",
-                    "odd": "1.83"
+                    "odd": "2.00"
                 },
                 {
                     "value": "No",
-                    "odd": "1.83"
+                    "odd": "1.75"
                 }
             ],
             "Exact Score": [
                 {
                     "value": "1:0",
-                    "odd": "15.00"
-                },
-                {
-                    "value": "2:0",
-                    "odd": "29.00"
-                },
-                {
-                    "value": "2:1",
-                    "odd": "19.00"
-                },
-                {
-                    "value": "3:0",
-                    "odd": "67.00"
-                },
-                {
-                    "value": "3:1",
-                    "odd": "41.00"
-                },
-                {
-                    "value": "3:2",
-                    "odd": "41.00"
-                },
-                {
-                    "value": "4:0",
-                    "odd": "201.00"
-                },
-                {
-                    "value": "4:1",
-                    "odd": "101.00"
-                },
-                {
-                    "value": "0:0",
-                    "odd": "11.00"
-                },
-                {
-                    "value": "1:1",
-                    "odd": "7.50"
-                },
-                {
-                    "value": "2:2",
-                    "odd": "17.00"
-                },
-                {
-                    "value": "0:1",
                     "odd": "6.50"
                 },
                 {
-                    "value": "0:2",
-                    "odd": "7.50"
+                    "value": "2:0",
+                    "odd": "7.00"
                 },
                 {
-                    "value": "0:3",
-                    "odd": "12.00"
+                    "value": "2:1",
+                    "odd": "8.50"
                 },
                 {
-                    "value": "1:2",
-                    "odd": "7.50"
+                    "value": "3:0",
+                    "odd": "11.00"
                 },
                 {
-                    "value": "1:3",
+                    "value": "3:1",
                     "odd": "13.00"
                 },
                 {
-                    "value": "2:3",
+                    "value": "3:2",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "4:0",
                     "odd": "23.00"
                 },
                 {
-                    "value": "3:3",
-                    "odd": "51.00"
-                },
-                {
-                    "value": "0:4",
-                    "odd": "23.00"
-                },
-                {
-                    "value": "1:4",
+                    "value": "4:1",
                     "odd": "26.00"
                 },
                 {
-                    "value": "2:4",
-                    "odd": "41.00"
+                    "value": "0:0",
+                    "odd": "10.00"
                 },
                 {
-                    "value": "4:2",
-                    "odd": "126.00"
+                    "value": "1:1",
+                    "odd": "8.00"
                 },
                 {
-                    "value": "0:5",
-                    "odd": "41.00"
+                    "value": "2:2",
+                    "odd": "19.00"
                 },
                 {
-                    "value": "0:6",
-                    "odd": "101.00"
+                    "value": "0:1",
+                    "odd": "13.00"
                 },
                 {
-                    "value": "1:5",
+                    "value": "0:2",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "0:3",
                     "odd": "51.00"
                 },
                 {
-                    "value": "1:6",
-                    "odd": "101.00"
+                    "value": "1:2",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "501.00"
                 },
                 {
                     "value": "2:5",
-                    "odd": "81.00"
-                },
-                {
-                    "value": "2:6",
-                    "odd": "201.00"
+                    "odd": "501.00"
                 },
                 {
                     "value": "3:4",
-                    "odd": "81.00"
-                },
-                {
-                    "value": "5:0",
-                    "odd": "501.00"
-                },
-                {
-                    "value": "5:1",
-                    "odd": "501.00"
-                },
-                {
-                    "value": "5:2",
-                    "odd": "501.00"
-                },
-                {
-                    "value": "6:1",
-                    "odd": "501.00"
-                },
-                {
-                    "value": "4:3",
-                    "odd": "151.00"
-                },
-                {
-                    "value": "3:5",
                     "odd": "201.00"
                 },
                 {
-                    "value": "3:6",
-                    "odd": "501.00"
+                    "value": "5:0",
+                    "odd": "41.00"
                 },
                 {
-                    "value": "4:5",
-                    "odd": "501.00"
+                    "value": "5:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "6:0",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "6:1",
+                    "odd": "101.00"
+                },
+                {
+                    "value": "6:2",
+                    "odd": "201.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "101.00"
                 },
                 {
                     "value": "5:3",
-                    "odd": "501.00"
-                },
-                {
-                    "value": "4:4",
-                    "odd": "301.00"
-                },
-                {
-                    "value": "0:7",
                     "odd": "251.00"
                 },
                 {
-                    "value": "1:7",
+                    "value": "4:4",
+                    "odd": "401.00"
+                },
+                {
+                    "value": "7:0",
                     "odd": "301.00"
+                },
+                {
+                    "value": "7:1",
+                    "odd": "351.00"
+                },
+                {
+                    "value": "7:2",
+                    "odd": "501.00"
                 }
             ],
             "Correct Score - First Half": [
                 {
                     "value": "1:0",
-                    "odd": "7.00"
+                    "odd": "3.50"
                 },
                 {
                     "value": "2:0",
-                    "odd": "29.00"
+                    "odd": "8.00"
                 },
                 {
                     "value": "2:1",
-                    "odd": "34.00"
+                    "odd": "21.00"
                 },
                 {
                     "value": "3:0",
-                    "odd": "101.00"
+                    "odd": "26.00"
                 },
                 {
                     "value": "3:1",
-                    "odd": "126.00"
+                    "odd": "51.00"
                 },
                 {
                     "value": "3:2",
-                    "odd": "251.00"
+                    "odd": "151.00"
                 },
                 {
                     "value": "4:0",
-                    "odd": "501.00"
+                    "odd": "67.00"
                 },
                 {
                     "value": "4:1",
-                    "odd": "501.00"
+                    "odd": "151.00"
                 },
                 {
                     "value": "0:0",
@@ -404,65 +372,53 @@
                 },
                 {
                     "value": "1:1",
-                    "odd": "8.50"
+                    "odd": "9.00"
                 },
                 {
                     "value": "2:2",
-                    "odd": "51.00"
-                },
-                {
-                    "value": "0:1",
-                    "odd": "3.50"
-                },
-                {
-                    "value": "0:2",
-                    "odd": "8.00"
-                },
-                {
-                    "value": "0:3",
-                    "odd": "26.00"
-                },
-                {
-                    "value": "1:2",
-                    "odd": "19.00"
-                },
-                {
-                    "value": "1:3",
-                    "odd": "51.00"
-                },
-                {
-                    "value": "2:3",
-                    "odd": "151.00"
-                },
-                {
-                    "value": "3:3",
-                    "odd": "501.00"
-                },
-                {
-                    "value": "0:4",
                     "odd": "67.00"
                 },
                 {
-                    "value": "1:4",
+                    "value": "0:1",
+                    "odd": "7.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "126.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "1:3",
                     "odd": "151.00"
                 },
                 {
-                    "value": "2:4",
+                    "value": "2:3",
+                    "odd": "301.00"
+                },
+                {
+                    "value": "4:2",
                     "odd": "501.00"
                 },
                 {
-                    "value": "0:5",
-                    "odd": "251.00"
+                    "value": "5:0",
+                    "odd": "301.00"
                 },
                 {
-                    "value": "1:5",
+                    "value": "5:1",
                     "odd": "501.00"
                 }
             ],
             "Double Chance": [
                 {
                     "value": "Home/Draw",
-                    "odd": "2.30"
+                    "odd": "1.14"
                 },
                 {
                     "value": "Home/Away",
@@ -470,13 +426,13 @@
                 },
                 {
                     "value": "Draw/Away",
-                    "odd": "1.12"
+                    "odd": "2.25"
                 }
             ],
             "First Half Winner": [
                 {
                     "value": "Home",
-                    "odd": "5.50"
+                    "odd": "2.20"
                 },
                 {
                     "value": "Draw",
@@ -484,52 +440,10 @@
                 },
                 {
                     "value": "Away",
-                    "odd": "2.25"
+                    "odd": "6.00"
                 }
             ],
             "Total - Home": [
-                {
-                    "value": "Over 1.5",
-                    "odd": "4.33"
-                },
-                {
-                    "value": "Under 1.5",
-                    "odd": "1.20"
-                },
-                {
-                    "value": "Over 2.5",
-                    "odd": "15.00"
-                },
-                {
-                    "value": "Under 2.5",
-                    "odd": "1.03"
-                },
-                {
-                    "value": "Over 3.5",
-                    "odd": "41.00"
-                },
-                {
-                    "value": "Under 3.5",
-                    "odd": "1.00"
-                },
-                {
-                    "value": "Over 0.5",
-                    "odd": "1.62"
-                },
-                {
-                    "value": "Under 0.5",
-                    "odd": "2.20"
-                },
-                {
-                    "value": "Over 4.5",
-                    "odd": "51.00"
-                },
-                {
-                    "value": "Under 4.5",
-                    "odd": "1.00"
-                }
-            ],
-            "Total - Away": [
                 {
                     "value": "Over 1.5",
                     "odd": "1.73"
@@ -556,11 +470,11 @@
                 },
                 {
                     "value": "Over 0.5",
-                    "odd": "1.14"
+                    "odd": "1.17"
                 },
                 {
                     "value": "Under 0.5",
-                    "odd": "5.50"
+                    "odd": "5.00"
                 },
                 {
                     "value": "Over 4.5",
@@ -572,75 +486,75 @@
                 },
                 {
                     "value": "Over 5.5",
-                    "odd": "41.00"
+                    "odd": "51.00"
                 },
                 {
                     "value": "Under 5.5",
                     "odd": "1.00"
                 }
             ],
+            "Total - Away": [
+                {
+                    "value": "Over 1.5",
+                    "odd": "4.33"
+                },
+                {
+                    "value": "Under 1.5",
+                    "odd": "1.20"
+                },
+                {
+                    "value": "Over 2.5",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "1.03"
+                },
+                {
+                    "value": "Over 3.5",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "Under 3.5",
+                    "odd": "1.00"
+                },
+                {
+                    "value": "Over 0.5",
+                    "odd": "1.67"
+                },
+                {
+                    "value": "Under 0.5",
+                    "odd": "2.10"
+                }
+            ],
             "Both Teams Score - First Half": [
                 {
                     "value": "Yes",
-                    "odd": "5.00"
+                    "odd": "5.50"
                 },
                 {
                     "value": "No",
-                    "odd": "1.17"
+                    "odd": "1.14"
                 }
             ],
             "Both Teams To Score - Second Half": [
                 {
                     "value": "Yes",
-                    "odd": "3.50"
+                    "odd": "3.75"
                 },
                 {
                     "value": "No",
-                    "odd": "1.28"
+                    "odd": "1.25"
                 }
             ],
             "Corners Over Under": [
                 {
                     "value": "Over 9.5",
-                    "odd": "1.80"
+                    "odd": "1.85"
                 },
                 {
                     "value": "Under 9.5",
-                    "odd": "2.00"
-                },
-                {
-                    "value": "Over 10",
-                    "odd": "1.90"
-                },
-                {
-                    "value": "Under 10",
-                    "odd": "1.90"
-                },
-                {
-                    "value": "Over 10.5",
-                    "odd": "2.10"
-                },
-                {
-                    "value": "Under 10.5",
-                    "odd": "1.67"
-                }
-            ],
-            "Cards Over/Under": [
-                {
-                    "value": "Under 5.0",
-                    "odd": "2.15"
-                },
-                {
-                    "value": "Over 5.0",
-                    "odd": "1.68"
-                },
-                {
-                    "value": "Over 5.5",
-                    "odd": "1.75"
-                },
-                {
-                    "value": "Under 5.5",
-                    "odd": "2.05"
+                    "odd": "1.95"
                 }
             ]
         }
@@ -660,15 +574,15 @@
                 "winner": {
                     "id": 652,
                     "name": "Shamrock Rovers",
-                    "comment": null
+                    "comment": "Win or draw"
                 },
-                "win_or_draw": false,
+                "win_or_draw": true,
                 "under_over": null,
                 "goals": {
-                    "home": "-3.5",
-                    "away": "-1.5"
+                    "home": null,
+                    "away": "-2.5"
                 },
-                "advice": "Winner : Shamrock Rovers",
+                "advice": "Double chance : Shamrock Rovers or draw",
                 "percent": {
                     "home": "45%",
                     "draw": "45%",
@@ -676,12 +590,12 @@
                 }
             },
             "league": {
-                "id": 848,
-                "name": "UEFA Europa Conference League",
-                "country": "World",
-                "logo": "https://media.api-sports.io/football/leagues/848.png",
-                "flag": null,
-                "season": 2024
+                "id": 357,
+                "name": "Premier Division",
+                "country": "Ireland",
+                "logo": "https://media.api-sports.io/football/leagues/357.png",
+                "flag": "https://media.api-sports.io/flags/ie.svg",
+                "season": 2025
             },
             "teams": {
                 "home": {
@@ -689,38 +603,38 @@
                     "name": "Shamrock Rovers",
                     "logo": "https://media.api-sports.io/football/teams/652.png",
                     "last_5": {
-                        "played": 5,
-                        "form": "67%",
-                        "att": "80%",
-                        "def": "30%",
+                        "played": 1,
+                        "form": "0%",
+                        "att": "0%",
+                        "def": "89%",
                         "goals": {
                             "for": {
-                                "total": 8,
-                                "average": "1.6"
+                                "total": 0,
+                                "average": "0.0"
                             },
                             "against": {
-                                "total": 7,
-                                "average": "1.4"
+                                "total": 1,
+                                "average": "1.0"
                             }
                         }
                     },
                     "league": {
-                        "form": "DWWDWLW",
+                        "form": "L",
                         "fixtures": {
                             "played": {
-                                "home": 3,
-                                "away": 4,
-                                "total": 7
+                                "home": 0,
+                                "away": 1,
+                                "total": 1
                             },
                             "wins": {
-                                "home": 2,
-                                "away": 2,
-                                "total": 4
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
                             },
                             "draws": {
-                                "home": 1,
-                                "away": 1,
-                                "total": 2
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
                             },
                             "loses": {
                                 "home": 0,
@@ -731,43 +645,43 @@
                         "goals": {
                             "for": {
                                 "total": {
-                                    "home": 6,
-                                    "away": 7,
-                                    "total": 13
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
                                 },
                                 "average": {
-                                    "home": "2.0",
-                                    "away": "1.8",
-                                    "total": "1.9"
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
                                 },
                                 "minute": {
                                     "0-15": {
-                                        "total": 2,
-                                        "percentage": "16.67%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "16-30": {
-                                        "total": 3,
-                                        "percentage": "25.00%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "31-45": {
-                                        "total": 1,
-                                        "percentage": "8.33%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "46-60": {
-                                        "total": 4,
-                                        "percentage": "33.33%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "61-75": {
-                                        "total": 1,
-                                        "percentage": "8.33%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "76-90": {
                                         "total": null,
                                         "percentage": null
                                     },
                                     "91-105": {
-                                        "total": 1,
-                                        "percentage": "8.33%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "106-120": {
                                         "total": null,
@@ -776,54 +690,54 @@
                                 },
                                 "under_over": {
                                     "0.5": {
-                                        "over": 7,
-                                        "under": 0
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "1.5": {
-                                        "over": 3,
-                                        "under": 4
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "2.5": {
-                                        "over": 2,
-                                        "under": 5
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "3.5": {
-                                        "over": 1,
-                                        "under": 6
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "4.5": {
                                         "over": 0,
-                                        "under": 7
+                                        "under": 1
                                     }
                                 }
                             },
                             "against": {
                                 "total": {
-                                    "home": 2,
-                                    "away": 7,
-                                    "total": 9
+                                    "home": 0,
+                                    "away": 1,
+                                    "total": 1
                                 },
                                 "average": {
-                                    "home": "0.7",
-                                    "away": "1.8",
-                                    "total": "1.3"
+                                    "home": "0.0",
+                                    "away": "1.0",
+                                    "total": "1.0"
                                 },
                                 "minute": {
                                     "0-15": {
-                                        "total": 2,
-                                        "percentage": "20.00%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "16-30": {
-                                        "total": 2,
-                                        "percentage": "20.00%"
+                                        "total": 1,
+                                        "percentage": "100.00%"
                                     },
                                     "31-45": {
-                                        "total": 2,
-                                        "percentage": "20.00%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "46-60": {
-                                        "total": 4,
-                                        "percentage": "40.00%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "61-75": {
                                         "total": null,
@@ -844,62 +758,62 @@
                                 },
                                 "under_over": {
                                     "0.5": {
-                                        "over": 5,
-                                        "under": 2
+                                        "over": 1,
+                                        "under": 0
                                     },
                                     "1.5": {
-                                        "over": 1,
-                                        "under": 6
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "2.5": {
-                                        "over": 1,
-                                        "under": 6
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "3.5": {
-                                        "over": 1,
-                                        "under": 6
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "4.5": {
-                                        "over": 1,
-                                        "under": 6
+                                        "over": 0,
+                                        "under": 1
                                     }
                                 }
                             }
                         },
                         "biggest": {
                             "streak": {
-                                "wins": 2,
-                                "draws": 1,
+                                "wins": 0,
+                                "draws": 0,
                                 "loses": 1
                             },
                             "wins": {
-                                "home": "3-0",
-                                "away": "1-4"
+                                "home": null,
+                                "away": null
                             },
                             "loses": {
                                 "home": null,
-                                "away": "5-1"
+                                "away": "1-0"
                             },
                             "goals": {
                                 "for": {
-                                    "home": 3,
-                                    "away": 4
+                                    "home": 0,
+                                    "away": 0
                                 },
                                 "against": {
-                                    "home": 1,
-                                    "away": 5
+                                    "home": 0,
+                                    "away": 1
                                 }
                             }
                         },
                         "clean_sheet": {
-                            "home": 1,
-                            "away": 1,
-                            "total": 2
-                        },
-                        "failed_to_score": {
                             "home": 0,
                             "away": 0,
                             "total": 0
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 1,
+                            "total": 1
                         },
                         "penalty": {
                             "scored": {
@@ -914,47 +828,39 @@
                         },
                         "lineups": [
                             {
-                                "formation": "3-5-2",
-                                "played": 4
-                            },
-                            {
-                                "formation": "3-4-2-1",
-                                "played": 2
-                            },
-                            {
-                                "formation": "5-3-2",
+                                "formation": "5-4-1",
                                 "played": 1
                             }
                         ],
                         "cards": {
                             "yellow": {
                                 "0-15": {
+                                    "total": 2,
+                                    "percentage": "100.00%"
+                                },
+                                "16-30": {
                                     "total": null,
                                     "percentage": null
                                 },
-                                "16-30": {
-                                    "total": 3,
-                                    "percentage": "16.67%"
-                                },
                                 "31-45": {
-                                    "total": 4,
-                                    "percentage": "22.22%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "46-60": {
-                                    "total": 2,
-                                    "percentage": "11.11%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "61-75": {
-                                    "total": 4,
-                                    "percentage": "22.22%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "76-90": {
-                                    "total": 2,
-                                    "percentage": "11.11%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "91-105": {
-                                    "total": 3,
-                                    "percentage": "16.67%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "106-120": {
                                     "total": null,
@@ -975,8 +881,8 @@
                                     "percentage": null
                                 },
                                 "46-60": {
-                                    "total": 1,
-                                    "percentage": "100.00%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "61-75": {
                                     "total": null,
@@ -999,89 +905,89 @@
                     }
                 },
                 "away": {
-                    "id": 329,
-                    "name": "Molde",
-                    "logo": "https://media.api-sports.io/football/teams/329.png",
+                    "id": 653,
+                    "name": "Cork City",
+                    "logo": "https://media.api-sports.io/football/teams/653.png",
                     "last_5": {
-                        "played": 5,
-                        "form": "27%",
-                        "att": "60%",
-                        "def": "0%",
+                        "played": 1,
+                        "form": "33%",
+                        "att": "22%",
+                        "def": "78%",
                         "goals": {
                             "for": {
-                                "total": 6,
-                                "average": "1.2"
+                                "total": 2,
+                                "average": "2.0"
                             },
                             "against": {
-                                "total": 10,
+                                "total": 2,
                                 "average": "2.0"
                             }
                         }
                     },
                     "league": {
-                        "form": "WLLLDWL",
+                        "form": "D",
                         "fixtures": {
                             "played": {
-                                "home": 4,
-                                "away": 3,
-                                "total": 7
+                                "home": 1,
+                                "away": 0,
+                                "total": 1
                             },
                             "wins": {
-                                "home": 2,
+                                "home": 0,
                                 "away": 0,
-                                "total": 2
+                                "total": 0
                             },
                             "draws": {
-                                "home": 0,
-                                "away": 1,
+                                "home": 1,
+                                "away": 0,
                                 "total": 1
                             },
                             "loses": {
-                                "home": 2,
-                                "away": 2,
-                                "total": 4
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
                             }
                         },
                         "goals": {
                             "for": {
                                 "total": {
-                                    "home": 7,
-                                    "away": 3,
-                                    "total": 10
+                                    "home": 2,
+                                    "away": 0,
+                                    "total": 2
                                 },
                                 "average": {
-                                    "home": "1.8",
-                                    "away": "1.0",
-                                    "total": "1.4"
+                                    "home": "2.0",
+                                    "away": "0.0",
+                                    "total": "2.0"
                                 },
                                 "minute": {
                                     "0-15": {
-                                        "total": 1,
-                                        "percentage": "11.11%"
-                                    },
-                                    "16-30": {
-                                        "total": 2,
-                                        "percentage": "22.22%"
-                                    },
-                                    "31-45": {
                                         "total": null,
                                         "percentage": null
                                     },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": 1,
+                                        "percentage": "50.00%"
+                                    },
                                     "46-60": {
                                         "total": 1,
-                                        "percentage": "11.11%"
+                                        "percentage": "50.00%"
                                     },
                                     "61-75": {
-                                        "total": 1,
-                                        "percentage": "11.11%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "76-90": {
-                                        "total": 2,
-                                        "percentage": "22.22%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "91-105": {
-                                        "total": 2,
-                                        "percentage": "22.22%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "106-120": {
                                         "total": null,
@@ -1090,66 +996,66 @@
                                 },
                                 "under_over": {
                                     "0.5": {
-                                        "over": 4,
-                                        "under": 3
+                                        "over": 1,
+                                        "under": 0
                                     },
                                     "1.5": {
-                                        "over": 3,
-                                        "under": 4
+                                        "over": 1,
+                                        "under": 0
                                     },
                                     "2.5": {
-                                        "over": 2,
-                                        "under": 5
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "3.5": {
-                                        "over": 1,
-                                        "under": 6
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "4.5": {
                                         "over": 0,
-                                        "under": 7
+                                        "under": 1
                                     }
                                 }
                             },
                             "against": {
                                 "total": {
-                                    "home": 5,
-                                    "away": 7,
-                                    "total": 12
+                                    "home": 2,
+                                    "away": 0,
+                                    "total": 2
                                 },
                                 "average": {
-                                    "home": "1.3",
-                                    "away": "2.3",
-                                    "total": "1.7"
+                                    "home": "2.0",
+                                    "away": "0.0",
+                                    "total": "2.0"
                                 },
                                 "minute": {
                                     "0-15": {
-                                        "total": 2,
-                                        "percentage": "15.38%"
-                                    },
-                                    "16-30": {
-                                        "total": 1,
-                                        "percentage": "7.69%"
-                                    },
-                                    "31-45": {
-                                        "total": 3,
-                                        "percentage": "23.08%"
-                                    },
-                                    "46-60": {
-                                        "total": 3,
-                                        "percentage": "23.08%"
-                                    },
-                                    "61-75": {
-                                        "total": 2,
-                                        "percentage": "15.38%"
-                                    },
-                                    "76-90": {
                                         "total": null,
                                         "percentage": null
                                     },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": 1,
+                                        "percentage": "50.00%"
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": 1,
+                                        "percentage": "50.00%"
+                                    },
                                     "91-105": {
-                                        "total": 2,
-                                        "percentage": "15.38%"
+                                        "total": null,
+                                        "percentage": null
                                     },
                                     "106-120": {
                                         "total": null,
@@ -1158,62 +1064,62 @@
                                 },
                                 "under_over": {
                                     "0.5": {
-                                        "over": 6,
-                                        "under": 1
+                                        "over": 1,
+                                        "under": 0
                                     },
                                     "1.5": {
-                                        "over": 4,
-                                        "under": 3
+                                        "over": 1,
+                                        "under": 0
                                     },
                                     "2.5": {
-                                        "over": 2,
-                                        "under": 5
+                                        "over": 0,
+                                        "under": 1
                                     },
                                     "3.5": {
                                         "over": 0,
-                                        "under": 7
+                                        "under": 1
                                     },
                                     "4.5": {
                                         "over": 0,
-                                        "under": 7
+                                        "under": 1
                                     }
                                 }
                             }
                         },
                         "biggest": {
                             "streak": {
-                                "wins": 1,
+                                "wins": 0,
                                 "draws": 1,
-                                "loses": 3
+                                "loses": 0
                             },
                             "wins": {
-                                "home": "3-0",
+                                "home": null,
                                 "away": null
                             },
                             "loses": {
-                                "home": "0-1",
-                                "away": "3-0"
+                                "home": null,
+                                "away": null
                             },
                             "goals": {
                                 "for": {
-                                    "home": 4,
-                                    "away": 2
+                                    "home": 2,
+                                    "away": 0
                                 },
                                 "against": {
-                                    "home": 3,
-                                    "away": 3
+                                    "home": 2,
+                                    "away": 0
                                 }
                             }
                         },
                         "clean_sheet": {
-                            "home": 1,
+                            "home": 0,
                             "away": 0,
-                            "total": 1
+                            "total": 0
                         },
                         "failed_to_score": {
-                            "home": 2,
-                            "away": 1,
-                            "total": 3
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
                         },
                         "penalty": {
                             "scored": {
@@ -1228,47 +1134,35 @@
                         },
                         "lineups": [
                             {
-                                "formation": "3-5-2",
-                                "played": 3
-                            },
-                            {
-                                "formation": "4-4-2",
-                                "played": 2
-                            },
-                            {
-                                "formation": "5-3-2",
-                                "played": 1
-                            },
-                            {
-                                "formation": "4-2-3-1",
+                                "formation": "4-3-3",
                                 "played": 1
                             }
                         ],
                         "cards": {
                             "yellow": {
                                 "0-15": {
-                                    "total": 1,
-                                    "percentage": "7.14%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "16-30": {
-                                    "total": 1,
-                                    "percentage": "7.14%"
+                                    "total": 2,
+                                    "percentage": "40.00%"
                                 },
                                 "31-45": {
-                                    "total": 4,
-                                    "percentage": "28.57%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "46-60": {
-                                    "total": 3,
-                                    "percentage": "21.43%"
+                                    "total": 2,
+                                    "percentage": "40.00%"
                                 },
                                 "61-75": {
-                                    "total": 2,
-                                    "percentage": "14.29%"
+                                    "total": 1,
+                                    "percentage": "20.00%"
                                 },
                                 "76-90": {
-                                    "total": 3,
-                                    "percentage": "21.43%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "91-105": {
                                     "total": null,
@@ -1289,8 +1183,8 @@
                                     "percentage": null
                                 },
                                 "31-45": {
-                                    "total": 1,
-                                    "percentage": "100.00%"
+                                    "total": null,
+                                    "percentage": null
                                 },
                                 "46-60": {
                                     "total": null,
@@ -1319,85 +1213,85 @@
             },
             "comparison": {
                 "form": {
-                    "home": "71%",
-                    "away": "29%"
+                    "home": "0%",
+                    "away": "100%"
                 },
                 "att": {
-                    "home": "57%",
-                    "away": "43%"
+                    "home": "0%",
+                    "away": "100%"
                 },
                 "def": {
-                    "home": "59%",
-                    "away": "41%"
+                    "home": "67%",
+                    "away": "33%"
                 },
                 "poisson_distribution": {
-                    "home": "82%",
-                    "away": "18%"
+                    "home": "0%",
+                    "away": "0%"
                 },
                 "h2h": {
-                    "home": "33%",
-                    "away": "67%"
+                    "home": "62%",
+                    "away": "38%"
                 },
                 "goals": {
-                    "home": "17%",
-                    "away": "83%"
+                    "home": "60%",
+                    "away": "40%"
                 },
                 "total": {
-                    "home": "53.2%",
-                    "away": "46.8%"
+                    "home": "63.0%",
+                    "away": "37.0%"
                 }
             },
             "h2h": [
                 {
                     "fixture": {
-                        "id": 1325910,
-                        "referee": "A. Treimanis",
+                        "id": 1002687,
+                        "referee": "R. Hennessy",
                         "timezone": "UTC",
-                        "date": "2025-02-13T17:45:00+00:00",
-                        "timestamp": 1739468700,
+                        "date": "2023-10-30T16:45:00+00:00",
+                        "timestamp": 1698684300,
                         "periods": {
-                            "first": 1739468700,
-                            "second": 1739472300
+                            "first": 1698684300,
+                            "second": 1698687900
                         },
                         "venue": {
-                            "id": 1184,
-                            "name": "Aker Stadion",
-                            "city": "Molde"
+                            "id": 863,
+                            "name": "Turner's Cross",
+                            "city": "Cork"
                         },
                         "status": {
                             "long": "Match Finished",
                             "short": "FT",
                             "elapsed": 90,
-                            "extra": 6
+                            "extra": null
                         }
                     },
                     "league": {
-                        "id": 848,
-                        "name": "UEFA Europa Conference League",
-                        "country": "World",
-                        "logo": "https://media.api-sports.io/football/leagues/848.png",
-                        "flag": null,
-                        "season": 2024,
-                        "round": "Knockout Round Play-offs",
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 33",
                         "standings": true
                     },
                     "teams": {
                         "home": {
-                            "id": 329,
-                            "name": "Molde",
-                            "logo": "https://media.api-sports.io/football/teams/329.png",
-                            "winner": false
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": null
                         },
                         "away": {
                             "id": 652,
                             "name": "Shamrock Rovers",
                             "logo": "https://media.api-sports.io/football/teams/652.png",
-                            "winner": true
+                            "winner": null
                         }
                     },
                     "goals": {
                         "home": 0,
-                        "away": 1
+                        "away": 0
                     },
                     "score": {
                         "halftime": {
@@ -1406,7 +1300,7 @@
                         },
                         "fulltime": {
                             "home": 0,
-                            "away": 1
+                            "away": 0
                         },
                         "extratime": {
                             "home": null,
@@ -1420,14 +1314,14 @@
                 },
                 {
                     "fixture": {
-                        "id": 946718,
-                        "referee": "D. Bel",
+                        "id": 1002655,
+                        "referee": "D. McGraith",
                         "timezone": "UTC",
-                        "date": "2022-10-13T19:00:00+00:00",
-                        "timestamp": 1665687600,
+                        "date": "2023-08-06T17:00:00+00:00",
+                        "timestamp": 1691341200,
                         "periods": {
-                            "first": 1665687600,
-                            "second": 1665691200
+                            "first": 1691341200,
+                            "second": 1691344800
                         },
                         "venue": {
                             "id": 865,
@@ -1442,13 +1336,13 @@
                         }
                     },
                     "league": {
-                        "id": 848,
-                        "name": "UEFA Europa Conference League",
-                        "country": "World",
-                        "logo": "https://media.api-sports.io/football/leagues/848.png",
-                        "flag": null,
-                        "season": 2022,
-                        "round": "Group Stage - 4",
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 26",
                         "standings": true
                     },
                     "teams": {
@@ -1456,27 +1350,27 @@
                             "id": 652,
                             "name": "Shamrock Rovers",
                             "logo": "https://media.api-sports.io/football/teams/652.png",
-                            "winner": false
+                            "winner": true
                         },
                         "away": {
-                            "id": 329,
-                            "name": "Molde",
-                            "logo": "https://media.api-sports.io/football/teams/329.png",
-                            "winner": true
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": false
                         }
                     },
                     "goals": {
-                        "home": 0,
-                        "away": 2
+                        "home": 2,
+                        "away": 1
                     },
                     "score": {
                         "halftime": {
-                            "home": 0,
+                            "home": 1,
                             "away": 1
                         },
                         "fulltime": {
-                            "home": 0,
-                            "away": 2
+                            "home": 2,
+                            "away": 1
                         },
                         "extratime": {
                             "home": null,
@@ -1490,19 +1384,19 @@
                 },
                 {
                     "fixture": {
-                        "id": 946694,
-                        "referee": "M. Milanovi\u0107",
+                        "id": 1002608,
+                        "referee": "S. Grant",
                         "timezone": "UTC",
-                        "date": "2022-10-06T16:45:00+00:00",
-                        "timestamp": 1665074700,
+                        "date": "2023-05-26T18:45:00+00:00",
+                        "timestamp": 1685126700,
                         "periods": {
-                            "first": 1665074700,
-                            "second": 1665078300
+                            "first": 1685126700,
+                            "second": 1685130300
                         },
                         "venue": {
-                            "id": 1184,
-                            "name": "Aker Stadion",
-                            "city": "Molde"
+                            "id": 863,
+                            "name": "Turner's Cross",
+                            "city": "Cork"
                         },
                         "status": {
                             "long": "Match Finished",
@@ -1512,20 +1406,20 @@
                         }
                     },
                     "league": {
-                        "id": 848,
-                        "name": "UEFA Europa Conference League",
-                        "country": "World",
-                        "logo": "https://media.api-sports.io/football/leagues/848.png",
-                        "flag": null,
-                        "season": 2022,
-                        "round": "Group Stage - 3",
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 17",
                         "standings": true
                     },
                     "teams": {
                         "home": {
-                            "id": 329,
-                            "name": "Molde",
-                            "logo": "https://media.api-sports.io/football/teams/329.png",
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
                             "winner": true
                         },
                         "away": {
@@ -1536,8 +1430,218 @@
                         }
                     },
                     "goals": {
-                        "home": 3,
+                        "home": 1,
                         "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1002546,
+                        "referee": "R. Harvey",
+                        "timezone": "UTC",
+                        "date": "2023-03-06T20:00:00+00:00",
+                        "timestamp": 1678132800,
+                        "periods": {
+                            "first": 1678132800,
+                            "second": 1678136400
+                        },
+                        "venue": {
+                            "id": 865,
+                            "name": "Tallaght Stadium",
+                            "city": "Dublin"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 4",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 4,
+                        "away": 4
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 4,
+                            "away": 4
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 311712,
+                        "referee": "R. Matthews",
+                        "timezone": "UTC",
+                        "date": "2020-09-12T13:00:00+00:00",
+                        "timestamp": 1599915600,
+                        "periods": {
+                            "first": 1599915600,
+                            "second": 1599919200
+                        },
+                        "venue": {
+                            "id": 863,
+                            "name": "Turner's Cross",
+                            "city": "Cork"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 11",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 3
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 3
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 588991,
+                        "referee": "N. Doyle",
+                        "timezone": "UTC",
+                        "date": "2020-08-31T16:45:00+00:00",
+                        "timestamp": 1598892300,
+                        "periods": {
+                            "first": 1598892300,
+                            "second": 1598895900
+                        },
+                        "venue": {
+                            "id": 865,
+                            "name": "Tallaght Stadium",
+                            "city": "Dublin"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 359,
+                        "name": "FAI Cup",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/359.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2020,
+                        "round": "2nd Round",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 1
                     },
                     "score": {
                         "halftime": {
@@ -1545,7 +1649,287 @@
                             "away": 0
                         },
                         "fulltime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 311670,
+                        "referee": "S. Grant",
+                        "timezone": "UTC",
+                        "date": "2020-02-21T20:00:00+00:00",
+                        "timestamp": 1582315200,
+                        "periods": {
+                            "first": 1582315200,
+                            "second": 1582318800
+                        },
+                        "venue": {
+                            "id": 865,
+                            "name": "Tallaght Stadium",
+                            "city": "Dublin"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2020,
+                        "round": "Regular Season - 2",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 6,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 6,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 133709,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2019-10-25T18:45:00+00:00",
+                        "timestamp": 1572029100,
+                        "periods": {
+                            "first": 1572029100,
+                            "second": 1572032700
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Tallaght Stadium",
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2019,
+                        "round": "Regular Season - 36",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 3,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "fulltime": {
                             "home": 3,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 133661,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2019-07-28T15:00:00+00:00",
+                        "timestamp": 1564326000,
+                        "periods": {
+                            "first": 1564326000,
+                            "second": 1564329600
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Turner's Cross (Cork)",
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2019,
+                        "round": "Regular Season - 27",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 133620,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2019-05-24T19:00:00+00:00",
+                        "timestamp": 1558724400,
+                        "periods": {
+                            "first": 1558724400,
+                            "second": 1558728000
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Tallaght Stadium (Dublin)",
+                            "city": null
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 357,
+                        "name": "Premier Division",
+                        "country": "Ireland",
+                        "logo": "https://media.api-sports.io/football/leagues/357.png",
+                        "flag": "https://media.api-sports.io/flags/ie.svg",
+                        "season": 2019,
+                        "round": "Regular Season - 18",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 652,
+                            "name": "Shamrock Rovers",
+                            "logo": "https://media.api-sports.io/football/teams/652.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 653,
+                            "name": "Cork City",
+                            "logo": "https://media.api-sports.io/football/teams/653.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
                             "away": 0
                         },
                         "extratime": {

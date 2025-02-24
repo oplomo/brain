@@ -65,6 +65,7 @@ def index(request, selected=None, item=None, day="today"):
     if selected == "soccer":
         matches = FootballPrediction.objects.select_related("match").filter(
             match__sport__name="soccer",
+            match__is_premium=False,
             match__match_date__date__range=[start_date, end_date],
         )
 
@@ -1560,3 +1561,86 @@ def update_matches_with_fixtures(request):
         "matches_fixtures_list.html",
         {"matches": matches, "fixtures": fixtures},
     )
+
+
+today = timezone.now().date()
+
+
+def premium(request):
+    matches = Match.objects.filter(is_premium=True).prefetch_related(
+        "footballprediction_set"
+    )
+
+    # Process matches based on gold_bar field
+    match_context = []
+    for match in matches:
+        football = get_object_or_404(FootballPrediction, match=match)
+
+        if match.gold_bar == "gg":
+            description = "both teams to score"
+            prediction = get_prediction_bts(football)
+            odds = get_odds_bts(football)
+
+        elif match.gold_bar == "three_way":
+            description = "team to win"
+            prediction = get_prediction(football, football.match.sport.name)
+            odds = get_odds(
+                football, football.match.sport.name
+            )  # Added odds assignment
+
+        elif match.gold_bar == "ov":
+            description = "total goals"
+            prediction = get_prediction_ov(football)
+            odds = get_odds_ov(football)
+
+        else:
+            description = ""
+            prediction = None
+            odds = None  # Changed from "----" for consistency
+
+        match_context.append(
+            {
+                "matches": match,
+                "description": description,
+                "prediction": prediction,
+                "odds": odds,
+            }
+        )
+
+    return render(request, "public/premium.html", {"matches": match_context})
+
+
+from django.db.models import Q
+
+
+def destroy_premium(request):
+    # Update all premium matches to set is_premium to False
+    updated_count = Match.objects.filter(is_premium=True).update(is_premium=False)
+
+    # Add a success message
+    if updated_count > 0:
+        messages.success(
+            request, f"{updated_count} premium match(es) removed successfully."
+        )
+    else:
+        messages.info(request, "No premium matches were found to remove.")
+
+    # Redirect to the home page
+    return redirect("square:index")
+
+
+def recreate_premium(request):
+    # Update matches where gold_bar is not "N/A" to set is_premium to True
+    updated_count = Match.objects.filter(~Q(gold_bar="N/A")).update(is_premium=True)
+
+    # Add success or info message based on the update result
+    if updated_count > 0:
+        messages.success(
+            request, f"{updated_count} premium match(es) recreated successfully."
+        )
+    else:
+        messages.info(request, "No matches available for premium recreation.")
+
+    # Redirect to the home page
+    return redirect("square:index")
+

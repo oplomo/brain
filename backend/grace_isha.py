@@ -967,144 +967,6 @@ class analyze_data:
             else None
         )
 
-        def premium_three_way(home, away, home_odd, away_odd):
-            home_odd = float(home_odd)
-            away_odd = float(away_odd)
-            home_diff = home - away
-            away_diff = away - home
-
-            if (
-                home_diff > 0.7
-                and away < 0.4
-                and (away_odd - home_odd) > 2
-                and home_odd > 1.4
-            ) or (
-                away_diff > 1
-                and home < 0.4
-                and (home_odd - away_odd) > 2.5
-                and away_odd > 1.4
-            ):
-                return True
-            else:
-                return False
-
-        try:
-            is_premium_three = premium_three_way(
-                odds_prediction["home_final_mean"],
-                odds_prediction["away_final_mean"],
-                self.team_1_win_odds,
-                self.team_2_win_odds,
-            )
-        except KeyError as e:
-            print(f"KeyError: Missing key {e} in odds_prediction.")
-        except TypeError as e:
-            print(f"TypeError: Invalid type in premium_three_way call - {e}.")
-        except Exception as e:
-            print(f"Unexpected error in premium_three_way: {e}")
-            is_premium_three = None
-
-        if is_premium_three:
-            self.is_premium["where"] = "three_way"
-
-        def is_premium_bts(home, away, home_odd, draw_odd, away_odd, gg_odd, no_gg_odd):
-            home_odd = float(home_odd)
-            draw_odd = float(draw_odd)
-            away_odd = float(away_odd)
-            gg_odd = float(gg_odd)
-            no_gg_odd = float(no_gg_odd)
-            # Condition 1: Both home and away > 0.75, draw_odd is lowest, gg_odd > no_gg_odd and > 1.5
-            condition_one = (
-                home > 0.75
-                and away > 0.75
-                and draw_odd < home_odd
-                and draw_odd < away_odd
-                and gg_odd > no_gg_odd
-                and gg_odd > 1.4
-            )
-
-            # Condition 2: Either home or away < 0.35, draw_odd not lowest, gg_odd < no_gg_odd and no_gg_odd > 1.5
-            condition_two = (
-                (home < 0.35 or away < 0.35)
-                and not (draw_odd < home_odd and draw_odd < away_odd)
-                and gg_odd < no_gg_odd
-                and no_gg_odd > 1.4
-            )
-
-            return condition_one or condition_two
-
-        try:
-            is_premium_gg = is_premium_bts(
-                odds_prediction["home_final_mean"],
-                odds_prediction["away_final_mean"],
-                self.team_1_win_odds,
-                self.draw_odds,
-                self.team_2_win_odds,
-                self.gg_odds,
-                self.no_gg_odds,
-            )
-        except KeyError as e:
-            print(f"KeyError: Missing key {e} in odds_prediction.")
-        except TypeError as e:
-            print(f"TypeError: Invalid type used in is_premium_bts call - {e}.")
-        except Exception as e:
-            print(f"Unexpected error: {e}")
-            is_premium_gg = None
-
-        if is_premium_gg:
-            self.is_premium["where"] = "gg"
-
-        def is_premium_o25(
-            home, away, home_odd, draw_odd, away_odd, over_odd, under_odd
-        ):
-            addition = home + away
-            home_odd = float(home_odd)
-            draw_odd = float(draw_odd)
-            away_odd = float(away_odd)
-            over_odd = float(over_odd)
-            under_odd = float(under_odd)
-            # Condition 1: addition - 2.5 > 0.6, draw_odd is lowest, over_odd > under_odd and over_odd > 1.5
-            condition_one = (
-                (addition - 2.5) > 0.6
-                and draw_odd < home_odd
-                and draw_odd < away_odd
-                and over_odd > under_odd
-                and over_odd > 1.4
-            )
-
-            # Condition 2: 2.5 - addition > 0.8, draw_odd not lowest, under_odd > over_odd and under_odd > 1.5
-            condition_two = (
-                (2.5 - addition) > 0.8
-                and not (draw_odd < home_odd and draw_odd < away_odd)
-                and under_odd > over_odd
-                and under_odd > 1.5
-            )
-
-            return condition_one or condition_two
-
-        try:
-            is_premium_ou25 = is_premium_o25(
-                odds_prediction["home_final_mean"],
-                odds_prediction["away_final_mean"],
-                self.team_1_win_odds,
-                self.draw_odds,
-                self.team_2_win_odds,
-                self.over_2_5_odds,
-                self.under_2_5_odds,
-            )
-        except KeyError as e:
-            print(f"KeyError: Missing key {e} in odds_prediction.")
-        except TypeError as e:
-            print(f"TypeError: Invalid type used in is_premium_o25 call - {e}.")
-        except Exception as e:
-            print(f"Unexpected error: {e}")
-            is_premium_ou25 - None
-
-        if is_premium_ou25:
-            self.is_premium["where"] = "gg"
-        if self.is_premium:
-            console = Console()
-            banner = pyfiglet.figlet_format("GOD JUST \t\t GAVE US\t\t SOME GOLD HERE")
-            console.print(f"[bold red]{banner}[/bold red]")
         print(
             "HURAYYYYY!!£$%^&*()!!£$%^&*()!!£$%^&*()!!£$%^&*()!!£$%^&*() tested approved and trusted"
         )
@@ -1278,7 +1140,9 @@ class analyze_data:
                 )
 
                 home_goal_list.append(home_to_score)
+                home_goal_list.append(home_goals_for_average)
                 away_goal_list.append(away_to_score)
+                away_goal_list.append(away_goals_for_average)
             except NameError as e:
                 print(f"Error while calculating goals: {e}")
 
@@ -1603,7 +1467,6 @@ class analyze_data:
                 away_final_mean = np.mean(away_float_data) if away_float_data else 0
             except (ValueError, TypeError):
                 away_final_mean = 0
-
             try:
                 if home_comp > away_comp:
                     home_final_mean += (
@@ -1619,6 +1482,53 @@ class analyze_data:
                     away_final_mean += (
                         0.34 * np.std(away_float_data) if away_float_data else 0
                     )
+            except (ValueError, TypeError):
+                pass
+            home_goals_for_average = float(home_goals_for_average)
+            away_goals_for_average = float(away_goals_for_average)
+
+            def weighted_mean(a, b, w1=1, w2=1):
+                return (a * w1 + b * w2) / (w1 + w2)
+
+            try:
+                if home_final_mean > away_final_mean:
+                    if home_final_mean < home_goals_for_average:
+                        # home_final_mean = (home_final_mean + home_goals_for_average) / 2
+                        home_final_mean = weighted_mean(
+                            home_final_mean, home_goals_for_average, 1, 2
+                        )
+                    else:
+                        home_final_mean = home_final_mean
+                    if away_final_mean > away_goals_for_average:
+                        # away_final_mean = (away_final_mean + away_goals_for_average) / 2
+                        away_final_mean = weighted_mean(
+                            away_final_mean, away_goals_for_average, 1, 2
+                        )
+                    else:
+                        away_for_arg = away_goals_for_average / 2
+                        # away_final_mean = (away_final_mean + away_for_arg) / 2
+                        away_final_mean = (away_final_mean, away_for_arg, 2, 1)
+
+                if away_final_mean > home_final_mean:
+                    if away_final_mean < away_goals_for_average:
+                        # away_final_mean = (away_final_mean + away_goals_for_average) / 2
+                        away_final_mean = weighted_mean(
+                            away_final_mean, away_goals_for_average, 1, 2
+                        )
+                    else:
+                        away_final_mean = away_final_mean
+                    if home_final_mean > home_goals_for_average:
+                        # home_final_mean = (home_final_mean + home_goals_for_average) / 2
+                        home_final_mean = weighted_mean(
+                            home_final_mean, home_goals_for_average, 1, 2
+                        )
+                    else:
+                        home_for_arg = home_goals_for_average / 2
+                        # home_final_mean = (home_final_mean + home_for_arg) / 2
+                        home_final_mean = weighted_mean(
+                            home_final_mean, home_for_arg, 2, 1
+                        )
+
             except (ValueError, TypeError):
                 pass
 
@@ -1657,6 +1567,199 @@ class analyze_data:
             """Truncates a number to a fixed number of decimal places without rounding."""
             factor = 10**decimals
             return math.floor(number * factor) / factor
+
+        odds_prediction = self.predict_based_on_odds()
+        if odds_prediction:
+
+            def premium_three_way(home, away, home_odd, away_odd, draw_odd):
+                home_odd = float(home_odd)
+                away_odd = float(away_odd)
+                draw_odd = float(draw_odd)
+                home_diff = home - away
+                away_diff = away - home
+                home_round = custom_round(home)
+                away_round = custom_round(away)
+
+                if (
+                    home_diff > 0.5
+                    and away < 1.5
+                    and (home_round != away_round)
+                    and home > away
+                    and (
+                        (
+                            ((draw_odd - home_odd) > 1.5)
+                            and (draw_odd - home_odd) < 1.95
+                            and (home_odd > 1.7 and home_odd < 1.95)
+                        )
+                        or (((home_odd) > 1.4) and (draw_odd) > 4)
+                        and (away_odd > 4)
+                        and (
+                            (away_odd > draw_odd)
+                            and (home_odd > 1.4 and home_odd < 1.6)
+                        )
+                    )
+                ) or (
+                    away_diff > 0.5
+                    and home < 1.5
+                    and (home_round != away_round)
+                    and away > home
+                    and (
+                        (
+                            ((draw_odd - away_odd) > 1.5)
+                            and (draw_odd - away_odd) < 1.95
+                            and (away_odd > 1.7 and away_odd < 1.9)
+                        )
+                        or (((away_odd) > 1.4) and (draw_odd) > 4)
+                        and (home_odd > 4)
+                        and (home_odd > draw_odd)(away_odd > 1.4 and away_odd < 1.6)
+                    )
+                ):
+                    return True
+                else:
+                    return False
+
+            try:
+                is_premium_three = premium_three_way(
+                    odds_prediction["home_final_mean"],
+                    odds_prediction["away_final_mean"],
+                    self.team_1_win_odds,
+                    self.team_2_win_odds,
+                    self.draw_odds,
+                )
+            except KeyError as e:
+                print(f"KeyError: Missing key {e} in odds_prediction.")
+            except TypeError as e:
+                print(f"TypeError: Invalid type in premium_three_way call - {e}.")
+            except Exception as e:
+                print(f"Unexpected error in premium_three_way: {e}")
+                is_premium_three = None
+
+            if is_premium_three:
+                self.is_premium["where"] = "three_way"
+
+            def is_premium_bts(
+                home, away, home_odd, draw_odd, away_odd, gg_odd, no_gg_odd
+            ):
+                try:
+                    # Attempt to convert each odd to float, defaulting to 0.0 if None
+                    home_odd = float(home_odd) if home_odd is not None else 0.0
+                    draw_odd = float(draw_odd) if draw_odd is not None else 0.0
+                    away_odd = float(away_odd) if away_odd is not None else 0.0
+                    gg_odd = float(gg_odd) if gg_odd is not None else 0.0
+                    no_gg_odd = float(no_gg_odd) if no_gg_odd is not None else 0.0
+
+                except ValueError as e:
+                    # Handles cases like strings that can't convert to float
+                    print(f"ValueError: Invalid input for conversion to float -> {e}")
+                    return None
+                except TypeError as e:
+                    # Handles unexpected type issues
+                    print(f"TypeError: Incorrect type provided -> {e}")
+                    return None
+                except Exception as e:
+                    # Catches any other unforeseen errors
+                    print(f"An unexpected error occurred: {e}")
+                # Condition 1: Both home and away > 0.75, draw_odd is lowest, gg_odd > no_gg_odd and > 1.5
+                condition_one = (
+                    home > 0.5
+                    and away > 0.5
+                    and (
+                        ((abs(draw_odd - home_odd)) < 1.9)
+                        or ((abs(draw_odd - away_odd)) < 1.9)
+                    )
+                    and (1.5 < gg_odd < 2)
+                    and ((home + away) > 2)
+                    and (abs(home - away) <= 1.5)
+                    and (abs(home_odd - away_odd) < 2.5)
+                )
+
+                # Condition 2: Either home or away < 0.35, draw_odd not lowest, gg_odd < no_gg_odd and no_gg_odd > 1.5
+                condition_two = (
+                    (home < 0.4 or away < 0.4)
+                    and not (draw_odd > home_odd and draw_odd > away_odd)
+                    and (1.5 < no_gg_odd < 2)
+                    and ((home + away) < 1.4)
+                    and (abs(home - away) >= 1.5)
+                    and (abs(home_odd - away_odd) > 2.5)
+                )
+
+                return condition_one or condition_two
+
+            try:
+                is_premium_gg = is_premium_bts(
+                    odds_prediction["home_final_mean"],
+                    odds_prediction["away_final_mean"],
+                    self.team_1_win_odds,
+                    self.draw_odds,
+                    self.team_2_win_odds,
+                    self.gg_odds,
+                    self.no_gg_odds,
+                )
+            except KeyError as e:
+                print(f"KeyError: Missing key {e} in odds_prediction.")
+            except TypeError as e:
+                print(f"TypeError: Invalid type used in is_premium_bts call - {e}.")
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                is_premium_gg = None
+
+            if is_premium_gg:
+                self.is_premium["where"] = "gg"
+
+            def is_premium_o25(
+                home, away, home_odd, draw_odd, away_odd, over_odd, under_odd
+            ):
+                addition = home + away
+                home_odd = float(home_odd)
+                draw_odd = float(draw_odd)
+                away_odd = float(away_odd)
+                over_odd = float(over_odd)
+                under_odd = float(under_odd)
+                # Condition 1: addition - 2.5 > 0.6, draw_odd is lowest, over_odd > under_odd and over_odd > 1.5
+                condition_one = (
+                    (addition - 2.5) > 0.3
+                    and draw_odd > home_odd
+                    and draw_odd > away_odd
+                    and over_odd > under_odd
+                    and over_odd > 1.4
+                )
+
+                # Condition 2: 2.5 - addition > 0.8, draw_odd not lowest, under_odd > over_odd and under_odd > 1.5
+                condition_two = (
+                    (2.5 - addition) > 0.8
+                    and not (draw_odd > home_odd and draw_odd > away_odd)
+                    and under_odd > over_odd
+                    and under_odd > 1.5
+                )
+
+                return condition_one or condition_two
+
+            try:
+                is_premium_ou25 = is_premium_o25(
+                    odds_prediction["home_final_mean"],
+                    odds_prediction["away_final_mean"],
+                    self.team_1_win_odds,
+                    self.draw_odds,
+                    self.team_2_win_odds,
+                    self.over_2_5_odds,
+                    self.under_2_5_odds,
+                )
+            except KeyError as e:
+                print(f"KeyError: Missing key {e} in odds_prediction.")
+            except TypeError as e:
+                print(f"TypeError: Invalid type used in is_premium_o25 call - {e}.")
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                is_premium_ou25 - None
+
+            if is_premium_ou25:
+                self.is_premium["where"] = "ov"
+            if self.is_premium:
+                console = Console()
+                banner = pyfiglet.figlet_format(
+                    "GOD JUST \t\t GAVE US\t\t SOME GOLD HERE"
+                )
+                console.print(f"[bold red]{banner}[/bold red]")
 
         weather_man = []
         weather_impact = {
@@ -1919,6 +2022,7 @@ class analyze_data:
                 "goal_impact": -15,  # Almost no goals expected.
             },
         }
+        weather_fine = None
         if self.data_store.get("weather", {}):
             weather_data = self.data_store["weather"]
 
@@ -2066,9 +2170,9 @@ class analyze_data:
         print("-" * 80)
         print(
             f"📊📡 HIGH-PRECISION MATCH SIMULATION RESULTS 📡📊\n"
-            f"⚽ {self.data_store['match_details']['home_team_name'].upper()} ⚔️"
+            f"⚽ {self.data_store['match_details']['home_team_name']} ⚔️"
             f" {round(self.home_team_expected_goals, 3)} 🔥 : 🔥"
-            f" {round(self.away_team_expected_goals, 3)} ⚔️ {self.data_store['match_details']['away_team_name'].upper()} ⚽"
+            f" {round(self.away_team_expected_goals, 3)} ⚔️ {self.data_store['match_details']['away_team_name']} ⚽"
         )
         print("-" * 80)
         print("💾💡 **DATA CRUNCHING COMPLETE! RESULTS READY FOR DEEP INSIGHTS!** 💡💾")

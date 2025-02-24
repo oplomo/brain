@@ -1,0 +1,957 @@
+{
+    "match_details": {
+        "fixture": "Namdhari vs Churchill Brothers",
+        "match_id": "1313619",
+        "match_date": "Feb. 24, 2025, 8 a.m.",
+        "venue": null,
+        "city": "Ludhiana",
+        "league_id": "324",
+        "home_team_name": "Namdhari",
+        "away_team_name": "Churchill Brothers",
+        "home_team_logo": "https://media.api-sports.io/football/teams/22596.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/3462.png",
+        "home_team_id": "22596",
+        "away_team_id": "3462"
+    },
+    "weather": {
+        "temperature": 28.07,
+        "feels_like": 26.73,
+        "humidity": 17,
+        "weather_description": "Scattered clouds",
+        "wind_speed": 3.63,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 22596,
+                    "name": "Namdhari",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-2.5",
+                    "away": "-2.5"
+                },
+                "advice": "Double chance : Namdhari or draw",
+                "percent": {
+                    "home": "45%",
+                    "draw": "45%",
+                    "away": "10%"
+                }
+            },
+            "league": {
+                "id": 324,
+                "name": "I-League",
+                "country": "India",
+                "logo": "https://media.api-sports.io/football/leagues/324.png",
+                "flag": "https://media.api-sports.io/flags/in.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 22596,
+                    "name": "Namdhari",
+                    "logo": "https://media.api-sports.io/football/teams/22596.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "33%",
+                        "att": "70%",
+                        "def": "30%",
+                        "goals": {
+                            "for": {
+                                "total": 7,
+                                "average": "1.4"
+                            },
+                            "against": {
+                                "total": 7,
+                                "average": "1.4"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "DLLWWDWWWWDWLDL",
+                        "fixtures": {
+                            "played": {
+                                "home": 8,
+                                "away": 7,
+                                "total": 15
+                            },
+                            "wins": {
+                                "home": 4,
+                                "away": 3,
+                                "total": 7
+                            },
+                            "draws": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            },
+                            "loses": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 13,
+                                    "away": 9,
+                                    "total": 22
+                                },
+                                "average": {
+                                    "home": "1.6",
+                                    "away": "1.3",
+                                    "total": "1.5"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "20.00%"
+                                    },
+                                    "16-30": {
+                                        "total": 5,
+                                        "percentage": "25.00%"
+                                    },
+                                    "31-45": {
+                                        "total": 1,
+                                        "percentage": "5.00%"
+                                    },
+                                    "46-60": {
+                                        "total": 3,
+                                        "percentage": "15.00%"
+                                    },
+                                    "61-75": {
+                                        "total": 3,
+                                        "percentage": "15.00%"
+                                    },
+                                    "76-90": {
+                                        "total": 4,
+                                        "percentage": "20.00%"
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 11,
+                                        "under": 4
+                                    },
+                                    "1.5": {
+                                        "over": 7,
+                                        "under": 8
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 13
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 14
+                                    },
+                                    "4.5": {
+                                        "over": 1,
+                                        "under": 14
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 8,
+                                    "away": 6,
+                                    "total": 14
+                                },
+                                "average": {
+                                    "home": "1.0",
+                                    "away": "0.9",
+                                    "total": "0.9"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 3,
+                                        "percentage": "18.75%"
+                                    },
+                                    "16-30": {
+                                        "total": 1,
+                                        "percentage": "6.25%"
+                                    },
+                                    "31-45": {
+                                        "total": 2,
+                                        "percentage": "12.50%"
+                                    },
+                                    "46-60": {
+                                        "total": 4,
+                                        "percentage": "25.00%"
+                                    },
+                                    "61-75": {
+                                        "total": 2,
+                                        "percentage": "12.50%"
+                                    },
+                                    "76-90": {
+                                        "total": 4,
+                                        "percentage": "25.00%"
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 8,
+                                        "under": 7
+                                    },
+                                    "1.5": {
+                                        "over": 4,
+                                        "under": 11
+                                    },
+                                    "2.5": {
+                                        "over": 2,
+                                        "under": 13
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 15
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 15
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 4,
+                                "draws": 1,
+                                "loses": 2
+                            },
+                            "wins": {
+                                "home": "5-2",
+                                "away": "0-2"
+                            },
+                            "loses": {
+                                "home": "1-3",
+                                "away": "3-2"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 5,
+                                    "away": 2
+                                },
+                                "against": {
+                                    "home": 3,
+                                    "away": 3
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 3,
+                            "away": 4,
+                            "total": 7
+                        },
+                        "failed_to_score": {
+                            "home": 2,
+                            "away": 2,
+                            "total": 4
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 2,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 2
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 1,
+                                    "percentage": "3.45%"
+                                },
+                                "16-30": {
+                                    "total": 3,
+                                    "percentage": "10.34%"
+                                },
+                                "31-45": {
+                                    "total": 2,
+                                    "percentage": "6.90%"
+                                },
+                                "46-60": {
+                                    "total": 9,
+                                    "percentage": "31.03%"
+                                },
+                                "61-75": {
+                                    "total": 5,
+                                    "percentage": "17.24%"
+                                },
+                                "76-90": {
+                                    "total": 5,
+                                    "percentage": "17.24%"
+                                },
+                                "91-105": {
+                                    "total": 4,
+                                    "percentage": "13.79%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": 2,
+                                    "percentage": "50.00%"
+                                },
+                                "61-75": {
+                                    "total": 1,
+                                    "percentage": "25.00%"
+                                },
+                                "76-90": {
+                                    "total": 1,
+                                    "percentage": "25.00%"
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 3462,
+                    "name": "Churchill Brothers",
+                    "logo": "https://media.api-sports.io/football/teams/3462.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "60%",
+                        "att": "90%",
+                        "def": "40%",
+                        "goals": {
+                            "for": {
+                                "total": 9,
+                                "average": "1.8"
+                            },
+                            "against": {
+                                "total": 6,
+                                "average": "1.2"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "DLWWWWLWWLWDWDD",
+                        "fixtures": {
+                            "played": {
+                                "home": 7,
+                                "away": 8,
+                                "total": 15
+                            },
+                            "wins": {
+                                "home": 4,
+                                "away": 4,
+                                "total": 8
+                            },
+                            "draws": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            },
+                            "loses": {
+                                "home": 1,
+                                "away": 2,
+                                "total": 3
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 16,
+                                    "away": 13,
+                                    "total": 29
+                                },
+                                "average": {
+                                    "home": "2.3",
+                                    "away": "1.6",
+                                    "total": "1.9"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 6,
+                                        "percentage": "19.35%"
+                                    },
+                                    "16-30": {
+                                        "total": 7,
+                                        "percentage": "22.58%"
+                                    },
+                                    "31-45": {
+                                        "total": 5,
+                                        "percentage": "16.13%"
+                                    },
+                                    "46-60": {
+                                        "total": 3,
+                                        "percentage": "9.68%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "16.13%"
+                                    },
+                                    "76-90": {
+                                        "total": 3,
+                                        "percentage": "9.68%"
+                                    },
+                                    "91-105": {
+                                        "total": 2,
+                                        "percentage": "6.45%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 13,
+                                        "under": 2
+                                    },
+                                    "1.5": {
+                                        "over": 9,
+                                        "under": 6
+                                    },
+                                    "2.5": {
+                                        "over": 4,
+                                        "under": 11
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 14
+                                    },
+                                    "4.5": {
+                                        "over": 1,
+                                        "under": 14
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 6,
+                                    "away": 9,
+                                    "total": 15
+                                },
+                                "average": {
+                                    "home": "0.9",
+                                    "away": "1.1",
+                                    "total": "1.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 1,
+                                        "percentage": "7.69%"
+                                    },
+                                    "16-30": {
+                                        "total": 2,
+                                        "percentage": "15.38%"
+                                    },
+                                    "31-45": {
+                                        "total": 2,
+                                        "percentage": "15.38%"
+                                    },
+                                    "46-60": {
+                                        "total": 3,
+                                        "percentage": "23.08%"
+                                    },
+                                    "61-75": {
+                                        "total": 2,
+                                        "percentage": "15.38%"
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": 3,
+                                        "percentage": "23.08%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 12,
+                                        "under": 3
+                                    },
+                                    "1.5": {
+                                        "over": 3,
+                                        "under": 12
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 15
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 15
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 15
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 4,
+                                "draws": 1,
+                                "loses": 1
+                            },
+                            "wins": {
+                                "home": "6-0",
+                                "away": "1-3"
+                            },
+                            "loses": {
+                                "home": "0-1",
+                                "away": "2-1"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 6,
+                                    "away": 3
+                                },
+                                "against": {
+                                    "home": 2,
+                                    "away": 2
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 2,
+                            "away": 1,
+                            "total": 3
+                        },
+                        "failed_to_score": {
+                            "home": 1,
+                            "away": 1,
+                            "total": 2
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 4,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 4
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": 3,
+                                    "percentage": "7.32%"
+                                },
+                                "16-30": {
+                                    "total": 3,
+                                    "percentage": "7.32%"
+                                },
+                                "31-45": {
+                                    "total": 5,
+                                    "percentage": "12.20%"
+                                },
+                                "46-60": {
+                                    "total": 10,
+                                    "percentage": "24.39%"
+                                },
+                                "61-75": {
+                                    "total": 10,
+                                    "percentage": "24.39%"
+                                },
+                                "76-90": {
+                                    "total": 7,
+                                    "percentage": "17.07%"
+                                },
+                                "91-105": {
+                                    "total": 3,
+                                    "percentage": "7.32%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": 1,
+                                    "percentage": "100.00%"
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "36%",
+                    "away": "64%"
+                },
+                "att": {
+                    "home": "44%",
+                    "away": "56%"
+                },
+                "def": {
+                    "home": "46%",
+                    "away": "54%"
+                },
+                "poisson_distribution": {
+                    "home": "45%",
+                    "away": "55%"
+                },
+                "h2h": {
+                    "home": "71%",
+                    "away": "29%"
+                },
+                "goals": {
+                    "home": "67%",
+                    "away": "33%"
+                },
+                "total": {
+                    "home": "51.5%",
+                    "away": "48.5%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1313565,
+                        "referee": "M. Kumar",
+                        "timezone": "UTC",
+                        "date": "2025-01-08T10:00:00+00:00",
+                        "timestamp": 1736330400,
+                        "periods": {
+                            "first": 1736330400,
+                            "second": 1736334000
+                        },
+                        "venue": {
+                            "id": 20358,
+                            "name": "Raia Panchayat Ground",
+                            "city": "Raia"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 12
+                        }
+                    },
+                    "league": {
+                        "id": 324,
+                        "name": "I-League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/324.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 7",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3462,
+                            "name": "Churchill Brothers",
+                            "logo": "https://media.api-sports.io/football/teams/3462.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 22596,
+                            "name": "Namdhari",
+                            "logo": "https://media.api-sports.io/football/teams/22596.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1160791,
+                        "referee": "K. Ramdasan",
+                        "timezone": "UTC",
+                        "date": "2024-02-10T11:00:00+00:00",
+                        "timestamp": 1707562800,
+                        "periods": {
+                            "first": 1707562800,
+                            "second": 1707566400
+                        },
+                        "venue": {
+                            "id": 2270,
+                            "name": "Tilak Maidan Stadium",
+                            "city": "Vasco da Gama, Goa"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 324,
+                        "name": "I-League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/324.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 14",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 3462,
+                            "name": "Churchill Brothers",
+                            "logo": "https://media.api-sports.io/football/teams/3462.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 22596,
+                            "name": "Namdhari",
+                            "logo": "https://media.api-sports.io/football/teams/22596.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1137884,
+                        "referee": "D. Roy",
+                        "timezone": "UTC",
+                        "date": "2023-10-31T08:30:00+00:00",
+                        "timestamp": 1698741000,
+                        "periods": {
+                            "first": 1698741000,
+                            "second": 1698744600
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Namdhari Stadium",
+                            "city": "Ludhiana"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 324,
+                        "name": "I-League",
+                        "country": "India",
+                        "logo": "https://media.api-sports.io/football/leagues/324.png",
+                        "flag": "https://media.api-sports.io/flags/in.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 1",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 22596,
+                            "name": "Namdhari",
+                            "logo": "https://media.api-sports.io/football/teams/22596.png",
+                            "winner": null
+                        },
+                        "away": {
+                            "id": 3462,
+                            "name": "Churchill Brothers",
+                            "logo": "https://media.api-sports.io/football/teams/3462.png",
+                            "winner": null
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,1097 @@
+{
+    "match_details": {
+        "fixture": "Sheffield Wednesday U21 vs Wigan Athletic U21",
+        "match_id": "1284092",
+        "match_date": "Feb. 24, 2025, 2 p.m.",
+        "venue": null,
+        "city": "Sheffield, South Yorkshire",
+        "league_id": "703",
+        "home_team_name": "Sheffield Wednesday U21",
+        "away_team_name": "Wigan Athletic U21",
+        "home_team_logo": "https://media.api-sports.io/football/teams/20096.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/20097.png",
+        "home_team_id": "20096",
+        "away_team_id": "20097"
+    },
+    "weather": {
+        "temperature": 10.37,
+        "feels_like": 9.34,
+        "humidity": 72,
+        "weather_description": "Broken clouds",
+        "wind_speed": 5.32,
+        "rain": 0
+    },
+    "odds": null,
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 20097,
+                    "name": "Wigan Athletic U21",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": "-2.5",
+                    "away": "-3.5"
+                },
+                "advice": "Double chance : draw or Wigan Athletic U21",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 703,
+                "name": "Professional Development League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/703.png",
+                "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+                "season": 2024
+            },
+            "teams": {
+                "home": {
+                    "id": 20096,
+                    "name": "Sheffield Wednesday U21",
+                    "logo": "https://media.api-sports.io/football/teams/20096.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "27%",
+                        "att": "25%",
+                        "def": "64%",
+                        "goals": {
+                            "for": {
+                                "total": 7,
+                                "average": "1.4"
+                            },
+                            "against": {
+                                "total": 10,
+                                "average": "2.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "WDDLLWWLLWDWLWWLDLL",
+                        "fixtures": {
+                            "played": {
+                                "home": 9,
+                                "away": 10,
+                                "total": 19
+                            },
+                            "wins": {
+                                "home": 3,
+                                "away": 4,
+                                "total": 7
+                            },
+                            "draws": {
+                                "home": 3,
+                                "away": 1,
+                                "total": 4
+                            },
+                            "loses": {
+                                "home": 3,
+                                "away": 5,
+                                "total": 8
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 16,
+                                    "away": 15,
+                                    "total": 31
+                                },
+                                "average": {
+                                    "home": "1.8",
+                                    "away": "1.5",
+                                    "total": "1.6"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 5,
+                                        "percentage": "16.13%"
+                                    },
+                                    "16-30": {
+                                        "total": 9,
+                                        "percentage": "29.03%"
+                                    },
+                                    "31-45": {
+                                        "total": 4,
+                                        "percentage": "12.90%"
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": 3,
+                                        "percentage": "9.68%"
+                                    },
+                                    "76-90": {
+                                        "total": 6,
+                                        "percentage": "19.35%"
+                                    },
+                                    "91-105": {
+                                        "total": 4,
+                                        "percentage": "12.90%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 16,
+                                        "under": 3
+                                    },
+                                    "1.5": {
+                                        "over": 8,
+                                        "under": 11
+                                    },
+                                    "2.5": {
+                                        "over": 6,
+                                        "under": 13
+                                    },
+                                    "3.5": {
+                                        "over": 1,
+                                        "under": 18
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 19
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 20,
+                                    "away": 16,
+                                    "total": 36
+                                },
+                                "average": {
+                                    "home": "2.2",
+                                    "away": "1.6",
+                                    "total": "1.9"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 3,
+                                        "percentage": "8.33%"
+                                    },
+                                    "16-30": {
+                                        "total": 8,
+                                        "percentage": "22.22%"
+                                    },
+                                    "31-45": {
+                                        "total": 6,
+                                        "percentage": "16.67%"
+                                    },
+                                    "46-60": {
+                                        "total": 6,
+                                        "percentage": "16.67%"
+                                    },
+                                    "61-75": {
+                                        "total": 5,
+                                        "percentage": "13.89%"
+                                    },
+                                    "76-90": {
+                                        "total": 7,
+                                        "percentage": "19.44%"
+                                    },
+                                    "91-105": {
+                                        "total": 1,
+                                        "percentage": "2.78%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 17,
+                                        "under": 2
+                                    },
+                                    "1.5": {
+                                        "over": 10,
+                                        "under": 9
+                                    },
+                                    "2.5": {
+                                        "over": 5,
+                                        "under": 14
+                                    },
+                                    "3.5": {
+                                        "over": 3,
+                                        "under": 16
+                                    },
+                                    "4.5": {
+                                        "over": 1,
+                                        "under": 18
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 2,
+                                "draws": 2,
+                                "loses": 2
+                            },
+                            "wins": {
+                                "home": "3-2",
+                                "away": "1-3"
+                            },
+                            "loses": {
+                                "home": "0-5",
+                                "away": "3-0"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 3
+                                },
+                                "against": {
+                                    "home": 5,
+                                    "away": 3
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 1,
+                            "away": 1,
+                            "total": 2
+                        },
+                        "failed_to_score": {
+                            "home": 2,
+                            "away": 1,
+                            "total": 3
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 4,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 4
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 20097,
+                    "name": "Wigan Athletic U21",
+                    "logo": "https://media.api-sports.io/football/teams/20097.png",
+                    "last_5": {
+                        "played": 5,
+                        "form": "73%",
+                        "att": "46%",
+                        "def": "79%",
+                        "goals": {
+                            "for": {
+                                "total": 13,
+                                "average": "2.6"
+                            },
+                            "against": {
+                                "total": 6,
+                                "average": "1.2"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": "LLLDLWLDLLLLLLWDWWDW",
+                        "fixtures": {
+                            "played": {
+                                "home": 10,
+                                "away": 10,
+                                "total": 20
+                            },
+                            "wins": {
+                                "home": 3,
+                                "away": 2,
+                                "total": 5
+                            },
+                            "draws": {
+                                "home": 2,
+                                "away": 2,
+                                "total": 4
+                            },
+                            "loses": {
+                                "home": 5,
+                                "away": 6,
+                                "total": 11
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 17,
+                                    "away": 14,
+                                    "total": 31
+                                },
+                                "average": {
+                                    "home": "1.7",
+                                    "away": "1.4",
+                                    "total": "1.6"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 4,
+                                        "percentage": "12.90%"
+                                    },
+                                    "16-30": {
+                                        "total": 4,
+                                        "percentage": "12.90%"
+                                    },
+                                    "31-45": {
+                                        "total": 4,
+                                        "percentage": "12.90%"
+                                    },
+                                    "46-60": {
+                                        "total": 4,
+                                        "percentage": "12.90%"
+                                    },
+                                    "61-75": {
+                                        "total": 8,
+                                        "percentage": "25.81%"
+                                    },
+                                    "76-90": {
+                                        "total": 6,
+                                        "percentage": "19.35%"
+                                    },
+                                    "91-105": {
+                                        "total": 1,
+                                        "percentage": "3.23%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 16,
+                                        "under": 4
+                                    },
+                                    "1.5": {
+                                        "over": 9,
+                                        "under": 11
+                                    },
+                                    "2.5": {
+                                        "over": 4,
+                                        "under": 16
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 18
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 20
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 18,
+                                    "away": 24,
+                                    "total": 42
+                                },
+                                "average": {
+                                    "home": "1.8",
+                                    "away": "2.4",
+                                    "total": "2.1"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": 9,
+                                        "percentage": "21.43%"
+                                    },
+                                    "16-30": {
+                                        "total": 3,
+                                        "percentage": "7.14%"
+                                    },
+                                    "31-45": {
+                                        "total": 8,
+                                        "percentage": "19.05%"
+                                    },
+                                    "46-60": {
+                                        "total": 10,
+                                        "percentage": "23.81%"
+                                    },
+                                    "61-75": {
+                                        "total": 7,
+                                        "percentage": "16.67%"
+                                    },
+                                    "76-90": {
+                                        "total": 4,
+                                        "percentage": "9.52%"
+                                    },
+                                    "91-105": {
+                                        "total": 1,
+                                        "percentage": "2.38%"
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 19,
+                                        "under": 1
+                                    },
+                                    "1.5": {
+                                        "over": 13,
+                                        "under": 7
+                                    },
+                                    "2.5": {
+                                        "over": 8,
+                                        "under": 12
+                                    },
+                                    "3.5": {
+                                        "over": 2,
+                                        "under": 18
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 20
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 2,
+                                "draws": 1,
+                                "loses": 6
+                            },
+                            "wins": {
+                                "home": "4-1",
+                                "away": "1-3"
+                            },
+                            "loses": {
+                                "home": "1-3",
+                                "away": "4-1"
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 4,
+                                    "away": 3
+                                },
+                                "against": {
+                                    "home": 3,
+                                    "away": 4
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 1,
+                            "away": 0,
+                            "total": 1
+                        },
+                        "failed_to_score": {
+                            "home": 2,
+                            "away": 2,
+                            "total": 4
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 3,
+                                "percentage": "100.00%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 3
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": 1,
+                                    "percentage": "50.00%"
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "27%",
+                    "away": "73%"
+                },
+                "att": {
+                    "home": "35%",
+                    "away": "65%"
+                },
+                "def": {
+                    "home": "38%",
+                    "away": "63%"
+                },
+                "poisson_distribution": {
+                    "home": "50%",
+                    "away": "50%"
+                },
+                "h2h": {
+                    "home": "60%",
+                    "away": "40%"
+                },
+                "goals": {
+                    "home": "64%",
+                    "away": "36%"
+                },
+                "total": {
+                    "home": "45.7%",
+                    "away": "54.5%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1283984,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-11-05T13:00:00+00:00",
+                        "timestamp": 1730811600,
+                        "periods": {
+                            "first": 1730811600,
+                            "second": 1730815200
+                        },
+                        "venue": {
+                            "id": null,
+                            "name": "Christopher Park",
+                            "city": "Wigan, Lancashire"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": 1
+                        }
+                    },
+                    "league": {
+                        "id": 703,
+                        "name": "Professional Development League",
+                        "country": "England",
+                        "logo": "https://media.api-sports.io/football/leagues/703.png",
+                        "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 13",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 20097,
+                            "name": "Wigan Athletic U21",
+                            "logo": "https://media.api-sports.io/football/teams/20097.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 20096,
+                            "name": "Sheffield Wednesday U21",
+                            "logo": "https://media.api-sports.io/football/teams/20096.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 1,
+                        "away": 3
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 2
+                        },
+                        "fulltime": {
+                            "home": 1,
+                            "away": 3
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1120411,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-04-02T11:00:00+00:00",
+                        "timestamp": 1712055600,
+                        "periods": {
+                            "first": 1712055600,
+                            "second": 1712059200
+                        },
+                        "venue": {
+                            "id": 582,
+                            "name": "Hillsborough",
+                            "city": "Sheffield"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 703,
+                        "name": "Professional Development League",
+                        "country": "England",
+                        "logo": "https://media.api-sports.io/football/leagues/703.png",
+                        "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 24",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 20096,
+                            "name": "Sheffield Wednesday U21",
+                            "logo": "https://media.api-sports.io/football/teams/20096.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 20097,
+                            "name": "Wigan Athletic U21",
+                            "logo": "https://media.api-sports.io/football/teams/20097.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1120510,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-03-11T13:00:00+00:00",
+                        "timestamp": 1710162000,
+                        "periods": {
+                            "first": 1710162000,
+                            "second": 1710165600
+                        },
+                        "venue": {
+                            "id": 599,
+                            "name": "DW Stadium",
+                            "city": "Wigan"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 703,
+                        "name": "Professional Development League",
+                        "country": "England",
+                        "logo": "https://media.api-sports.io/football/leagues/703.png",
+                        "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+                        "season": 2023,
+                        "round": "Regular Season - 21",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 20097,
+                            "name": "Wigan Athletic U21",
+                            "logo": "https://media.api-sports.io/football/teams/20097.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 20096,
+                            "name": "Sheffield Wednesday U21",
+                            "logo": "https://media.api-sports.io/football/teams/20096.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 4
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 4
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 948510,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2022-11-22T13:00:00+00:00",
+                        "timestamp": 1669122000,
+                        "periods": {
+                            "first": 1669122000,
+                            "second": 1669125600
+                        },
+                        "venue": {
+                            "id": 599,
+                            "name": "DW Stadium",
+                            "city": "Wigan"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 703,
+                        "name": "Professional Development League",
+                        "country": "England",
+                        "logo": "https://media.api-sports.io/football/leagues/703.png",
+                        "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 13",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 20097,
+                            "name": "Wigan Athletic U21",
+                            "logo": "https://media.api-sports.io/football/teams/20097.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 20096,
+                            "name": "Sheffield Wednesday U21",
+                            "logo": "https://media.api-sports.io/football/teams/20096.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 1,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 948441,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2022-09-26T11:00:00+00:00",
+                        "timestamp": 1664190000,
+                        "periods": {
+                            "first": 1664190000,
+                            "second": 1664193600
+                        },
+                        "venue": {
+                            "id": 582,
+                            "name": "Hillsborough",
+                            "city": "Sheffield"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 703,
+                        "name": "Professional Development League",
+                        "country": "England",
+                        "logo": "https://media.api-sports.io/football/leagues/703.png",
+                        "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+                        "season": 2022,
+                        "round": "Regular Season - 6",
+                        "standings": true
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 20096,
+                            "name": "Sheffield Wednesday U21",
+                            "logo": "https://media.api-sports.io/football/teams/20096.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 20097,
+                            "name": "Wigan Athletic U21",
+                            "logo": "https://media.api-sports.io/football/teams/20097.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 0,
+                        "away": 2
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 0,
+                            "away": 2
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

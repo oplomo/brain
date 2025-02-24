@@ -1,0 +1,1220 @@
+{
+    "match_details": {
+        "fixture": "Cumberland United vs Salisbury United",
+        "match_id": "1322950",
+        "match_date": "Feb. 23, 2025, 6:30 a.m.",
+        "venue": null,
+        "city": "Adelaide",
+        "league_id": "834",
+        "home_team_name": "Cumberland United",
+        "away_team_name": "Salisbury United",
+        "home_team_logo": "https://media.api-sports.io/football/teams/10009.png",
+        "away_team_logo": "https://media.api-sports.io/football/teams/22807.png",
+        "home_team_id": "10009",
+        "away_team_id": "22807"
+    },
+    "weather": {
+        "temperature": 22.73,
+        "feels_like": 22.49,
+        "humidity": 55,
+        "weather_description": "Clear sky",
+        "wind_speed": 5.26,
+        "rain": 0
+    },
+    "odds": {
+        "Bet365": {
+            "Match Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.05"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "3.60"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.80"
+                }
+            ],
+            "Home/Away": [
+                {
+                    "value": "Home",
+                    "odd": "1.62"
+                },
+                {
+                    "value": "Away",
+                    "odd": "2.20"
+                }
+            ],
+            "Goals Over/Under": [
+                {
+                    "value": "Over 2.5",
+                    "odd": "1.57"
+                },
+                {
+                    "value": "Under 2.5",
+                    "odd": "2.35"
+                }
+            ],
+            "Exact Score": [
+                {
+                    "value": "1:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "10.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "3:2",
+                    "odd": "23.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "4:1",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "8.00"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "17.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "13.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "2:3",
+                    "odd": "26.00"
+                },
+                {
+                    "value": "3:3",
+                    "odd": "34.00"
+                },
+                {
+                    "value": "0:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "1:4",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "2:4",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "4:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:5",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "1:5",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "2:5",
+                    "odd": "81.00"
+                },
+                {
+                    "value": "3:4",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "5:0",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "5:1",
+                    "odd": "51.00"
+                },
+                {
+                    "value": "5:2",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "4:3",
+                    "odd": "51.00"
+                }
+            ],
+            "Correct Score - First Half": [
+                {
+                    "value": "1:0",
+                    "odd": "4.75"
+                },
+                {
+                    "value": "2:0",
+                    "odd": "11.00"
+                },
+                {
+                    "value": "2:1",
+                    "odd": "19.00"
+                },
+                {
+                    "value": "3:0",
+                    "odd": "29.00"
+                },
+                {
+                    "value": "3:1",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "4:0",
+                    "odd": "67.00"
+                },
+                {
+                    "value": "0:0",
+                    "odd": "3.40"
+                },
+                {
+                    "value": "1:1",
+                    "odd": "7.50"
+                },
+                {
+                    "value": "2:2",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "0:1",
+                    "odd": "5.50"
+                },
+                {
+                    "value": "0:2",
+                    "odd": "15.00"
+                },
+                {
+                    "value": "0:3",
+                    "odd": "41.00"
+                },
+                {
+                    "value": "1:2",
+                    "odd": "21.00"
+                },
+                {
+                    "value": "1:3",
+                    "odd": "51.00"
+                }
+            ],
+            "Double Chance": [
+                {
+                    "value": "Home/Draw",
+                    "odd": "1.33"
+                },
+                {
+                    "value": "Home/Away",
+                    "odd": "1.22"
+                },
+                {
+                    "value": "Draw/Away",
+                    "odd": "1.62"
+                }
+            ],
+            "First Half Winner": [
+                {
+                    "value": "Home",
+                    "odd": "2.62"
+                },
+                {
+                    "value": "Draw",
+                    "odd": "2.38"
+                },
+                {
+                    "value": "Away",
+                    "odd": "3.25"
+                }
+            ],
+            "Corners Over Under": [
+                {
+                    "value": "Over 9.5",
+                    "odd": "1.67"
+                },
+                {
+                    "value": "Under 9.5",
+                    "odd": "2.10"
+                },
+                {
+                    "value": "Over 10",
+                    "odd": "1.92"
+                },
+                {
+                    "value": "Under 10",
+                    "odd": "1.88"
+                }
+            ]
+        }
+    },
+    "average_league_goals": {},
+    "head_to_head_data": null,
+    "head_to_head_statistics_with_home_at_home_and_away_at_away": [],
+    "home_run": [],
+    "away_run": [],
+    "home_team_player_ratings_sesason": {},
+    "away_team_player_ratings_sesason": {},
+    "home_last_five_fixture_and_stats": null,
+    "away_last_five_fixture_and_stats": null,
+    "predictions": [
+        {
+            "predictions": {
+                "winner": {
+                    "id": 22807,
+                    "name": "Salisbury United",
+                    "comment": "Win or draw"
+                },
+                "win_or_draw": true,
+                "under_over": null,
+                "goals": {
+                    "home": null,
+                    "away": null
+                },
+                "advice": "Double chance : draw or Salisbury United",
+                "percent": {
+                    "home": "10%",
+                    "draw": "45%",
+                    "away": "45%"
+                }
+            },
+            "league": {
+                "id": 834,
+                "name": "South Australia State League 1",
+                "country": "Australia",
+                "logo": "https://media.api-sports.io/football/leagues/834.png",
+                "flag": "https://media.api-sports.io/flags/au.svg",
+                "season": 2025
+            },
+            "teams": {
+                "home": {
+                    "id": 10009,
+                    "name": "Cumberland United",
+                    "logo": "https://media.api-sports.io/football/teams/10009.png",
+                    "last_5": {
+                        "played": 0,
+                        "form": "0%",
+                        "att": "0%",
+                        "def": "0%",
+                        "goals": {
+                            "for": {
+                                "total": 0,
+                                "average": "0.0"
+                            },
+                            "against": {
+                                "total": 0,
+                                "average": "0.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": null,
+                        "fixtures": {
+                            "played": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "wins": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 0,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": null,
+                                "away": null
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 0,
+                                    "away": 0
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "away": {
+                    "id": 22807,
+                    "name": "Salisbury United",
+                    "logo": "https://media.api-sports.io/football/teams/22807.png",
+                    "last_5": {
+                        "played": 0,
+                        "form": "0%",
+                        "att": "0%",
+                        "def": "0%",
+                        "goals": {
+                            "for": {
+                                "total": 0,
+                                "average": "0.0"
+                            },
+                            "against": {
+                                "total": 0,
+                                "average": "0.0"
+                            }
+                        }
+                    },
+                    "league": {
+                        "form": null,
+                        "fixtures": {
+                            "played": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "wins": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "draws": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            },
+                            "loses": {
+                                "home": 0,
+                                "away": 0,
+                                "total": 0
+                            }
+                        },
+                        "goals": {
+                            "for": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            },
+                            "against": {
+                                "total": {
+                                    "home": 0,
+                                    "away": 0,
+                                    "total": 0
+                                },
+                                "average": {
+                                    "home": "0.0",
+                                    "away": "0.0",
+                                    "total": "0.0"
+                                },
+                                "minute": {
+                                    "0-15": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "16-30": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "31-45": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "46-60": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "61-75": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "76-90": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "91-105": {
+                                        "total": null,
+                                        "percentage": null
+                                    },
+                                    "106-120": {
+                                        "total": null,
+                                        "percentage": null
+                                    }
+                                },
+                                "under_over": {
+                                    "0.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "1.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "2.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "3.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    },
+                                    "4.5": {
+                                        "over": 0,
+                                        "under": 0
+                                    }
+                                }
+                            }
+                        },
+                        "biggest": {
+                            "streak": {
+                                "wins": 0,
+                                "draws": 0,
+                                "loses": 0
+                            },
+                            "wins": {
+                                "home": null,
+                                "away": null
+                            },
+                            "loses": {
+                                "home": null,
+                                "away": null
+                            },
+                            "goals": {
+                                "for": {
+                                    "home": 0,
+                                    "away": 0
+                                },
+                                "against": {
+                                    "home": 0,
+                                    "away": 0
+                                }
+                            }
+                        },
+                        "clean_sheet": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "failed_to_score": {
+                            "home": 0,
+                            "away": 0,
+                            "total": 0
+                        },
+                        "penalty": {
+                            "scored": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "missed": {
+                                "total": 0,
+                                "percentage": "0%"
+                            },
+                            "total": 0
+                        },
+                        "lineups": [],
+                        "cards": {
+                            "yellow": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            },
+                            "red": {
+                                "0-15": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "16-30": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "31-45": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "46-60": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "61-75": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "76-90": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "91-105": {
+                                    "total": null,
+                                    "percentage": null
+                                },
+                                "106-120": {
+                                    "total": null,
+                                    "percentage": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "comparison": {
+                "form": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "att": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "def": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "poisson_distribution": {
+                    "home": "0%",
+                    "away": "0%"
+                },
+                "h2h": {
+                    "home": "33%",
+                    "away": "67%"
+                },
+                "goals": {
+                    "home": "45%",
+                    "away": "55%"
+                },
+                "total": {
+                    "home": "39.0%",
+                    "away": "61.0%"
+                }
+            },
+            "h2h": [
+                {
+                    "fixture": {
+                        "id": 1286141,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-08-17T05:30:00+00:00",
+                        "timestamp": 1723872600,
+                        "periods": {
+                            "first": 1723872600,
+                            "second": 1723876200
+                        },
+                        "venue": {
+                            "id": 20406,
+                            "name": "A. A. Bailey Reserve",
+                            "city": "Adelaide"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 834,
+                        "name": "South Australia State League 1",
+                        "country": "Australia",
+                        "logo": "https://media.api-sports.io/football/leagues/834.png",
+                        "flag": "https://media.api-sports.io/flags/au.svg",
+                        "season": 2024,
+                        "round": "Elimination Finals",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 10009,
+                            "name": "Cumberland United",
+                            "logo": "https://media.api-sports.io/football/teams/10009.png",
+                            "winner": false
+                        },
+                        "away": {
+                            "id": 22807,
+                            "name": "Salisbury United",
+                            "logo": "https://media.api-sports.io/football/teams/22807.png",
+                            "winner": true
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 3
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 3
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 3
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1144734,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-07-13T05:30:00+00:00",
+                        "timestamp": 1720848600,
+                        "periods": {
+                            "first": 1720848600,
+                            "second": 1720852200
+                        },
+                        "venue": {
+                            "id": 21531,
+                            "name": "PSD Energy Park",
+                            "city": "Adelaide"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 834,
+                        "name": "South Australia State League 1",
+                        "country": "Australia",
+                        "logo": "https://media.api-sports.io/football/leagues/834.png",
+                        "flag": "https://media.api-sports.io/flags/au.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 18",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 22807,
+                            "name": "Salisbury United",
+                            "logo": "https://media.api-sports.io/football/teams/22807.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 10009,
+                            "name": "Cumberland United",
+                            "logo": "https://media.api-sports.io/football/teams/10009.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 3,
+                        "away": 1
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 2,
+                            "away": 1
+                        },
+                        "fulltime": {
+                            "home": 3,
+                            "away": 1
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                },
+                {
+                    "fixture": {
+                        "id": 1144670,
+                        "referee": null,
+                        "timezone": "UTC",
+                        "date": "2024-04-20T05:30:00+00:00",
+                        "timestamp": 1713591000,
+                        "periods": {
+                            "first": 1713591000,
+                            "second": 1713594600
+                        },
+                        "venue": {
+                            "id": 20406,
+                            "name": "A. A. Bailey Reserve",
+                            "city": "Adelaide"
+                        },
+                        "status": {
+                            "long": "Match Finished",
+                            "short": "FT",
+                            "elapsed": 90,
+                            "extra": null
+                        }
+                    },
+                    "league": {
+                        "id": 834,
+                        "name": "South Australia State League 1",
+                        "country": "Australia",
+                        "logo": "https://media.api-sports.io/football/leagues/834.png",
+                        "flag": "https://media.api-sports.io/flags/au.svg",
+                        "season": 2024,
+                        "round": "Regular Season - 7",
+                        "standings": false
+                    },
+                    "teams": {
+                        "home": {
+                            "id": 10009,
+                            "name": "Cumberland United",
+                            "logo": "https://media.api-sports.io/football/teams/10009.png",
+                            "winner": true
+                        },
+                        "away": {
+                            "id": 22807,
+                            "name": "Salisbury United",
+                            "logo": "https://media.api-sports.io/football/teams/22807.png",
+                            "winner": false
+                        }
+                    },
+                    "goals": {
+                        "home": 2,
+                        "away": 0
+                    },
+                    "score": {
+                        "halftime": {
+                            "home": 0,
+                            "away": 0
+                        },
+                        "fulltime": {
+                            "home": 2,
+                            "away": 0
+                        },
+                        "extratime": {
+                            "home": null,
+                            "away": null
+                        },
+                        "penalty": {
+                            "home": null,
+                            "away": null
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mutual": {
+        "away": {
+            "guest_vs_home": {
+                "match": {
+                    "guest_name": {},
+                    "home_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "home_data": {},
+                "home_ratings": {}
+            },
+            "guest_vs_away": {
+                "match": {
+                    "guest_name": {},
+                    "away_name": {}
+                },
+                "guest_data": {},
+                "guest_ratings": {},
+                "away_data": {},
+                "away_ratings": {}
+            }
+        },
+        "home": {
+            "home_vs_guest": {
+                "match": {
+                    "home_name": {},
+                    "guest_name": {}
+                },
+                "home_data": {},
+                "home_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            },
+            "away_vs_guest": {
+                "match": {
+                    "away_name": {},
+                    "guest_name": {}
+                },
+                "away_data": {},
+                "away_ratings": {},
+                "guest_data": {},
+                "guest_ratings": {}
+            }
+        }
+    }
+}

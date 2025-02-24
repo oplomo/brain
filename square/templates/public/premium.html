@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .match-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px 0;
+        background:rgb(255, 250, 250);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .match-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color:rgba(193, 247, 122, 0.59);
+        padding: 10px;
+    }
+    
+    .team {
+        display: flex;
+        align-items: center;
+        font-size:1.3em;
+        font-weight:bold;
+    }
+    
+    .team img {
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    .league-info, .match-info {
+        font-size: 14px;
+        color: #555;
+    }
+    .prediction {
+        font-weight: bold;
+        color: #d9534f;
+        font-size:1.5em;
+    }
+    .odds {
+        font-weight: bold;
+        color:rgb(60, 80, 97);
+    }
+    .prediction_info{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content:center;
+    }
+    h1{
+        text-align:center;
+        margin:10px;
+        font-weight:900;
+        font-size:2em;
+        background-color:white;
+        color:red;
+
+    }
+   
+</style>
+<a href="{% url "square:payment_page" %}">PAY</a>
+<h1>premium tips</h1>
+{% for item in matches %}
+    <div class="match-card">
+        <div class="match-header">
+            <div class="team">
+                <span>{{ item.matches.home_team }}</span>
+                {% if item.matches.home_team_logo %}
+                    <img src="{{ item.matches.home_team_logo }}" alt="{{ item.matches.home_team }} Logo">
+                {% endif %}
+            </div>
+            <span>vs</span>
+            <div class="team">
+                {% if item.matches.away_team_logo %}
+                    <img src="{{ item.matches.away_team_logo }}" alt="{{ item.matches.away_team }} Logo">
+                {% endif %}
+                <span>{{ item.matches.away_team }}</span>
+            </div>
+        </div>
+        <div class="prediction_info">
+        <p class="league-info">{{ item.matches.league.country|upper }} - {{ item.matches.league }}</p>
+        <p class="match-info">{{ item.matches.sport }} | {{ item.matches.date }}</p>
+        <p>{{ item.description }}: <span class="prediction">{{ item.prediction|default:"No prediction available" }}</span></p>
+        <p class="odds">Odds: {{ item.odds|default:"Not available" }}</p>
+    </div>
+    </div>
+{% empty %}
+    <p>No premium matches available.</p>
+{% endfor %}
+
+{% endblock content %}

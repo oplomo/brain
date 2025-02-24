@@ -662,3 +662,14 @@ class Fixture(models.Model):
 
     def __str__(self):
         return f"{self.team_home} vs {self.team_away} ({self.status_short})"
+
+import uuid
+
+class Payment(models.Model):
+    reference = models.CharField(max_length=100, unique=True)
+    access_token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    verified = models.BooleanField(default=False)
+    date_paid = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Payment {self.reference} - {'Verified' if self.verified else 'Pending'}"
