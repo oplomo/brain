@@ -1467,23 +1467,23 @@ class analyze_data:
                 away_final_mean = np.mean(away_float_data) if away_float_data else 0
             except (ValueError, TypeError):
                 away_final_mean = 0
-            try:
-                if home_comp > away_comp:
-                    home_final_mean += (
-                        0.34 * np.std(home_float_data) if home_float_data else 0
-                    )
-                    away_final_mean -= (
-                        0.34 * np.std(away_float_data) if away_float_data else 0
-                    )
-                elif away_comp > home_comp:
-                    home_final_mean -= (
-                        0.34 * np.std(home_float_data) if home_float_data else 0
-                    )
-                    away_final_mean += (
-                        0.34 * np.std(away_float_data) if away_float_data else 0
-                    )
-            except (ValueError, TypeError):
-                pass
+            # try:
+            #     if home_comp > away_comp:
+            #         home_final_mean += (
+            #             0.34 * np.std(home_float_data) if home_float_data else 0
+            #         )
+            #         away_final_mean -= (
+            #             0.34 * np.std(away_float_data) if away_float_data else 0
+            #         )
+            #     elif away_comp > home_comp:
+            #         home_final_mean -= (
+            #             0.34 * np.std(home_float_data) if home_float_data else 0
+            #         )
+            #         away_final_mean += (
+            #             0.34 * np.std(away_float_data) if away_float_data else 0
+            #         )
+            # except (ValueError, TypeError):
+            #     pass
             home_goals_for_average = float(home_goals_for_average)
             away_goals_for_average = float(away_goals_for_average)
 
@@ -1548,7 +1548,16 @@ class analyze_data:
             api_prediction["cards"] = (
                 total_expected_card if total_expected_card is not None else None
             )
-
+            api_prediction["home_avg_g"] = (
+                float(home_goals_for_average)
+                if home_goals_for_average is not None
+                else None
+            )
+            api_prediction["away_avg_g"] = (
+                float(away_goals_for_average)
+                if away_goals_for_average is not None
+                else None
+            )
             print("prediction_based_on_api", api_prediction)
             return api_prediction
 
@@ -1569,49 +1578,88 @@ class analyze_data:
             return math.floor(number * factor) / factor
 
         odds_prediction = self.predict_based_on_odds()
-        if odds_prediction:
+        api_predictions = self.predict_based_api_predictions()
+        if odds_prediction and api_predictions:
 
-            def premium_three_way(home, away, home_odd, away_odd, draw_odd):
+            def premium_three_way(
+                home_mean_odd,
+                away_mean_odd,
+                home_odd,
+                away_odd,
+                draw_odd,
+                home_mean_api,
+                away_mean_api,
+                home_avg_g_api,
+                away_avg_g_api,
+            ):
                 home_odd = float(home_odd)
                 away_odd = float(away_odd)
                 draw_odd = float(draw_odd)
-                home_diff = home - away
-                away_diff = away - home
-                home_round = custom_round(home)
-                away_round = custom_round(away)
+                home_diff = home_mean_odd - away_mean_odd
+                away_diff = away_mean_odd - home_mean_odd
+                home_round = custom_round(home_mean_odd)
+                away_round = custom_round(away_mean_odd)
 
                 if (
-                    home_diff > 0.5
-                    and away < 1.5
-                    and (home_round != away_round)
-                    and home > away
-                    and (
-                        (
-                            ((draw_odd - home_odd) > 1.5)
-                            and (draw_odd - home_odd) < 1.95
-                            and (home_odd > 1.7 and home_odd < 1.95)
-                        )
-                        or (((home_odd) > 1.4) and (draw_odd) > 4)
-                        and (away_odd > 4)
+                    (
+                        home_diff > 0.8
+                        and away_mean_odd < 1.5
+                        and (home_round != away_round)
                         and (
-                            (away_odd > draw_odd)
-                            and (home_odd > 1.4 and home_odd < 1.6)
+                            (
+                                ((draw_odd - home_odd) > 1.5)
+                                and ((draw_odd - home_odd) < 1.95)
+                                and (home_odd > 1.7 and home_odd < 1.95)
+                                and (draw_odd > 3.55 and draw_odd < 3.97)
+                                and (away_odd > draw_odd)
+                            )
+                            or (
+                                ((home_odd > 1.4) and (draw_odd > 4.0))
+                                and (away_odd > 4.0)
+                                and (away_odd > draw_odd)
+                                and (home_odd > 1.4 and home_odd < 1.6)
+                            )
                         )
                     )
-                ) or (
-                    away_diff > 0.5
-                    and home < 1.5
-                    and (home_round != away_round)
-                    and away > home
-                    and (
-                        (
-                            ((draw_odd - away_odd) > 1.5)
-                            and (draw_odd - away_odd) < 1.95
-                            and (away_odd > 1.7 and away_odd < 1.9)
+                    or (
+                        away_diff > 0.8
+                        and home_mean_odd < 1.5
+                        and (home_round != away_round)
+                        and (
+                            (
+                                ((draw_odd - away_odd) > 1.5)
+                                and ((draw_odd - away_odd) < 1.95)
+                                and (away_odd > 1.7 and away_odd < 1.9)
+                                and (draw_odd > 3.55 and draw_odd < 3.97)
+                                and (home_odd > draw_odd)
+                            )
+                            or (
+                                ((away_odd > 1.4) and (draw_odd > 4.0))
+                                and (home_odd > 4.0)
+                                and (home_odd > draw_odd)
+                                and (away_odd > 1.4 and away_odd < 1.6)
+                            )
                         )
-                        or (((away_odd) > 1.4) and (draw_odd) > 4)
-                        and (home_odd > 4)
-                        and (home_odd > draw_odd)(away_odd > 1.4 and away_odd < 1.6)
+                    )
+                    or (
+                        (
+                            (home_mean_odd > away_mean_odd)
+                            and (home_mean_api > away_mean_api)
+                        )
+                        and ((home_avg_g_api - away_avg_g_api) > 1.2)
+                        and (away_avg_g_api < 2.0)
+                        and ((draw_odd <= home_odd) and (draw_odd <= away_odd))
+                        and (home_odd > 1.4)
+                    )
+                    or (
+                        (
+                            (away_mean_odd > home_mean_odd)
+                            and (away_mean_api > home_mean_api)
+                        )
+                        and ((away_avg_g_api - home_avg_g_api) > 1.2)
+                        and (home_avg_g_api < 2.0)
+                        and ((draw_odd <= away_odd) and (draw_odd <= home_odd))
+                        and (away_odd > 1.4)
                     )
                 ):
                     return True
@@ -1625,6 +1673,10 @@ class analyze_data:
                     self.team_1_win_odds,
                     self.team_2_win_odds,
                     self.draw_odds,
+                    api_predictions["home_final_mean"],
+                    api_predictions["away_final_mean"],
+                    api_predictions["home_avg_g"],
+                    api_predictions["away_avg_g"],
                 )
             except KeyError as e:
                 print(f"KeyError: Missing key {e} in odds_prediction.")
@@ -1638,7 +1690,17 @@ class analyze_data:
                 self.is_premium["where"] = "three_way"
 
             def is_premium_bts(
-                home, away, home_odd, draw_odd, away_odd, gg_odd, no_gg_odd
+                home_mean_odd,
+                away_mean_odd,
+                home_odd,
+                draw_odd,
+                away_odd,
+                gg_odd,
+                no_gg_odd,
+                home_mean_api,
+                away_mean_api,
+                home_avg_g_api,
+                away_avg_g_api,
             ):
                 try:
                     # Attempt to convert each odd to float, defaulting to 0.0 if None
@@ -1661,29 +1723,50 @@ class analyze_data:
                     print(f"An unexpected error occurred: {e}")
                 # Condition 1: Both home and away > 0.75, draw_odd is lowest, gg_odd > no_gg_odd and > 1.5
                 condition_one = (
-                    home > 0.5
-                    and away > 0.5
+                    home_mean_odd > 0.5
+                    and away_mean_odd > 0.5
                     and (
                         ((abs(draw_odd - home_odd)) < 1.9)
                         or ((abs(draw_odd - away_odd)) < 1.9)
                     )
                     and (1.5 < gg_odd < 2)
-                    and ((home + away) > 2)
-                    and (abs(home - away) <= 1.5)
+                    and ((home_mean_odd + away_mean_odd) > 2)
+                    and (abs(home_mean_odd - away_mean_odd) <= 1.5)
                     and (abs(home_odd - away_odd) < 2.5)
+                )
+
+                condition_three = (
+                    ((home_avg_g_api > 2.0) and (away_avg_g_api > 2.0))
+                    and ((draw_odd <= home_mean_odd) and (draw_odd <= away_odd))
+                    and ((home_mean_odd + home_mean_api) / 2 > 0.5)
+                    and ((away_mean_odd + away_mean_api) / 2 > 0.5)
+                )
+
+                condition_four = (
+                    (
+                        (home_avg_g_api >= 1.6)
+                        and (home_avg_g_api < 2.0)
+                        and (away_avg_g_api < 1.60)
+                    )
+                    and ((draw_odd <= home_mean_odd) and (draw_odd <= away_odd))
+                    and ((home_mean_odd + home_mean_api) / 2 < 0.7)
+                    and ((away_mean_odd + away_mean_api) / 2 < 0.7)
                 )
 
                 # Condition 2: Either home or away < 0.35, draw_odd not lowest, gg_odd < no_gg_odd and no_gg_odd > 1.5
                 condition_two = (
-                    (home < 0.4 or away < 0.4)
+                    (home_mean_odd < 0.4 or away_mean_odd < 0.4)
                     and not (draw_odd > home_odd and draw_odd > away_odd)
                     and (1.5 < no_gg_odd < 2)
-                    and ((home + away) < 1.4)
-                    and (abs(home - away) >= 1.5)
+                    and ((home_mean_odd + away_mean_odd) < 1.4)
+                    and (abs(home_mean_odd - away_mean_odd) >= 1.5)
                     and (abs(home_odd - away_odd) > 2.5)
+                    and (home_mean_odd < 0.4 or away_mean_odd < 0.4)
                 )
 
-                return condition_one or condition_two
+                return (
+                    condition_one or condition_two or condition_three or condition_four
+                )
 
             try:
                 is_premium_gg = is_premium_bts(
@@ -1694,6 +1777,10 @@ class analyze_data:
                     self.team_2_win_odds,
                     self.gg_odds,
                     self.no_gg_odds,
+                    api_predictions["home_final_mean"],
+                    api_predictions["away_final_mean"],
+                    api_predictions["home_avg_g"],
+                    api_predictions["away_avg_g"],
                 )
             except KeyError as e:
                 print(f"KeyError: Missing key {e} in odds_prediction.")
@@ -1707,9 +1794,19 @@ class analyze_data:
                 self.is_premium["where"] = "gg"
 
             def is_premium_o25(
-                home, away, home_odd, draw_odd, away_odd, over_odd, under_odd
+                home_mean_odd,
+                away_mean_odd,
+                home_odd,
+                draw_odd,
+                away_odd,
+                over_odd,
+                under_odd,
+                home_mean_api,
+                away_mean_api,
+                home_avg_g_api,
+                away_avg_g_api,
             ):
-                addition = home + away
+                addition = home_mean_odd + away_mean_odd
                 home_odd = float(home_odd)
                 draw_odd = float(draw_odd)
                 away_odd = float(away_odd)
@@ -1743,6 +1840,10 @@ class analyze_data:
                     self.team_2_win_odds,
                     self.over_2_5_odds,
                     self.under_2_5_odds,
+                    api_predictions["home_final_mean"],
+                    api_predictions["away_final_mean"],
+                    api_predictions["home_avg_g"],
+                    api_predictions["away_avg_g"],
                 )
             except KeyError as e:
                 print(f"KeyError: Missing key {e} in odds_prediction.")

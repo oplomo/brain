@@ -1,4 +1,4 @@
-div{bworder:2px, solid red}
+div{borsder:2px, solid red;box-sizing: border-box;}
 .sports_menu a.active {
     font-weight: bold;
     color: red;
@@ -10,6 +10,7 @@ a{
     text-decoration: none;
     color: black;
 }
+
 .sports_menu a, .vip a, .market a{
     color: black;
     text-decoration: none;
@@ -33,6 +34,7 @@ a{
 body{
     background-color: rgba(28, 37, 31, 0.822);
     position: relative;
+    min-height: 100%;
 }
 
 .header{
@@ -54,9 +56,13 @@ body{
 
 
 .current{
-    margin: 20px 0px;
+    margin: 10px 0px;
     text-align: center;
     padding: 10px;
+    font-size: 1.3em;
+    text-decoration: underline;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
 .top_menu{
@@ -64,6 +70,9 @@ body{
     justify-content: space-around;
     margin:10px 0px 20px;
     margin: 10px;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .logo{
@@ -86,16 +95,6 @@ height: 100%;
     justify-content: space-evenly;
     height: fit-content;
 }
-.vip{
-    flex-basis: 5%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    height: fit-content;
-    dishplay: none;
-}
 
 .sports_menu{
     margin: 10px;
@@ -103,6 +102,7 @@ height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .market_menu a{
@@ -112,6 +112,7 @@ height: 100%;
     display: flex;
     justify-content: space-evenly;
     background-color: rgba(0, 0, 0, 0.39);
+    flex-wrap: wrap;
 
 }
 
@@ -132,6 +133,7 @@ height: 100%;
     margin: 15px 5%;
     height: fit-content;
     width: 78%;
+
 }
 
 .guide{
@@ -166,17 +168,30 @@ height: 100%;
      background-color: rgb(31, 186, 247);
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 
-     .match_info_type{
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 20px;
+.match_info_type{
+text-align: center;
+padding: 10px;
+margin-bottom: 20px;
 }
 
 .match_info{
+    background-color: rgba(134, 158, 29, 0.178);
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 20px;
-    padding: 10px 0px;
+    padding: 10px 5px;
+    align-items: center;
+    margin: 0px 20px;
+    height: 100%;
+
+}
+
+.teamvs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    height: 50vh;
+
 }
 
 .home_info,.away_info{
@@ -184,6 +199,14 @@ height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 2.5em;
+    background-color: rgba(128, 255, 0, 0.438);
+    color: white;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 5px 5px 5px 5px black;
+    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .game_info>*{
@@ -194,7 +217,7 @@ height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    height: 100%;
     padding: 10px;
 }
 
@@ -209,6 +232,12 @@ height: 100%;
     margin: 10px 0px;
 }
 
+.table-header th {
+    position: sticky;
+    top: 0;
+    background-color: #ffd1d1;
+    z-index: 1;
+}
 .square_table thead tr{
    
     background-color: rgba(128, 255, 0, 0.453);
@@ -246,12 +275,7 @@ height: 100%;
     font-weight: bolder;
     
 }
-.current{
-    font-size: 1.3em;
-    text-decoration: underline;
-    color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+
 
 
 .stress {
@@ -302,18 +326,8 @@ font-variant: small-caps;
 font-size: 14px;
 }
 
-.match_info{
-    background-color: rgba(134, 158, 29, 0.178);
-}
-.home_info, .away_info{
-  font-size: 2.5em;
-  background-color: rgba(128, 255, 0, 0.438);
-  color: white;
-  font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
-  box-shadow: 5px 5px 5px 5px black;
-  margin-bottom: 10px;
-}
+
+
 
 .match_vs{
     font-size: 3em;
@@ -341,3 +355,544 @@ font-size: 14px;
     right: 30px;
     z-index: 100;
 }
+
+
+.footer {
+    background-color: rgba(255, 253, 115, 0.753);
+    display: flex;
+    padding: 10px;
+    align-items: center;         
+    justify-content: space-evenly; 
+    width: 100%;   
+    margin: 0px;                
+}
+
+.contact_ic> *{
+    display: block;
+}
+
+.contact_ic{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icc{
+    font-size: 2em;
+    margin: 5px;
+    color: rgb(1, 92, 97);
+}
+.adamu{
+    text-align: center;
+    padding: 5px;
+}
+.footer_div{
+    height: fit-content;
+    text-align: center;
+
+}
+
+.yest{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 5px;
+}
+.yest div a{
+    color: white;
+}
+.yest{
+    display: none;
+
+}
+.t_badge{
+    height: 100px; width: 100px; text-align: center;
+}
+@media screen and (min-width: 291px){
+    /*for whatches */
+    /* body{background-color:white;} */
+    
+    } 
+    
+    @media screen and (max-width: 550px) {
+        /* body {background-color:red;} */
+        .yest{
+            display: flex;
+        
+        }
+        .sports_selection{
+            flex-wrap: wrap;
+            width: 75%;
+        }
+        .logo{
+            margin: 10px;
+            width:20%;
+            height: fit-content;     
+            padding: 5px 5px;
+            
+        }
+        
+        .header{
+            height: fit-content;  
+            margin-bottom: 20px;          
+        }
+
+        .sports_menu{
+            margin: 5px;
+            padding: 5px;
+
+        }
+
+
+        
+        .market{
+            padding: 3px;
+            margin: 3px;
+        }
+
+        .footer {
+              flex-wrap: wrap; 
+              justify-content: space-between;
+              padding: 0px;
+        }
+        
+    
+     
+        .footer_div{
+            margin: 10px;        
+        }
+        .option_menu{
+           display: none;
+        }
+        .square{
+        margin: 3px 0px;
+        height: fit-content;
+        width: 100%;
+        overflow-x: scroll;
+
+        
+    }
+
+
+.square_table{
+    border-spacing: 3px;
+}
+
+
+.square_table thead tr th{
+    gap: 3px;
+    padding: 3px;
+    border-bottom-style: outset;
+    border-bottom-width: 2px;
+    border-bottom-color: orangered;    
+}
+
+.square_table thead tr th:nth-of-type(2){
+    min-width: 10px;
+}
+
+
+.square_table tbody tr td:nth-of-type(even){
+    padding: 3px;
+
+              }
+    
+            
+    .square_table {
+    font-size: 12px;   /* Reduce text size on small screens */
+}
+.table-cell, .team_link, .stress, .resut {
+    padding: 4px;
+}
+
+
+.match_info{
+
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 3px 2px;
+    align-items: center;
+    margin: 0px 5px;
+    height: 100%;
+
+}
+.teamvs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+    height: 50vh;
+
+    }
+
+    .home_info,.away_info{
+        padding: 3px;
+        font-size: 1.5em;
+        margin: 5px 10px;
+    }
+    .t_badge{
+        height: 80px; width: 80px; text-align: center;
+    }
+    .match_vs{
+        font-size: 1.5em;
+    }
+    .game_info>*{
+        font-size: 12px;
+   
+    }
+    .game_info{
+        padding: 0px;
+    }
+
+    
+    .match_info_market table{
+        width: 100%;
+    }
+}
+    
+    @media screen and (max-width: 770px) and (min-width: 550.1px) {
+    
+        /* body {background-color:black} */
+        .yest{
+            display: flex;
+        
+        }
+        .sports_selection{
+            flex-wrap: wrap;
+            width: 75%;
+        }
+        .logo{
+            margin: 10px;
+            width:20%;
+            height: fit-content;     
+            padding: 5px 5px;
+            
+        }
+        .header{
+            height: fit-content;  
+            margin-bottom: 20px;          
+        }
+
+
+        .market{
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .footer {
+            flex-wrap: wrap; 
+            justify-content: space-between;
+            padding: 0px;
+      }
+      
+  
+   
+      .footer_div{
+          margin: 10px;        
+      }
+
+
+      .option_menu {
+        display: none;
+    }
+    .square{
+    margin: 3px 0px;
+    height: fit-content;
+    width: 100%;
+    overflow-x: scroll;
+
+    }
+
+
+    .square_table{
+    border-spacing: 3px;
+    }
+
+
+    .square_table thead tr th{
+    gap: 3px;
+    padding: 3px;
+    border-bottom-style: outset;
+    border-bottom-width: 2px;
+    border-bottom-color: orangered;    
+    }
+
+    .square_table thead tr th:nth-of-type(2){
+    min-width: 10px;
+    }
+
+
+    .square_table tbody tr td:nth-of-type(even){
+    padding: 3px;
+
+            }
+
+            
+    .square_table {
+    font-size: 12px;   /* Reduce text size on small screens */
+    }
+    .table-cell, .team_link, .stress, .resut {
+    padding: 4px;
+    }
+    
+
+.match_info{
+
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 7px 5px;
+    align-items: center;
+    margin: 0px 5px;
+    height: 100%;
+
+}
+.teamvs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+    height: 50vh;
+
+    }
+
+    .home_info,.away_info{
+        padding: 5px;
+        font-size: 1.8em;
+        margin: 5px 10px;
+    }
+    .t_badge{
+        height: 100px; width: 100px; text-align: center;
+    }
+    .match_vs{
+        font-size: 1.8em;
+    }
+    .game_info>*{
+        font-size: 14px;
+   
+    }
+    .game_info{
+        padding: 0px;
+    }
+
+    
+    .match_info_market table{
+        width: 100%;
+    }
+
+
+    }
+    
+    
+    
+    @media screen and (max-width: 992px) and (min-width: 770.1px) {
+        /* body {background-color:yellow} */
+        .sports_selection{
+            flex-wrap: wrap;
+            width: 75%;
+        }
+        .logo{
+            margin: 10px;
+            width:20%;
+            height: fit-content;     
+            padding: 5px 5px;
+            
+        }
+        .header{
+            height: fit-content;  
+            margin-bottom: 20px;          
+        }
+        .footer {
+            flex-wrap: wrap; 
+            justify-content: space-between;
+            padding: 0px;
+      }
+      
+  
+   
+      .footer_div{
+          margin: 10px;        
+      }
+
+      .option_menu{
+        margin: 5px 5px;
+        width: 22%;
+    }
+    .square{
+    margin: 0px 0px;
+    height: fit-content;
+    width: 78%;
+
+    }
+
+
+    .square_table{
+    border-spacing: 5px;
+    }
+
+
+    .square_table thead tr th{
+    gap: 3px;
+    padding: 3px;
+    border-bottom-style: outset;
+    border-bottom-width: 2px;
+    border-bottom-color: orangered;    
+    }
+
+    .square_table thead tr th:nth-of-type(2){
+    min-width: 10px;
+    }
+
+
+    .square_table tbody tr td:nth-of-type(even){
+    padding: 3px;
+
+            }
+
+            
+    .square_table {
+        font-size: 12px;   /* Reduce text size on small screens */
+    }
+    .table-cell, .team_link, .stress, .resut {
+        padding: 5px;
+    }
+
+
+
+    .match_info{
+
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 10px 5px;
+        align-items: center;
+        margin: 0px 5px;
+        height: 100%;
+    
+    }
+    .teamvs{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 20px 0px;
+        height: 50vh;
+    
+        }
+    
+        .home_info,.away_info{
+            padding: 5px;
+            font-size: 1.8em;
+            margin: 5px 10px;
+        }
+        .t_badge{
+            height: 100px; width: 100px; text-align: center;
+        }
+        .match_vs{
+            font-size: 1.8em;
+        }
+        .game_info>*{
+            font-size: 14px;
+       
+        }
+        .game_info{
+            padding: 5px;
+        }
+    
+        
+        .match_info_market table{
+            width: 80%;
+        }
+    
+
+    }
+    
+    
+    
+    @media screen and (max-width: 1199px) and (min-width: 992.1px) {
+        /* body {background-color:fuchsia} */
+        .sports_selection{
+            flex-wrap: wrap;
+            width: 75%;
+        }
+        .logo{
+            margin: 10px;
+            width:20%;
+            height: fit-content;     
+            padding: 5px 5px;
+            
+        }
+        .header{
+            height: fit-content;  
+            margin-bottom: 20px;          
+        }
+
+        .footer {
+            flex-wrap: wrap; 
+            justify-content: space-between;
+            padding: 0px;
+      }
+      
+  
+   
+      .footer_div{
+          margin: 10px;        
+      }
+
+
+
+    
+      .option_menu{
+        margin: 5px 5px;
+        width: 22%;
+    }
+    .square{
+    margin: 0px 0px;
+    height: fit-content;
+    width: 78%;
+
+    }
+
+
+    .square_table{
+    border-spacing: 5px;
+    }
+
+
+    .square_table thead tr th{
+    gap: 3px;
+    padding: 3px;
+    border-bottom-style: outset;
+    border-bottom-width: 2px;
+    border-bottom-color: orangered;    
+    }
+
+    .square_table thead tr th:nth-of-type(2){
+    min-width: 10px;
+    }
+
+
+    .square_table tbody tr td:nth-of-type(even){
+    padding: 3px;
+
+            }
+
+            
+    .square_table {
+        font-size: 15px;   /* Reduce text size on small screens */
+    }
+    .table-cell, .team_link, .stress, .resut {
+        padding: 5px;
+    }
+
+
+    .teamvs{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 20px 0px;
+        height: 55vh;
+    
+        }
+    }
+    
+    
+    @media screen and (min-width: 1450px) {
+        body {width: 1450px;}
+    }

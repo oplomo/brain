@@ -30,7 +30,9 @@
         background-color: #ff9800;
       }
     </style>
-    
+    <script>
+      {% block js %}{% endblock js %}
+    </script>
 </head>
 <body>
     {% if messages %}
@@ -50,7 +52,7 @@
             </div>
             <div class="sports_selection">
                 
-                     {% comment %} <a href="{% url "square:index" "soccer" %}" class="{% if selected_sport == 'soccer' %}active{% endif %}"><div class="sports_menu">soccer</div></a>
+                 <a href="{% url "square:index" "soccer" %}" class="{% if selected_sport == 'soccer' %}active{% endif %}"><div class="sports_menu">soccer</div></a>
                 
                 
                     <a href="{% url "square:index" "basketball" %}" class="{% if selected_sport == 'basketball' %}active{% endif %}"><div class="sports_menu">basketball</div></a>
@@ -58,11 +60,16 @@
                
                     <a href="{% url "square:index" "tennis" %}" class="{% if selected_sport == 'tennis' %}active{% endif %}">
                         <div class="sports_menu">tennis </div></a>
-                 {% endcomment %}
+
+                        <a href="{% url "square:premium" %}"style="text-align:center;color:green;font:bold">
+
+                          <div class="sports_menu"style="border:outset;">
+                            premium tips
+                          </div>
+                        </a>
+
             </div>
-            <div class="vip"style="border:outset;">
-                <a href="{% url "square:premium" %}"style="text-align:center;color:green;font:bold">premium tips</a>
-            </div>
+     
         </div>
         <div class="market_menu">
               {% if menu %}
@@ -75,14 +82,34 @@
 
     {% block content %}{% endblock content %}
     <div class="footer">
-      <a href="{{ site_info.facebook_link }}" target="_blank">
-        <i class="fa-brands fa-facebook"></i>
-      </a>
-      <i class="fa-brands fa-telegram"></i>
-      <i class="fa-solid fa-envelope"></i>
-      <i class="fa-brands fa-tiktok"></i>
-      <i class="fa-brands fa-square-twitter"></i>
-      
+     
+        <div class="contact_in footer_div">
+              <h3 style="text-align:center;">contact information</h3>
+              <div class="contact_ic">
+            <a href="{{ site_info.facebook_link }}" target="_blank">
+              <i class="fa-brands fa-facebook icc"></i>
+            </a>
+           <a href=""><i class="fa-brands fa-telegram icc"></i></a>
+           <a href=""> <i class="fa-brands fa-tiktok icc"></i></a></a>
+            <a href=""><i class="fa-brands fa-square-twitter icc"></i></a>
+            <abbr title="JERUSCORE@GMAIL.COM"><i class="fa-solid fa-envelope icc"></i></abbr>
+
+      </div>
+    </div>
+       <div class="footer_div">
+            <a href="{% url "square:privacy" %}">privacy policy</a> <br><br>
+            <a href="{% url "square:terms" %}">terms and condition</a>
+       </div>
+       <div class="footer_div">
+        JERUSCORE@GMAIL.COM
+   </div>
+
+      <div class="footer_div adamu">
+        &copy;jerusqore <br>
+        <small>site by <i>adams square</i></small><br>
+        email:1.<small><i>adamssquare4@gmail.com</i></small><br>
+        email:2.<small><i>adams.square@yahoo.com</i></small>
+      </div>
 
     </div>
    <a href="#hder"><div class="toprar">&uarr;</div></a>

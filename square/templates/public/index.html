@@ -5,13 +5,14 @@
 {% block title %}
   Match Predictions
 {% endblock title %}
-
 {% block content %}
 
 <div class="current">{{selected_sport}} | {{item}}</div>
 
 <div class="structure">
+
     <div class="option_menu">
+
         <div class="guide">DATE</div>
         <div class="option"><a href="{% url 'square:index' selected_sport item 'today'  %}">today</a></div>
 
@@ -46,10 +47,18 @@
         <div class="option"><a href="{% url 'square:index' "tennis" "3 way" day %}">3 way tennis</a></div>
         <div class="option"><a href="{% url 'square:index' "tennis" "total" day %}">total games</a></div>
     </div>
-
+   
     <div class="square">
-        <button id="hide_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Hide Probabilities</button>
+        <div class="yest">
     
+            <div class="option"><a href="{% url 'square:index' selected_sport item 'yesterday'  %}">yesterday</a></div>
+            <div class="option"><a href="{% url 'square:index' selected_sport item 'today'  %}">today</a></div>
+
+            <div class="option"><a href="{% url 'square:index' selected_sport item 'tomorrow'  %}">tomorrow</a></div>
+    
+        </div>
+        <button id="hide_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Hide Probabilities</button>
+       
         {% if matches %}
         <table class="square_table">
             <thead>

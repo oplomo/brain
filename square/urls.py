@@ -63,6 +63,8 @@ urlpatterns = [
     path("jeruqsore/premium/", views.premium, name="premium"),
     path("destroy_premium/", views.destroy_premium, name="destroy_premium"),
     path("recreate_premium/", views.recreate_premium, name="recreate_premium"),
-    path('payment/', views.payment_page, name='payment_page'),
-    path('payment/callback/', views.payment_callback, name='payment_callback'),
+    path("payment/", views.payment_page, name="payment_page"),
+    path("payment/callback/", views.payment_callback, name="payment_callback"),
+    path("jerusqore/privacy/policy/", views.privacy, name="privacy"),
+    path("jerusqore/terms/condition/", views.terms, name="terms"),
 ]

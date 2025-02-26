@@ -1644,3 +1644,49 @@ def recreate_premium(request):
     # Redirect to the home page
     return redirect("square:index")
 
+
+# views.py
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.contrib import messages
+from .paystack import initiate_payment, verify_payment
+import uuid
+
+
+def payment_page(request):
+    """Render the payment page and handle form submission"""
+    if request.method == "POST":
+        email = request.POST.get("email")
+        amount = request.POST.get("amount")
+        reference = str(uuid.uuid4())  # Unique reference for each transaction
+
+        response = initiate_payment(email, amount, reference)
+        if response.get("status") and response.get("data").get("authorization_url"):
+            auth_url = response["data"]["authorization_url"]
+            return redirect(auth_url)
+        else:
+            messages.error(request, "Failed to initiate payment. Please try again.")
+    return render(request, "payment_page.html")
+
+
+def payment_callback(request):
+    """Handle the Paystack callback for payment verification"""
+    reference = request.GET.get("reference")
+    response = verify_payment(reference)
+
+    if response.get("status") and response["data"]["status"] == "success":
+        messages.success(request, "Payment completed successfully!")
+        return redirect(reverse("payment_page"))
+    else:
+        messages.error(request, "Payment failed or could not be verified.")
+        return redirect(reverse("payment_page"))
+
+
+def privacy(request):
+    site = get_object_or_404(SiteInformation, pk=1)
+    return render(request, "public/privacy.html", {"site": site})
+
+
+def terms(request):
+    site = get_object_or_404(SiteInformation, pk=1)
+    return render(request, "public/terms.html", {"site": site})
