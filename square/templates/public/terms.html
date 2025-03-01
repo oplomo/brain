@@ -1,6 +1,48 @@
+
 {% extends "base.html" %}
+{% load custom_filters %}
 {% load static %}
 
+{% block style %}
+<style>
+    /* Background and Typography */
+    .ccnt{
+        background: black;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        font-size: 15px;
+        line-height: 1.8;
+        padding: 20px;
+    }
+
+    /* Headings */
+    .ccnt h1, .ccnt h2, .ccnt h3, .ccnt h4, .ccnt h5, .ccnt h6 {
+        color:rgb(133, 133, 133);
+        font-weight: 600;
+        margin-top: 30px;
+        line-height: 1.4;
+    }
+
+
+
+    /* Paragraphs */
+    ccnt p {
+        margin-bottom: 20px;
+    }
+
+    /* Links */
+    .ccnt a {
+        color: #ff6f61;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock style %}
+
 {% block content %}
- {{ site.terms_and_conditions }}
+    <div class="ccnt">{{ site.terms_and_conditions |mark_down|safe }}</div>
 {% endblock content %}

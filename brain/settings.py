@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "square.apps.SquareConfig",
     "backend.apps.BackendConfig",
-    "django_celery_beat"
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +50,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+MIDDLEWARE.append("square.middleware.MaintenanceMiddleware")
+
+MAINTENANCE_MODE = False
 
 ROOT_URLCONF = "brain.urls"
 
@@ -113,7 +117,8 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 
-STATICFILES_DIRS = [BASE_DIR / "square" / "static"]
+STATICFILES_DIRS = []
+STATIC_ROOT = BASE_DIR / "staticfiles"
 # Specify the directories to look for static files
 
 # Default primary key field type
@@ -127,14 +132,14 @@ TIME_ZONE = "UTC"
 USE_TZ = True
 
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'UTC'
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_TIMEZONE = "UTC"
 CELERY_WORKER_CONCURRENCY = 4
 
 # settings.py
-PAYSTACK_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
-PAYSTACK_SECRET_KEY = 'sk_test_72090b3352c0b135db0d7a96cb4977418ccbb1d5'
-PAYSTACK_CALLBACK_URL = 'http://127.0.0.1:8000/payment/callback/'
+PAYSTACK_PUBLIC_KEY = "YOUR_PUBLIC_KEY"
+PAYSTACK_SECRET_KEY = "sk_test_72090b3352c0b135db0d7a96cb4977418ccbb1d5"
+PAYSTACK_CALLBACK_URL = "http://127.0.0.1:8000/payment/callback/"

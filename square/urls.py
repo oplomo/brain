@@ -67,4 +67,8 @@ urlpatterns = [
     path("payment/callback/", views.payment_callback, name="payment_callback"),
     path("jerusqore/privacy/policy/", views.privacy, name="privacy"),
     path("jerusqore/terms/condition/", views.terms, name="terms"),
+    path("fence/sct222-0190/2021/enter/", views.custom_login, name="fence"),
+    path("logout/", views.custom_logout, name="logout"),  # Logout URL
+    path("toggle-maintenance/", views.toggle_maintenance, name="toggle_maintenance"),
+
 ]

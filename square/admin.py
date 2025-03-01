@@ -194,7 +194,7 @@ class MatchAdmin(admin.ModelAdmin):
         "match_date",
     )
     search_fields = ("home_team_name", "away_team_name", "match_id", "league__name")
-    list_filter = ("date", "league", "match_date")
+    list_filter = ("to_be_predicted", "date", "league", "match_date")
     ordering = ("date",)
 
 

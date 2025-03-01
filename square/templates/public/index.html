@@ -3,7 +3,9 @@
 {% load custom_filters %}
 
 {% block title %}
-  Match Predictions
+{% if user.is_authenticated %}
+  viewer is {{user.username}} {% else %} match predictions
+  {% endif %}
 {% endblock title %}
 {% block content %}
 
@@ -34,7 +36,7 @@
         <div class="option"><a href="{% url 'square:index' "soccer" "correct_score" day %}">correct_score</a></div>
 
       
-        <div class="guide">BASKETBALL</div>
+        {% comment %} <div class="guide">BASKETBALL</div>
 
         <div class="option"><a href="{% url 'square:index' "basketball" "3 way" day %}">3 way basketball</a></div>
         <div class="option"><a href="{% url 'square:index' "basketball" "total overtime" day %}">total overtime</a></div>
@@ -46,6 +48,7 @@
 
         <div class="option"><a href="{% url 'square:index' "tennis" "3 way" day %}">3 way tennis</a></div>
         <div class="option"><a href="{% url 'square:index' "tennis" "total" day %}">total games</a></div>
+     {% endcomment %}
     </div>
    
     <div class="square">
@@ -136,8 +139,6 @@
 </div>
 
 
-<div class="office">
-    <a href="{% url "square:office" %}">office</a>
-</div>
+
 
 {% endblock content %}

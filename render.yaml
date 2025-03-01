@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: jerusqore
+    env: python
+    plan: free  # Change if upgrading
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn brain.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: brain.settings
+      - key: CELERY_BROKER_URL
+        value: redis://redis:6379/0
+      - key: CELERY_RESULT_BACKEND
+        value: redis://redis:6379/0
+
+  - type: worker
+    name: jerusqore-celery
+    env: python
+    plan: free  # Change if upgrading
+    buildCommand: pip install -r requirements.txt
+    startCommand: celery -A brain worker --loglevel=info --pool=solo
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: brain.settings
+      - key: CELERY_BROKER_URL
+        value: redis://redis:6379/0
+      - key: CELERY_RESULT_BACKEND
+        value: redis://redis:6379/0
+
+  - type: worker
+    name: jerusqore-celery-beat
+    env: python
+    plan: free  # Change if upgrading
+    buildCommand: pip install -r requirements.txt
+    startCommand: celery -A brain beat --loglevel=info
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: brain.settings
+      - key: CELERY_BROKER_URL
+        value: redis://redis:6379/0
+      - key: CELERY_RESULT_BACKEND
+        value: redis://redis:6379/0
+
+  - type: redis
+    name: redis
+    plan: free  # Change if upgrading

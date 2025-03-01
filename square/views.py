@@ -1164,8 +1164,21 @@ def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug
     return render(request, "public/basketballview.html", context)
 
 
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
+
 def office(request):
-    return render(request, "private/o.html")
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None and user.is_superuser:
+            login(request, user)
+            return render(request, "private/o.html")
+        else:
+            return redirect("square:index")  # Redirect if credentials are wrong
+    return render(request, "private/superuser_login.html")
 
 
 def refresh(request):
@@ -1690,3 +1703,39 @@ def privacy(request):
 def terms(request):
     site = get_object_or_404(SiteInformation, pk=1)
     return render(request, "public/terms.html", {"site": site})
+
+
+def custom_login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("square:index")  # Redirect to home after successful login
+        else:
+            messages.error(request, "Invalid username or password")
+
+    return render(request, "private/login.html")  # Render login page
+
+
+from django.contrib.auth import logout
+
+
+def custom_logout(request):
+    logout(request)  # Logs out the user
+    return redirect("square:index")  # Redirects to homepage after logout
+
+
+
+from django.conf import settings
+from django.contrib.auth.decorators import user_passes_test
+
+def is_admin(user):
+    return user.is_superuser  # Only superusers can toggle maintenance mode
+
+@user_passes_test(is_admin)
+def toggle_maintenance(request):
+    settings.MAINTENANCE_MODE = not settings.MAINTENANCE_MODE
+    return redirect("square:index")  # Redirect back to homepage

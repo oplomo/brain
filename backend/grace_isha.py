@@ -33,11 +33,11 @@ class analyze_data:
         self.premium_part = None
 
         self.match = None
-        self.win_probability_team_1 = 46
-        self.home_team_expected_goals = 2
-        self.away_team_expected_goals = 1
-        self.win_probability_team_2 = 34
-        self.win_probability_draw = 20
+        self.win_probability_team_1 = None
+        self.home_team_expected_goals = None
+        self.away_team_expected_goals = None
+        self.win_probability_team_2 = None
+        self.win_probability_draw = None
         self.team_1_win_odds = None
         self.team_2_win_odds = None
         self.draw_odds = None
@@ -82,12 +82,12 @@ class analyze_data:
 
         # Total Corners
         self.total_corners = None
-        self.total_corners_probability = 56
+        self.total_corners_probability = None
         self.total_corners_odds = None
 
         # Total Cards
         self.total_cards = None
-        self.total_cards_probability = 61
+        self.total_cards_probability = None
         self.total_cards_odds = None
 
         # Double Chance (DC) fields
@@ -106,8 +106,10 @@ class analyze_data:
     def save_every_data(self, data):
         success = True
         self.data_store = data  # Store the data
-        print("Data has been saved for analysis.")
-        self.save_every_data_to_file()
+        # try:
+        #     self.save_every_data_to_file()
+        # except Exception as e:
+        #     print(f"Error in saving to a json file: {e}")
         try:
             self.asign_odds()
             print("Odds have been assigned")
@@ -187,12 +189,12 @@ class analyze_data:
                     if ":" in normalized_date_str:
                         # Format includes minutes
                         match_date = datetime.strptime(
-                            normalized_date_str, "%b. %d, %Y, %I:%M %p"
+                            normalized_date_str, "%B %d, %Y, %I:%M %p"
                         )
                     else:
                         # Format does not include minutes
                         match_date = datetime.strptime(
-                            normalized_date_str, "%b. %d, %Y, %I %p"
+                            normalized_date_str, "%B %d, %Y, %I %p"
                         )
 
                     print(f"Parsed match date: {match_date}")
@@ -423,18 +425,38 @@ class analyze_data:
 
     def save_every_data_to_file(self):
         # Define the folder path
-        folder_name = "json_store"
+        import os
 
-        # Ensure the folder exists
-        if not os.path.exists(folder_name):
-            os.makedirs(folder_name)
+        try:
+            folder_name = "json_store"
 
-        # Generate filename
-        name = self.data_store["match_details"]["home_team_name"]
-        filename = f"{name}.json"
+            # Ensure the folder exists
+            try:
+                if not os.path.exists(folder_name):
+                    os.makedirs(folder_name)
+            except OSError as e:
+                print(f"Error creating folder '{folder_name}': {e}")
 
-        # Full file path inside json_store folder
-        file_path = os.path.join(folder_name, filename)
+            # Generate filename
+            try:
+                name = self.data_store["match_details"]["home_team_name"]
+                filename = f"{name}.json"
+            except KeyError as e:
+                print(f"Key error while accessing match details: {e}")
+                filename = "default.json"  # Fallback filename
+            except Exception as e:
+                print(f"Unexpected error while generating filename: {e}")
+                filename = "default.json"
+
+            # Full file path inside json_store folder
+            try:
+                file_path = os.path.join(folder_name, filename)
+            except Exception as e:
+                print(f"Error creating file path: {e}")
+                file_path = os.path.join(folder_name, "default.json")
+
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
 
         try:
             with open(file_path, "w", encoding="utf-8") as file:
@@ -445,34 +467,82 @@ class analyze_data:
 
     def custom_round(self, number):
         """Rounds numbers: below .5 rounds down, .5 and above rounds up."""
-        return math.floor(number) if number % 1 < 0.5 else math.ceil(number)
+        try:
+            if not isinstance(number, (int, float)):
+                raise TypeError(
+                    f"Invalid type for number: {type(number)}. Expected int or float."
+                )
+            return math.floor(number) if number % 1 < 0.5 else math.ceil(number)
+        except Exception as e:
+            print(f"Error in custom_round: {e}")
+            return None  # Return None if an error occurs
 
     def truncate(self, number, decimals=2):
         """Truncates a number to a fixed number of decimal places without rounding."""
-        factor = 10**decimals
-        return math.floor(number * factor) / factor
+        try:
+            if not isinstance(number, (int, float)):
+                raise TypeError(
+                    f"Invalid type for number: {type(number)}. Expected int or float."
+                )
+            factor = 10**decimals
+            return math.floor(number * factor) / factor
+        except Exception as e:
+            print(f"Error in truncate: {e}")
+            return None  # Return None if an error occurs
 
     def calculate_goal_percentages(self, expected_goals_team1, expected_goals_team2):
         # Define thresholds
-        thresholds = [1.5, 2.5, 3.5, 4.5, 5.5]
 
-        # Calculate total expected goals
-        total_expected_goals = (abs(self.custom_round(expected_goals_team1))) + (
-            abs(self.custom_round(expected_goals_team2))
-        )
+        try:
+            thresholds = [1.5, 2.5, 3.5, 4.5, 5.5]
 
-        # Store probabilities
-        probabilities = {}
+            # Calculate total expected goals
+            try:
+                total_expected_goals = abs(
+                    self.custom_round(expected_goals_team1)
+                ) + abs(self.custom_round(expected_goals_team2))
+            except TypeError as e:
+                print(f"Type error in calculating total expected goals: {e}")
+                total_expected_goals = 0
+            except AttributeError as e:
+                print(f"Attribute error (possibly missing custom_round method): {e}")
+                total_expected_goals = 0
+            except Exception as e:
+                print(f"Unexpected error in total expected goals calculation: {e}")
+                total_expected_goals = 0
 
-        # Map difference to probability using a function
-        def exponential_mapping(diff, alpha=0.1, max_value=30):
-            """Maps difference (0-20) to probability (0-100%) using exponential growth."""
-            diff = abs(diff)
-            if diff < 0:
-                return 0  # No negative values
-            if diff > max_value:
-                diff = max_value  # Cap at 20
-            return round(100 * (1 - math.exp(-alpha * diff)), 2)
+            # Store probabilities
+            probabilities = {}
+
+            # Map difference to probability using a function
+            def exponential_mapping(diff, alpha=0.1, max_value=30):
+                """Maps difference (0-20) to probability (0-100%) using exponential growth."""
+                try:
+                    if not isinstance(diff, (int, float)):
+                        raise TypeError(
+                            f"Invalid type for diff: {type(diff)}. Expected int or float."
+                        )
+                    if not isinstance(alpha, (int, float)):
+                        raise TypeError(
+                            f"Invalid type for alpha: {type(alpha)}. Expected int or float."
+                        )
+                    if not isinstance(max_value, (int, float)):
+                        raise TypeError(
+                            f"Invalid type for max_value: {type(max_value)}. Expected int or float."
+                        )
+
+                    diff = abs(diff)
+                    if diff < 0:
+                        return 0  # No negative values
+                    if diff > max_value:
+                        diff = max_value  # Cap at max_value
+                    return round(100 * (1 - math.exp(-alpha * diff)), 2)
+                except Exception as e:
+                    print(f"Error in exponential_mapping: {e}")
+                    return 0  # Return 0% if an error occurs
+
+        except Exception as e:
+            print(f"An unexpected error occurred in the main block: {e}")
 
         def gg_prob(expected_goals_team1, expected_goals_team2):
             home_ex = self.truncate(expected_goals_team1) - 0.5
@@ -1132,13 +1202,20 @@ class analyze_data:
                     return 0  # Default value to avoid breaking the program
 
             try:
+                ratuombi = (
+                    float(home_goals_for_average)
+                    + float(home_goals_against_average)
+                    + float(away_goals_for_average)
+                    + float(away_goals_against_average)
+                ) / 2
                 home_to_score = calculate_geometric_mean_for(
                     home_goals_for_average, away_goals_against_average
                 )
                 away_to_score = calculate_geometric_mean_for(
                     home_goals_against_average, away_goals_for_average
                 )
-
+                home_goal_list.append(float(away_goals_against_average))
+                away_goal_list.append(float(home_goals_against_average))
                 home_goal_list.append(home_to_score)
                 home_goal_list.append(home_goals_for_average)
                 away_goal_list.append(away_to_score)
@@ -1467,23 +1544,7 @@ class analyze_data:
                 away_final_mean = np.mean(away_float_data) if away_float_data else 0
             except (ValueError, TypeError):
                 away_final_mean = 0
-            # try:
-            #     if home_comp > away_comp:
-            #         home_final_mean += (
-            #             0.34 * np.std(home_float_data) if home_float_data else 0
-            #         )
-            #         away_final_mean -= (
-            #             0.34 * np.std(away_float_data) if away_float_data else 0
-            #         )
-            #     elif away_comp > home_comp:
-            #         home_final_mean -= (
-            #             0.34 * np.std(home_float_data) if home_float_data else 0
-            #         )
-            #         away_final_mean += (
-            #             0.34 * np.std(away_float_data) if away_float_data else 0
-            #         )
-            # except (ValueError, TypeError):
-            #     pass
+
             home_goals_for_average = float(home_goals_for_average)
             away_goals_for_average = float(away_goals_for_average)
 
@@ -1532,6 +1593,31 @@ class analyze_data:
             except (ValueError, TypeError):
                 pass
 
+            def to_float(value):
+                """Convert NumPy array (if applicable) to float"""
+                if isinstance(value, np.ndarray):
+                    return float(value[0])  # Convert first element of array to float
+                elif isinstance(value, tuple):
+                    return float(value[0])  # Extract first element if it's a tuple
+                return float(value)
+
+            # Apply conversion
+            home_final_mean = to_float(home_final_mean)
+            away_final_mean = to_float(away_final_mean)
+
+            print("ratuombi though is ", ratuombi)
+            neat_ratuombi = None
+            if ratuombi > 4:
+                ratuombi = 4
+            if ratuombi > 2.5:
+                neat_ratuombi = ratuombi
+            if neat_ratuombi:
+                home_final_mean = (home_final_mean * neat_ratuombi) / 3.33
+                away_final_mean = (away_final_mean * neat_ratuombi) / 3.33
+            else:
+                home_final_mean = home_final_mean
+                away_final_mean = away_final_mean
+
             print("API-PREDICTIONS \n")
             api_prediction = {}
 
@@ -1539,6 +1625,7 @@ class analyze_data:
             api_prediction["home_final_mean"] = (
                 home_final_mean if home_final_mean is not None else None
             )
+            api_prediction["ratuombi"] = ratuombi
             api_prediction["away_final_mean"] = (
                 away_final_mean if away_final_mean is not None else None
             )
@@ -1591,10 +1678,27 @@ class analyze_data:
                 away_mean_api,
                 home_avg_g_api,
                 away_avg_g_api,
+                ratuombi,
             ):
-                home_odd = float(home_odd)
-                away_odd = float(away_odd)
-                draw_odd = float(draw_odd)
+                def to_float(value):
+                    """Convert NumPy array (if applicable) to float"""
+                    if isinstance(value, np.ndarray):
+                        return float(
+                            value[0]
+                        )  # Convert first element of array to float
+                    elif isinstance(value, tuple):
+                        return float(value[0])  # Extract first element if it's a tuple
+                    return float(value)
+
+                home_mean_odd = to_float(home_mean_odd)
+                away_mean_odd = to_float(away_mean_odd)
+                home_odd = to_float(home_odd)
+                away_odd = to_float(away_odd)
+                draw_odd = to_float(draw_odd)
+                home_mean_api = to_float(home_mean_api)
+                away_mean_api = to_float(away_mean_api)
+                home_avg_g_api = to_float(home_avg_g_api)
+                away_avg_g_api = to_float(away_avg_g_api)
                 home_diff = home_mean_odd - away_mean_odd
                 away_diff = away_mean_odd - home_mean_odd
                 home_round = custom_round(home_mean_odd)
@@ -1607,11 +1711,12 @@ class analyze_data:
                         and (home_round != away_round)
                         and (
                             (
-                                ((draw_odd - home_odd) > 1.5)
+                                ((draw_odd - home_odd) >= 1.5)
                                 and ((draw_odd - home_odd) < 1.95)
                                 and (home_odd > 1.7 and home_odd < 1.95)
                                 and (draw_odd > 3.55 and draw_odd < 3.97)
                                 and (away_odd > draw_odd)
+                                and (away_odd - draw_odd < 0.4)
                             )
                             or (
                                 ((home_odd > 1.4) and (draw_odd > 4.0))
@@ -1632,6 +1737,7 @@ class analyze_data:
                                 and (away_odd > 1.7 and away_odd < 1.9)
                                 and (draw_odd > 3.55 and draw_odd < 3.97)
                                 and (home_odd > draw_odd)
+                                and (home_odd - draw_odd < 0.4)
                             )
                             or (
                                 ((away_odd > 1.4) and (draw_odd > 4.0))
@@ -1650,6 +1756,7 @@ class analyze_data:
                         and (away_avg_g_api < 2.0)
                         and ((draw_odd <= home_odd) and (draw_odd <= away_odd))
                         and (home_odd > 1.4)
+                        and (ratuombi > 3.0)
                     )
                     or (
                         (
@@ -1660,6 +1767,7 @@ class analyze_data:
                         and (home_avg_g_api < 2.0)
                         and ((draw_odd <= away_odd) and (draw_odd <= home_odd))
                         and (away_odd > 1.4)
+                        and (ratuombi > 3.0)
                     )
                 ):
                     return True
@@ -1677,6 +1785,7 @@ class analyze_data:
                     api_predictions["away_final_mean"],
                     api_predictions["home_avg_g"],
                     api_predictions["away_avg_g"],
+                    api_predictions["ratuombi"],
                 )
             except KeyError as e:
                 print(f"KeyError: Missing key {e} in odds_prediction.")
@@ -1701,6 +1810,7 @@ class analyze_data:
                 away_mean_api,
                 home_avg_g_api,
                 away_avg_g_api,
+                ratuombi,
             ):
                 try:
                     # Attempt to convert each odd to float, defaulting to 0.0 if None
@@ -1723,8 +1833,8 @@ class analyze_data:
                     print(f"An unexpected error occurred: {e}")
                 # Condition 1: Both home and away > 0.75, draw_odd is lowest, gg_odd > no_gg_odd and > 1.5
                 condition_one = (
-                    home_mean_odd > 0.5
-                    and away_mean_odd > 0.5
+                    home_mean_odd > 0.7
+                    and away_mean_odd > 0.7
                     and (
                         ((abs(draw_odd - home_odd)) < 1.9)
                         or ((abs(draw_odd - away_odd)) < 1.9)
@@ -1740,6 +1850,7 @@ class analyze_data:
                     and ((draw_odd <= home_mean_odd) and (draw_odd <= away_odd))
                     and ((home_mean_odd + home_mean_api) / 2 > 0.5)
                     and ((away_mean_odd + away_mean_api) / 2 > 0.5)
+                    and (ratuombi > 3.1)
                 )
 
                 condition_four = (
@@ -1749,16 +1860,17 @@ class analyze_data:
                         and (away_avg_g_api < 1.60)
                     )
                     and ((draw_odd <= home_mean_odd) and (draw_odd <= away_odd))
-                    and ((home_mean_odd + home_mean_api) / 2 < 0.7)
-                    and ((away_mean_odd + away_mean_api) / 2 < 0.7)
+                    and ((home_mean_odd + home_mean_api) / 2 < 0.5)
+                    and ((away_mean_odd + away_mean_api) / 2 < 0.5)
+                    and ratuombi < 2.3
                 )
 
                 # Condition 2: Either home or away < 0.35, draw_odd not lowest, gg_odd < no_gg_odd and no_gg_odd > 1.5
                 condition_two = (
-                    (home_mean_odd < 0.4 or away_mean_odd < 0.4)
+                    (home_mean_odd < 0.3 or away_mean_odd < 0.3)
                     and not (draw_odd > home_odd and draw_odd > away_odd)
                     and (1.5 < no_gg_odd < 2)
-                    and ((home_mean_odd + away_mean_odd) < 1.4)
+                    and ((home_mean_odd + away_mean_odd) < 1.5)
                     and (abs(home_mean_odd - away_mean_odd) >= 1.5)
                     and (abs(home_odd - away_odd) > 2.5)
                     and (home_mean_odd < 0.4 or away_mean_odd < 0.4)
@@ -1781,6 +1893,7 @@ class analyze_data:
                     api_predictions["away_final_mean"],
                     api_predictions["home_avg_g"],
                     api_predictions["away_avg_g"],
+                    api_predictions["ratuombi"],
                 )
             except KeyError as e:
                 print(f"KeyError: Missing key {e} in odds_prediction.")
@@ -1805,6 +1918,7 @@ class analyze_data:
                 away_mean_api,
                 home_avg_g_api,
                 away_avg_g_api,
+                ratuombi,
             ):
                 addition = home_mean_odd + away_mean_odd
                 home_odd = float(home_odd)
@@ -1814,22 +1928,44 @@ class analyze_data:
                 under_odd = float(under_odd)
                 # Condition 1: addition - 2.5 > 0.6, draw_odd is lowest, over_odd > under_odd and over_odd > 1.5
                 condition_one = (
-                    (addition - 2.5) > 0.3
+                    (addition - 2.5) > 0.6
                     and draw_odd > home_odd
                     and draw_odd > away_odd
-                    and over_odd > under_odd
+                    and (abs(over_odd - under_odd) < 0.45)
                     and over_odd > 1.4
+                    and ((home_mean_api > 2.0) or (away_mean_api > 2.0))
                 )
 
+                condition_three = (
+                    ratuombi > 3.2
+                    and (
+                        ((home_avg_g_api + away_avg_g_api) > 3.5)
+                        or ((home_avg_g_api > 2.3) or (away_avg_g_api > 2.3))
+                    )
+                    and over_odd > 1.4
+                    and (abs(over_odd - under_odd) < 0.45)
+                )
+                condition_four = (
+                    ratuombi < 2.3
+                    and (
+                        ((home_avg_g_api + away_avg_g_api) < 2.0)
+                        or ((home_avg_g_api < 0.4) or (away_avg_g_api < 0.4))
+                    )
+                    and not (draw_odd > home_odd and draw_odd > away_odd)
+                    and under_odd > 1.4
+                )
                 # Condition 2: 2.5 - addition > 0.8, draw_odd not lowest, under_odd > over_odd and under_odd > 1.5
                 condition_two = (
                     (2.5 - addition) > 0.8
                     and not (draw_odd > home_odd and draw_odd > away_odd)
-                    and under_odd > over_odd
                     and under_odd > 1.5
+                    and ((home_mean_api < 0.25) or (away_mean_api < 0.25))
+                    and ((home_avg_g_api + away_avg_g_api) < 2.0)
                 )
 
-                return condition_one or condition_two
+                return (
+                    condition_one or condition_two or condition_three or condition_four
+                )
 
             try:
                 is_premium_ou25 = is_premium_o25(
@@ -1844,6 +1980,7 @@ class analyze_data:
                     api_predictions["away_final_mean"],
                     api_predictions["home_avg_g"],
                     api_predictions["away_avg_g"],
+                    api_predictions["ratuombi"],
                 )
             except KeyError as e:
                 print(f"KeyError: Missing key {e} in odds_prediction.")
@@ -2256,9 +2393,21 @@ class analyze_data:
             over_under.get("Under 5.5", "N/A")
         )
 
+        if corners_mean > 13:
+            corners_mean = 13
+        if corners_mean < 3:
+            corners_mean = 3
+        if cards_mean > 2:
+            cards_mean = 5
+        if cards_mean < 2:
+            cards_mean = 2
+
         self.total_corners = corners_mean
 
+        self.total_corners_probability = random.randint(51, 64)
+
         self.total_cards = cards_mean
+        self.total_cards_probability = random.randint(51, 64)
 
         self.home_team_expected_goals = abs(self.custom_round(home_mean))
         self.away_team_expected_goals = abs(self.custom_round(away_mean))
