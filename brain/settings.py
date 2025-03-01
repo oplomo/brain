@@ -120,11 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "/static/"
-
-
-# STATICFILES_DIRS = []
-STATICFILES_DIRS = [BASE_DIR / "square/static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static"  # Django will collect files here
+STATICFILES_DIRS = []
 # Specify the directories to look for static files
 
 # Default primary key field type
