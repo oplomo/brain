@@ -25,8 +25,13 @@ SECRET_KEY = "django-insecure-!kdbpe1)1l+3pqg@y!w)m^n#o32*j0#b(qhmg7izz-2%0iz6m^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = [
+    "brain-zofx.onrender.com",  # Add your Render domain
+    "localhost",  # Allow local testing
+    "127.0.0.1",
+]
 
 # Application definition
 INSTALLED_APPS = [
