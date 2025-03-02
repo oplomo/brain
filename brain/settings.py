@@ -125,12 +125,15 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # Django will collect files here
 STATICFILES_DIRS = []
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-
+INSTALLED_APPS += ["sendfile"]
 import os
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "/opt/render/project/src/media/"
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# Configure django-sendfile
+SENDFILE_BACKEND = "sendfile.backends.nginx"
+SENDFILE_ROOT = MEDIA_ROOT
+SENDFILE_URL = MEDIA_URL
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
