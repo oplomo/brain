@@ -1,4 +1,4 @@
-div{bordeer:2px, solid red;box-sizing: border-box;}
+div{bor1der:2px, solid red;box-sizing: border-box;}
 .sports_menu a.active {
     font-weight: bold;
     color: red;
@@ -67,25 +67,23 @@ body{
 }
 .top_menu{
     display: flex;
-    justify-content: space-around;
-    margin:10px 0px 20px;
+    justify-content: space-between;
     margin: 10px;
-    justify-content: center;
     align-items: center;
-
 }
 
 .logo{
-    width:15%;
+
+    margin: 10px;
+    width: 20%;
     height: 30vh;
-    font-size: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
 .logo a{
-width: 100%;
-height: 100%;
+    display: block;
+    height: 100%;
+    width: 100% ! important;
+    background-color: rgb(0, 255, 191);
 }
 .logo a img{width: 100%;height: 100%;}
 .sports_selection{
@@ -390,6 +388,13 @@ font-size: 14px;
     text-align: center;
     padding: 5px;
 }
+.scoreshow{
+    color: white;
+    font-size:2.5em;
+    font-weight:bold;
+    background-color: indigo;
+    padding:5px 10px;
+}
 .footer_div{
     height: fit-content;
     text-align: center;
@@ -412,13 +417,32 @@ font-size: 14px;
 .t_badge{
     height: 100px; width: 100px; text-align: center;
 }
-@media screen and (min-width: 291px){
+@media screen and (max-width: 291px){
     /*for whatches */
     /* body{background-color:white;} */
+    .scoreshow{
+        color: white;
+        font-size:1.3em;
+        font-weight:bold;
+        background-color: indigo;
+        padding:3px 5px;
+    }
+    .teamvs{
+      
+        margin-bottom: 50px;
+        height: 70vh;
+        
+    }
+
+    .logo{
+
+        margin: 10px;
+        width: 25%;
+        height: 15vh;
+    }
     
-    } 
-    
-    @media screen and (max-width: 550px) {
+}
+    @media screen and (max-width: 550px) and (min-width:291.1px) {
         /* body {background-color:red;} */
         .yest{
             display: flex;
@@ -428,13 +452,8 @@ font-size: 14px;
             flex-wrap: wrap;
             width: 75%;
         }
-        .logo{
-            margin: 10px;
-            width:20%;
-            height: fit-content;     
-            padding: 5px 5px;
-            
-        }
+
+
         
         .header{
             height: fit-content;  
@@ -448,6 +467,12 @@ font-size: 14px;
         }
 
 
+        .logo{
+
+            margin: 10px;
+            width: 25%;
+            height: 17vh;
+        }
         
         .market{
             padding: 3px;
@@ -460,7 +485,13 @@ font-size: 14px;
               padding: 0px;
         }
         
-    
+        .scoreshow{
+            color: white;
+            font-size:2em;
+            font-weight:bold;
+            background-color: indigo;
+            padding:5px 8px;
+        }
      
         .footer_div{
             margin: 10px;        
@@ -567,11 +598,11 @@ font-size: 14px;
         }
         .logo{
             margin: 10px;
-            width:20%;
-            height: fit-content;     
-            padding: 5px 5px;
+            width:35%;
+            height: 25vh;
             
         }
+      
         .header{
             height: fit-content;  
             margin-bottom: 20px;          
@@ -696,9 +727,9 @@ font-size: 14px;
         }
         .logo{
             margin: 10px;
-            width:20%;
-            height: fit-content;     
-            padding: 5px 5px;
+            width:25%;
+            height: 27vh;     
+            
             
         }
         .header{
@@ -818,9 +849,8 @@ font-size: 14px;
         }
         .logo{
             margin: 10px;
-            width:20%;
-            height: fit-content;     
-            padding: 5px 5px;
+            width:22%;
+            height: 30vh;     
             
         }
         .header{

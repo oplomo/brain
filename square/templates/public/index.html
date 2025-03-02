@@ -60,67 +60,67 @@
             <div class="option"><a href="{% url 'square:index' selected_sport item 'tomorrow'  %}">tomorrow</a></div>
     
         </div>
-        <button id="hide_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Hide Probabilities</button>
-       
+        <button id="toggle_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Show Probabilities</button>       
         {% if matches %}
-        <table class="square_table">
-            <thead>
-                <tr class="table-header">
-                    <th class="table-cell">Sport Type</th>
-                    <th class="table-cell">Match Info</th>
-    
-                    <!-- Dynamic headers with a class for JavaScript targeting -->
-                    {% for header in dynamic_headers %}
-                        <th class="table-cell probability-header">{{ header.0 }}</th>
-                    {% endfor %}
-    
-                    <th class="table-cell">Prediction</th>
-                    <th class="table-cell">Odds</th>
-                    <th class="table-cell">Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for data in table_data %}
-                    <tr>
-                        <td>{{ data.sport_type }}</td>
-    
-                        <td class="team_link">
-                            <a href="{{ data.get_absolute_url }}">
-                               {{ data.match_name }}
-                            </a><br><br><span class="match_time">{{ data.time }}</span>
-                        </td>
-    
-                        <!-- Dynamically display probabilities or other match data -->
-                        {% for header in dynamic_headers %}
-                            {% with display_name=header.0 data_key=header.1 %}
-                                <td class="probability">{{ data|get_item:data_key }}</td>
-                            {% endwith %}
-                        {% endfor %}
-    
-                        <td class="stress">{{ data.prediction }} </td>
-                        <td>{{ data.odds }}</td>
-                        <td class="resut">
-                            {% if data.home_res is not None and data.away_res is not None %}
-                                {{ data.home_res }} - {{ data.away_res }}
-                            {% else %}
-                                Waiting
-                            {% endif %}
-                        </td>
-                    </tr>
+<table class="square_table">
+    <thead>
+        <tr class="table-header">
+            <th class="table-cell">Sport Type</th>
+            <th class="table-cell">Match Info</th>
+
+            <!-- Dynamic headers with a class for JavaScript targeting -->
+            {% for header in dynamic_headers %}
+                <th class="table-cell probability-header" style="display: none;">{{ header.0 }}</th>
+            {% endfor %}
+
+            <th class="table-cell">Prediction</th>
+            <th class="table-cell">Odds</th>
+            <th class="table-cell">Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in table_data %}
+            <tr>
+                <td>{{ data.sport_type }}</td>
+
+                <td class="team_link">
+                    <a href="{{ data.get_absolute_url }}">
+                       {{ data.match_name }}
+                    </a><br><br><span class="match_time">{{ data.time }}</span>
+                </td>
+
+                <!-- Dynamically display probabilities or other match data -->
+                {% for header in dynamic_headers %}
+                    {% with display_name=header.0 data_key=header.1 %}
+                        <td class="probability" style="display: none;">{{ data|get_item:data_key }}</td>
+                    {% endwith %}
                 {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-            <p>No game under the selected sport category.</p>
-        {% endif %}
+
+                <td class="stress">{{ data.prediction }} </td>
+                <td>{{ data.odds }}</td>
+                <td class="resut">
+                    {% if data.home_res is not None and data.away_res is not None %}
+                        {{ data.home_res }} - {{ data.away_res }}
+                    {% else %}
+                        Waiting
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>No game under the selected sport category.</p>
+{% endif %}
+
     </div>
     
     <script>
-        const toggleButton = document.getElementById("hide_probabilities");
+        const toggleButton = document.getElementById("toggle_probabilities");
         const probabilityCells = document.querySelectorAll(".probability");
         const probabilityHeaders = document.querySelectorAll(".probability-header");
     
-        let isVisible = true;
+        let isVisible = false; // Initially hidden
     
         toggleButton.addEventListener("click", function() {
             probabilityCells.forEach(cell => {
