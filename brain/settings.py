@@ -44,7 +44,7 @@ MIDDLEWARE = [
 
 MIDDLEWARE.append("square.middleware.MaintenanceMiddleware")
 
-MAINTENANCE_MODE = False
+MAINTENANCE_MODE = True
 
 ROOT_URLCONF = "brain.urls"
 
