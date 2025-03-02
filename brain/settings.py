@@ -129,7 +129,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 import os
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "/opt/render/project/src/media/"
+MEDIA_ROOT = "/opt/render/project/src/"
 
 
 # Default primary key field type
