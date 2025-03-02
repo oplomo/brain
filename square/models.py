@@ -577,7 +577,7 @@ class SiteInformation(models.Model):
         blank=True, help_text="A brief description of the website."
     )
     logo = models.ImageField(
-        upload_to="media/logos/",
+        upload_to="logos/",
         blank=True,
         null=True,
         help_text="The logo of the site.",
