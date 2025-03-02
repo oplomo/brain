@@ -25,15 +25,9 @@ SECRET_KEY = "django-insecure-!kdbpe1)1l+3pqg@y!w)m^n#o32*j0#b(qhmg7izz-2%0iz6m^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = [
-    "brain-zofx.onrender.com",  # Add your Render domain
-    "localhost",  # Allow local testing
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["www.jeruscore.com", "jeruscore.com", "brain-zofx.onrender.com"]
 
-# Application definition
 INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "django.contrib.sites",
