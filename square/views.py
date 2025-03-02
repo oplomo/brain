@@ -1739,3 +1739,13 @@ def is_admin(user):
 def toggle_maintenance(request):
     settings.MAINTENANCE_MODE = not settings.MAINTENANCE_MODE
     return redirect("square:index")  # Redirect back to homepage
+
+from django.http import FileResponse, Http404
+from django.conf import settings
+import os
+
+def serve_media(request, path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if not os.path.exists(file_path):
+        raise Http404("File not found")
+    return FileResponse(open(file_path, "rb"))

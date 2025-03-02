@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "square.apps.SquareConfig",
-    "django_sendfile",
     "backend.apps.BackendConfig",
     "django_celery_beat",
 ]
@@ -131,10 +130,7 @@ import os
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# Configure django-sendfile
-SENDFILE_BACKEND = "sendfile.backends.nginx"
-SENDFILE_ROOT = MEDIA_ROOT
-SENDFILE_URL = MEDIA_URL
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
