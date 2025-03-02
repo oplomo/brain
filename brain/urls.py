@@ -23,9 +23,34 @@ from django.urls import re_path
 from square.views import serve_media
 
 
+from django.contrib import sitemaps
+from django.contrib.sitemaps.views import sitemap
+
+
+from square.sitemaps import (
+    StaticViewSitemap,
+    FootballPredictionSitemap,
+    BasketballPredictionSitemap,
+    TennisPredictionSitemap,
+)
+
+sitemaps = {
+    "static": StaticViewSitemap(),
+    "football_predictions": FootballPredictionSitemap(),
+    "basketball_predictions": BasketballPredictionSitemap(),
+    "tennis_predictions": TennisPredictionSitemap(),
+}
+
+
 urlpatterns = [
     path("", include("square.urls", namespace="square")),
     path("admin/", admin.site.urls),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
 ]
 
 if settings.DEBUG:

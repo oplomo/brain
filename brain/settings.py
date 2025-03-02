@@ -35,6 +35,8 @@ ALLOWED_HOSTS = [
 
 # Application definition
 INSTALLED_APPS = [
+    "django.contrib.sitemaps",
+    "django.contrib.sites",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     "backend.apps.BackendConfig",
     "django_celery_beat",
 ]
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -125,7 +129,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # Django will collect files here
 STATICFILES_DIRS = []
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-INSTALLED_APPS += ["sendfile"]
 import os
 
 MEDIA_URL = "/media/"
