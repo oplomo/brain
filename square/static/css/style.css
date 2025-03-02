@@ -75,8 +75,8 @@ body{
 .logo{
 
     margin: 10px;
-    width: 20%;
-    height: 30vh;
+    width: 15%;
+    height: 25vh;
 }
 
 .logo a{
@@ -430,15 +430,15 @@ font-size: 14px;
     .teamvs{
       
         margin-bottom: 50px;
-        height: 70vh;
+        height: 75vh;
         
     }
 
     .logo{
 
         margin: 10px;
-        width: 25%;
-        height: 15vh;
+        width: 40%;
+        height: 20vh;
     }
     
 }
@@ -470,8 +470,8 @@ font-size: 14px;
         .logo{
 
             margin: 10px;
-            width: 25%;
-            height: 17vh;
+            width: 40%;
+            height: 20vh;
         }
         
         .market{
@@ -598,7 +598,7 @@ font-size: 14px;
         }
         .logo{
             margin: 10px;
-            width:35%;
+            width:40%;
             height: 25vh;
             
         }
@@ -727,8 +727,8 @@ font-size: 14px;
         }
         .logo{
             margin: 10px;
-            width:25%;
-            height: 27vh;     
+            width:24%;
+            height: 25vh;     
             
             
         }
