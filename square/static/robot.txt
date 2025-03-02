@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /admin/
+Allow: /
 
-Sitemap: https://jeruscore.com/sitemap.xml
+Sitemap: https://www.jeruscore.com/sitemap.xml
