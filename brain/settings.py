@@ -136,11 +136,12 @@ USE_TZ = True
 import os
 from kombu import Connection
 
-CELERY_BROKER_URL = os.getenv("REDIS_URL")
-CELERY_RESULT_BACKEND = os.getenv("REDIS_URL")
+CELERY_BROKER_URL = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional"
+CELERY_RESULT_BACKEND = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional"
 
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"  
 CELERY_TIMEZONE = "UTC"
 CELERY_WORKER_CONCURRENCY = 4
 # rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional
