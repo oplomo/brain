@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     "backend.apps.BackendConfig",
     "django_celery_beat",
 ]
-SITE_ID = 1
+
+SITE_ID = 2
 
 
 MIDDLEWARE = [
@@ -141,7 +142,7 @@ CELERY_RESULT_BACKEND = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNz
 
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"  
+CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
 CELERY_WORKER_CONCURRENCY = 4
 # rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional
