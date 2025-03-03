@@ -71,16 +71,18 @@ WSGI_APPLICATION = "brain.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
+import os
+import dj_database_url
 
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+DATABASES = {"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -115,10 +117,10 @@ import os
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-import os
-import dj_database_url
+# import os
+# import dj_database_url
 
-DATABASES = {"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))}
+# DATABASES = {"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
