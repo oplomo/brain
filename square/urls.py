@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-
+fd =5
 app_name = "square"
 
 urlpatterns = [
