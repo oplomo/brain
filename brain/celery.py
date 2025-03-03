@@ -54,8 +54,8 @@ def debug_task(self):
 
 
 # Use Redis from Upstash (Render environment variable)
-app.conf.broker_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
-app.conf.result_backend = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+app.conf.broker_url = os.getenv("REDIS_URL")
+app.conf.result_backend = os.getenv("REDIS_URL")
 
 # Celery Beat Schedule
 app.conf.beat_schedule = {
