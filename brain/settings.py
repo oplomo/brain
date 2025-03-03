@@ -133,6 +133,9 @@ TIME_ZONE = "UTC"
 USE_TZ = True
 
 
+import os
+from kombu import Connection
+
 CELERY_BROKER_URL = os.getenv("REDIS_URL")
 CELERY_RESULT_BACKEND = os.getenv("REDIS_URL")
 
@@ -140,6 +143,15 @@ CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
 CELERY_WORKER_CONCURRENCY = 4
+
+# DATABASE_URL
+# postgresql://predict_db_user:USygJJYAf1u1rP8XVuvqfmSPFKVnkGWg@dpg-cv2b7h8gph6c73bem560-a/predict_db
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    "visibility_timeout": 3600,
+    "ssl": {
+        "ssl_cert_reqs": "CERT_NONE"  # Change to "CERT_REQUIRED" if you have a valid certificate
+    },
+}
 
 # settings.py
 PAYSTACK_PUBLIC_KEY = "YOUR_PUBLIC_KEY"
