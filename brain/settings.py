@@ -77,7 +77,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
+ff=2
 # import os
 # import dj_database_url
 

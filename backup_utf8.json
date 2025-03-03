@@ -59542,7 +59542,7 @@
   "pk": 1378,
   "fields": {
     "league_id": 269,
-    "name": "Segunda División",
+    "name": "Segunda Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/269.png",
     "country": 371,
@@ -59596,7 +59596,7 @@
   "pk": 1380,
   "fields": {
     "league_id": 203,
-    "name": "Süper Lig",
+    "name": "Sï¿½per Lig",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/203.png",
     "country": 373,
@@ -60484,7 +60484,7 @@
   "pk": 1414,
   "fields": {
     "league_id": 312,
-    "name": "1a Divisió",
+    "name": "1a Divisiï¿½",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/312.png",
     "country": 382,
@@ -60511,7 +60511,7 @@
   "pk": 1415,
   "fields": {
     "league_id": 313,
-    "name": "2a Divisió",
+    "name": "2a Divisiï¿½",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/313.png",
     "country": 382,
@@ -61022,7 +61022,7 @@
   "pk": 1434,
   "fields": {
     "league_id": 299,
-    "name": "Primera División",
+    "name": "Primera Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/299.png",
     "country": 388,
@@ -61049,7 +61049,7 @@
   "pk": 1435,
   "fields": {
     "league_id": 300,
-    "name": "Segunda División",
+    "name": "Segunda Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/300.png",
     "country": 388,
@@ -62045,7 +62045,7 @@
   "pk": 1473,
   "fields": {
     "league_id": 598,
-    "name": "Première Division",
+    "name": "Premiï¿½re Division",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/598.png",
     "country": 404,
@@ -62121,7 +62121,7 @@
   "pk": 1476,
   "fields": {
     "league_id": 268,
-    "name": "Primera División - Apertura",
+    "name": "Primera Divisiï¿½n - Apertura",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/268.png",
     "country": 371,
@@ -62147,7 +62147,7 @@
   "pk": 1477,
   "fields": {
     "league_id": 270,
-    "name": "Primera División - Clausura",
+    "name": "Primera Divisiï¿½n - Clausura",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/270.png",
     "country": 371,
@@ -62329,7 +62329,7 @@
   "pk": 1484,
   "fields": {
     "league_id": 245,
-    "name": "Ykkönen",
+    "name": "Ykkï¿½nen",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/245.png",
     "country": 409,
@@ -62485,7 +62485,7 @@
   "pk": 1490,
   "fields": {
     "league_id": 526,
-    "name": "Trophée des Champions",
+    "name": "Trophï¿½e des Champions",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/526.png",
     "country": 353,
@@ -63033,7 +63033,7 @@
   "pk": 1511,
   "fields": {
     "league_id": 379,
-    "name": "Ligue Haïtienne",
+    "name": "Ligue Haï¿½tienne",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/379.png",
     "country": 418,
@@ -63997,7 +63997,7 @@
   "pk": 1555,
   "fields": {
     "league_id": 564,
-    "name": "Ettan - Södra",
+    "name": "Ettan - Sï¿½dra",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/564.png",
     "country": 430,
@@ -64537,7 +64537,7 @@
   "pk": 1580,
   "fields": {
     "league_id": 96,
-    "name": "Taça de Portugal",
+    "name": "Taï¿½a de Portugal",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/96.png",
     "country": 360,
@@ -64916,7 +64916,7 @@
   "pk": 1598,
   "fields": {
     "league_id": 141,
-    "name": "Segunda División",
+    "name": "Segunda Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/141.png",
     "country": 361,
@@ -65048,7 +65048,7 @@
   "pk": 1604,
   "fields": {
     "league_id": 162,
-    "name": "Primera División",
+    "name": "Primera Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/162.png",
     "country": 456,
@@ -65070,7 +65070,7 @@
   "pk": 1605,
   "fields": {
     "league_id": 164,
-    "name": "Úrvalsdeild",
+    "name": "ï¿½rvalsdeild",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/164.png",
     "country": 436,
@@ -65598,7 +65598,7 @@
   "pk": 1629,
   "fields": {
     "league_id": 142,
-    "name": "Primera División Femenina",
+    "name": "Primera Divisiï¿½n Femenina",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/142.png",
     "country": 361,
@@ -65817,7 +65817,7 @@
   "pk": 1639,
   "fields": {
     "league_id": 263,
-    "name": "Liga de Expansión MX",
+    "name": "Liga de Expansiï¿½n MX",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/263.png",
     "country": 465,
@@ -65921,7 +65921,7 @@
   "pk": 1644,
   "fields": {
     "league_id": 281,
-    "name": "Primera División",
+    "name": "Primera Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/281.png",
     "country": 469,
@@ -65943,7 +65943,7 @@
   "pk": 1645,
   "fields": {
     "league_id": 282,
-    "name": "Segunda División",
+    "name": "Segunda Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/282.png",
     "country": 469,
@@ -66289,7 +66289,7 @@
   "pk": 1661,
   "fields": {
     "league_id": 592,
-    "name": "Division 2 - Norra Götaland",
+    "name": "Division 2 - Norra Gï¿½taland",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/592.png",
     "country": 430,
@@ -66355,7 +66355,7 @@
   "pk": 1664,
   "fields": {
     "league_id": 595,
-    "name": "Division 2 - Södra Svealand",
+    "name": "Division 2 - Sï¿½dra Svealand",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/595.png",
     "country": 430,
@@ -66377,7 +66377,7 @@
   "pk": 1665,
   "fields": {
     "league_id": 596,
-    "name": "Division 2 - Västra Götaland",
+    "name": "Division 2 - Vï¿½stra Gï¿½taland",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/596.png",
     "country": 430,
@@ -66399,7 +66399,7 @@
   "pk": 1666,
   "fields": {
     "league_id": 597,
-    "name": "Division 2 - Östra Götaland",
+    "name": "Division 2 - ï¿½stra Gï¿½taland",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/597.png",
     "country": 430,
@@ -67091,7 +67091,7 @@
   "pk": 1701,
   "fields": {
     "league_id": 304,
-    "name": "Liga Panameña de Fútbol",
+    "name": "Liga Panameï¿½a de Fï¿½tbol",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/304.png",
     "country": 479,
@@ -67208,7 +67208,7 @@
   "pk": 1707,
   "fields": {
     "league_id": 265,
-    "name": "Primera División",
+    "name": "Primera Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/265.png",
     "country": 425,
@@ -67506,7 +67506,7 @@
   "pk": 1722,
   "fields": {
     "league_id": 344,
-    "name": "Primera División",
+    "name": "Primera Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/344.png",
     "country": 484,
@@ -67783,7 +67783,7 @@
   "pk": 1737,
   "fields": {
     "league_id": 285,
-    "name": "Cupa României",
+    "name": "Cupa Romï¿½niei",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/285.png",
     "country": 429,
@@ -68166,7 +68166,7 @@
   "pk": 1758,
   "fields": {
     "league_id": 491,
-    "name": "Løgmanssteypid",
+    "name": "Lï¿½gmanssteypid",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/491.png",
     "country": 408,
@@ -69445,7 +69445,7 @@
   "pk": 1826,
   "fields": {
     "league_id": 435,
-    "name": "Primera División RFEF - Group 1",
+    "name": "Primera Divisiï¿½n RFEF - Group 1",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/435.png",
     "country": 361,
@@ -69464,7 +69464,7 @@
   "pk": 1827,
   "fields": {
     "league_id": 436,
-    "name": "Primera División RFEF - Group 2",
+    "name": "Primera Divisiï¿½n RFEF - Group 2",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/436.png",
     "country": 361,
@@ -69483,7 +69483,7 @@
   "pk": 1828,
   "fields": {
     "league_id": 437,
-    "name": "Primera División RFEF - Group 3",
+    "name": "Primera Divisiï¿½n RFEF - Group 3",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/437.png",
     "country": 361,
@@ -69498,7 +69498,7 @@
   "pk": 1829,
   "fields": {
     "league_id": 438,
-    "name": "Primera División RFEF - Group 4",
+    "name": "Primera Divisiï¿½n RFEF - Group 4",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/438.png",
     "country": 361,
@@ -69513,7 +69513,7 @@
   "pk": 1830,
   "fields": {
     "league_id": 439,
-    "name": "Tercera División RFEF - Group 1",
+    "name": "Tercera Divisiï¿½n RFEF - Group 1",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/439.png",
     "country": 361,
@@ -69532,7 +69532,7 @@
   "pk": 1831,
   "fields": {
     "league_id": 440,
-    "name": "Tercera División RFEF - Group 2",
+    "name": "Tercera Divisiï¿½n RFEF - Group 2",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/440.png",
     "country": 361,
@@ -69551,7 +69551,7 @@
   "pk": 1832,
   "fields": {
     "league_id": 441,
-    "name": "Tercera División RFEF - Group 3",
+    "name": "Tercera Divisiï¿½n RFEF - Group 3",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/441.png",
     "country": 361,
@@ -69570,7 +69570,7 @@
   "pk": 1833,
   "fields": {
     "league_id": 442,
-    "name": "Tercera División RFEF - Group 4",
+    "name": "Tercera Divisiï¿½n RFEF - Group 4",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/442.png",
     "country": 361,
@@ -69589,7 +69589,7 @@
   "pk": 1834,
   "fields": {
     "league_id": 443,
-    "name": "Tercera División RFEF - Group 5",
+    "name": "Tercera Divisiï¿½n RFEF - Group 5",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/443.png",
     "country": 361,
@@ -69608,7 +69608,7 @@
   "pk": 1835,
   "fields": {
     "league_id": 444,
-    "name": "Tercera División RFEF - Group 6",
+    "name": "Tercera Divisiï¿½n RFEF - Group 6",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/444.png",
     "country": 361,
@@ -69627,7 +69627,7 @@
   "pk": 1836,
   "fields": {
     "league_id": 445,
-    "name": "Tercera División RFEF - Group 7",
+    "name": "Tercera Divisiï¿½n RFEF - Group 7",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/445.png",
     "country": 361,
@@ -69646,7 +69646,7 @@
   "pk": 1837,
   "fields": {
     "league_id": 446,
-    "name": "Tercera División RFEF - Group 8",
+    "name": "Tercera Divisiï¿½n RFEF - Group 8",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/446.png",
     "country": 361,
@@ -69665,7 +69665,7 @@
   "pk": 1838,
   "fields": {
     "league_id": 447,
-    "name": "Tercera División RFEF - Group 9",
+    "name": "Tercera Divisiï¿½n RFEF - Group 9",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/447.png",
     "country": 361,
@@ -69684,7 +69684,7 @@
   "pk": 1839,
   "fields": {
     "league_id": 448,
-    "name": "Tercera División RFEF - Group 10",
+    "name": "Tercera Divisiï¿½n RFEF - Group 10",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/448.png",
     "country": 361,
@@ -69703,7 +69703,7 @@
   "pk": 1840,
   "fields": {
     "league_id": 449,
-    "name": "Tercera División RFEF - Group 11",
+    "name": "Tercera Divisiï¿½n RFEF - Group 11",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/449.png",
     "country": 361,
@@ -69722,7 +69722,7 @@
   "pk": 1841,
   "fields": {
     "league_id": 450,
-    "name": "Tercera División RFEF - Group 12",
+    "name": "Tercera Divisiï¿½n RFEF - Group 12",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/450.png",
     "country": 361,
@@ -69741,7 +69741,7 @@
   "pk": 1842,
   "fields": {
     "league_id": 451,
-    "name": "Tercera División RFEF - Group 13",
+    "name": "Tercera Divisiï¿½n RFEF - Group 13",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/451.png",
     "country": 361,
@@ -69760,7 +69760,7 @@
   "pk": 1843,
   "fields": {
     "league_id": 452,
-    "name": "Tercera División RFEF - Group 14",
+    "name": "Tercera Divisiï¿½n RFEF - Group 14",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/452.png",
     "country": 361,
@@ -69779,7 +69779,7 @@
   "pk": 1844,
   "fields": {
     "league_id": 453,
-    "name": "Tercera División RFEF - Group 15",
+    "name": "Tercera Divisiï¿½n RFEF - Group 15",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/453.png",
     "country": 361,
@@ -69798,7 +69798,7 @@
   "pk": 1845,
   "fields": {
     "league_id": 454,
-    "name": "Tercera División RFEF - Group 16",
+    "name": "Tercera Divisiï¿½n RFEF - Group 16",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/454.png",
     "country": 361,
@@ -69817,7 +69817,7 @@
   "pk": 1846,
   "fields": {
     "league_id": 455,
-    "name": "Tercera División RFEF - Group 17",
+    "name": "Tercera Divisiï¿½n RFEF - Group 17",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/455.png",
     "country": 361,
@@ -69836,7 +69836,7 @@
   "pk": 1847,
   "fields": {
     "league_id": 456,
-    "name": "Tercera División RFEF - Group 18",
+    "name": "Tercera Divisiï¿½n RFEF - Group 18",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/456.png",
     "country": 361,
@@ -70338,7 +70338,7 @@
   "pk": 1874,
   "fields": {
     "league_id": 503,
-    "name": "Copa Perú",
+    "name": "Copa Perï¿½",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/503.png",
     "country": 469,
@@ -70895,7 +70895,7 @@
   "pk": 1904,
   "fields": {
     "league_id": 97,
-    "name": "Taça da Liga",
+    "name": "Taï¿½a da Liga",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/97.png",
     "country": 360,
@@ -71308,7 +71308,7 @@
   "pk": 1927,
   "fields": {
     "league_id": 642,
-    "name": "Curaçao Sekshon Pagá",
+    "name": "Curaï¿½ao Sekshon Pagï¿½",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/642.png",
     "country": 494,
@@ -71325,7 +71325,7 @@
   "pk": 1928,
   "fields": {
     "league_id": 655,
-    "name": "Copa Constitució",
+    "name": "Copa Constituciï¿½",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/655.png",
     "country": 382,
@@ -72161,7 +72161,7 @@
   "pk": 1974,
   "fields": {
     "league_id": 618,
-    "name": "São Paulo Youth Cup",
+    "name": "Sï¿½o Paulo Youth Cup",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/618.png",
     "country": 355,
@@ -72394,7 +72394,7 @@
   "pk": 1987,
   "fields": {
     "league_id": 636,
-    "name": "Ýokary Liga",
+    "name": "ï¿½okary Liga",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/636.png",
     "country": 497,
@@ -72647,7 +72647,7 @@
   "pk": 2001,
   "fields": {
     "league_id": 739,
-    "name": "AXA Women’s Super League",
+    "name": "AXA Womenï¿½s Super League",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/739.png",
     "country": 459,
@@ -72880,7 +72880,7 @@
   "pk": 2014,
   "fields": {
     "league_id": 753,
-    "name": "Oberliga - Baden-Württemberg",
+    "name": "Oberliga - Baden-Wï¿½rttemberg",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/753.png",
     "country": 357,
@@ -72916,7 +72916,7 @@
   "pk": 2016,
   "fields": {
     "league_id": 755,
-    "name": "Oberliga - Nordost-Süd",
+    "name": "Oberliga - Nordost-Sï¿½d",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/755.png",
     "country": 357,
@@ -73912,7 +73912,7 @@
   "pk": 2074,
   "fields": {
     "league_id": 840,
-    "name": "Taça Revelação U23",
+    "name": "Taï¿½a Revelaï¿½ï¿½o U23",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/840.png",
     "country": 360,
@@ -74067,7 +74067,7 @@
   "pk": 2083,
   "fields": {
     "league_id": 477,
-    "name": "Gaúcho - 1",
+    "name": "Gaï¿½cho - 1",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/477.png",
     "country": 355,
@@ -74085,7 +74085,7 @@
   "pk": 2084,
   "fields": {
     "league_id": 478,
-    "name": "Gaúcho - 2",
+    "name": "Gaï¿½cho - 2",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/478.png",
     "country": 355,
@@ -74720,7 +74720,7 @@
   "pk": 2121,
   "fields": {
     "league_id": 662,
-    "name": "Copa por México",
+    "name": "Copa por Mï¿½xico",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/662.png",
     "country": 465,
@@ -74839,7 +74839,7 @@
   "pk": 2128,
   "fields": {
     "league_id": 671,
-    "name": "Úrvalsdeild Women",
+    "name": "ï¿½rvalsdeild Women",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/671.png",
     "country": 436,
@@ -75174,7 +75174,7 @@
   "pk": 2148,
   "fields": {
     "league_id": 692,
-    "name": "Primera División RFEF - Group 5",
+    "name": "Primera Divisiï¿½n RFEF - Group 5",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/692.png",
     "country": 361,
@@ -75303,7 +75303,7 @@
   "pk": 2156,
   "fields": {
     "league_id": 701,
-    "name": "Liga Revelação U23",
+    "name": "Liga Revelaï¿½ï¿½o U23",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/701.png",
     "country": 360,
@@ -75482,7 +75482,7 @@
   "pk": 2166,
   "fields": {
     "league_id": 711,
-    "name": "Segunda División",
+    "name": "Segunda Divisiï¿½n",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/711.png",
     "country": 425,
@@ -76164,7 +76164,7 @@
   "pk": 2206,
   "fields": {
     "league_id": 857,
-    "name": "Campeón de Campeones",
+    "name": "Campeï¿½n de Campeones",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/857.png",
     "country": 465,
@@ -76454,7 +76454,7 @@
   "pk": 2224,
   "fields": {
     "league_id": 875,
-    "name": "Segunda División RFEF - Group 1",
+    "name": "Segunda Divisiï¿½n RFEF - Group 1",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/875.png",
     "country": 361,
@@ -76471,7 +76471,7 @@
   "pk": 2225,
   "fields": {
     "league_id": 876,
-    "name": "Segunda División RFEF - Group 2",
+    "name": "Segunda Divisiï¿½n RFEF - Group 2",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/876.png",
     "country": 361,
@@ -76488,7 +76488,7 @@
   "pk": 2226,
   "fields": {
     "league_id": 877,
-    "name": "Segunda División RFEF - Group 3",
+    "name": "Segunda Divisiï¿½n RFEF - Group 3",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/877.png",
     "country": 361,
@@ -76505,7 +76505,7 @@
   "pk": 2227,
   "fields": {
     "league_id": 878,
-    "name": "Segunda División RFEF - Group 4",
+    "name": "Segunda Divisiï¿½n RFEF - Group 4",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/878.png",
     "country": 361,
@@ -76522,7 +76522,7 @@
   "pk": 2228,
   "fields": {
     "league_id": 879,
-    "name": "Segunda División RFEF - Group 5",
+    "name": "Segunda Divisiï¿½n RFEF - Group 5",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/879.png",
     "country": 361,
@@ -76853,7 +76853,7 @@
   "pk": 2249,
   "fields": {
     "league_id": 948,
-    "name": "1a Divisão - Women",
+    "name": "1a Divisï¿½o - Women",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/948.png",
     "country": 360,
@@ -77176,7 +77176,7 @@
   "pk": 2270,
   "fields": {
     "league_id": 977,
-    "name": "Tercera División RFEF - Promotion - Play-offs",
+    "name": "Tercera Divisiï¿½n RFEF - Promotion - Play-offs",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/977.png",
     "country": 361,
@@ -77520,7 +77520,7 @@
   "pk": 2293,
   "fields": {
     "league_id": 1000,
-    "name": "Segunda División RFEF - Play-offs",
+    "name": "Segunda Divisiï¿½n RFEF - Play-offs",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/1000.png",
     "country": 361,
@@ -77595,7 +77595,7 @@
   "pk": 2298,
   "fields": {
     "league_id": 1006,
-    "name": "Primera División RFEF - Play Offs",
+    "name": "Primera Divisiï¿½n RFEF - Play Offs",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/1006.png",
     "country": 361,
@@ -77719,7 +77719,7 @@
   "pk": 2306,
   "fields": {
     "league_id": 901,
-    "name": "Ykköscup",
+    "name": "Ykkï¿½scup",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/901.png",
     "country": 409,
@@ -78298,7 +78298,7 @@
   "pk": 2344,
   "fields": {
     "league_id": 939,
-    "name": "Oberliga - Bayern Süd",
+    "name": "Oberliga - Bayern Sï¿½d",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/939.png",
     "country": 357,
@@ -78374,7 +78374,7 @@
   "pk": 2349,
   "fields": {
     "league_id": 1041,
-    "name": "Júniores U19",
+    "name": "Jï¿½niores U19",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/1041.png",
     "country": 360,
@@ -78805,7 +78805,7 @@
   "pk": 2379,
   "fields": {
     "league_id": 964,
-    "name": "Copa de la División Profesional",
+    "name": "Copa de la Divisiï¿½n Profesional",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/964.png",
     "country": 484,
@@ -78834,7 +78834,7 @@
   "pk": 2381,
   "fields": {
     "league_id": 969,
-    "name": "Primeira Divisão",
+    "name": "Primeira Divisï¿½o",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/969.png",
     "country": 522,
@@ -79374,7 +79374,7 @@
   "pk": 2418,
   "fields": {
     "league_id": 1158,
-    "name": "Copa Gaúcha",
+    "name": "Copa Gaï¿½cha",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/1158.png",
     "country": 355,
@@ -79402,7 +79402,7 @@
   "pk": 2420,
   "fields": {
     "league_id": 1150,
-    "name": "Gaúcho - 3",
+    "name": "Gaï¿½cho - 3",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/1150.png",
     "country": 355,
@@ -79836,7 +79836,7 @@
   "pk": 2451,
   "fields": {
     "league_id": 1087,
-    "name": "Ykkösliiga",
+    "name": "Ykkï¿½sliiga",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/1087.png",
     "country": 409,
@@ -79976,7 +79976,7 @@
   "pk": 2461,
   "fields": {
     "league_id": 1097,
-    "name": "Copa Espírito Santo",
+    "name": "Copa Espï¿½rito Santo",
     "type": "Cup",
     "logo": "https://media.api-sports.io/football/leagues/1097.png",
     "country": 355,
@@ -79990,7 +79990,7 @@
   "pk": 2462,
   "fields": {
     "league_id": 1098,
-    "name": "Paulista Série B",
+    "name": "Paulista Sï¿½rie B",
     "type": "League",
     "logo": "https://media.api-sports.io/football/leagues/1098.png",
     "country": 355,
@@ -82469,7 +82469,7 @@
       "match"
     ],
     "object_id": "18364",
-    "object_repr": "1. FC Nürnberg vs Hannover 96 on 2025-03-01 12:00:00+00:00",
+    "object_repr": "1. FC Nï¿½rnberg vs Hannover 96 on 2025-03-01 12:00:00+00:00",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"To be predicted\"]}}]"
   }
@@ -82523,7 +82523,7 @@
       "match"
     ],
     "object_id": "18364",
-    "object_repr": "1. FC Nürnberg vs Hannover 96 on 2025-03-01 12:00:00+00:00",
+    "object_repr": "1. FC Nï¿½rnberg vs Hannover 96 on 2025-03-01 12:00:00+00:00",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"To be predicted\"]}}]"
   }
@@ -82631,7 +82631,7 @@
       "match"
     ],
     "object_id": "823",
-    "object_repr": "1. FC Nürnberg vs Hannover 96",
+    "object_repr": "1. FC Nï¿½rnberg vs Hannover 96",
     "action_flag": 3,
     "change_message": ""
   }
