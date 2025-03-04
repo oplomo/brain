@@ -110,16 +110,16 @@
 
     .button-container {
         text-align: center;
-        margin-top: 15px;
+        margin-top: 20px;
     }
 
     .buy-button {
         background: #007bff;
         color: white;
-        padding: 10px 20px;
+        padding: 12px 24px;
         border-radius: 8px;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: bold;
         display: inline-block;
         transition: background 0.3s;
@@ -166,13 +166,15 @@
                 </div>
             </div>
             <p class="match-date">Date: {{ match.match.date|date:"M d, Y H:i" }} ({{ match.match.timezone }})</p>
-            <div class="button-container">
-                <a href="#" class="buy-button">BUY NOW</a>
-            </div>
         </div>
         {% empty %}
         <p class="no-matches">No matches available today.</p>
         {% endfor %}
     </div>
+    {% if match_data %}
+    <div class="button-container">
+        <a href="#" class="buy-button">BUY NOW</a>
+    </div>
+    {% endif %}
 </div>
 {% endblock content %}
