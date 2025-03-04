@@ -1848,7 +1848,7 @@ def initiate_payment(request):
             data = {
                 "email": email,
                 "amount": amount,
-                "callback_url": "https://jerusqore.com/payment/verify/",  # Callback URL for verification
+                "callback_url": "https://jeruscore.com/payment/verify/",  # Callback URL for verification
             }
 
             # Make API request to Paystack
