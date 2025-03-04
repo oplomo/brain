@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
 from datetime import date
+from django.utils.timezone import now
+
 
 
 # Custom User model to extend with profile and VIP access status
@@ -663,13 +665,16 @@ class Fixture(models.Model):
     def __str__(self):
         return f"{self.team_home} vs {self.team_away} ({self.status_short})"
 
-import uuid
 
-class Payment(models.Model):
-    reference = models.CharField(max_length=100, unique=True)
-    access_token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
-    verified = models.BooleanField(default=False)
-    date_paid = models.DateTimeField(auto_now_add=True)
+
+class Payslips(models.Model):
+    reference = models.CharField(max_length=100, unique=True)  # Paystack transaction reference
+    email = models.EmailField()  # User's email
+    phone = models.CharField(max_length=20, blank=True, null=True)  # User's phone (if available)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)  # Amount paid
+    status = models.CharField(max_length=20)  # Payment status (success, failed, etc.)
+    verified = models.BooleanField(default=False)  # Payment verification status
+    date_paid = models.DateTimeField(default=now)  # Date & time of payment
 
     def __str__(self):
-        return f"Payment {self.reference} - {'Verified' if self.verified else 'Pending'}"
+        return f"{self.email} - {self.reference} - {self.status}"

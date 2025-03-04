@@ -1867,7 +1867,7 @@ def initiate_payment(request):
 
 
 from django.core.mail import send_mail
-
+from .models import Payslips
 
 def verify_payment(request):
     """
@@ -1883,6 +1883,25 @@ def verify_payment(request):
         "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
     }
     response = requests.get(url, headers=headers)
+    result = response.json()
+    if result.get("status"):  # Payment successful
+        data = result["data"]
+        email = data.get("customer", {}).get("email", "")
+        phone = data.get("customer", {}).get("phone", "")
+        amount = data.get("amount") / 100  # Convert from kobo to Naira/USD
+        status = data.get("status")
+        
+        # Save to the database
+        payment, created = Payslips.objects.get_or_create(
+            reference=reference,
+            defaults={
+                "email": email,
+                "phone": phone,
+                "amount": amount,
+                "status": status,
+                "verified": status == "success"
+            }
+        )
 
     if response.status_code == 200:
         data = response.json().get("data", {})

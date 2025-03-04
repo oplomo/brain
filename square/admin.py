@@ -13,7 +13,7 @@ from .models import (
     SiteInformation,
     ResultDate,
     Fixture,
-    Payment,
+    Payslips,
 )
 from django.contrib.auth.admin import UserAdmin
 
@@ -254,11 +254,8 @@ class ResultDateAdmin(admin.ModelAdmin):
 admin.site.register(ResultDate, ResultDateAdmin)
 
 
-# admin.py
-
-
-@admin.register(Payment)
-class PaymentAdmin(admin.ModelAdmin):
-    list_display = ("reference", "access_token", "verified", "date_paid")
-    list_filter = ("verified", "date_paid")
-    search_fields = ("reference", "access_token")
+@admin.register(Payslips)
+class PayslipsAdmin(admin.ModelAdmin):
+    list_display = ("email", "reference", "amount", "status", "verified", "date_paid")
+    search_fields = ("email", "reference")
+    list_filter = ("status", "verified", "date_paid")
