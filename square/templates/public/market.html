@@ -185,7 +185,7 @@
     </div>
     {% if match_data %}
     <div class="button-container">
-        <a href="square:initiate_payment" class="buy-button">BUY NOW</a>
+        <a href="{% url "square:initiate_payment" %}" class="buy-button">BUY NOW</a>
         <p class="price-tag">Price: KES {{ VIPStatus.price }}</p>
     </div>
     
