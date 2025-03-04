@@ -1924,41 +1924,41 @@ def verify_payment(request):
                 is_premium=True,
                 date__date=today,  # Filter by today's date
             ).prefetch_related("footballprediction_set")
-        match_data = []
-        for match in matches:
-            football = get_object_or_404(FootballPrediction, match=match)
+            match_data = []
+            for match in matches:
+                football = get_object_or_404(FootballPrediction, match=match)
 
-            if match.gold_bar == "gg":
-                description = "both teams to score"
-                prediction = get_prediction_bts(football)
-                odds = get_odds_bts(football)
+                if match.gold_bar == "gg":
+                    description = "both teams to score"
+                    prediction = get_prediction_bts(football)
+                    odds = get_odds_bts(football)
 
-            elif match.gold_bar == "three_way":
-                description = "team to win"
-                prediction = get_prediction(football, football.match.sport.name)
-                odds = get_odds(football, football.match.sport.name)
+                elif match.gold_bar == "three_way":
+                    description = "team to win"
+                    prediction = get_prediction(football, football.match.sport.name)
+                    odds = get_odds(football, football.match.sport.name)
 
-            elif match.gold_bar == "ov":
-                description = "total goals"
-                prediction = get_prediction_ov(football)
-                odds = get_odds_ov(football)
+                elif match.gold_bar == "ov":
+                    description = "total goals"
+                    prediction = get_prediction_ov(football)
+                    odds = get_odds_ov(football)
 
-            else:
-                description = ""
-                prediction = None
-                odds = None
+                else:
+                    description = ""
+                    prediction = None
+                    odds = None
 
-            match_data.append(
-                {
-                    "match": match,
-                    "description": description,
-                    "prediction": prediction,
-                    "odds": odds,
-                    "league_logo": match.league.logo if match.league else None,
-                    "country_name": match.league.country.name if match.league else None,
-                    "country_flag": match.league.country.flag if match.league else None,
-                }
-            )
+                match_data.append(
+                    {
+                        "match": match,
+                        "description": description,
+                        "prediction": prediction,
+                        "odds": odds,
+                        "league_logo": match.league.logo if match.league else None,
+                        "country_name": match.league.country.name if match.league else None,
+                        "country_flag": match.league.country.flag if match.league else None,
+                    }
+                )
 
             email = data.get("customer", {}).get("email", "")
 
