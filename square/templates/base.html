@@ -75,7 +75,7 @@
                
                     <a href="{% url "square:index" "tennis" %}" class="{% if selected_sport == 'tennis' %}active{% endif %}">
                         <div class="sports_menu">tennis </div></a> {% endcomment %}
-                        {% if user.is_authenticated %}
+                        {% comment %} {% if user.is_authenticated %} {% endcomment %}
    
                         <a href="{% url "square:premium" %}"style="text-align:center;color:green;font:bold">
 
@@ -83,7 +83,7 @@
                             premium tips
                           </div>
                         </a>
-                       {% endif %}
+                       {% comment %} {% endif %} {% endcomment %}
 
             </div>
      
@@ -124,7 +124,7 @@
        <div class="footer_div">
         JERUSQORE@GMAIL.COM
    </div>
-
+  <a href="{% url "square:payment_success" %}">see payment succes page</a>
       <div class="footer_div adamu">
         &copy;jerusqore <br>
         <small>site by <i>adams square</i>&nbsp;(adamssquare4@gmail.com)</small><br>

@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-fd =5
+fd = 5
 app_name = "square"
 
 urlpatterns = [
@@ -25,13 +25,11 @@ urlpatterns = [
         views.Tennisview,
         name="tennis_detail",
     ),
-
     path(
         "free basketball predictons/basketball/<int:pk>/<str:home_team_slug>/vs/<str:away_team_slug>/<str:time>/<str:sport_slug>",
         views.Basketballview,
         name="basketball_detail",
     ),
-
     path("manage sport create prediction tips betting/", views.office, name="office"),
     path("refresh static database/", views.refresh, name="refresh"),
     path(
@@ -60,17 +58,40 @@ urlpatterns = [
         views.check_task_progress,
         name="check_task_progress",
     ),
-    path("see_data_progress", views.see_data_progress, name="see_data_progress"),#same us the check_task_progress url
-    path("predict_all/", views.predict_all_matches, name="predict_all_matches"),#a lin thatadmin cics when he wants to predict a matches, it is in o.html and not for the public
-    path("jeruqsore/premium/", views.premium, name="premium"),# a lin in index.html that taes visitoes to premium.html where the vistitor can see the games in that tempate,and if a person hasnt payed it will render payment_page.html that has a form for putting payment detais such as emai
-    path("destroy_premium/", views.destroy_premium, name="destroy_premium"),#. a lin in o.html that the admin cics when he want the premium games in the premium.html not to be treated as premium so that the can be rendered in index.html alongside other games,
-    path("recreate_premium/", views.recreate_premium, name="recreate_premium"),#. a lin in o.html that the admin cics when he want the premium games in the index.html not to be treated as norma so that the can be rendered in premium.html ,
-    path("payment/", views.payment_page, name="payment_page"),#a lin in premium.html that taes the visitor to payment_page.html where he can mae payment for the premium games
-    path("payment/callback/", views.payment_callback, name="payment_callback"),# this is for paystac i dont now its wor yet becouse i am yet to integrate paystac, ignore it
-    path("jerusqore/privacy/policy/", views.privacy, name="privacy"),#lin in index.htl in the footer that is to tae the visitor in privacy.hmtl where privacy terms are documented
-    path("jerusqore/terms/condition/", views.terms, name="terms"),#lin in index.htl in the footer that is to tae the visitor in terms.hmtl where terms and coditions are documented
-    path("fence/sct222-0190/2021/enter/", views.custom_login, name="fence"),#ignore this
-    path("logout/", views.custom_logout, name="logout"),  # a lin in o.html that the admins cic when it wants to logout and browse as a regular visitor
-    path("toggle-maintenance/", views.toggle_maintenance, name="toggle_maintenance"),# a lin in o.html that admin cics when he want to turn on maintainance mode, it redirects to the same oage i.e o.html
+    path(
+        "see_data_progress", views.see_data_progress, name="see_data_progress"
+    ),  # same us the check_task_progress url
+    path(
+        "predict_all/", views.predict_all_matches, name="predict_all_matches"
+    ),  # a lin thatadmin cics when he wants to predict a matches, it is in o.html and not for the public
+    path(
+        "jeruqsore/premium/", views.premium, name="premium"
+    ),  # a lin in index.html that taes visitoes to premium.html where the vistitor can see the games in that tempate,and if a person hasnt payed it will render payment_page.html that has a form for putting payment detais such as emai
+    path(
+        "destroy_premium/", views.destroy_premium, name="destroy_premium"
+    ),  # . a lin in o.html that the admin cics when he want the premium games in the premium.html not to be treated as premium so that the can be rendered in index.html alongside other games,
+    path(
+        "recreate_premium/", views.recreate_premium, name="recreate_premium"
+    ),  # . a lin in o.html that the admin cics when he want the premium games in the index.html not to be treated as norma so that the can be rendered in premium.html ,
+    # this is for paystac i dont now its wor yet becouse i am yet to integrate paystac, ignore it
+    path(
+        "jerusqore/privacy/policy/", views.privacy, name="privacy"
+    ),  # lin in index.htl in the footer that is to tae the visitor in privacy.hmtl where privacy terms are documented
+    path(
+        "jerusqore/terms/condition/", views.terms, name="terms"
+    ),  # lin in index.htl in the footer that is to tae the visitor in terms.hmtl where terms and coditions are documented
+    path(
+        "fence/sct222-0190/2021/enter/", views.custom_login, name="fence"
+    ),  # ignore this
+    path(
+        "logout/", views.custom_logout, name="logout"
+    ),  # a lin in o.html that the admins cic when it wants to logout and browse as a regular visitor
+    path(
+        "toggle-maintenance/", views.toggle_maintenance, name="toggle_maintenance"
+    ),  # a lin in o.html that admin cics when he want to turn on maintainance mode, it redirects to the same oage i.e o.html
 
+    path('payment/', views.initiate_payment, name='initiate_payment'),
+    path('payment/verify/', views.verify_payment, name='verify_payment'),
+    path('payment/success/', views.payment_success, name='payment_success'),
+    path('payment/failed/', views.payment_failed, name='payment_failed'),
 ]

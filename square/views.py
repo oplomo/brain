@@ -1658,43 +1658,6 @@ def recreate_premium(request):
     return redirect("square:index")
 
 
-# views.py
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.contrib import messages
-from .paystack import initiate_payment, verify_payment
-import uuid
-
-
-def payment_page(request):
-    """Render the payment page and handle form submission"""
-    if request.method == "POST":
-        email = request.POST.get("email")
-        amount = request.POST.get("amount")
-        reference = str(uuid.uuid4())  # Unique reference for each transaction
-
-        response = initiate_payment(email, amount, reference)
-        if response.get("status") and response.get("data").get("authorization_url"):
-            auth_url = response["data"]["authorization_url"]
-            return redirect(auth_url)
-        else:
-            messages.error(request, "Failed to initiate payment. Please try again.")
-    return render(request, "payment_page.html")
-
-
-def payment_callback(request):
-    """Handle the Paystack callback for payment verification"""
-    reference = request.GET.get("reference")
-    response = verify_payment(reference)
-
-    if response.get("status") and response["data"]["status"] == "success":
-        messages.success(request, "Payment completed successfully!")
-        return redirect(reverse("payment_page"))
-    else:
-        messages.error(request, "Payment failed or could not be verified.")
-        return redirect(reverse("payment_page"))
-
-
 def privacy(request):
     site = get_object_or_404(SiteInformation, pk=1)
     return render(request, "public/privacy.html", {"site": site})
@@ -1728,24 +1691,214 @@ def custom_logout(request):
     return redirect("square:index")  # Redirects to homepage after logout
 
 
-
 from django.conf import settings
 from django.contrib.auth.decorators import user_passes_test
 
+
 def is_admin(user):
     return user.is_superuser  # Only superusers can toggle maintenance mode
+
 
 @user_passes_test(is_admin)
 def toggle_maintenance(request):
     settings.MAINTENANCE_MODE = not settings.MAINTENANCE_MODE
     return redirect("square:index")  # Redirect back to homepage
 
+
 from django.http import FileResponse, Http404
 from django.conf import settings
 import os
+
 
 def serve_media(request, path):
     file_path = os.path.join(settings.MEDIA_ROOT, path)
     if not os.path.exists(file_path):
         raise Http404("File not found")
     return FileResponse(open(file_path, "rb"))
+
+
+def payment_success(request):
+    """
+    View to render the payment success page.
+    """
+    return render(request, "public/payment_success.html")
+
+
+def payment_failed(request):
+    """
+    Render the payment failed page.
+    """
+    return render(request, "public/payment_failed.html")
+
+
+PAYSTACK_SECRET_KEY = "sk_live_ec9a4539e28760d416c6aa58b9053c53a52db484"
+
+# views.py
+
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
+from django.conf import settings
+import json
+import hmac
+import hashlib
+
+# Paystack secret key (from your Paystack dashboard)
+PAYSTACK_SECRET_KEY = settings.PAYSTACK_SECRET_KEY
+
+
+@csrf_exempt
+def paystack_webhook(request):
+    """
+    Webhook to handle Paystack payment notifications.
+    """
+    if request.method == "POST":
+        # Verify the request is from Paystack
+        payload = request.body
+        signature = request.headers.get("X-Paystack-Signature")
+
+        if not signature:
+            return HttpResponse(status=400)  # Bad request
+
+        # Compute HMAC SHA512 hash
+        computed_signature = hmac.new(
+            PAYSTACK_SECRET_KEY.encode("utf-8"), payload, hashlib.sha512
+        ).hexdigest()
+
+        # Verify the signature
+        if computed_signature != signature:
+            return HttpResponse(status=403)  # Forbidden
+
+        # Parse the payload
+        try:
+            data = json.loads(payload)
+            event = data.get("event")
+            payment_data = data.get("data")
+
+            # Handle different events
+            if event == "charge.success":
+                # Payment was successful
+                email = payment_data.get("customer", {}).get("email")
+                amount = (
+                    payment_data.get("amount") / 100
+                )  # Convert to currency (e.g., NGN to ₦)
+                reference = payment_data.get("reference")
+
+                # Send email to the user
+                subject = "Payment Received - Jerusqore"
+                message = f"""
+                Hello,
+
+                Thank you for your payment of ₦{amount:.2f} (Reference: {reference}).
+                Your payment has been successfully received, and your subscription is now active.
+
+                Start enjoying premium predictions on Jerusqore!
+
+                Best regards,
+                The Jerusqore Team
+                """
+                send_mail(
+                    subject,
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False,
+                )
+
+                print(f"Email sent to {email} for successful payment.")
+                return JsonResponse({"status": "success"})
+
+            elif event == "charge.failed":
+                # Payment failed
+                print("Payment failed:", payment_data)
+                return JsonResponse({"status": "failed"})
+
+            else:
+                # Handle other events (e.g., refunds)
+                print("Unhandled event:", event)
+                return JsonResponse({"status": "unhandled"})
+
+        except json.JSONDecodeError:
+            return HttpResponse(status=400)  # Bad request
+
+    return HttpResponse(status=405)  # Method not allowed
+
+
+from .forms import PaymentForm
+
+
+def initiate_payment(request):
+    """
+    Render the payment form and initialize Paystack payment.
+    """
+    if request.method == "POST":
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data["email"]
+            amount = int(
+                form.cleaned_data["amount"] * 100
+            )  # Convert to kobo (Paystack uses kobo)
+
+            # Paystack API endpoint
+            url = "https://api.paystack.co/transaction/initialize"
+            headers = {
+                "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
+                "Content-Type": "application/json",
+            }
+            data = {
+                "email": email,
+                "amount": amount,
+                "callback_url": "https://jerusqore.com/payment/verify/",  # Callback URL for verification
+            }
+
+            # Make API request to Paystack
+            response = requests.post(url, headers=headers, json=data)
+            if response.status_code == 200:
+                # Redirect to Paystack payment page
+                payment_url = response.json()["data"]["authorization_url"]
+                return redirect(payment_url)
+            else:
+                # Handle API error
+                return render(request, "public/payment_failed.html")
+    else:
+        form = PaymentForm()
+
+    return render(request, "public/payment_page.html", {"form": form})
+
+
+from django.core.mail import send_mail
+
+
+def verify_payment(request):
+    """
+    Verify Paystack payment, send confirmation email, and redirect to success or failure page.
+    """
+    reference = request.GET.get("reference")
+    if not reference:
+        return redirect("payment_failed")
+
+    # Verify payment with Paystack
+    url = f"https://api.paystack.co/transaction/verify/{reference}"
+    headers = {
+        "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
+    }
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        data = response.json().get("data", {})
+        if data.get("status") == "success":
+            # Payment successful, get user email
+            email = data.get("customer", {}).get("email", "")
+
+            if email:
+                # Send confirmation email
+                subject = "Payment Confirmation - JerusQore"
+                message = f"Dear Customer,\n\nYour payment of ${data['amount'] / 100:.2f} has been received successfully.\n\nThank you for your purchase!\n\nBest regards,\nJerusQore Team"
+                from_email = settings.DEFAULT_FROM_EMAIL
+                recipient_list = [email]
+
+                send_mail(subject, message, from_email, recipient_list)
+
+            return redirect("square:payment_success")
+
+    return redirect("square:payment_failed")

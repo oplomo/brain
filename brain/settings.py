@@ -15,6 +15,8 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ["www.jeruscore.com", "jeruscore.com", "brain-zofx.onrender.com"]
+# ALLOWED_HOSTS =[]
+
 INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "django.contrib.sites",
@@ -118,11 +120,6 @@ import os
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# import os
-# import dj_database_url
-
-# DATABASES = {"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))}
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -133,9 +130,6 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 TIME_ZONE = "UTC"
 USE_TZ = True
 
-
-import os
-from kombu import Connection
 
 CELERY_BROKER_URL = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional"
 CELERY_RESULT_BACKEND = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional"
@@ -157,6 +151,17 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 }
 
 # settings.py
-PAYSTACK_PUBLIC_KEY = "YOUR_PUBLIC_KEY"
-PAYSTACK_SECRET_KEY = "sk_test_72090b3352c0b135db0d7a96cb4977418ccbb1d5"
+PAYSTACK_PUBLIC_KEY = "pk_live_2e24f13b2b0ce6e1dfbc6886f2e40549a98fc76d"
+PAYSTACK_SECRET_KEY = "sk_live_ec9a4539e28760d416c6aa58b9053c53a52db484"
 PAYSTACK_CALLBACK_URL = "http://127.0.0.1:8000/payment/callback/"
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"  
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'jerusqore@gmail.com'  
+EMAIL_HOST_PASSWORD = 'oowg fata zdxq lgyi'  
+DEFAULT_FROM_EMAIL = 'jerusqore@gmail.com'
