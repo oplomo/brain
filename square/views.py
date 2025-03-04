@@ -1869,6 +1869,7 @@ def initiate_payment(request):
 from django.core.mail import send_mail
 from .models import Payslips
 
+
 def verify_payment(request):
     """
     Verify Paystack payment, send confirmation email, and redirect to success or failure page.
@@ -1890,7 +1891,7 @@ def verify_payment(request):
         phone = data.get("customer", {}).get("phone", "")
         amount = data.get("amount") / 100  # Convert from kobo to Naira/USD
         status = data.get("status")
-        
+
         # Save to the database
         payment, created = Payslips.objects.get_or_create(
             reference=reference,
@@ -1899,8 +1900,8 @@ def verify_payment(request):
                 "phone": phone,
                 "amount": amount,
                 "status": status,
-                "verified": status == "success"
-            }
+                "verified": status == "success",
+            },
         )
 
     if response.status_code == 200:
@@ -1921,3 +1922,66 @@ def verify_payment(request):
             return redirect("square:payment_success")
 
     return redirect("square:payment_failed")
+
+
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from .models import Match
+from backend.models import League, Country
+from .models import FootballPrediction
+
+
+def send_game(request):
+    matches = Match.objects.filter(updated=False, is_premium=True).prefetch_related(
+        "footballprediction_set"
+    )
+
+    match_data = []
+    for match in matches:
+        football = get_object_or_404(FootballPrediction, match=match)
+
+        if match.gold_bar == "gg":
+            description = "both teams to score"
+            prediction = get_prediction_bts(football)
+            odds = get_odds_bts(football)
+
+        elif match.gold_bar == "three_way":
+            description = "team to win"
+            prediction = get_prediction(football, football.match.sport.name)
+            odds = get_odds(football, football.match.sport.name)
+
+        elif match.gold_bar == "ov":
+            description = "total goals"
+            prediction = get_prediction_ov(football)
+            odds = get_odds_ov(football)
+
+        else:
+            description = ""
+            prediction = None
+            odds = None
+
+        match_data.append(
+            {
+                "match": match,
+                "description": description,
+                "prediction": prediction,
+                "odds": odds,
+                "league_logo": match.league.logo if match.league else None,
+                "country_name": match.league.country.name if match.league else None,
+                "country_flag": match.league.country.flag if match.league else None,
+            }
+        )
+
+    # Send email
+    subject = "Premium Match Predictions"
+    from_email = settings.DEFAULT_FROM_EMAIL
+    recipient_list = ["adamssquare4@gmail.com"]
+
+    html_content = render_to_string(
+        "public/email_template.html", {"match_data": match_data}
+    )
+    email = EmailMultiAlternatives(subject, "", from_email, recipient_list)
+    email.attach_alternative(html_content, "text/html")
+    email.send()
+
+    redirect("square:payment_success")

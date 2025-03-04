@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Premium Match Predictions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .match {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .match img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        .teams {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .league {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Premium Match Predictions</h2>
+        {% for match in match_data %}
+        <div class="match">
+            <div class="teams">
+                <img src="{{ match.match.home_team_logo }}" alt="{{ match.match.home_team }} logo">
+                <strong>{{ match.match.home_team }} vs {{ match.match.away_team }}</strong>
+                <img src="{{ match.match.away_team_logo }}" alt="{{ match.match.away_team }} logo">
+            </div>
+            <p><strong>Sport:</strong> {{ match.match.sport.name }}</p>
+            <p><strong>Date:</strong> {{ match.match.date }}</p>
+            <p><strong>Prediction:</strong> {{ match.description }}---{{ match.prediction }}</p>
+            <p><strong>Odds:</strong> {{ match.odds }}</p>
+            <div class="league">
+                <img src="{{ match.league_logo }}" alt="League logo" width="50">
+                <p>{{ match.country_name }} <img src="{{ match.country_flag }}" alt="Country flag" width="20"></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
