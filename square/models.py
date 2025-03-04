@@ -680,8 +680,11 @@ class Payslips(models.Model):
         return f"{self.email} - {self.reference} - {self.status}"
 
 
+
+
 class VIPStatus(models.Model):
     is_active = models.BooleanField(default=False)
+    price = models.DecimalField(default=100, max_digits=10, decimal_places=2)  # Admin-set price
 
     def __str__(self):
-        return "Active" if self.is_active else "Inactive"
+        return f"{'Active' if self.is_active else 'Inactive'} - KES {self.price}"

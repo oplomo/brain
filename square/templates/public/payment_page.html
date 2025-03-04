@@ -54,11 +54,13 @@
     .payment-form button:hover {
       background: #4c0d9b;
     }
+    
   </style>
 </head>
 <body>
   <div class="payment-form">
-    <h2>Make Payment</h2>
+    <h2>Provide the email where we should send the games</h2>
+    
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}

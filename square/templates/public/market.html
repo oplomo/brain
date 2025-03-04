@@ -134,6 +134,18 @@
         font-size: 1.2rem;
         color: #555;
     }
+    .price-tag {
+        font-size: 20px;         /* Make text larger for visibility */
+        font-weight: bold;       /* Bold for emphasis */
+        color: #ff6600;         /* Orange color to attract attention */
+        background-color: #f8f8f8; /* Light background to make it stand out */
+        padding: 8px 15px;       /* Add some spacing */
+        border-radius: 5px;      /* Rounded corners */
+        display: inline-block;   /* Keeps it from taking full width */
+        margin-left: 10px;       /* Space from the button */
+        border: 2px solid #ff6600; /* Outline to make it pop */
+    }
+    
 </style>
 
 <div class="container">
@@ -173,8 +185,10 @@
     </div>
     {% if match_data %}
     <div class="button-container">
-        <a href="#" class="buy-button">BUY NOW</a>
+        <a href="square:initiate_payment" class="buy-button">BUY NOW</a>
+        <p class="price-tag">Price: KES {{ VIPStatus.price }}</p>
     </div>
+    
     {% endif %}
 </div>
 {% endblock content %}

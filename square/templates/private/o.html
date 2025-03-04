@@ -125,6 +125,7 @@
 
         <form action="{% url 'square:toggle_vip' %}" method="post">
             {% csrf_token %}
+            <p>Price: KES {{ vip_status.price }}</p>  <!-- Display admin-set price -->
             <button type="submit">
                 {% if vip_status.is_active %}
                     Close Window
@@ -133,6 +134,7 @@
                 {% endif %}
             </button>
         </form>
+        
         
         <a href="{% url 'admin:index' %}" target="_blank">close browser</a><br>
          <a href="{% url "square:index" %}">returnhome</a>

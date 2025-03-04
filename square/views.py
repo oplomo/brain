@@ -1828,20 +1828,24 @@ def paystack_webhook(request):
 
 
 from .forms import PaymentForm
+from django.core.mail import send_mail
+from .models import Payslips
 
 
 def initiate_payment(request):
     """
     Render the payment form and initialize Paystack payment.
     """
+    vip_status = VIPStatus.objects.first()  
+    amount = (
+        int(vip_status.price * 100) if vip_status else 50000
+    )  # Convert KES to kobo (default 100 KES)
+
     if request.method == "POST":
         form = PaymentForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"]
-            amount = int(
-                form.cleaned_data["amount"] * 100
-            )  # Convert to kobo (Paystack uses kobo)
-
+            
             # Paystack API endpoint
             url = "https://api.paystack.co/transaction/initialize"
             headers = {
@@ -1869,14 +1873,18 @@ def initiate_payment(request):
     return render(request, "public/payment_page.html", {"form": form})
 
 
-from django.core.mail import send_mail
-from .models import Payslips
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from .models import Match
+from backend.models import League, Country
+from .models import FootballPrediction
 
 
 def verify_payment(request):
     """
     Verify Paystack payment, send confirmation email, and redirect to success or failure page.
     """
+
     reference = request.GET.get("reference")
     if not reference:
         return redirect("square:payment_failed")
@@ -1911,17 +1919,60 @@ def verify_payment(request):
         data = response.json().get("data", {})
         if data.get("status") == "success":
             # Payment successful, get user email
+            matches = Match.objects.filter(
+                updated=False,
+                is_premium=True,
+                date__date=today,  # Filter by today's date
+            ).prefetch_related("footballprediction_set")
+        match_data = []
+        for match in matches:
+            football = get_object_or_404(FootballPrediction, match=match)
+
+            if match.gold_bar == "gg":
+                description = "both teams to score"
+                prediction = get_prediction_bts(football)
+                odds = get_odds_bts(football)
+
+            elif match.gold_bar == "three_way":
+                description = "team to win"
+                prediction = get_prediction(football, football.match.sport.name)
+                odds = get_odds(football, football.match.sport.name)
+
+            elif match.gold_bar == "ov":
+                description = "total goals"
+                prediction = get_prediction_ov(football)
+                odds = get_odds_ov(football)
+
+            else:
+                description = ""
+                prediction = None
+                odds = None
+
+            match_data.append(
+                {
+                    "match": match,
+                    "description": description,
+                    "prediction": prediction,
+                    "odds": odds,
+                    "league_logo": match.league.logo if match.league else None,
+                    "country_name": match.league.country.name if match.league else None,
+                    "country_flag": match.league.country.flag if match.league else None,
+                }
+            )
+
             email = data.get("customer", {}).get("email", "")
 
             if email:
                 # Send confirmation email
-                subject = "Payment Confirmation - JerusQore"
-                message = f"Dear Customer,\n\nYour payment of ${data['amount'] / 100:.2f} has been received successfully.\n\nThank you for your purchase!\n\nBest regards,\nJerusQore Team"
+                subject = "Premium Match Predictions"
                 from_email = settings.DEFAULT_FROM_EMAIL
                 recipient_list = [email]
-
-                send_mail(subject, message, from_email, recipient_list)
-
+                html_content = render_to_string(
+                    "public/email_template.html", {"match_data": match_data}
+                )
+                email = EmailMultiAlternatives(subject, "", from_email, recipient_list)
+                email.attach_alternative(html_content, "text/html")
+                email.send()
             return redirect("square:payment_success")
 
     return redirect("square:payment_failed")
@@ -2002,13 +2053,14 @@ from .models import VIPStatus
 
 
 def toggle_vip(request):
-    vip_status, created = VIPStatus.objects.get_or_create(id=1)
+    vip_status, created = VIPStatus.objects.get_or_create(id=1, defaults={"price": 500})
     vip_status.is_active = not vip_status.is_active
     vip_status.save()
-    return redirect("square:office")  # Replace with the correct URL for `o.html`
+    return redirect("square:office")  # Ensure this URL is correct
 
 
 def market(request):
+    vip_status = VIPStatus.objects.first()
     matches = Match.objects.filter(
         updated=False, is_premium=True, date__date=today  # Filter by today's date
     ).prefetch_related("footballprediction_set")
@@ -2025,4 +2077,4 @@ def market(request):
             }
         )
 
-    return render(request, "public/market.html", {"match_data": match_data})
+    return render(request, "public/market.html", {"match_data": match_data,"VIPStatus":VIPStatus})
