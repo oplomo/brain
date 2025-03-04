@@ -1931,10 +1931,18 @@ from backend.models import League, Country
 from .models import FootballPrediction
 
 
+from django.utils import timezone
+from datetime import datetime, timedelta
+
+# Get today's date
+today = timezone.now().date()
+
+
 def send_game(request):
-    matches = Match.objects.filter(updated=False, is_premium=True).prefetch_related(
-        "footballprediction_set"
-    )
+    # Filter matches where the date is today and other conditions
+    matches = Match.objects.filter(
+        updated=False, is_premium=True, date__date=today  # Filter by today's date
+    ).prefetch_related("footballprediction_set")
 
     match_data = []
     for match in matches:
