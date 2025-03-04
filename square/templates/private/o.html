@@ -123,7 +123,7 @@
 
     <div class="links-container">
 
-        <form action="{% url 'toggle_vip' %}" method="post">
+        <form action="{% url 'square:toggle_vip' %}" method="post">
             {% csrf_token %}
             <button type="submit">
                 {% if vip_status.is_active %}

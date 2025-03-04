@@ -7,7 +7,7 @@ from .models import (
     Match,
     Sport,
     Fixture,
-    VIPStatus
+    VIPStatus,
 )
 import math
 from django.utils import timezone
@@ -1177,7 +1177,7 @@ def office(request):
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_superuser:
             login(request, user)
-            return render(request, "private/o.html",{"vip_status": vip_status})
+            return render(request, "private/o.html", {"vip_status": vip_status})
         else:
             return redirect("square:index")  # Redirect if credentials are wrong
     return render(request, "private/superuser_login.html")
@@ -1353,7 +1353,7 @@ def fetch_matches_view(request):
                     {"error": "Failed to fetch data from the API."}, status=400
                 )
 
-    return render(request, "private/o.html",{"vip_status": vip_status})
+    return render(request, "private/o.html", {"vip_status": vip_status})
 
 
 from backend.models import Country, Season, League, MatchDate
@@ -1998,11 +1998,31 @@ def send_game(request):
     return redirect("square:payment_success")
 
 
-
 from .models import VIPStatus
+
 
 def toggle_vip(request):
     vip_status, created = VIPStatus.objects.get_or_create(id=1)
     vip_status.is_active = not vip_status.is_active
     vip_status.save()
     return redirect("square:office")  # Replace with the correct URL for `o.html`
+
+
+def market(request):
+    matches = Match.objects.filter(
+        updated=False, is_premium=True, date__date=today  # Filter by today's date
+    ).prefetch_related("footballprediction_set")
+
+    match_data = []
+    for match in matches:
+
+        match_data.append(
+            {
+                "match": match,
+                "league_logo": match.league.logo if match.league else None,
+                "country_name": match.league.country.name if match.league else None,
+                "country_flag": match.league.country.flag if match.league else None,
+            }
+        )
+
+    return render(request, "public/market.html", {"match_data": match_data})

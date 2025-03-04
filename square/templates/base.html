@@ -78,7 +78,7 @@
                         
                         {% load static %}
                         {% if vip_status.is_active %}
-                            <button id="vip">VIP</button>
+                            <button id="vip"><a href="{% url "square:market" %}">PREMIUM TIPS</a></button>
                         {% endif %}
 
                         {% if user.is_authenticated %}
@@ -86,7 +86,7 @@
                         <a href="{% url "square:premium" %}"style="text-align:center;color:green;font:bold">
 
                           <div class="sports_menu"style="border:outset;">
-                            premium tips show
+                           market
                           </div>
                         </a>
                        {% endif %}

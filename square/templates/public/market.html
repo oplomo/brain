@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Market - Buy Matches{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .match-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .match-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 15px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .match-card:hover {
+        transform: scale(1.05);
+    }
+
+    .match-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .league-logo {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+
+    .league-name {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #444;
+    }
+
+    .country-name {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    .match-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .team {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .team-logo {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .team-name {
+        font-weight: bold;
+        color: #222;
+    }
+
+    .vs {
+        font-size: 1rem;
+        color: #666;
+        font-weight: bold;
+    }
+
+    .match-date {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .buy-button {
+        background: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: bold;
+        display: inline-block;
+        transition: background 0.3s;
+    }
+
+    .buy-button:hover {
+        background: #0056b3;
+    }
+
+    .no-matches {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #555;
+    }
+</style>
+
+<div class="container">
+    <h1 class="title">Today's Matches</h1>
+    <div class="match-grid">
+        {% for match in match_data %}
+        <div class="match-card">
+            <div class="match-header">
+                <div>
+                    <p class="league-name">{{ match.match.league.name }}</p>
+                    <p class="country-name">{{ match.country_name }}</p>
+                </div>
+                {% if match.league_logo %}
+                <img src="{{ match.league_logo }}" alt="League Logo" class="league-logo">
+                {% endif %}
+            </div>
+            <div class="match-details">
+                <div class="team">
+                    {% if match.match.home_team_logo %}
+                    <img src="{{ match.match.home_team_logo }}" alt="Home Team" class="team-logo">
+                    {% endif %}
+                    <span class="team-name">{{ match.match.home_team }}</span>
+                </div>
+                <span class="vs">VS</span>
+                <div class="team">
+                    <span class="team-name">{{ match.match.away_team }}</span>
+                    {% if match.match.away_team_logo %}
+                    <img src="{{ match.match.away_team_logo }}" alt="Away Team" class="team-logo">
+                    {% endif %}
+                </div>
+            </div>
+            <p class="match-date">Date: {{ match.match.date|date:"M d, Y H:i" }} ({{ match.match.timezone }})</p>
+            <div class="button-container">
+                <a href="#" class="buy-button">BUY NOW</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-matches">No matches available today.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
