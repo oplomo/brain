@@ -1848,7 +1848,7 @@ def initiate_payment(request):
             data = {
                 "email": email,
                 "amount": amount,
-                "callback_url": "https://jeruscore.com/payment/verify/",  # Callback URL for verification
+                "callback_url": "https://www.jeruscore.com/payment/verify/",  # Callback URL for verification
             }
 
             # Make API request to Paystack
@@ -1875,7 +1875,7 @@ def verify_payment(request):
     """
     reference = request.GET.get("reference")
     if not reference:
-        return redirect("payment_failed")
+        return redirect("square:payment_failed")
 
     # Verify payment with Paystack
     url = f"https://api.paystack.co/transaction/verify/{reference}"
