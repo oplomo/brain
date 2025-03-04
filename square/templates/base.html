@@ -75,15 +75,21 @@
                
                     <a href="{% url "square:index" "tennis" %}" class="{% if selected_sport == 'tennis' %}active{% endif %}">
                         <div class="sports_menu">tennis </div></a> {% endcomment %}
-                        {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                        
+                        {% load static %}
+                        {% if vip_status.is_active %}
+                            <button id="vip">VIP</button>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
    
                         <a href="{% url "square:premium" %}"style="text-align:center;color:green;font:bold">
 
                           <div class="sports_menu"style="border:outset;">
-                            premium tips
+                            premium tips show
                           </div>
                         </a>
-                       {% comment %} {% endif %} {% endcomment %}
+                       {% endif %}
 
             </div>
      
@@ -125,7 +131,6 @@
         JERUSQORE@GMAIL.COM
    </div>
       <div class="footer_div adamu">
-        <a href="{% url "square:send_game" %}">send_game</a><br>
         &copy;jerusqore <br>
         <small>site by <i>adams square</i>&nbsp;(adamssquare4@gmail.com)</small><br>
       </div>

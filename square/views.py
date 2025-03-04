@@ -7,6 +7,7 @@ from .models import (
     Match,
     Sport,
     Fixture,
+    VIPStatus
 )
 import math
 from django.utils import timezone
@@ -1169,13 +1170,14 @@ from django.contrib.auth.decorators import login_required
 
 
 def office(request):
+    vip_status, created = VIPStatus.objects.get_or_create(id=1)
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_superuser:
             login(request, user)
-            return render(request, "private/o.html")
+            return render(request, "private/o.html",{"vip_status": vip_status})
         else:
             return redirect("square:index")  # Redirect if credentials are wrong
     return render(request, "private/superuser_login.html")
@@ -1280,6 +1282,7 @@ API_URL = "https://v3.football.api-sports.io/fixtures"
 
 
 def fetch_matches_view(request):
+    vip_status, created = VIPStatus.objects.get_or_create(id=1)
     if request.method == "POST":
         fetch_date = request.POST.get("fetch_date")
 
@@ -1350,7 +1353,7 @@ def fetch_matches_view(request):
                     {"error": "Failed to fetch data from the API."}, status=400
                 )
 
-    return render(request, "private/o.html")
+    return render(request, "private/o.html",{"vip_status": vip_status})
 
 
 from backend.models import Country, Season, League, MatchDate
@@ -1993,3 +1996,13 @@ def send_game(request):
     email.send()
 
     return redirect("square:payment_success")
+
+
+
+from .models import VIPStatus
+
+def toggle_vip(request):
+    vip_status, created = VIPStatus.objects.get_or_create(id=1)
+    vip_status.is_active = not vip_status.is_active
+    vip_status.save()
+    return redirect("square:office")  # Replace with the correct URL for `o.html`

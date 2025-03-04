@@ -678,3 +678,10 @@ class Payslips(models.Model):
 
     def __str__(self):
         return f"{self.email} - {self.reference} - {self.status}"
+
+
+class VIPStatus(models.Model):
+    is_active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "Active" if self.is_active else "Inactive"

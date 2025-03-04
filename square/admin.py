@@ -259,3 +259,12 @@ class PayslipsAdmin(admin.ModelAdmin):
     list_display = ("email", "reference", "amount", "status", "verified", "date_paid")
     search_fields = ("email", "reference")
     list_filter = ("status", "verified", "date_paid")
+
+from .models import VIPStatus
+
+class VIPStatusAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'is_active')
+    list_filter = ('is_active',)
+    search_fields = ('is_active',)
+
+admin.site.register(VIPStatus, VIPStatusAdmin)

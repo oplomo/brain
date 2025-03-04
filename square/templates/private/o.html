@@ -122,14 +122,28 @@
     </form>
 
     <div class="links-container">
-        <a href="{% url 'admin:index' %}" target="_blank">close browser</a><br>
 
+        <form action="{% url 'toggle_vip' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">
+                {% if vip_status.is_active %}
+                    Close Window
+                {% else %}
+                    Open Window
+                {% endif %}
+            </button>
+        </form>
+        
+        <a href="{% url 'admin:index' %}" target="_blank">close browser</a><br>
+         <a href="{% url "square:index" %}">returnhome</a>
         <a href="{% url 'square:select_football_prediction' %}">select todays FOOTBALL prediction</a> <br>
         <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
         <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMORROW</a> <br>
         <a href="{% url 'square:see_data_progress' %}">see_data_progress</a><br>
         <a href="{% url 'square:destroy_premium' %}"><small>destroy_premium</small></a>
         <a href="{% url 'square:recreate_premium' %}"><small>recreate_premium</small></a> <br>
+        <a href="{% url "square:send_game" %}">send_game</a><br>
+
         <a href="{% url "square:logout" %}">logout</a>
 
     <form action="{% url 'square:toggle_maintenance' %}" method="post">

@@ -156,12 +156,10 @@ PAYSTACK_SECRET_KEY = "sk_live_ec9a4539e28760d416c6aa58b9053c53a52db484"
 PAYSTACK_CALLBACK_URL = "http://127.0.0.1:8000/payment/callback/"
 
 
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.gmail.com"  
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jerusqore@gmail.com'  
-EMAIL_HOST_PASSWORD = 'oowg fata zdxq lgyi'  
-DEFAULT_FROM_EMAIL = 'jerusqore@gmail.com'
+EMAIL_HOST_USER = "jerusqore@gmail.com"
+EMAIL_HOST_PASSWORD = "oowg fata zdxq lgyi"
+DEFAULT_FROM_EMAIL = "jerusqore@gmail.com"
