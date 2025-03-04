@@ -1984,4 +1984,4 @@ def send_game(request):
     email.attach_alternative(html_content, "text/html")
     email.send()
 
-    redirect("square:payment_success")
+    return redirect("square:payment_success")
