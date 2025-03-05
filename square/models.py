@@ -386,8 +386,8 @@ class FootballPrediction(MatchPredictionBase):
         return f"Football Prediction for {self.match}"
 
     def get_absolute_url(self):
-        home_team_slug = self.match.home_team
-        away_team_slug = self.match.away_team
+        home_team_slug = slugify(self.match.home_team)
+        away_team_slug = slugify(self.match.away_team)
         sport_slug = self.match.sport.name
         time_str = (
             self.match.date.strftime("%H:%M")
