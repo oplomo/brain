@@ -40,6 +40,7 @@ from celery.schedules import crontab
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "brain.settings")
 
 app = Celery("brain", broker=os.getenv("REDIS_URL"))
+# app = Celery("brain")
 
 # Load task modules from Django settings
 app.config_from_object("django.conf:settings", namespace="CELERY")

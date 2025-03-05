@@ -106,10 +106,10 @@ class analyze_data:
     def save_every_data(self, data):
         success = True
         self.data_store = data  # Store the data
-        # try:
-        #     self.save_every_data_to_file()
-        # except Exception as e:
-        #     print(f"Error in saving to a json file: {e}")
+        try:
+            self.save_every_data_to_file()
+        except Exception as e:
+            print(f"Error in saving to a json file: {e}")
         try:
             self.asign_odds()
             print("Odds have been assigned")
@@ -1664,8 +1664,12 @@ class analyze_data:
             factor = 10**decimals
             return math.floor(number * factor) / factor
 
-        odds_prediction = self.predict_based_on_odds()
-        api_predictions = self.predict_based_api_predictions()
+        odds_prediction = args[0] if len(args) > 0 else None
+        if odds_prediction:
+            print("yeeeeeee,oddsssssssssssssssss")
+        api_predictions = args[1] if len(args) > 1 else None
+        if api_predictions:
+            print("yesssssss apiiiiiiiiiiiiiiii")
         if odds_prediction and api_predictions:
 
             def premium_three_way(
@@ -1706,17 +1710,17 @@ class analyze_data:
 
                 if (
                     (
-                        home_diff > 0.8
-                        and away_mean_odd < 1.5
+                        home_diff > 0.5
+                        and away_mean_odd < 0.6
+                        and home_mean_odd > 0.6
                         and (home_round != away_round)
                         and (
                             (
-                                ((draw_odd - home_odd) >= 1.5)
-                                and ((draw_odd - home_odd) < 1.95)
-                                and (home_odd > 1.7 and home_odd < 1.95)
+                                (home_odd > 1.7 and home_odd < 1.95)
                                 and (draw_odd > 3.55 and draw_odd < 3.97)
                                 and (away_odd > draw_odd)
                                 and (away_odd - draw_odd < 0.4)
+                                and (ratuombi < 2.5)
                             )
                             or (
                                 ((home_odd > 1.4) and (draw_odd > 4.0))
@@ -1727,17 +1731,17 @@ class analyze_data:
                         )
                     )
                     or (
-                        away_diff > 0.8
-                        and home_mean_odd < 1.5
+                        away_diff > 0.5
+                        and home_mean_odd < 0.6
+                        and away_mean_odd > 0.6
                         and (home_round != away_round)
                         and (
                             (
-                                ((draw_odd - away_odd) > 1.5)
-                                and ((draw_odd - away_odd) < 1.95)
-                                and (away_odd > 1.7 and away_odd < 1.9)
+                                (away_odd > 1.7 and away_odd < 1.9)
                                 and (draw_odd > 3.55 and draw_odd < 3.97)
                                 and (home_odd > draw_odd)
                                 and (home_odd - draw_odd < 0.4)
+                                and (ratuombi < 2.5)
                             )
                             or (
                                 ((away_odd > 1.4) and (draw_odd > 4.0))
@@ -1753,10 +1757,10 @@ class analyze_data:
                             and (home_mean_api > away_mean_api)
                         )
                         and ((home_avg_g_api - away_avg_g_api) > 1.2)
-                        and (away_avg_g_api < 2.0)
-                        and ((draw_odd <= home_odd) and (draw_odd <= away_odd))
+                        and (away_avg_g_api < 1.5)
+                        and ((draw_odd >= home_odd) and (draw_odd <= away_odd))
                         and (home_odd > 1.4)
-                        and (ratuombi > 3.0)
+                        and (ratuombi < 2.7)
                     )
                     or (
                         (
@@ -1764,10 +1768,10 @@ class analyze_data:
                             and (away_mean_api > home_mean_api)
                         )
                         and ((away_avg_g_api - home_avg_g_api) > 1.2)
-                        and (home_avg_g_api < 2.0)
-                        and ((draw_odd <= away_odd) and (draw_odd <= home_odd))
+                        and (home_avg_g_api < 1.5)
+                        and ((draw_odd >= away_odd) and (draw_odd <= home_odd))
                         and (away_odd > 1.4)
-                        and (ratuombi > 3.0)
+                        and (ratuombi < 2.7)
                     )
                 ):
                     return True
@@ -1836,32 +1840,39 @@ class analyze_data:
                     home_mean_odd > 0.7
                     and away_mean_odd > 0.7
                     and (
-                        ((abs(draw_odd - home_odd)) < 1.9)
-                        or ((abs(draw_odd - away_odd)) < 1.9)
+                        ((abs(draw_odd - home_odd)) < 1.5)
+                        or ((abs(draw_odd - away_odd)) < 1.5)
                     )
                     and (1.5 < gg_odd < 2)
-                    and ((home_mean_odd + away_mean_odd) > 2)
-                    and (abs(home_mean_odd - away_mean_odd) <= 1.5)
+                    and ((home_mean_odd + away_mean_odd) > 2.5)
+                    and (abs(home_mean_odd - away_mean_odd) <= 1.0)
                     and (abs(home_odd - away_odd) < 2.5)
+                    and ratuombi > 2.4
                 )
-
+                condition_v = (
+                    home_mean_odd < 0.5
+                    and away_mean_odd < 0.5
+                    and ratuombi > 3.0
+                    and home_avg_g_api < 2
+                    and away_avg_g_api < 2
+                    and (draw_odd > 2.65 and draw_odd < 3.4)
+                    and away_odd < home_odd
+                    and (gg_odd > no_gg_odd and gg_odd < 2.10 and gg_odd > 1.4)
+                )
                 condition_three = (
                     ((home_avg_g_api > 2.0) and (away_avg_g_api > 2.0))
-                    and ((draw_odd <= home_mean_odd) and (draw_odd <= away_odd))
-                    and ((home_mean_odd + home_mean_api) / 2 > 0.5)
-                    and ((away_mean_odd + away_mean_api) / 2 > 0.5)
+                    and ((draw_odd > home_odd) and (draw_odd > away_odd))
+                    and ((home_mean_odd + home_mean_api) / 2 > 0.65)
+                    and ((away_mean_odd + away_mean_api) / 2 > 0.65)
                     and (ratuombi > 3.1)
+                    and gg_odd > 1.4
                 )
 
                 condition_four = (
-                    (
-                        (home_avg_g_api >= 1.6)
-                        and (home_avg_g_api < 2.0)
-                        and (away_avg_g_api < 1.60)
-                    )
-                    and ((draw_odd <= home_mean_odd) and (draw_odd <= away_odd))
-                    and ((home_mean_odd + home_mean_api) / 2 < 0.5)
-                    and ((away_mean_odd + away_mean_api) / 2 < 0.5)
+                    ((home_avg_g_api < 2.0) and (away_avg_g_api < 1.60))
+                    and not ((draw_odd > home_odd) and (draw_odd > away_odd))
+                    and ((home_mean_odd + home_mean_api) / 2 < 0.6)
+                    and ((away_mean_odd + away_mean_api) / 2 < 0.6)
                     and ratuombi < 2.3
                 )
 
@@ -1870,14 +1881,17 @@ class analyze_data:
                     (home_mean_odd < 0.3 or away_mean_odd < 0.3)
                     and not (draw_odd > home_odd and draw_odd > away_odd)
                     and (1.5 < no_gg_odd < 2)
-                    and ((home_mean_odd + away_mean_odd) < 1.5)
+                    and ((home_mean_odd + away_mean_odd) < 1.0)
                     and (abs(home_mean_odd - away_mean_odd) >= 1.5)
                     and (abs(home_odd - away_odd) > 2.5)
-                    and (home_mean_odd < 0.4 or away_mean_odd < 0.4)
                 )
 
                 return (
-                    condition_one or condition_two or condition_three or condition_four
+                    condition_one
+                    or condition_v
+                    or condition_two
+                    or condition_three
+                    or condition_four
                 )
 
             try:
@@ -1928,12 +1942,12 @@ class analyze_data:
                 under_odd = float(under_odd)
                 # Condition 1: addition - 2.5 > 0.6, draw_odd is lowest, over_odd > under_odd and over_odd > 1.5
                 condition_one = (
-                    (addition - 2.5) > 0.6
+                    (addition - 2.5) > 0.4
                     and draw_odd > home_odd
                     and draw_odd > away_odd
                     and (abs(over_odd - under_odd) < 0.45)
                     and over_odd > 1.4
-                    and ((home_mean_api > 2.0) or (away_mean_api > 2.0))
+                    and ((home_mean_api > 1.4) or (away_mean_api > 1.4))
                 )
 
                 condition_three = (
@@ -2351,10 +2365,10 @@ class analyze_data:
         home_mean = truncate(home_mean, 1)
         away_mean = truncate(away_mean, 1)
         if home_mean < 0:
-            home_mean = 0
+            home_mean = 0.2
         if away_mean < 0:
-            away_mean = 0
-
+            away_mean = 0.2
+      
         if home_mean is not None and away_mean is not None:
             threeway = self.generate_three_way_prob(home_mean, away_mean)
             over_under = self.calculate_goal_percentages(home_mean, away_mean)

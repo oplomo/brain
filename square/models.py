@@ -7,7 +7,6 @@ from datetime import date
 from django.utils.timezone import now
 
 
-
 # Custom User model to extend with profile and VIP access status
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
@@ -391,8 +390,8 @@ class FootballPrediction(MatchPredictionBase):
         away_team_slug = self.match.away_team
         sport_slug = self.match.sport.name
         time_str = (
-            self.match.match_date.date.strftime("%H:%M:%S")
-            if self.match.match_date
+            self.match.date.strftime("%H:%M")
+            if self.match and self.match.date  # Ensure both match and date exist
             else "N/A"
         )
 
@@ -666,11 +665,14 @@ class Fixture(models.Model):
         return f"{self.team_home} vs {self.team_away} ({self.status_short})"
 
 
-
 class Payslips(models.Model):
-    reference = models.CharField(max_length=100, unique=True)  # Paystack transaction reference
+    reference = models.CharField(
+        max_length=100, unique=True
+    )  # Paystack transaction reference
     email = models.EmailField()  # User's email
-    phone = models.CharField(max_length=20, blank=True, null=True)  # User's phone (if available)
+    phone = models.CharField(
+        max_length=20, blank=True, null=True
+    )  # User's phone (if available)
     amount = models.DecimalField(max_digits=10, decimal_places=2)  # Amount paid
     status = models.CharField(max_length=20)  # Payment status (success, failed, etc.)
     verified = models.BooleanField(default=False)  # Payment verification status
@@ -680,11 +682,11 @@ class Payslips(models.Model):
         return f"{self.email} - {self.reference} - {self.status}"
 
 
-
-
 class VIPStatus(models.Model):
     is_active = models.BooleanField(default=False)
-    price = models.DecimalField(default=100, max_digits=10, decimal_places=2)  # Admin-set price
+    price = models.DecimalField(
+        default=100, max_digits=10, decimal_places=2
+    )  # Admin-set price
 
     def __str__(self):
         return f"{'Active' if self.is_active else 'Inactive'} - KES {self.price}"

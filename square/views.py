@@ -52,7 +52,7 @@ def index(request, selected=None, item=None, day="today"):
         end_date = start_date
     elif day == "today":
         start_date = today
-        end_date = start_date + timedelta(days=1)
+        end_date = datetime.combine(start_date, datetime.max.time())
     elif day == "tomorrow":
         start_date = today + timedelta(days=1)
         end_date = today + timedelta(days=2)
@@ -67,7 +67,7 @@ def index(request, selected=None, item=None, day="today"):
         matches = FootballPrediction.objects.select_related("match").filter(
             match__sport__name="soccer",
             match__is_premium=False,
-            match__match_date__date__range=[start_date, end_date],
+            match__date__date__range=[start_date, end_date],
         )
 
     elif selected == "basketball":
@@ -1836,7 +1836,7 @@ def initiate_payment(request):
     """
     Render the payment form and initialize Paystack payment.
     """
-    vip_status = VIPStatus.objects.first()  
+    vip_status = VIPStatus.objects.first()
     amount = (
         int(vip_status.price * 100) if vip_status else 50000
     )  # Convert KES to kobo (default 100 KES)
@@ -1845,7 +1845,7 @@ def initiate_payment(request):
         form = PaymentForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"]
-            
+
             # Paystack API endpoint
             url = "https://api.paystack.co/transaction/initialize"
             headers = {
@@ -1955,8 +1955,12 @@ def verify_payment(request):
                         "prediction": prediction,
                         "odds": odds,
                         "league_logo": match.league.logo if match.league else None,
-                        "country_name": match.league.country.name if match.league else None,
-                        "country_flag": match.league.country.flag if match.league else None,
+                        "country_name": (
+                            match.league.country.name if match.league else None
+                        ),
+                        "country_flag": (
+                            match.league.country.flag if match.league else None
+                        ),
                     }
                 )
 
@@ -2077,4 +2081,8 @@ def market(request):
             }
         )
 
-    return render(request, "public/market.html", {"match_data": match_data,"VIPStatus":VIPStatus})
+    return render(
+        request,
+        "public/market.html",
+        {"match_data": match_data, "VIPStatus": VIPStatus},
+    )

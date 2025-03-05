@@ -15,7 +15,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ["www.jeruscore.com", "jeruscore.com", "brain-zofx.onrender.com"]
-# ALLOWED_HOSTS =[]
+# ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.sitemaps",
@@ -134,6 +134,10 @@ USE_TZ = True
 CELERY_BROKER_URL = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional"
 CELERY_RESULT_BACKEND = "rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional"
 
+
+# CELERY_BROKER_URL = "redis://localhost:6379/0"
+# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
@@ -143,6 +147,7 @@ CELERY_WORKER_CONCURRENCY = 4
 # REDIS_URL
 # DATABASE_URL
 # postgresql://predict_db_user:USygJJYAf1u1rP8XVuvqfmSPFKVnkGWg@dpg-cv2b7h8gph6c73bem560-a/predict_db
+
 CELERY_BROKER_TRANSPORT_OPTIONS = {
     "visibility_timeout": 3600,
     "ssl": {
