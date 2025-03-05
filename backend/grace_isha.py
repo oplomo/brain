@@ -106,10 +106,10 @@ class analyze_data:
     def save_every_data(self, data):
         success = True
         self.data_store = data  # Store the data
-        try:
-            self.save_every_data_to_file()
-        except Exception as e:
-            print(f"Error in saving to a json file: {e}")
+        # try:
+        #     self.save_every_data_to_file()
+        # except Exception as e:
+        #     print(f"Error in saving to a json file: {e}")
         try:
             self.asign_odds()
             print("Odds have been assigned")
