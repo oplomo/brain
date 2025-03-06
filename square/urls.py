@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
+from django.views.generic import TemplateView
 
-fd = 5
 app_name = "square"
 
 urlpatterns = [
@@ -96,4 +96,6 @@ urlpatterns = [
     path("send_game/", views.send_game, name="send_game"),
     path("toggle-vip/", views.toggle_vip, name="toggle_vip"),
     path("market/", views.market, name="market"),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+
 ]

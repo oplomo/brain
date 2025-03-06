@@ -2354,7 +2354,14 @@ class analyze_data:
         away_mean = safe_mean(list_of_away_mean)
         corners_mean = safe_mean(list_of_corners)
         cards_mean = safe_mean(list_of_cards)
-
+        if not odds_prediction and api_predictions:
+            if home_mean > away_mean:
+                home_mean = home_mean + (0.38*home_mean)
+                away_mean = away_mean - (0.38*away_mean)
+            if away_mean >home_mean:
+                away_mean = away_mean +(0.38*away_mean)
+                home_mean = home_mean-(0.38*home_mean)
+            
         if weather_fine is not None:
             home_mean += weather_fine
             away_mean += weather_fine
