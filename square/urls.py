@@ -97,5 +97,7 @@ urlpatterns = [
     path("toggle-vip/", views.toggle_vip, name="toggle_vip"),
     path("market/", views.market, name="market"),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('yandex_b65d1afe014020d6.html', TemplateView.as_view(template_name='yandex_b65d1afe014020d6.html')),
+
 
 ]
