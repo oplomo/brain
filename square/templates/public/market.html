@@ -145,6 +145,21 @@
         margin-left: 10px;       /* Space from the button */
         border: 2px solid #ff6600; /* Outline to make it pop */
     }
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-3px); }
+        50% { transform: translateX(3px); }
+        75% { transform: translateX(-3px); }
+        100% { transform: translateX(0); }
+    }
+    
+    .shake {
+        display: inline-block;
+        animation: shake 0.5s infinite ease-in-out;
+        font-weight: bold;
+        color: red; /* Optional: Make it stand out */
+    }
+    
     
 </style>
 
