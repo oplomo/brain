@@ -2084,5 +2084,5 @@ def market(request):
     return render(
         request,
         "public/market.html",
-        {"match_data": match_data, "VIPStatus": VIPStatus},
+        {"match_data": match_data, "VIPStatus": vip_status},
     )
