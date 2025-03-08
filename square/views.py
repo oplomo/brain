@@ -401,6 +401,7 @@ def index(request, selected=None, item=None, day="today"):
             "sport_type": match.match.sport.name,
             "league":match.match.league.name,
             "country":match.match.league.country.name,
+            "flag":match.match.league.country.flag,
             "Temperature": match.match.temperature,
             "Feels_like": match.match.feels_like,
             "Humidity": match.match.humidity,

@@ -44,6 +44,14 @@
 .search-item:hover {
     background: #f1f1f1;
 }
+.country-flag {
+    width: 25px;   /* Small size but visible */
+    height: auto;  /* Maintain aspect ratio */
+    display: inline-block;
+    margin-top: 5px;
+    border-radius: 3px; /* Optional: smooth corners */
+}
+
 </style>
 
 {% endblock style %}
@@ -95,7 +103,7 @@
             <input type="text" id="search-box" name="q" placeholder="Search by team, league, or country" autocomplete="on" value="{{ search_query }}">
             <button type="submit">Search</button>
         </form>
-        <div id="search-results" style="width:400px; height:400px"></div>
+        <div id="search-results"></div>
         <div class="yest">
     
             <div class="option"><a href="{% url 'square:index' selected_sport item 'yesterday'  %}">yesterday</a></div>
@@ -112,7 +120,7 @@
 <table class="square_table">
     <thead>
         <tr class="table-header">
-            <th class="table-cell">Sport Type</th>
+            <th class="table-cell">country</th>
             <th class="table-cell">Match Info</th>
 
             <!-- Dynamic headers with a class for JavaScript targeting -->
@@ -128,7 +136,10 @@
     <tbody>
         {% for data in table_data %}
             <tr>
-                <td>{{ data.sport_type }}</td>
+                <td>{{ data.country }}<br>
+                    {% if data.flag %}
+                        <img src="{{ data.flag }}" alt="{{ data.country }} Flag" class="country-flag">
+                    {% endif %}</td>
 
                 <td class="team_link">
                     <a href="{{ data.get_absolute_url }}">
