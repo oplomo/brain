@@ -10,7 +10,7 @@
 {% block style %}
 <style>
     #search-box {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -103,7 +103,7 @@
             <input type="text" id="search-box" name="q" placeholder="Search by team, league, or country" autocomplete="on" value="{{ search_query }}">
             <button type="submit">Search</button>
         </form>
-        <div id="search-results"></div>
+        <div id="search-results"></div><br><br>
         <div class="yest">
     
             <div class="option"><a href="{% url 'square:index' selected_sport item 'yesterday'  %}">yesterday</a></div>
