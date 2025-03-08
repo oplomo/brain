@@ -8,7 +8,42 @@
   {% endif %}
 {% endblock title %}
 {% block content %}
+<style>#search-box {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
+#search-results {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.search-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-item a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.search-item:hover {
+    background: #f1f1f1;
+}
+</style>
 <div class="current">{{selected_sport}} | {{item}}</div>
 
 <div class="structure">
@@ -60,7 +95,14 @@
             <div class="option"><a href="{% url 'square:index' selected_sport item 'tomorrow'  %}">tomorrow</a></div>
     
         </div>
-        <button id="toggle_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Show Probabilities</button>       
+        <button id="toggle_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Show Probabilities</button>
+         
+        <form method="GET" action="{% url 'square:index' selected_sport item day %}" class="search-form">
+            <input type="text" id="search-box" name="q" placeholder="Search by team, league, or country" autocomplete="off" value="{{ search_query }}">
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-results"></div>
+         
         {% if matches %}
 <table class="square_table">
     <thead>
@@ -135,6 +177,42 @@
             isVisible = !isVisible;
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let searchBox = document.getElementById("search-box");
+            let searchResults = document.getElementById("search-results");
+        
+            searchBox.addEventListener("input", function () {
+                let query = searchBox.value.trim();
+        
+                if (query.length < 2) {
+                    searchResults.innerHTML = "";
+                    return;
+                }
+        
+                fetch(`/search-matches/?q=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        searchResults.innerHTML = "";
+                        
+                        if (data.matches.length === 0) {
+                            searchResults.innerHTML = "<p>No matches found</p>";
+                            return;
+                        }
+        
+                        data.matches.forEach(match => {
+                            let div = document.createElement("div");
+                            div.classList.add("search-item");
+                            div.innerHTML = `<a href="${match.url}">${match.home_team} vs ${match.away_team} (${match.league}, ${match.country})</a>`;
+                            searchResults.appendChild(div);
+                        });
+                    })
+                    .catch(error => console.error("Error fetching search results:", error));
+            });
+        });
+        </script>
+        
     
 </div>
 

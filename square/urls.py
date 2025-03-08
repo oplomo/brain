@@ -8,6 +8,7 @@ app_name = "square"
 urlpatterns = [
     path("", views.index, name="index"),
     path("free predictons/sport/<str:selected>", views.index, name="index"),
+    path("search-matches/", views.search_matches, name="search_matches"),
     path(
         "free predictions/sport/<str:selected>/<path:item>/", views.index, name="index"
     ),

@@ -15,7 +15,7 @@ from datetime import timedelta
 from django.utils.text import slugify
 import time
 import logging
-
+from django.db.models import Q
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 def index(request, selected=None, item=None, day="today"):
     # Updated sports menu
     site = get_object_or_404(SiteInformation, pk=1)
+    search_query = request.GET.get("q", "").strip()
     sports_menu = {
         "soccer": [
             "3 way(1X2)",
@@ -82,6 +83,14 @@ def index(request, selected=None, item=None, day="today"):
         )
     else:
         matches = Match.objects.none()  # Empty queryset for unknown sports
+
+    if search_query:
+        matches = matches.filter(
+            Q(match__home_team__icontains=search_query) |
+            Q(match__away_team__icontains=search_query) |
+            Q(match__league__name__icontains=search_query) |
+            Q(match__league__country__name__icontains=search_query)
+        )
 
     # Initialize table headers and data
     table_headers = [
@@ -390,6 +399,8 @@ def index(request, selected=None, item=None, day="today"):
             "away_team": match.match.away_team,
             "away_team_logo": match.match.away_team_logo,
             "sport_type": match.match.sport.name,
+            "league":match.match.league.name,
+            "country":match.match.league.country.name,
             "Temperature": match.match.temperature,
             "Feels_like": match.match.feels_like,
             "Humidity": match.match.humidity,
@@ -489,9 +500,37 @@ def index(request, selected=None, item=None, day="today"):
             "item": item,
             "day": day,
             "site": site,
+            "search_query": search_query
         },
     )
 
+from django.http import JsonResponse
+
+def search_matches(request):
+    query = request.GET.get("q", "").strip()
+
+    if not query:
+        return JsonResponse({"matches": []})  # Return empty response if no query
+
+    matches = Match.objects.filter(
+        Q(home_team__icontains=query) |
+        Q(away_team__icontains=query) |
+        Q(league__name__icontains=query) |
+        Q(league__country__name__icontains=query)
+    ).select_related("league", "league__country")[:10]  # Limit to 10 results
+
+    results = [
+        {
+            "home_team": match.home_team,
+            "away_team": match.away_team,
+            "league": match.league.name,
+            "country": match.league.country.name,
+            "url": match.get_absolute_url(),
+        }
+        for match in matches
+    ]
+
+    return JsonResponse({"matches": results})
 
 def get_prediction(match, sport):
     """Determine the prediction based on the probabilities for each sport."""
