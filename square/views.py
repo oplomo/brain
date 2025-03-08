@@ -1998,60 +1998,80 @@ today = timezone.now().date()
 
 def send_game(request):
     # Filter matches where the date is today and other conditions
-    matches = Match.objects.filter(
-        updated=False, is_premium=True, date__date=today  # Filter by today's date
-    ).prefetch_related("footballprediction_set")
+    today = timezone.now().date()
+    vip_status = VIPStatus.objects.first()
+    if request.method == "POST":
+        email = request.POST.get("email")
 
-    match_data = []
-    for match in matches:
-        football = get_object_or_404(FootballPrediction, match=match)
+        if not email:
+            messages.error(request, "Please enter your email.")
+            return redirect("square:send_game") 
 
-        if match.gold_bar == "gg":
-            description = "both teams to score"
-            prediction = get_prediction_bts(football)
-            odds = get_odds_bts(football)
+        try:
+            validate_email(email)  # Validate email format
+        except ValidationError:
+            messages.error(request, "Please enter a valid email address.")
+            return redirect("square:send_game")  # Redirect to refresh the page with the message
 
-        elif match.gold_bar == "three_way":
-            description = "team to win"
-            prediction = get_prediction(football, football.match.sport.name)
-            odds = get_odds(football, football.match.sport.name)
 
-        elif match.gold_bar == "ov":
-            description = "total goals"
-            prediction = get_prediction_ov(football)
-            odds = get_odds_ov(football)
+        matches = Match.objects.filter(
+            updated=False, is_premium=True, date__date=today  # Filter by today's date
+        ).prefetch_related("footballprediction_set")
 
-        else:
-            description = ""
-            prediction = None
-            odds = None
+        match_data = []
+        for match in matches:
+            football = get_object_or_404(FootballPrediction, match=match)
 
-        match_data.append(
-            {
-                "match": match,
-                "description": description,
-                "prediction": prediction,
-                "odds": odds,
-                "league_logo": match.league.logo if match.league else None,
-                "country_name": match.league.country.name if match.league else None,
-                "country_flag": match.league.country.flag if match.league else None,
-            }
+            if match.gold_bar == "gg":
+                description = "both teams to score"
+                prediction = get_prediction_bts(football)
+                odds = get_odds_bts(football)
+
+            elif match.gold_bar == "three_way":
+                description = "team to win"
+                prediction = get_prediction(football, football.match.sport.name)
+                odds = get_odds(football, football.match.sport.name)
+
+            elif match.gold_bar == "ov":
+                description = "total goals"
+                prediction = get_prediction_ov(football)
+                odds = get_odds_ov(football)
+
+            else:
+                description = ""
+                prediction = None
+                odds = None
+
+            match_data.append(
+                {
+                    "match": match,
+                    "description": description,
+                    "prediction": prediction,
+                    "odds": odds,
+                    "league_logo": match.league.logo if match.league else None,
+                    "country_name": match.league.country.name if match.league else None,
+                    "country_flag": match.league.country.flag if match.league else None,
+                }
+            )
+
+        # Send email
+        subject = "Premium Match Predictions"
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_list = [email]
+
+        html_content = render_to_string(
+            "public/email_template.html", {"match_data": match_data}
         )
-
-    # Send email
-    subject = "Premium Match Predictions"
-    from_email = settings.DEFAULT_FROM_EMAIL
-    recipient_list = ["adamssquare4@gmail.com"]
-
-    html_content = render_to_string(
-        "public/email_template.html", {"match_data": match_data}
+        email = EmailMultiAlternatives(subject, "", from_email, recipient_list)
+        email.attach_alternative(html_content, "text/html")
+        email.send()
+        messages.success(request, "Predictions have been sent to your email.")
+        return redirect("square:payment_success")
+    return render(
+        request,
+        "private/o.html",
+        {"vip_status": vip_status},
     )
-    email = EmailMultiAlternatives(subject, "", from_email, recipient_list)
-    email.attach_alternative(html_content, "text/html")
-    email.send()
-
-    return redirect("square:payment_success")
-
 
 from .models import VIPStatus
 
@@ -2065,6 +2085,7 @@ def toggle_vip(request):
 
 def market(request):
     vip_status = VIPStatus.objects.first()
+    today = timezone.now().date()
     matches = Match.objects.filter(
         updated=False, is_premium=True, date__date=today  # Filter by today's date
     ).prefetch_related("footballprediction_set")

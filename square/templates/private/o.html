@@ -134,8 +134,16 @@
                     Open Window
                 {% endif %}
             </button>
+        </form><br>
+
+
+        <form method="POST" action="{% url 'square:send_game' %}">
+            {% csrf_token %}
+            <label for="email">Enter your email:</label>
+            <input type="email" name="email" required>
+            <button type="submit">Send Predictions</button>
         </form>
-        
+           
         
         <a href="{% url 'admin:index' %}" target="_blank">close browser</a><br>
          <a href="{% url "square:index" %}">returnhome</a>
@@ -145,10 +153,7 @@
         <a href="{% url 'square:see_data_progress' %}">see_data_progress</a><br>
         <a href="{% url 'square:destroy_premium' %}"><small>destroy_premium</small></a>
         <a href="{% url 'square:recreate_premium' %}"><small>recreate_premium</small></a> <br>
-        <a href="{% url "square:send_game" %}">send_game</a><br>
-        <a href="https://analytics.google.com/analytics/web/?authuser=2#/p481148659/reports/intelligenthome" target="_blank" rel="noopener noreferrer">
-            Check Analytics
-        </a><br><br>
+        
         
 
         <a href="{% url "square:logout" %}">logout</a>
@@ -157,7 +162,20 @@
         {% csrf_token %}
         <button type="submit">Toggle Maintenance Mode</button>
     </form>
-
+    <br><a href="https://analytics.google.com/analytics/web/?authuser=2#/p481148659/reports/intelligenthome" target="_blank" rel="noopener noreferrer">
+        check analytics
+    </a><br>
+    <a href="https://dashboard.render.com/web/srv-cv1ftqrtq21c73cve400" target="_blank" rel="noopener noreferrer">
+        render
+    </a><br>
+    <a href="https://dashboard.api-football.com/" target="_blank" rel="noopener noreferrer">
+        API-FOOTBALL
+    </a><br>
+    <a href="https://dashboard.paystack.com/#/dashboard" target="_blank" rel="noopener noreferrer">
+        paystack
+    </a><br>
+    
+        
       
     </div>
 
