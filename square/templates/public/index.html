@@ -91,6 +91,11 @@
     </div>
    
     <div class="square">
+        <form method="GET" action="{% url 'square:index' selected_sport item day %}" class="search-form">
+            <input type="text" id="search-box" name="q" placeholder="Search by team, league, or country" autocomplete="on" value="{{ search_query }}">
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-results" style="width:400px; height:400px"></div>
         <div class="yest">
     
             <div class="option"><a href="{% url 'square:index' selected_sport item 'yesterday'  %}">yesterday</a></div>
@@ -101,11 +106,7 @@
         </div>
         <button id="toggle_probabilities" style="margin-bottom: 10px; padding: 5px 10px;">Show Probabilities</button>
          
-        <form method="GET" action="{% url 'square:index' selected_sport item day %}" class="search-form">
-            <input type="text" id="search-box" name="q" placeholder="Search by team, league, or country" autocomplete="off" value="{{ search_query }}">
-            <button type="submit">Search</button>
-        </form>
-        <div id="search-results"></div>
+        
          
         {% if matches %}
 <table class="square_table">
