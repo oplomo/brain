@@ -7,8 +7,9 @@
   viewer is {{user.username}} {% else %} match predictions
   {% endif %}
 {% endblock title %}
-{% block content %}
-<style>#search-box {
+{% block style %}
+<style>
+    #search-box {
     width: 100%;
     padding: 8px;
     font-size: 16px;
@@ -44,6 +45,9 @@
     background: #f1f1f1;
 }
 </style>
+
+{% endblock style %}
+{% block content %}
 <div class="current">{{selected_sport}} | {{item}}</div>
 
 <div class="structure">
