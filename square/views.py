@@ -504,7 +504,7 @@ def index(request, selected=None, item=None, day="today"):
         },
     )
 
-from django.http import JsonResponse
+from django.db.models import Q
 
 def search_matches(request):
     query = request.GET.get("q", "").strip()
@@ -519,18 +519,25 @@ def search_matches(request):
         Q(league__country__name__icontains=query)
     ).select_related("league", "league__country")[:10]  # Limit to 10 results
 
-    results = [
-        {
+    results = []
+    for match in matches:
+        try:
+            prediction = FootballPrediction.objects.get(match=match)
+            match_url = prediction.get_absolute_url()  # Get URL from related model
+        except FootballPrediction.DoesNotExist:
+            match_url = "#"  # Default URL if no prediction exists
+
+        results.append({
             "home_team": match.home_team,
             "away_team": match.away_team,
             "league": match.league.name,
             "country": match.league.country.name,
-            "url": match.get_absolute_url(),
-        }
-        for match in matches
-    ]
+            "url": match_url,
+        })
 
     return JsonResponse({"matches": results})
+
+
 
 def get_prediction(match, sport):
     """Determine the prediction based on the probabilities for each sport."""
