@@ -171,6 +171,6 @@ DEFAULT_FROM_EMAIL = "jerusqore@gmail.com"
 
 API_FOOTBALL="fb3f109cc7510965d0810fe7529b6457"
 WEATHER_API = "1795372653d0553aa30f7e6be0c9d7d5"
-settings.API_FOOTBALL
-from django.conf import settings
+# settings.API_FOOTBALL
+# from django.conf import settings
 
