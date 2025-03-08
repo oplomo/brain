@@ -1987,6 +1987,8 @@ from django.template.loader import render_to_string
 from .models import Match
 from backend.models import League, Country
 from .models import FootballPrediction
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 
 from django.utils import timezone
