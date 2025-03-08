@@ -7,6 +7,8 @@ import time
 import json
 import logging
 from .grace_isha import analyze_data
+from django.conf import settings
+
 
 
 # Set up basic logging configuration
@@ -19,12 +21,12 @@ logging.basicConfig(
 
 class Jerusalem:
     # Static variables for the API keys
-    WEATHER_API_KEY = "1795372653d0553aa30f7e6be0c9d7d5"
-    FOOTBALL_API_KEY = "996c177462abec830c211f413c3bdaa8"
+    WEATHER_API_KEY = settings.WEATHER_API
+    FOOTBALL_API_KEY = settings.API_FOOTBALL
     ODDS_API_URL = "https://v3.football.api-sports.io/odds"
     BASE_URL = "https://v3.football.api-sports.io/"
     HEADERS = {
-        "x-rapidapi-key": "996c177462abec830c211f413c3bdaa8",
+        "x-rapidapi-key": settings.API_FOOTBALL,
         "x-rapidapi-host": "v3.football.api-sports.io",
     }
 
@@ -296,7 +298,7 @@ class Jerusalem:
     #     statistics_url = "https://v3.football.api-sports.io/fixtures"
     #     headers = {
     #         "x-rapidapi-host": "v3.football.api-sports.io",
-    #         "x-rapidapi-key": "996c177462abec830c211f413c3bdaa8",
+    #         "x-rapidapi-key": settings.API_FOOTBALL,
     #     }
     #     params = {"league": league_id, "season": 2022}
 
@@ -2701,5 +2703,5 @@ class Jerusalem:
 
 
 # API key and base URL
-api_key = "996c177462abec830c211f413c3bdaa8"
+api_key = settings.API_FOOTBALL
 base_url = "https://v3.football.api-sports.io"

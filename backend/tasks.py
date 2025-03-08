@@ -8,6 +8,7 @@ import time
 import logging
 from backend.grace_isha import analyze_data
 from square.models import Match, Fixture, FootballPrediction
+from django.conf import settings
 
 
 logger = logging.getLogger(__name__)
@@ -39,7 +40,7 @@ def update_matches_task():
 
 def fetch_fixtures_res(date):
     # Set your API key here
-    api_key = "996c177462abec830c211f413c3bdaa8"
+    api_key = settings.API_FOOTBALL
 
     # Define the endpoint and parameters
     url = "https://v3.football.api-sports.io/fixtures"

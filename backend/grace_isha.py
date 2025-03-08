@@ -16,6 +16,8 @@ from rich.progress import track
 from rich.text import Text
 from termcolor import colored
 import pyfiglet
+from django.conf import settings
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

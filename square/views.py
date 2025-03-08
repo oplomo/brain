@@ -1239,14 +1239,14 @@ import requests
 import json
 from datetime import datetime
 from backend.models import Country, Season, League
-
+from django.conf import settings
 
 def recreate_football_league(request):
 
     # API details
     url = "https://v3.football.api-sports.io/leagues"
     headers = {
-        "x-rapidapi-key": "996c177462abec830c211f413c3bdaa8",
+        "x-rapidapi-key": settings.API_FOOTBALL,
         "x-rapidapi-host": "v3.football.api-sports.io",
     }
 
@@ -1324,7 +1324,7 @@ from backend.models import MatchDate, League
 from backend.models import Match as M
 
 
-API_KEY = "996c177462abec830c211f413c3bdaa8"
+API_KEY = settings.API_FOOTBALL
 API_URL = "https://v3.football.api-sports.io/fixtures"
 
 
