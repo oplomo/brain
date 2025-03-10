@@ -131,8 +131,8 @@ TIME_ZONE = "UTC"
 USE_TZ = True
 
 
-CELERY_BROKER_URL = "rediss://default:*******@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456?ssl_cert_reqs=optional"
-CELERY_RESULT_BACKEND = "rediss://default:*******@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456?ssl_cert_reqs=optional"
+CELERY_BROKER_URL = "redis://default:*******@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456?ssl_cert_reqs=optional"
+CELERY_RESULT_BACKEND = "redis://default:*******@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456?ssl_cert_reqs=optional"
 
 
 # CELERY_BROKER_URL = "redis://localhost:6379/0"
