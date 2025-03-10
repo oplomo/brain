@@ -6,8 +6,8 @@ from celery.schedules import crontab
 
 # Set default Django settings module for 'celery'
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "brain.settings")
-
-app = Celery("brain", broker=os.getenv("REDIS_URL"))
+br="redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+app = Celery("brain", broker=br)
 # app = Celery("brain")
 
 # Load task modules from Django settings
