@@ -1415,7 +1415,7 @@ def select_football_prediction(request):
         # Get selected match IDs from the form
         selected_matches = request.POST.getlist("selected_matches")
 
-        # # Ensure the user doesn't select more than 15 matches
+        # Ensure the user doesn't select more than 15 matches
         # if len(selected_matches) > 25:
         #     messages.error(request, "You can only select up to 25 matches.")
         #     return redirect("square:select_football_prediction")
@@ -1448,6 +1448,7 @@ def select_football_prediction(request):
     # Get the selected filter from the form (default is today's matches)
     date_filter = request.GET.get("date_filter", "today")
     # Get the search query (if any)
+    search_query = request.GET.get("search", "")
     selected_matches = request.GET.get("selected_matches", "").split(",")
     selected_matches = [match_id for match_id in selected_matches if match_id]  # Remove empty values
 
