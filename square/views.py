@@ -1406,7 +1406,6 @@ def fetch_matches_view(request):
 from backend.models import Country, Season, League, MatchDate
 
 
-from django.shortcuts import render, redirect
 from django.contrib import messages
 from datetime import datetime, timedelta
 
@@ -1417,8 +1416,8 @@ def select_football_prediction(request):
         selected_matches = request.POST.getlist("selected_matches")
 
         # Ensure the user doesn't select more than 15 matches
-        if len(selected_matches) > 15:
-            messages.error(request, "You can only select up to 15 matches.")
+        if len(selected_matches) > 25:
+            messages.error(request, "You can only select up to 25 matches.")
             return redirect("square:select_football_prediction")
 
         # Update the 'to_be_predicted' field for the selected matches
@@ -1448,6 +1447,8 @@ def select_football_prediction(request):
 
     # Get the selected filter from the form (default is today's matches)
     date_filter = request.GET.get("date_filter", "today")
+    # Get the search query (if any)
+    search_query = request.GET.get("search", "")
 
     # Fetch matches based on the date filter (today or tomorrow)
     if date_filter == "today":
@@ -1457,6 +1458,13 @@ def select_football_prediction(request):
     else:
         matches = M.objects.filter(to_be_predicted=False)
 
+    if search_query:
+        matches = matches.filter(
+            Q(home_team_name__icontains=search_query) |
+            Q(away_team_name__icontains=search_query) |
+            Q(league__name__icontains=search_query) |
+            Q(league__country__name__icontains=search_query)
+        )
     return render(
         request,
         "private/select_football_prediction.html",
@@ -1465,6 +1473,7 @@ def select_football_prediction(request):
             "today": today,
             "tomorrow": tomorrow,
             "date_filter": date_filter,
+            "search_query": search_query,
         },
     )
 
@@ -1590,11 +1599,12 @@ def see_data_progress(request):
 
 from django.shortcuts import render
 from .models import Match, Fixture, FootballPrediction
+from django.db.models import Q
 
 
 def update_matches_with_fixtures(request):
     matches = Match.objects.filter(updated=False)
-    fixtures = Fixture.objects.filter(status_short="FT")
+    fixtures = Fixture.objects.filter(Q(status_short="FT") | Q(status_short="PEN"))
 
     fixture_map = {
         fixture.fixture_id: fixture for fixture in fixtures
