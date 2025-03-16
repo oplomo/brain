@@ -124,10 +124,6 @@
   </style>
 
   <h1>Select Matches for Prediction</h1>
-<!-- Sticky box to show count of selected matches -->
-<div id="selected-matches-box">
-  <h3>Selected Matches: <span id="selected-count">0</span></h3>
-</div>
 
   <!-- Filter by today or tomorrow -->
   <form method="GET">
@@ -152,21 +148,27 @@
 
   <form method="POST">
     {% csrf_token %}
-    <label>
+    {% comment %} <label>
       <input type="checkbox" id="check_all">
       Check All
-  </label>
- 
-  
-  <div class="match-item">
-    <input type="checkbox" name="selected_matches" value="{{ match.id }}" id="match_{{ match.id }}" 
-           onchange="updateSelectedCount(this)">
-    <label for="match_{{ match.id }}">
-      {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }} 
-      &nbsp;&nbsp;<span style="color:indigo">{{ match.league }}</span>
-    </label>
-  </div>
-  
+  </label> {% endcomment %}
+  <div style="margin-bottom: 10px;">
+  <input type="checkbox" id="check-all" onclick="toggleAll(this)">
+  <label for="check-all"><b>Check All</b></label>
+</div>
+
+    <div>
+      {% for match in matches %}
+        <div class="match-item">
+          <input type="checkbox" name="selected_matches" value="{{ match.id }}" id="match_{{ match.id }}" onchange="updateSelectedCount(this)">
+          <label for="match_{{ match.id }}">
+            {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }} &nbsp;&nbsp;<span style="color:indigo">{{match.league}}</span>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+    
 
     <button type="submit">Submit</button>
   </form>
