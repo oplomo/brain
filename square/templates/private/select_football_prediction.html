@@ -124,6 +124,10 @@
   </style>
 
   <h1>Select Matches for Prediction</h1>
+<!-- Sticky box to show count of selected matches -->
+<div id="selected-matches-box">
+  <h3>Selected Matches: <span id="selected-count">0</span></h3>
+</div>
 
   <!-- Filter by today or tomorrow -->
   <form method="GET">
@@ -148,13 +152,11 @@
 
   <form method="POST">
     {% csrf_token %}
-    {% comment %} <label>
-      <input type="checkbox" id="check_all">
+    <div style="margin-bottom: 10px;">
+    <label>
+      <input type="checkbox" id="check_all" onclick="toggleAll(this)">
       Check All
-  </label> {% endcomment %}
-  <div style="margin-bottom: 10px;">
-  <input type="checkbox" id="check-all" onclick="toggleAll(this)">
-  <label for="check-all"><b>Check All</b></label>
+  </label> 
 </div>
 
     <div>
