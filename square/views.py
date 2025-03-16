@@ -1449,6 +1449,7 @@ def select_football_prediction(request):
     date_filter = request.GET.get("date_filter", "today")
     # Get the search query (if any)
     search_query = request.GET.get("search", "")
+    selected_matches = request.GET.get("selected_matches", "").split(",")
 
     # Fetch matches based on the date filter (today or tomorrow)
     if date_filter == "today":
@@ -1474,6 +1475,7 @@ def select_football_prediction(request):
             "tomorrow": tomorrow,
             "date_filter": date_filter,
             "search_query": search_query,
+            "selected_matches": selected_matches,
         },
     )
 

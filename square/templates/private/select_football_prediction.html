@@ -109,16 +109,22 @@
     
     <button type="submit">Filter</button>
   </form>
-  
-  <form method="GET" style="margin-top: 20px;">
+
+<form method="GET" style="margin-top: 20px;">
     <input type="text" name="search" placeholder="Search by team, league, or country" value="{{ search_query|default:'' }}" 
         style="width: 60%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
     <button type="submit" style="padding: 8px 15px; background-color: indigo; color: white; border: none; border-radius: 4px;">Search</button>
+
+    <!-- Hidden input to store selected matches -->
+    <input type="hidden" id="selected_matches_input" name="selected_matches" value="{{ selected_matches|join:',' }}">
 </form>
 
   <form method="POST">
     {% csrf_token %}
-    
+    <label>
+      <input type="checkbox" id="check_all">
+      Check All
+  </label>
     <div>
       {% for match in matches %}
         <div class="match-item">
@@ -143,4 +149,46 @@
       {% endfor %}
     </div>
   {% endif %}
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const checkboxes = document.querySelectorAll("input[name='selected_matches']");
+        const selectedMatchesInput = document.getElementById("selected_matches_input");
+        const checkAll = document.getElementById("check_all");
+    
+        // Load selected matches from hidden input
+        let selectedMatches = selectedMatchesInput.value ? selectedMatchesInput.value.split(",") : [];
+    
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function() {
+                if (this.checked) {
+                    selectedMatches.push(this.value);
+                } else {
+                    selectedMatches = selectedMatches.filter(id => id !== this.value);
+                }
+                selectedMatchesInput.value = selectedMatches.join(",");
+            });
+    
+            // Maintain checked state after search
+            if (selectedMatches.includes(checkbox.value)) {
+                checkbox.checked = true;
+            }
+        });
+    
+        // Check All functionality
+        checkAll.addEventListener("change", function() {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+                if (this.checked) {
+                    if (!selectedMatches.includes(checkbox.value)) {
+                        selectedMatches.push(checkbox.value);
+                    }
+                } else {
+                    selectedMatches = [];
+                }
+            });
+            selectedMatchesInput.value = selectedMatches.join(",");
+        });
+    });
+    </script>
 {% endblock %}

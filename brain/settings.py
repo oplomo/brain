@@ -147,7 +147,7 @@ CELERY_WORKER_CONCURRENCY = 4
 # REDIS_URL
 # DATABASE_URL
 # postgresql://predict_db_user:USygJJYAf1u1rP8XVuvqfmSPFKVnkGWg@dpg-cv2b7h8gph6c73bem560-a/predict_db
-CELERY_TASK_RESULT_EXPIRES = 10803 # Auto-delete results after 1 hour
+CELERY_TASK_RESULT_EXPIRES = 10803 # Auto-delete results after 3 hour 3s
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {
     "visibility_timeout": 10803,
