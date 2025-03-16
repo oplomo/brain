@@ -94,9 +94,40 @@
       border-radius: 5px;
       padding: 10px;
     }
+    /* Sticky box for selected matches count */
+#selected-matches-box {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 180px;
+  background: white;
+  border: 2px solid indigo;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  #selected-matches-box {
+    width: 150px;
+    right: 5px;
+    font-size: 14px;
+  }
+}
+
   </style>
 
   <h1>Select Matches for Prediction</h1>
+<!-- Sticky box to show count of selected matches -->
+<div id="selected-matches-box">
+  <h3>Selected Matches: <span id="selected-count">0</span></h3>
+</div>
 
   <!-- Filter by today or tomorrow -->
   <form method="GET">
@@ -125,16 +156,17 @@
       <input type="checkbox" id="check_all">
       Check All
   </label>
-    <div>
-      {% for match in matches %}
-        <div class="match-item">
-          <input type="checkbox" name="selected_matches" value="{{ match.id }}" id="match_{{ match.id }}">
-          <label for="match_{{ match.id }}">
-            {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }} &nbsp&nbsp&nbsp&nbsp<span style="color:indigo">{{match.league}}</span>
-          </label>
-        </div>
-      {% endfor %}
-    </div>
+ 
+  
+  <div class="match-item">
+    <input type="checkbox" name="selected_matches" value="{{ match.id }}" id="match_{{ match.id }}" 
+           onchange="updateSelectedCount(this)">
+    <label for="match_{{ match.id }}">
+      {{ match.home_team_name }} vs {{ match.away_team_name }} on {{ match.date }} 
+      &nbsp;&nbsp;<span style="color:indigo">{{ match.league }}</span>
+    </label>
+  </div>
+  
 
     <button type="submit">Submit</button>
   </form>
@@ -149,7 +181,41 @@
       {% endfor %}
     </div>
   {% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function updateSelectedCount(checkbox) {
+        let countElement = document.getElementById("selected-count");
+        let currentCount = parseInt(countElement.textContent);
 
+        if (checkbox.checked) {
+            countElement.textContent = currentCount + 1;
+        } else {
+            countElement.textContent = Math.max(0, currentCount - 1);
+        }
+    }
+
+    function toggleAll(mainCheckbox) {
+        let checkboxes = document.querySelectorAll('input[name="selected_matches"]');
+        let countElement = document.getElementById("selected-count");
+
+        if (mainCheckbox.checked) {
+            countElement.textContent = checkboxes.length;
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = true;
+            });
+        } else {
+            countElement.textContent = 0;
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+        }
+    }
+
+    window.updateSelectedCount = updateSelectedCount;
+    window.toggleAll = toggleAll;
+});
+
+</script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
         const checkboxes = document.querySelectorAll("input[name='selected_matches']");
