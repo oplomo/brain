@@ -120,7 +120,6 @@
     font-size: 14px;
   }
 }
-
   </style>
 
   <h1>Select Matches for Prediction</h1>
@@ -187,78 +186,74 @@
   {% endif %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    let countElement = document.getElementById("selected-count");
+    let checkboxes = document.querySelectorAll('input[name="selected_matches"]');
+    let checkAll = document.getElementById("check_all");
+    let selectedMatchesInput = document.getElementById("selected_matches_input");
+
+    // Load checked matches from localStorage
+    let storedCheckedMatches = JSON.parse(localStorage.getItem("checkedMatches")) || [];
+
+    // Function to update count and store selected matches
     function updateSelectedCount(checkbox) {
-        let countElement = document.getElementById("selected-count");
-        let currentCount = parseInt(countElement.textContent);
+        let matchId = checkbox.value;
 
         if (checkbox.checked) {
-            countElement.textContent = currentCount + 1;
+            if (!storedCheckedMatches.includes(matchId)) {
+                storedCheckedMatches.push(matchId);
+            }
         } else {
-            countElement.textContent = Math.max(0, currentCount - 1);
+            storedCheckedMatches = storedCheckedMatches.filter(id => id !== matchId);
         }
+
+        // Save to localStorage & update UI
+        localStorage.setItem("checkedMatches", JSON.stringify(storedCheckedMatches));
+        countElement.textContent = storedCheckedMatches.length;
+        selectedMatchesInput.value = storedCheckedMatches.join(",");
     }
 
-    function toggleAll(mainCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="selected_matches"]');
-        let countElement = document.getElementById("selected-count");
-
-        if (mainCheckbox.checked) {
-            countElement.textContent = checkboxes.length;
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = true;
-            });
-        } else {
-            countElement.textContent = 0;
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-            });
-        }
-    }
-
-    window.updateSelectedCount = updateSelectedCount;
-    window.toggleAll = toggleAll;
-});
-
-</script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const checkboxes = document.querySelectorAll("input[name='selected_matches']");
-        const selectedMatchesInput = document.getElementById("selected_matches_input");
-        const checkAll = document.getElementById("check_all");
-    
-        // Load selected matches from hidden input
-        let selectedMatches = selectedMatchesInput.value ? selectedMatchesInput.value.split(",") : [];
-    
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function() {
-                if (this.checked) {
-                    selectedMatches.push(this.value);
-                } else {
-                    selectedMatches = selectedMatches.filter(id => id !== this.value);
-                }
-                selectedMatchesInput.value = selectedMatches.join(",");
-            });
-    
-            // Maintain checked state after search
-            if (selectedMatches.includes(checkbox.value)) {
+    // Function to restore checked matches after search
+    function restoreCheckedMatches() {
+        storedCheckedMatches.forEach(matchId => {
+            let checkbox = document.querySelector(`input[name="selected_matches"][value="${matchId}"]`);
+            if (checkbox) {
                 checkbox.checked = true;
             }
         });
-    
-        // Check All functionality
-        checkAll.addEventListener("change", function() {
+        countElement.textContent = storedCheckedMatches.length;
+        selectedMatchesInput.value = storedCheckedMatches.join(",");
+    }
+
+    // Function to check/uncheck all
+    function toggleAll(mainCheckbox) {
+        if (mainCheckbox.checked) {
             checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
-                if (this.checked) {
-                    if (!selectedMatches.includes(checkbox.value)) {
-                        selectedMatches.push(checkbox.value);
-                    }
-                } else {
-                    selectedMatches = [];
-                }
+                checkbox.checked = true;
+                updateSelectedCount(checkbox);
             });
-            selectedMatchesInput.value = selectedMatches.join(",");
+        } else {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                updateSelectedCount(checkbox);
+            });
+        }
+    }
+
+    // Attach event listeners
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            updateSelectedCount(this);
         });
     });
+
+    if (checkAll) {
+        checkAll.addEventListener("change", function () {
+            toggleAll(this);
+        });
+    }
+
+    // Restore checked matches after page reload or search
+    restoreCheckedMatches();
+});
     </script>
 {% endblock %}
