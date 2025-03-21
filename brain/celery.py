@@ -34,6 +34,6 @@ app.conf.beat_schedule = {
     },
     "update-fix-every-4-minutes": {
         "task": "backend.tasks.update_matches_task",
-        "schedule": crontab(minute="*/4"),
+        "schedule": crontab(minute="*/20"),
     },
 }
