@@ -131,12 +131,12 @@ TIME_ZONE = "UTC"
 USE_TZ = True
 
 
-CELERY_BROKER_URL = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
-CELERY_RESULT_BACKEND = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
-
 
 # CELERY_BROKER_URL = "redis://localhost:6379/0"
 # CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_BROKER_URL = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+CELERY_RESULT_BACKEND = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+
 
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
@@ -167,7 +167,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "jerusqore@gmail.com"
-EMAIL_HOST_PASSWORD = "oowg fata zdxq lgyi"
+EMAIL_HOST_PASSWORD = "kxqp odmu lmro vfut"
 DEFAULT_FROM_EMAIL = "jerusqore@gmail.com"
 
 API_FOOTBALL="fb3f109cc7510965d0810fe7529b6457"
