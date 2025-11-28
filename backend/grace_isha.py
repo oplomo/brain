@@ -237,6 +237,8 @@ class analyze_data:
                 rain=weather.get("rain", 0),
             )
             self.match = match_details.get("match_id")
+            
+            
             print(f"Match saved successfully: {match.home_team} vs {match.away_team})")
             return True
         except IntegrityError as e:
@@ -358,7 +360,7 @@ class analyze_data:
     def save_football_prediction(self):
         try:
             match_instance = Match.objects.get(
-                match_id=self.match
+                match_id=self.data_store.get("match_details", {}).get("match_id")
             )  # Assuming `self.match` is an ID
         except Match.DoesNotExist:
             print(f"Match with ID {self.match} does not exist.")

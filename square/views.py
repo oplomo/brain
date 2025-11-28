@@ -1520,12 +1520,11 @@ def predict_all_matches(request):
             try:
                 # Try parsing the matches data as JSON
                 matches = json.loads(matches_data)
-
                 result = fetch_data_for_matches.delay(
                     matches
                 )  # Send the whole list in a single task
                 task_id = result.id  # Get the task ID
-
+                
                 # Render a template to show the progress with the task ID
                 return render(
                     request, "private/data_progress.html", {"fetch_task_id": task_id}

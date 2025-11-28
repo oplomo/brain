@@ -10,12 +10,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-!kdbpe1)1l+3pqg@y!w)m^n#o32*j0#b(qhmg7izz-2%0iz6m^"
 
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["www.jeruscore.com", "jeruscore.com", "brain-zofx.onrender.com"]
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "www.jeruscore.com",
+    "jeruscore.com", 
+    "brain-zofx.onrender.com",
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0",
+    "[::1]",  # IPv6 localhost
+]# ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.sitemaps",
@@ -74,17 +84,17 @@ WSGI_APPLICATION = "brain.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
-import os
-import dj_database_url
+# import os
+# import dj_database_url
 
-DATABASES = {"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))}
+# DATABASES = {"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))}
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -132,10 +142,11 @@ USE_TZ = True
 
 
 
-# CELERY_BROKER_URL = "redis://localhost:6379/0"
-# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
-CELERY_BROKER_URL = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
-CELERY_RESULT_BACKEND = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+# CELERY_BROKER_URL = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+# CELERY_RESULT_BACKEND = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
 
 
 CELERY_ACCEPT_CONTENT = ["json"]
@@ -150,7 +161,7 @@ CELERY_WORKER_CONCURRENCY = 4
 CELERY_TASK_RESULT_EXPIRES = 10803 # Auto-delete results after 3 hour 3s
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {
-    "visibility_timeout": 10803,
+    "visibility_timeout": 36000,
     "ssl": {
         "ssl_cert_reqs": "CERT_NONE"  # Change to "CERT_REQUIRED" if you have a valid certificate
     },

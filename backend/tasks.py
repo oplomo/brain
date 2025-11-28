@@ -109,6 +109,7 @@ def run_fixtures_update():
 def fetch_data_for_matches(self, matches):
     """Fetches data for matches, tracks progress, and calculates successful and failed tasks."""
     total_matches = len(matches)
+    print(f"this method is running ")
     if total_matches == 0:
         logger.warning("No matches to process.")
         return {"status": "No matches", "result": "No data was processed"}
@@ -116,11 +117,11 @@ def fetch_data_for_matches(self, matches):
     logger.info(f"Total matches to process: {total_matches}")
 
     success_count = 0  # Counter for successful tasks
-    failure_count = 0  # Counter for failed tasks
+    failure_count = 0  # Counter for failed tasks /clear
 
     for idx, match in enumerate(matches):
         logger.info(f"Processing match {idx + 1} of {total_matches}")
-
+        
         # Fetch data for the match
         jerusalem = Jerusalem()
         every_data = jerusalem.receive_match(match)
