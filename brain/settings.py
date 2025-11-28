@@ -87,6 +87,7 @@ WSGI_APPLICATION = "brain.wsgi.application"
 
 import dj_database_url
 
+
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get("DATABASE_URL"),
@@ -95,7 +96,15 @@ DATABASES = {
     )
 }
 
+# DATABASE_URL = "postgresql://postgres:zjyefLgWLRZOiMYgIIWrcJtdrbEVrmtJ@crossover.proxy.rlwy.net:39888/railway"
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=DATABASE_URL,
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
