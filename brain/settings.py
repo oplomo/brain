@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-!kdbpe1)1l+3pqg@y!w)m^n#o32*j0#b(qhmg7izz-2%0iz6m^
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["www.jeruscore.com", "jeruscore.com", "brain-zofx.onrender.com"]
+ALLOWED_HOSTS = ["jerusqore-production.up.railway.app", "www.jeruscore.com", "jeruscore.com"]
 # ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
