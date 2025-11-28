@@ -17,15 +17,8 @@ SECRET_KEY = "django-insecure-!kdbpe1)1l+3pqg@y!w)m^n#o32*j0#b(qhmg7izz-2%0iz6m^
 DEBUG = False
 
 
-ALLOWED_HOSTS = [
-    "www.jeruscore.com",
-    "jeruscore.com", 
-    "brain-zofx.onrender.com",
-    "localhost",
-    "127.0.0.1",
-    "0.0.0.0",
-    "[::1]",  # IPv6 localhost
-]# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["jerusqore-production.up.railway.app", "www.jeruscore.com", "jeruscore.com"]
+# ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.sitemaps",
@@ -144,9 +137,8 @@ USE_TZ = True
 
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
-
-# CELERY_BROKER_URL = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
-# CELERY_RESULT_BACKEND = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+CELERY_BROKER_URL = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
+CELERY_RESULT_BACKEND = "redis://default:dswio7Vkn7NGhmOOC24HnZEmVKFIlbT2@redis-10456.c285.us-west-2-2.ec2.redns.redis-cloud.com:10456"
 
 
 CELERY_ACCEPT_CONTENT = ["json"]
@@ -154,6 +146,7 @@ CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
 CELERY_WORKER_CONCURRENCY = 4
+
 # rediss://default:AZuCAAIjcDFjZjAxN2U3MzdjNzA0MGI0YjBlNzRmOTAzODM1N2NkMHAxMA@enabling-halibut-39810.upstash.io:6379?ssl_cert_reqs=optional
 # REDIS_URL
 # DATABASE_URL
