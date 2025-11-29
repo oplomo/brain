@@ -136,6 +136,7 @@ class Command(BaseCommand):
     def save_fixtures_to_db(self, res_data):
         new_matches_count = 0
         updated_matches_count = 0
+        saved_matches = 0
         
         for fixture in res_data:
             try:
@@ -145,29 +146,38 @@ class Command(BaseCommand):
                     date=fixture_date.date()
                 )
                 
-                # Get league data
-                league_data = fixture["league"]
+                # Get league data with safe field access
+                league_data = fixture.get("league", {})
                 
-                # Get or create Country
-                country_name = fixture["teams"]["home"].get("country", "Unknown")
+                # Get or create Country with safe field access
+                country_name = fixture.get("teams", {}).get("home", {}).get("country", "Unknown")
                 country, _ = Country.objects.get_or_create(
                     name=country_name,
                     defaults={'code': country_name[:3].upper() if country_name else "UNK"}
                 )
                 
-                # Get or create League
+                # Get or create League with safe field access
+                league_id = league_data.get("id")
+                if not league_id:
+                    self.stdout.write(self.style.WARNING(f"⚠️  Skipping fixture - no league ID: {fixture['fixture']['id']}"))
+                    continue
+                    
+                league_name = league_data.get("name", "Unknown League")
+                league_type = league_data.get("type", "League")  # Default value
+                league_logo = league_data.get("logo", "")
+                
                 league, _ = League.objects.get_or_create(
-                    league_id=league_data["id"],
+                    league_id=league_id,
                     defaults={
-                        'name': league_data["name"],
-                        'type': league_data["type"],
-                        'logo': league_data.get("logo", ""),
+                        'name': league_name,
+                        'type': league_type,
+                        'logo': league_logo,
                         'country': country
                     }
                 )
                 
-                # Get or create Season
-                season_data = fixture["league"].get("season", {})
+                # Get or create Season with safe field access
+                season_data = league_data.get("season", {})
                 season_year = season_data.get("year", datetime.now().year)
                 season, _ = Season.objects.get_or_create(
                     year=season_year,
@@ -182,41 +192,48 @@ class Command(BaseCommand):
                 if season not in league.seasons.all():
                     league.seasons.add(season)
                 
-                # Create or update Match
-                venue_info = fixture.get("fixture", {}).get("venue", {})
+                # Create or update Match with safe field access
+                fixture_info = fixture.get("fixture", {})
+                venue_info = fixture_info.get("venue", {})
+                teams_info = fixture.get("teams", {})
+                home_team = teams_info.get("home", {})
+                away_team = teams_info.get("away", {})
                 
                 # Debug: Print what we're about to save
-                self.stdout.write(f"🔄 Processing match: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
+                self.stdout.write(f"🔄 Processing match: {home_team.get('name', 'Unknown')} vs {away_team.get('name', 'Unknown')}")
                 
                 obj, created = Match.objects.update_or_create(
-                    match_id=fixture["fixture"]["id"],
+                    match_id=fixture_info["id"],
                     defaults={
                         "date": fixture_date,
                         "referee": fixture.get("referee"),
-                        "timezone": fixture["fixture"]["timezone"],
+                        "timezone": fixture_info.get("timezone", "UTC"),
                         "match_date": match_date,
                         "venue_name": venue_info.get("name"),
                         "venue_city": venue_info.get("city"),
-                        "home_team_name": fixture["teams"]["home"]["name"],
-                        "home_team_logo": fixture["teams"]["home"].get("logo"),
-                        "home_team_id": fixture["teams"]["home"]["id"],
-                        "away_team_name": fixture["teams"]["away"]["name"],
-                        "away_team_logo": fixture["teams"]["away"].get("logo"),
-                        "away_team_id": fixture["teams"]["away"]["id"],
+                        "home_team_name": home_team.get("name", "Unknown Home"),
+                        "home_team_logo": home_team.get("logo"),
+                        "home_team_id": home_team.get("id"),
+                        "away_team_name": away_team.get("name", "Unknown Away"),
+                        "away_team_logo": away_team.get("logo"),
+                        "away_team_id": away_team.get("id"),
                         "league": league,
                     },
                 )
                 
                 if created:
                     new_matches_count += 1
-                    self.stdout.write(f"✅➕ New match CREATED: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
+                    self.stdout.write(f"✅➕ New match CREATED: {home_team.get('name')} vs {away_team.get('name')}")
                 else:
                     updated_matches_count += 1
-                    self.stdout.write(f"✅📝 Match UPDATED: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
+                    self.stdout.write(f"✅📝 Match UPDATED: {home_team.get('name')} vs {away_team.get('name')}")
+                
+                saved_matches += 1
                     
             except Exception as e:
-                self.stdout.write(self.style.ERROR(f"❌ Error saving match {fixture['fixture']['id']}: {str(e)}"))
-                self.stdout.write(self.style.ERROR(f"❌ Full traceback: {traceback.format_exc()}"))
+                self.stdout.write(self.style.ERROR(f"❌ Error saving match {fixture.get('fixture', {}).get('id', 'unknown')}: {str(e)}"))
+                # Don't print full traceback to avoid rate limiting
                 continue
                 
+        self.stdout.write(f"💾 Total matches successfully saved: {saved_matches}/{len(res_data)}")
         return new_matches_count, updated_matches_count
