@@ -112,26 +112,26 @@ WSGI_APPLICATION = "brain.wsgi.application"
 import dj_database_url
 
 #this is the database configuration for railway deployment using environment variable for production
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.environ.get("DATABASE_URL"),
-#         conn_max_age=600,
-#         ssl_require=True
-#     )
-# }
-
-
-#this is the databbase configuration for railway deployment if i dont want to use  environment variable in railway
-
-DATABASE_URL = "postgresql://postgres:zjyefLgWLRZOiMYgIIWrcJtdrbEVrmtJ@crossover.proxy.rlwy.net:39888/railway"
-
 DATABASES = {
     'default': dj_database_url.config(
-        default=DATABASE_URL,
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=600,
         ssl_require=True
     )
 }
+
+
+#this is the databbase configuration for railway deployment if i dont want to use  environment variable in railway used when i want to communicate to the raiway database directly using my vscode terminal
+
+# DATABASE_URL = "postgresql://postgres:zjyefLgWLRZOiMYgIIWrcJtdrbEVrmtJ@crossover.proxy.rlwy.net:39888/railway"
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=DATABASE_URL,
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
