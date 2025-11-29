@@ -6,178 +6,447 @@
     <title>Fetch Matches</title>
     
     <style>
-        /* Overall body styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: azure;
+        /* CSS Variables for easy customization */
+        :root {
+            /* Color Palette - Money & Hope Theme */
+            --primary-color: #2E8B57; /* Sea Green - money color */
+            --primary-dark: #1e6b42;
+            --primary-light: #3cb371;
+            --secondary-color: #FFD700; /* Gold - prosperity */
+            --accent-color: #4169E1; /* Royal Blue - trust */
+            --light-color: #f8fff8; /* Very light green */
+            --text-color: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            
+            /* Typography */
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
-            width: 90%;
+            box-sizing: border-box;
         }
 
-        /* Header styling */
-        h1 {
-            color: Green; /* Pink color for the header */
-            
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(135deg, var(--light-color) 0%, #e6f7ed 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container for centering content */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            width: 100%;
             text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
             font-size: 2.5rem;
-            margin-top: 30px;
+            margin: 10px 0;
+            font-weight: 700;
         }
 
-        /* Link styling */
-        a {
-            color: gsreen; /* Pink color for the links */
+        h2 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin: 20px 0 15px;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin: 5px;
         }
 
-        a:hover {
-            text-decoration: underline;
-            color: #d81b60; /* Slightly darker pink on hover */
+        .nav-link:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
         }
 
-        /* Form styling */
+        /* Card Layout for Forms and Sections */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form Styles */
         form {
             width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        form p {
-            margin: 15px 0;
+        .form-group {
+            margin-bottom: 20px;
         }
 
         label {
-            font-size: 1.2rem;
-            color: #333;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-dark);
         }
 
-        select {
+        select, input[type="email"] {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
             font-size: 1rem;
+            transition: var(--transition);
         }
 
-        button {
-            background-color: #e91e63; /* Pink color for the button */
-            color: white;
-            padding: 12px 20px;
+        select:focus, input[type="email"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--white);
             border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        button:hover {
-            background-color: #d81b60; /* Slightly darker pink on hover */
-        }
-
-        /* Style for links below the form */
-        .links-container {
+            transition: var(--transition);
             text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e6c200;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #3151c7;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Links Container */
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
             margin-top: 30px;
         }
 
-        .links-container a {
-            display: inline-block;
-            margin: 10px;
-            color: #e91e63; /* Pink color for the links */
-            font-size: 1.2rem;
+        .link-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
         }
 
-        .links-container a:hover {
-            color: #d81b60; /* Slightly darker pink on hover */
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .link-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .link-card a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-active {
+            background-color: rgba(46, 139, 87, 0.2);
+            color: var(--primary-dark);
+        }
+
+        .status-inactive {
+            background-color: rgba(255, 0, 0, 0.1);
+            color: #cc0000;
+        }
+
+        /* Price Display */
+        .price-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            width: 100%;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .links-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation for page load */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
         }
     </style>
 </head>
 <body>
-    <a href="{% url "square:fence" %}">fence</a>
-    <h1><a href="{% url 'square:refresh' %}">refresh site</a></h1>
+    <div class="container fade-in">
+        <header>
+            <div class="nav-container">
+                <a href="{% url 'square:fence' %}" class="nav-link">Fence</a>
+                <a href="{% url 'square:logout' %}" class="nav-link">Logout</a>
+            </div>
+            <h1><a href="{% url 'square:refresh' %}" style="color: inherit; text-decoration: none;">Fetch Matches</a></h1>
+            <p>Manage your predictions and settings</p>
+        </header>
 
-    <h1>Fetch Matches</h1>
+        <main>
+            <!-- Fetch Matches Form -->
+            <div class="card">
+                <h2>Fetch New Matches</h2>
+                <form method="post" action="{% url 'square:fetch_matches' %}">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="fetch_date">Fetch Matches For:</label>
+                        <select name="fetch_date" id="fetch_date">
+                            <option value="today">Today</option>
+                            <option value="tomorrow">Tomorrow</option>
+                            <option value="yesterday">Yesterday</option>
+                        </select>
+                    </div>
 
-    <form method="post" action="{% url 'square:fetch_matches' %}">
-        {% csrf_token %}
-        
-        <p>
-            <label for="fetch_date">Fetch Matches For:</label>
-            <select name="fetch_date" id="fetch_date">
-                <option value="today">Today</option>
-                <option value="tomorrow">Tomorrow</option>
-                <option value="yesterday">yesterday</option>
+                    <button type="submit" class="btn btn-full">Fetch Matches</button>
+                </form>
+            </div>
 
-                
-            </select>
-        </p>
+            <!-- VIP Status Toggle -->
+            <div class="card">
+                <h2>VIP Window Status</h2>
+                <div class="price-display">Price: KES {{ vip_status.price }}</div>
+                <form action="{% url 'square:toggle_vip' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-full {% if vip_status.is_active %}btn-secondary{% endif %}">
+                        {% if vip_status.is_active %}
+                            Close Window
+                        {% else %}
+                            Open Window
+                        {% endif %}
+                    </button>
+                </form>
+            </div>
 
-        <button type="submit">Fetch Matches</button>
-    </form>
+            <!-- Send Predictions Form -->
+            <div class="card">
+                <h2>Email Predictions</h2>
+                <form method="POST" action="{% url 'square:send_game' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email">Enter your email:</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <button type="submit" class="btn btn-full btn-accent">Send Predictions</button>
+                </form>
+            </div>
 
-    <div class="links-container">
+            <!-- Quick Actions -->
+            <div class="card">
+                <h2>Quick Actions</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+                    <a href="{% url 'square:index' %}" class="btn">Return Home</a>
+                    <a href="{% url 'square:select_football_prediction' %}" class="btn">Today's Football Prediction</a>
+                    <a href="{% url 'square:see_data_progress' %}" class="btn">Data Progress</a>
+                </div>
+            </div>
 
-        <form action="{% url 'square:toggle_vip' %}" method="post">
-            {% csrf_token %}
-            <p>Price: KES {{ vip_status.price }}</p>  <!-- Display admin-set price -->
-            <button type="submit">
-                {% if vip_status.is_active %}
-                    Close Window
-                {% else %}
-                    Open Window
-                {% endif %}
-            </button>
-        </form><br>
+            <!-- Maintenance Toggle -->
+            <div class="card">
+                <h2>System Controls</h2>
+                <form action="{% url 'square:toggle_maintenance' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-full">Toggle Maintenance Mode</button>
+                </form>
+            </div>
 
+            <!-- Links Container -->
+            <h2>Additional Options</h2>
+            <div class="links-container">
+                <div class="link-card">
+                    <a href="{% url 'square:start_soccer_prediction' 'today' %}">Start Soccer Prediction - TODAY</a>
+                </div>
+                <div class="link-card">
+                    <a href="{% url 'square:start_soccer_prediction' 'tomorrow' %}">Start Soccer Prediction - TOMORROW</a>
+                </div>
+                <div class="link-card">
+                    <a href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+                </div>
+                <div class="link-card">
+                    <a href="https://analytics.google.com/analytics/web/?authuser=2#/p481148659/reports/intelligenthome" target="_blank" rel="noopener noreferrer">
+                        Check Analytics
+                    </a>
+                </div>
+                <div class="link-card">
+                    <a href="https://dashboard.render.com/web/srv-cv1ftqrtq21c73cve400" target="_blank" rel="noopener noreferrer">
+                        Render Dashboard
+                    </a>
+                </div>
+                <div class="link-card">
+                    <a href="https://dashboard.api-football.com/" target="_blank" rel="noopener noreferrer">
+                        API Football
+                    </a>
+                </div>
+                <div class="link-card">
+                    <a href="https://dashboard.paystack.com/#/dashboard" target="_blank" rel="noopener noreferrer">
+                        Paystack
+                    </a>
+                </div>
+                <div class="link-card">
+                    <a href="{% url 'square:destroy_premium' %}">Destroy Premium</a>
+                </div>
+                <div class="link-card">
+                    <a href="{% url 'square:recreate_premium' %}">Recreate Premium</a>
+                </div>
+            </div>
+        </main>
 
-        <form method="POST" action="{% url 'square:send_game' %}">
-            {% csrf_token %}
-            <label for="email">Enter your email:</label>
-            <input type="email" name="email" required>
-            <button type="submit">Send Predictions</button>
-        </form>
-           
-        
-        <a href="{% url 'admin:index' %}" target="_blank">close browser</a><br>
-         <a href="{% url "square:index" %}">returnhome</a>
-        <a href="{% url 'square:select_football_prediction' %}">select todays FOOTBALL prediction</a> <br>
-        <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
-        <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMORROW</a> <br>
-        <a href="{% url 'square:see_data_progress' %}">see_data_progress</a><br>
-        <a href="{% url 'square:destroy_premium' %}"><small>destroy_premium</small></a>
-        <a href="{% url 'square:recreate_premium' %}"><small>recreate_premium</small></a> <br>
-        
-        
-
-        <a href="{% url "square:logout" %}">logout</a>
-
-    <form action="{% url 'square:toggle_maintenance' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Toggle Maintenance Mode</button>
-    </form>
-    <br><a href="https://analytics.google.com/analytics/web/?authuser=2#/p481148659/reports/intelligenthome" target="_blank" rel="noopener noreferrer">
-        check analytics
-    </a><br>
-    <a href="https://dashboard.render.com/web/srv-cv1ftqrtq21c73cve400" target="_blank" rel="noopener noreferrer">
-        render
-    </a><br>
-    <a href="https://dashboard.api-football.com/" target="_blank" rel="noopener noreferrer">
-        API-FOOTBALL
-    </a><br>
-    <a href="https://dashboard.paystack.com/#/dashboard" target="_blank" rel="noopener noreferrer">
-        paystack
-    </a><br>
-    
-        
-      
+        <footer>
+            <p>Fetch Matches &copy; 2023 | Designed for optimal user experience</p>
+        </footer>
     </div>
-
 </body>
 </html>
