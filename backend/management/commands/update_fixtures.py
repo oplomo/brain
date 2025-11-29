@@ -61,22 +61,54 @@ class Command(BaseCommand):
             self.stdout.write(f"❌ API Request failed: {e}")
             return []
     
+    def safe_get(self, data, *keys, default=None):
+        """Safely get nested dictionary values"""
+        if not isinstance(data, dict):
+            return default
+            
+        current = data
+        for key in keys:
+            if isinstance(current, dict) and key in current:
+                current = current[key]
+            else:
+                return default
+        return current
+    
     def save_fixtures(self, fixtures):
         """Save fixtures to backend models"""
         saved_count = 0
         
         for fixture in fixtures:
             try:
-                # Extract data from fixture
-                fixture_data = fixture.get("fixture", {})
-                league_data = fixture.get("league", {})
-                teams_data = fixture.get("teams", {})
-                home_team = teams_data.get("home", {})
-                away_team = teams_data.get("away", {})
-                venue_data = fixture_data.get("venue", {})
+                # Safely extract data with type checking
+                if not isinstance(fixture, dict):
+                    self.stdout.write("⚠️ Skipping: Fixture is not a dictionary")
+                    continue
+                
+                # Extract data with safe methods
+                fixture_data = self.safe_get(fixture, "fixture") or {}
+                league_data = self.safe_get(fixture, "league") or {}
+                teams_data = self.safe_get(fixture, "teams") or {}
+                home_team = self.safe_get(teams_data, "home") or {}
+                away_team = self.safe_get(teams_data, "away") or {}
+                venue_data = self.safe_get(fixture_data, "venue") or {}
+                
+                # Check if we have basic required data
+                if not fixture_data or not league_data:
+                    self.stdout.write("⚠️ Skipping: Missing fixture or league data")
+                    continue
                 
                 # Parse fixture date
-                fixture_date = datetime.fromisoformat(fixture_data["date"].replace("Z", ""))
+                date_str = self.safe_get(fixture_data, "date")
+                if not date_str:
+                    self.stdout.write("⚠️ Skipping: No date in fixture")
+                    continue
+                    
+                try:
+                    fixture_date = datetime.fromisoformat(date_str.replace("Z", ""))
+                except (ValueError, AttributeError):
+                    self.stdout.write("⚠️ Skipping: Invalid date format")
+                    continue
                 
                 # Get or create MatchDate
                 match_date, _ = MatchDate.objects.get_or_create(
@@ -84,33 +116,37 @@ class Command(BaseCommand):
                 )
                 
                 # Get or create Country
-                country_name = home_team.get("country", "Unknown")
+                country_name = self.safe_get(home_team, "country", default="Unknown")
                 country, _ = Country.objects.get_or_create(
                     name=country_name,
                     defaults={'code': country_name[:3].upper() if country_name else "UNK"}
                 )
                 
                 # Get or create League
-                league_id = league_data["id"]
+                league_id = self.safe_get(league_data, "id")
+                if not league_id:
+                    self.stdout.write("⚠️ Skipping: No league ID")
+                    continue
+                    
                 league, _ = League.objects.get_or_create(
                     league_id=league_id,
                     defaults={
-                        'name': league_data.get("name", "Unknown League"),
-                        'type': league_data.get("type", "League"),
-                        'logo': league_data.get("logo", ""),
+                        'name': self.safe_get(league_data, "name", default="Unknown League"),
+                        'type': self.safe_get(league_data, "type", default="League"),
+                        'logo': self.safe_get(league_data, "logo", default=""),
                         'country': country
                     }
                 )
                 
                 # Get or create Season
-                season_data = league_data.get("season", {})
-                season_year = season_data.get("year", datetime.now().year)
+                season_data = self.safe_get(league_data, "season") or {}
+                season_year = self.safe_get(season_data, "year", default=datetime.now().year)
                 season, _ = Season.objects.get_or_create(
                     year=season_year,
                     defaults={
-                        'start_date': season_data.get("start", datetime.now().date()),
-                        'end_date': season_data.get("end", datetime.now().date()),
-                        'current': season_data.get("current", True)
+                        'start_date': self.safe_get(season_data, "start", default=datetime.now().date()),
+                        'end_date': self.safe_get(season_data, "end", default=datetime.now().date()),
+                        'current': self.safe_get(season_data, "current", default=True)
                     }
                 )
                 
@@ -118,31 +154,42 @@ class Command(BaseCommand):
                 if season not in league.seasons.all():
                     league.seasons.add(season)
                 
+                # Get match ID
+                match_id = self.safe_get(fixture_data, "id")
+                if not match_id:
+                    self.stdout.write("⚠️ Skipping: No match ID")
+                    continue
+                
                 # Create or update Match
                 Match.objects.update_or_create(
-                    match_id=fixture_data["id"],
+                    match_id=match_id,
                     defaults={
                         "date": fixture_date,
-                        "referee": fixture.get("referee"),
-                        "timezone": fixture_data.get("timezone", "UTC"),
+                        "referee": self.safe_get(fixture, "referee"),
+                        "timezone": self.safe_get(fixture_data, "timezone", default="UTC"),
                         "match_date": match_date,
-                        "venue_name": venue_data.get("name"),
-                        "venue_city": venue_data.get("city"),
-                        "home_team_name": home_team.get("name", "Unknown Home"),
-                        "home_team_logo": home_team.get("logo"),
-                        "home_team_id": home_team.get("id"),
-                        "away_team_name": away_team.get("name", "Unknown Away"),
-                        "away_team_logo": away_team.get("logo"),
-                        "away_team_id": away_team.get("id"),
+                        "venue_name": self.safe_get(venue_data, "name"),
+                        "venue_city": self.safe_get(venue_data, "city"),
+                        "home_team_name": self.safe_get(home_team, "name", default="Unknown Home"),
+                        "home_team_logo": self.safe_get(home_team, "logo"),
+                        "home_team_id": self.safe_get(home_team, "id"),
+                        "away_team_name": self.safe_get(away_team, "name", default="Unknown Away"),
+                        "away_team_logo": self.safe_get(away_team, "logo"),
+                        "away_team_id": self.safe_get(away_team, "id"),
                         "league": league,
                     }
                 )
                 
                 saved_count += 1
-                self.stdout.write(f"✅ Saved: {home_team.get('name')} vs {away_team.get('name')}")
+                home_name = self.safe_get(home_team, "name", default="Home")
+                away_name = self.safe_get(away_team, "name", default="Away")
+                self.stdout.write(f"✅ Saved: {home_name} vs {away_name}")
                 
             except Exception as e:
                 self.stdout.write(f"❌ Failed to save fixture: {e}")
+                # Debug: Print fixture structure to understand the issue
+                import json
+                self.stdout.write(f"🔍 Problematic fixture: {json.dumps(fixture, indent=2)[:200]}...")
                 continue
         
         return saved_count
