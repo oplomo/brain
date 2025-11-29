@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from datetime import datetime, timedelta
 import requests
+import traceback
 from backend.models import Match, MatchDate, League, Country, Season
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'brain.settings')
@@ -26,6 +27,20 @@ class Command(BaseCommand):
             new_count, updated_count = self.save_fixtures_to_db(fixtures_data)
             total_fixtures = len(fixtures_data)
             
+            # Verification
+            total_match_dates = MatchDate.objects.count()
+            total_matches = Match.objects.count()
+            recent_matches = Match.objects.filter(match_date__date=tomorrow_date).count()
+            
+            self.stdout.write(f"📊 VERIFICATION:")
+            self.stdout.write(f"   Total MatchDate records: {total_match_dates}")
+            self.stdout.write(f"   Total Match records: {total_matches}")
+            self.stdout.write(f"   Matches for {tomorrow_date}: {recent_matches}")
+            self.stdout.write(f"   Fixtures from API: {len(fixtures_data)}")
+            
+            if recent_matches == 0 and len(fixtures_data) > 0:
+                self.stdout.write(self.style.WARNING("⚠️  WARNING: Fixtures were fetched but no matches were saved!"))
+            
             # Send email with prediction link
             subject = f"Fixtures Updated - {total_fixtures} matches available"
             message = f"""
@@ -35,6 +50,7 @@ class Command(BaseCommand):
             - Total fixtures fetched: {total_fixtures}
             - New matches added: {new_count}
             - Existing matches updated: {updated_count}
+            - Matches saved for {tomorrow_date}: {recent_matches}
             
             🎯 Time to make your predictions!
             
@@ -152,8 +168,9 @@ class Command(BaseCommand):
                 
                 # Get or create Season
                 season_data = fixture["league"].get("season", {})
+                season_year = season_data.get("year", datetime.now().year)
                 season, _ = Season.objects.get_or_create(
-                    year=season_data.get("year", datetime.now().year),
+                    year=season_year,
                     defaults={
                         'start_date': season_data.get("start", datetime.now().date()),
                         'end_date': season_data.get("end", datetime.now().date()),
@@ -167,6 +184,9 @@ class Command(BaseCommand):
                 
                 # Create or update Match
                 venue_info = fixture.get("fixture", {}).get("venue", {})
+                
+                # Debug: Print what we're about to save
+                self.stdout.write(f"🔄 Processing match: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
                 
                 obj, created = Match.objects.update_or_create(
                     match_id=fixture["fixture"]["id"],
@@ -189,12 +209,14 @@ class Command(BaseCommand):
                 
                 if created:
                     new_matches_count += 1
-                    self.stdout.write(f"➕ New match: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
+                    self.stdout.write(f"✅➕ New match CREATED: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
                 else:
                     updated_matches_count += 1
+                    self.stdout.write(f"✅📝 Match UPDATED: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
                     
             except Exception as e:
-                self.stdout.write(self.style.ERROR(f"❌ Error saving match {fixture['fixture']['id']}: {e}"))
+                self.stdout.write(self.style.ERROR(f"❌ Error saving match {fixture['fixture']['id']}: {str(e)}"))
+                self.stdout.write(self.style.ERROR(f"❌ Full traceback: {traceback.format_exc()}"))
                 continue
                 
         return new_matches_count, updated_matches_count
