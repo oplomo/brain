@@ -1,3 +1,192 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Matches</title>
+    
+    <style>
+        /* Overall body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: azure;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            width: 90%;
+        }
+
+        /* Header styling */
+        h1 {
+            color: Green; /* Pink color for the header */
+            
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 30px;
+        }
+
+        /* Link styling */
+        a {
+            color: gsreen; /* Pink color for the links */
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #d81b60; /* Slightly darker pink on hover */
+        }
+
+        /* Form styling */
+        form {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form p {
+            margin: 15px 0;
+        }
+
+        label {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #e91e63; /* Pink color for the button */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #d81b60; /* Slightly darker pink on hover */
+        }
+
+        /* Style for links below the form */
+        .links-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .links-container a {
+            display: inline-block;
+            margin: 10px;
+            color: #e91e63; /* Pink color for the links */
+            font-size: 1.2rem;
+        }
+
+        .links-container a:hover {
+            color: #d81b60; /* Slightly darker pink on hover */
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url "square:fence" %}">fence</a>
+    <h1><a href="{% url 'square:refresh' %}">refresh site</a></h1>
+
+    <h1>Fetch Matches</h1>
+
+    <form method="post" action="{% url 'square:fetch_matches' %}">
+        {% csrf_token %}
+        
+        <p>
+            <label for="fetch_date">Fetch Matches For:</label>
+            <select name="fetch_date" id="fetch_date">
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="yesterday">yesterday</option>
+
+                
+            </select>
+        </p>
+
+        <button type="submit">Fetch Matches</button>
+    </form>
+
+    <div class="links-container">
+
+        <form action="{% url 'square:toggle_vip' %}" method="post">
+            {% csrf_token %}
+            <p>Price: KES {{ vip_status.price }}</p>  <!-- Display admin-set price -->
+            <button type="submit">
+                {% if vip_status.is_active %}
+                    Close Window
+                {% else %}
+                    Open Window
+                {% endif %}
+            </button>
+        </form><br>
+
+
+        <form method="POST" action="{% url 'square:send_game' %}">
+            {% csrf_token %}
+            <label for="email">Enter your email:</label>
+            <input type="email" name="email" required>
+            <button type="submit">Send Predictions</button>
+        </form>
+           
+        
+        <a href="{% url 'admin:index' %}" target="_blank">close browser</a><br>
+         <a href="{% url "square:index" %}">returnhome</a>
+        <a href="{% url 'square:select_football_prediction' %}">select todays FOOTBALL prediction</a> <br>
+        <a href="{% url 'square:start_soccer_prediction' 'today'%}">start_soccer_prediction TODAY</a> <br>
+        <a href="{% url 'square:start_soccer_prediction' 'tomorrow'%}">start_soccer_prediction TOMORROW</a> <br>
+        <a href="{% url 'square:see_data_progress' %}">see_data_progress</a><br>
+        <a href="{% url 'square:destroy_premium' %}"><small>destroy_premium</small></a>
+        <a href="{% url 'square:recreate_premium' %}"><small>recreate_premium</small></a> <br>
+        
+        
+
+        <a href="{% url "square:logout" %}">logout</a>
+
+    <form action="{% url 'square:toggle_maintenance' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Toggle Maintenance Mode</button>
+    </form>
+    <br><a href="https://analytics.google.com/analytics/web/?authuser=2#/p481148659/reports/intelligenthome" target="_blank" rel="noopener noreferrer">
+        check analytics
+    </a><br>
+    <a href="https://dashboard.render.com/web/srv-cv1ftqrtq21c73cve400" target="_blank" rel="noopener noreferrer">
+        render
+    </a><br>
+    <a href="https://dashboard.api-football.com/" target="_blank" rel="noopener noreferrer">
+        API-FOOTBALL
+    </a><br>
+    <a href="https://dashboard.paystack.com/#/dashboard" target="_blank" rel="noopener noreferrer">
+        paystack
+    </a><br>
+    
+        
+      
+    </div>
+
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -389,7 +578,7 @@
                 <h2>Quick Actions</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
                     <a href="{% url 'square:index' %}" class="btn">Return Home</a>
-                    <a href="{% url 'square:select_football_prediction' %}" class="btn">Today's Football Prediction</a>
+                    <a href="{% url 'square:select_football_prediction' %}" class="btn">select Football Prediction</a>
                     <a href="{% url 'square:see_data_progress' %}" class="btn">Data Progress</a>
                 </div>
             </div>

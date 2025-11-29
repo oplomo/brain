@@ -1520,8 +1520,13 @@ from backend.adams_square import (
 )  # Importing the Jerusalem class from the script
 
 
-from backend.tasks import fetch_data_for_matches, analyze_fetched_data
 
+
+from django.core.management import call_command
+from django.http import JsonResponse
+import subprocess
+import json
+import uuid
 
 @csrf_exempt
 def predict_all_matches(request):
@@ -1529,14 +1534,20 @@ def predict_all_matches(request):
         matches_data = request.POST.get("matches")
         if matches_data:
             try:
-                # Try parsing the matches data as JSON
                 matches = json.loads(matches_data)
-                result = fetch_data_for_matches.delay(
-                    matches
-                )  # Send the whole list in a single task
-                task_id = result.id  # Get the task ID
                 
-                # Render a template to show the progress with the task ID
+                # Generate unique task ID
+                task_id = str(uuid.uuid4())
+                
+                # Start background process
+                import threading
+                thread = threading.Thread(
+                    target=run_match_analysis,
+                    args=(matches, task_id)
+                )
+                thread.daemon = True
+                thread.start()
+                
                 return render(
                     request, "private/data_progress.html", {"fetch_task_id": task_id}
                 )
@@ -1547,6 +1558,48 @@ def predict_all_matches(request):
     else:
         return HttpResponse("Invalid request method.", status=400)
 
+def run_match_analysis(matches, task_id):
+    """Run match analysis in background"""
+    total_matches = len(matches)
+    success_count = 0
+    failure_count = 0
+    
+    jerusalem = Jerusalem()
+    
+    for idx, match in enumerate(matches):
+        try:
+            every_data = jerusalem.receive_match(match)
+            
+            # Import here to avoid circular imports
+            from backend.grace_isha import analyze_data
+            analyzer = analyze_data()
+            result = analyzer.save_every_data(every_data)
+            
+            if result:
+                success_count += 1
+            else:
+                failure_count += 1
+                
+        except Exception as e:
+            failure_count += 1
+            print(f"Error processing match: {e}")
+        
+        # Update progress
+        progress = (idx + 1) / total_matches * 100
+        from backend.models import TaskProgress
+        TaskProgress.objects.update_or_create(
+            task_id=task_id,
+            defaults={
+                "progress": progress,
+                "successful": success_count,
+                "failed": failure_count,
+                "total": total_matches,
+            },
+        )
+        
+        # Rate limiting
+        if (idx + 1) % 5 == 0:
+            time.sleep(62)
 
 from backend.models import TaskProgress
 from django.views.decorators.csrf import csrf_exempt
