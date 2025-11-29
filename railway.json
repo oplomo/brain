@@ -4,10 +4,10 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn brain.wsgi:application",
-        "cron": {
-            "update_matches": "*/4 * * * * cd /app && python manage.py update_matches",
-            "update_fixtures": "*/6 * * * * cd /app && python manage.py update_fixtures"
-        }
+        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn brain.wsgi:application"
+    },
+    "cron": {
+        "update_matches": "*/4 * * * * cd /app && python manage.py update_matches",
+        "update_fixtures": "*/6 * * * * cd /app && python manage.py update_fixtures"
     }
 }
