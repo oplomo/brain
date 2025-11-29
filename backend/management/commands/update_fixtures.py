@@ -5,108 +5,40 @@ from django.core.mail import send_mail
 from django.conf import settings
 from datetime import datetime, timedelta
 import requests
-import json
 from backend.models import Match, MatchDate, League, Country, Season
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'brain.settings')
 django.setup()
 
 class Command(BaseCommand):
-    help = 'Update fixtures from API and send prediction reminder'
+    help = 'Update fixtures from API and save to backend models'
     
     def handle(self, *args, **options):
-        self.stdout.write(f"🚀 CRON JOB STARTED: update_fixtures at {datetime.now()}")
+        self.stdout.write(f"🚀 Starting fixtures update at {datetime.now()}")
         
+        # Get tomorrow's date
         tomorrow_date = (datetime.utcnow() + timedelta(days=1)).strftime("%Y-%m-%d")
-        self.stdout.write(f"📅 Fetching fixtures for date: {tomorrow_date}")
+        self.stdout.write(f"📅 Fetching fixtures for: {tomorrow_date}")
         
-        fixtures_data = self.fetch_fixtures_res(tomorrow_date)
+        # Fetch fixtures from API
+        fixtures_data = self.fetch_fixtures(tomorrow_date)
         
-        if fixtures_data:
-            self.stdout.write(f"📥 Found {len(fixtures_data)} fixtures from API")
-            new_count, updated_count = self.save_fixtures_to_db(fixtures_data)
-            total_fixtures = len(fixtures_data)
-            
-            # Verification
-            total_match_dates = MatchDate.objects.count()
-            total_matches = Match.objects.count()
-            recent_matches = Match.objects.filter(match_date__date=tomorrow_date).count()
-            
-            self.stdout.write(f"📊 VERIFICATION:")
-            self.stdout.write(f"   Total MatchDate records: {total_match_dates}")
-            self.stdout.write(f"   Total Match records: {total_matches}")
-            self.stdout.write(f"   Matches for {tomorrow_date}: {recent_matches}")
-            self.stdout.write(f"   Fixtures from API: {len(fixtures_data)}")
-            
-            if recent_matches == 0 and len(fixtures_data) > 0:
-                self.stdout.write(self.style.WARNING("⚠️  WARNING: Fixtures were fetched but no matches were saved!"))
-            
-            # Send email with prediction link
-            subject = f"Fixtures Updated - {total_fixtures} matches available"
-            message = f"""
-            Fixtures update completed at {datetime.now()}!
-            
-            Statistics:
-            - Total fixtures fetched: {total_fixtures}
-            - New matches added: {new_count}
-            - Existing matches updated: {updated_count}
-            - Matches saved for {tomorrow_date}: {recent_matches}
-            
-            🎯 Time to make your predictions!
-            
-            Click here to select predictions:
-            https://jerusqore-production.up.railway.app/select_football_prediction/
-            """
-            
-            try:
-                send_mail(
-                    subject,
-                    message,
-                    settings.DEFAULT_FROM_EMAIL,
-                    ['adamsquare64@gmail.com'],
-                    fail_silently=False,
-                )
-                self.stdout.write("📧 Email sent successfully")
-            except Exception as e:
-                self.stdout.write(self.style.ERROR(f"❌ Email failed: {e}"))
-            
-            self.stdout.write(self.style.SUCCESS(
-                f'🎉 Successfully processed {total_fixtures} fixtures '
-                f'({new_count} new, {updated_count} updated)'
-            ))
-        else:
-            self.stdout.write(self.style.WARNING('⚠️ No fixtures data found from API'))
-            
-            # Send email even when no fixtures
-            subject = "Fixtures Update - No Matches Tomorrow"
-            message = f"""
-            Fixtures update completed at {datetime.now()} but no matches found for tomorrow.
-            
-            Date checked: {tomorrow_date}
-            
-            This could mean:
-            - No matches scheduled for tomorrow
-            - API is temporarily unavailable
-            - No active leagues/seasons
-            
-            The system will check again in 6 minutes.
-            """
-            
-            try:
-                send_mail(
-                    subject,
-                    message,
-                    settings.DEFAULT_FROM_EMAIL,
-                    ['adamsquare64@gmail.com'],
-                    fail_silently=False,
-                )
-                self.stdout.write("📧 No-data email sent successfully")
-            except Exception as e:
-                self.stdout.write(self.style.ERROR(f"❌ Email failed: {e}"))
+        if not fixtures_data:
+            self.stdout.write("❌ No fixtures data received")
+            return
         
-        self.stdout.write(f"⏰ CRON JOB COMPLETED: update_fixtures at {datetime.now()}")
+        self.stdout.write(f"📥 Found {len(fixtures_data)} fixtures")
+        
+        # Save fixtures to database
+        saved_count = self.save_fixtures(fixtures_data)
+        
+        # Send email notification
+        self.send_notification(tomorrow_date, len(fixtures_data), saved_count)
+        
+        self.stdout.write(f"✅ Completed: {saved_count} matches saved")
     
-    def fetch_fixtures_res(self, date):
+    def fetch_fixtures(self, date):
+        """Fetch fixtures from Football API"""
         api_key = settings.API_FOOTBALL
         url = "https://v3.football.api-sports.io/fixtures"
         headers = {
@@ -115,190 +47,129 @@ class Command(BaseCommand):
         }
         params = {"date": date}
         
-        self.stdout.write(f"🌐 Making API request to: {url}")
-        self.stdout.write(f"📅 Date parameter: {date}")
-        
         try:
             response = requests.get(url, headers=headers, params=params, timeout=30)
-            self.stdout.write(f"📡 API Response status: {response.status_code}")
             
             if response.status_code == 200:
                 data = response.json()
-                
-                # Debug: Check API response structure
-                self.stdout.write(f"📊 API Response keys: {list(data.keys())}")
-                
-                fixtures = data.get("response", [])
-                self.stdout.write(f"✅ API Success - Found {len(fixtures)} fixtures")
-                
-                # Debug: Show first fixture structure if available
-                if fixtures:
-                    first_fixture = fixtures[0]
-                    self.stdout.write(f"🔍 First fixture keys: {list(first_fixture.keys())}")
-                    if 'league' in first_fixture:
-                        self.stdout.write(f"🏆 First fixture league keys: {list(first_fixture['league'].keys())}")
-                
-                return fixtures
+                return data.get("response", [])
             else:
-                self.stdout.write(self.style.ERROR(f"❌ API Error: {response.status_code}"))
-                self.stdout.write(self.style.ERROR(f"❌ API Error text: {response.text}"))
+                self.stdout.write(f"❌ API Error: {response.status_code}")
                 return []
+                
         except Exception as e:
-            self.stdout.write(self.style.ERROR(f"❌ API Request failed: {e}"))
+            self.stdout.write(f"❌ API Request failed: {e}")
             return []
     
-    def save_fixtures_to_db(self, res_data):
-        new_matches_count = 0
-        updated_matches_count = 0
-        saved_matches = 0
+    def save_fixtures(self, fixtures):
+        """Save fixtures to backend models"""
+        saved_count = 0
         
-        if not res_data:
-            self.stdout.write("⚠️ No data to process")
-            return new_matches_count, updated_matches_count
-
-        for fixture in res_data:
+        for fixture in fixtures:
             try:
-                # Debug: Print fixture structure
-                self.stdout.write(f"🔍 Processing fixture ID: {fixture.get('fixture', {}).get('id', 'unknown')}")
+                # Extract data from fixture
+                fixture_data = fixture.get("fixture", {})
+                league_data = fixture.get("league", {})
+                teams_data = fixture.get("teams", {})
+                home_team = teams_data.get("home", {})
+                away_team = teams_data.get("away", {})
+                venue_data = fixture_data.get("venue", {})
                 
-                # Get fixture date safely
-                fixture_info = fixture.get('fixture', {})
-                if not fixture_info:
-                    self.stdout.write(self.style.WARNING("⚠️ Skipping - no fixture data"))
-                    continue
-                    
-                date_str = fixture_info.get('date')
-                if not date_str:
-                    self.stdout.write(self.style.WARNING("⚠️ Skipping - no date in fixture"))
-                    continue
-                    
-                # Parse date safely
-                try:
-                    fixture_date = datetime.fromisoformat(date_str.replace("Z", ""))
-                except ValueError as e:
-                    self.stdout.write(self.style.WARNING(f"⚠️ Skipping - invalid date format: {date_str}"))
-                    continue
-
+                # Parse fixture date
+                fixture_date = datetime.fromisoformat(fixture_data["date"].replace("Z", ""))
+                
                 # Get or create MatchDate
-                match_date, created = MatchDate.objects.get_or_create(
+                match_date, _ = MatchDate.objects.get_or_create(
                     date=fixture_date.date()
                 )
-                if created:
-                    self.stdout.write(f"📅 Created new MatchDate: {match_date.date}")
-
-                # Get league data safely
-                league_data = fixture.get('league', {})
-                if not league_data:
-                    self.stdout.write(self.style.WARNING("⚠️ Skipping - no league data"))
-                    continue
-
-                # Debug league data
-                self.stdout.write(f"🏆 League data keys: {list(league_data.keys())}")
-
-                # Get country safely
-                teams_data = fixture.get('teams', {})
-                home_team_data = teams_data.get('home', {})
-                country_name = home_team_data.get('country', 'Unknown')
                 
-                country, country_created = Country.objects.get_or_create(
+                # Get or create Country
+                country_name = home_team.get("country", "Unknown")
+                country, _ = Country.objects.get_or_create(
                     name=country_name,
                     defaults={'code': country_name[:3].upper() if country_name else "UNK"}
                 )
-                if country_created:
-                    self.stdout.write(f"🌍 Created new Country: {country_name}")
-
-                # Get league ID safely
-                league_id = league_data.get('id')
-                if not league_id:
-                    self.stdout.write(self.style.WARNING(f"⚠️ Skipping fixture - no league ID"))
-                    continue
-
-                # Get league fields with defaults
-                league_name = league_data.get('name', 'Unknown League')
-                league_type = league_data.get('type', 'League')  # Fixed: using get with default
-                league_logo = league_data.get('logo', '')
-
-                self.stdout.write(f"🏅 League: {league_name} (ID: {league_id}, Type: {league_type})")
-
+                
                 # Get or create League
-                league, league_created = League.objects.get_or_create(
+                league_id = league_data["id"]
+                league, _ = League.objects.get_or_create(
                     league_id=league_id,
                     defaults={
-                        'name': league_name,
-                        'type': league_type,
-                        'logo': league_logo,
+                        'name': league_data.get("name", "Unknown League"),
+                        'type': league_data.get("type", "League"),
+                        'logo': league_data.get("logo", ""),
                         'country': country
                     }
                 )
-                if league_created:
-                    self.stdout.write(f"✅ Created new League: {league_name}")
-
-                # Get season data safely
-                season_data = league_data.get('season', {})
-                season_year = season_data.get('year', datetime.now().year)
                 
-                season, season_created = Season.objects.get_or_create(
+                # Get or create Season
+                season_data = league_data.get("season", {})
+                season_year = season_data.get("year", datetime.now().year)
+                season, _ = Season.objects.get_or_create(
                     year=season_year,
                     defaults={
-                        'start_date': season_data.get('start', datetime.now().date()),
-                        'end_date': season_data.get('end', datetime.now().date()),
-                        'current': season_data.get('current', True)
+                        'start_date': season_data.get("start", datetime.now().date()),
+                        'end_date': season_data.get("end", datetime.now().date()),
+                        'current': season_data.get("current", True)
                     }
                 )
-                if season_created:
-                    self.stdout.write(f"📚 Created new Season: {season_year}")
-
-                # Add season to league if not already added
+                
+                # Add season to league
                 if season not in league.seasons.all():
                     league.seasons.add(season)
-                    self.stdout.write(f"🔗 Added season {season_year} to league {league_name}")
-
-                # Get team data safely
-                away_team_data = teams_data.get('away', {})
-                venue_info = fixture_info.get('venue', {})
-
-                # Prepare match data
-                home_team_name = home_team_data.get('name', 'Unknown Home')
-                away_team_name = away_team_data.get('name', 'Unknown Away')
                 
-                self.stdout.write(f"🔄 Processing match: {home_team_name} vs {away_team_name}")
-
                 # Create or update Match
-                obj, created = Match.objects.update_or_create(
-                    match_id=fixture_info['id'],
+                Match.objects.update_or_create(
+                    match_id=fixture_data["id"],
                     defaults={
                         "date": fixture_date,
-                        "referee": fixture.get('referee'),
-                        "timezone": fixture_info.get('timezone', 'UTC'),
+                        "referee": fixture.get("referee"),
+                        "timezone": fixture_data.get("timezone", "UTC"),
                         "match_date": match_date,
-                        "venue_name": venue_info.get('name'),
-                        "venue_city": venue_info.get('city'),
-                        "home_team_name": home_team_name,
-                        "home_team_logo": home_team_data.get('logo'),
-                        "home_team_id": home_team_data.get('id'),
-                        "away_team_name": away_team_name,
-                        "away_team_logo": away_team_data.get('logo'),
-                        "away_team_id": away_team_data.get('id'),
+                        "venue_name": venue_data.get("name"),
+                        "venue_city": venue_data.get("city"),
+                        "home_team_name": home_team.get("name", "Unknown Home"),
+                        "home_team_logo": home_team.get("logo"),
+                        "home_team_id": home_team.get("id"),
+                        "away_team_name": away_team.get("name", "Unknown Away"),
+                        "away_team_logo": away_team.get("logo"),
+                        "away_team_id": away_team.get("id"),
                         "league": league,
-                    },
+                    }
                 )
-
-                if created:
-                    new_matches_count += 1
-                    self.stdout.write(f"✅➕ New match CREATED: {home_team_name} vs {away_team_name}")
-                else:
-                    updated_matches_count += 1
-                    self.stdout.write(f"✅📝 Match UPDATED: {home_team_name} vs {away_team_name}")
-
-                saved_matches += 1
-
+                
+                saved_count += 1
+                self.stdout.write(f"✅ Saved: {home_team.get('name')} vs {away_team.get('name')}")
+                
             except Exception as e:
-                self.stdout.write(self.style.ERROR(f"❌ Error saving match: {str(e)}"))
-                # Print the problematic fixture for debugging
-                self.stdout.write(self.style.ERROR(f"❌ Problematic fixture: {json.dumps(fixture, indent=2)[:500]}..."))
+                self.stdout.write(f"❌ Failed to save fixture: {e}")
                 continue
-
-        self.stdout.write(f"💾 Total matches successfully saved: {saved_matches}/{len(res_data)}")
-        self.stdout.write(f"📈 New: {new_matches_count}, Updated: {updated_matches_count}")
         
-        return new_matches_count, updated_matches_count
+        return saved_count
+    
+    def send_notification(self, date, total_fixtures, saved_matches):
+        """Send email notification"""
+        subject = f"Fixtures Updated - {saved_matches} matches saved"
+        message = f"""
+        Fixtures update completed at {datetime.now()}!
+        
+        Date: {date}
+        Fixtures fetched: {total_fixtures}
+        Matches saved: {saved_matches}
+        
+        Ready for predictions!
+        
+        Click here: https://jerusqore-production.up.railway.app/select_football_prediction/
+        """
+        
+        try:
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                ['adamsquare64@gmail.com'],
+                fail_silently=False,
+            )
+            self.stdout.write("📧 Notification email sent")
+        except Exception as e:
+            self.stdout.write(f"❌ Email failed: {e}")
