@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from datetime import datetime
 import requests
+from datetime import datetime, timedelta
 from square.models import Fixture, ResultDate
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'brain.settings')
@@ -16,10 +17,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write(f"🚀 CRON JOB STARTED: update_fixtures at {datetime.now()}")
         
-        today_date = datetime.utcnow().strftime("%Y-%m-%d")
-        self.stdout.write(f"📅 Fetching fixtures for date: {today_date}")
+        tommorow_date = (datetime.utcnow() + timedelta(days=1)).strftime("%Y-%m-%d")
+
+        self.stdout.write(f"📅 Fetching fixtures for date: {tommorow_date}")
         
-        fixtures_data = self.fetch_fixtures_res(today_date)
+        fixtures_data = self.fetch_fixtures_res(tommorow_date)
         
         if fixtures_data:
             self.stdout.write(f"📥 Found {len(fixtures_data)} fixtures from API")
@@ -66,7 +68,7 @@ class Command(BaseCommand):
             message = f"""
             Fixtures update completed at {datetime.now()} but no matches found for today.
             
-            Date checked: {today_date}
+            Date checked: {tommorow_date}
             
             This could mean:
             - No matches scheduled for today
@@ -148,7 +150,6 @@ class Command(BaseCommand):
             
             if created:
                 new_fixtures_count += 1
-                self.stdout.write(f"➕ New fixture: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
             else:
                 updated_fixtures_count += 1
                 
