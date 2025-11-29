@@ -84,7 +84,7 @@ urlpatterns = [
     ),  # lin in index.htl in the footer that is to tae the visitor in terms.hmtl where terms and coditions are documented
     path(
         "fence/sct222-0190/2021/enter/", views.custom_login, name="fence"
-    ),  # ignore this
+    ),  # ignore this usern---square.44Eve44!
     path(
         "logout/", views.custom_logout, name="logout"
     ),  # a lin in o.html that the admins cic when it wants to logout and browse as a regular visitor

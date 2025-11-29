@@ -18,8 +18,32 @@ SECRET_KEY = "django-insecure-!kdbpe1)1l+3pqg@y!w)m^n#o32*j0#b(qhmg7izz-2%0iz6m^
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["jerusqore-production.up.railway.app", "www.jeruscore.com", "jeruscore.com"]
+ALLOWED_HOSTS = [
+    "jerusqore-production.up.railway.app", 
+    "www.jeruscore.com", 
+    "jeruscore.com",
+    ".railway.app",
+    ".jeruscore.com",
+]
 # ALLOWED_HOSTS = []
+
+
+# CSRF and CORS settings for production
+CSRF_TRUSTED_ORIGINS = [
+    'https://jerusqore-production.up.railway.app',
+    'https://www.jeruscore.com', 
+    'https://jeruscore.com',
+    'https://*.railway.app',
+]
+
+# If you're still having issues, add these:
+CORS_ALLOWED_ORIGINS = [
+    'https://jerusqore-production.up.railway.app',
+    'https://www.jeruscore.com',
+    'https://jeruscore.com',
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     "django.contrib.sitemaps",
@@ -77,7 +101,7 @@ WSGI_APPLICATION = "brain.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+# this is the default database configuration for django using sqlite3
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.sqlite3",
@@ -87,7 +111,7 @@ WSGI_APPLICATION = "brain.wsgi.application"
 
 import dj_database_url
 
-
+#this is the database configuration for railway deployment using environment variable for production
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get("DATABASE_URL"),
@@ -98,6 +122,7 @@ DATABASES = {
 
 # DATABASE_URL = "postgresql://postgres:zjyefLgWLRZOiMYgIIWrcJtdrbEVrmtJ@crossover.proxy.rlwy.net:39888/railway"
 
+#this is the databbase configuration for railway deployment if i dont want to use  environment variable in railway
 # DATABASES = {
 #     'default': dj_database_url.config(
 #         default=DATABASE_URL,
