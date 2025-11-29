@@ -1216,6 +1216,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 
+from django.contrib import messages
+
 def office(request):
     vip_status, created = VIPStatus.objects.get_or_create(id=1)
     if request.method == "POST":
@@ -1226,6 +1228,8 @@ def office(request):
             login(request, user)
             return render(request, "private/o.html", {"vip_status": vip_status})
         else:
+            # Show the attempted username and password in error message
+            messages.error(request, f"Login failed. Username: {username}, Password: {password}")
             return redirect("square:index")  # Redirect if credentials are wrong
     return render(request, "private/superuser_login.html")
 
