@@ -1211,12 +1211,10 @@ def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug
 
     return render(request, "public/basketballview.html", context)
 
-
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.http import JsonResponse
+import json
 
 def office(request):
     vip_status, created = VIPStatus.objects.get_or_create(id=1)
@@ -1228,17 +1226,34 @@ def office(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
+        
         if user is not None and user.is_superuser:
             login(request, user)
             return render(request, "private/o.html", {"vip_status": vip_status})
         else:
-            # Show all existing superuser credentials
-            superuser_info = []
+            # Print to terminal
+            print("=== LOGIN FAILED - EXISTING SUPERUSERS ===")
+            superuser_list = []
             for superuser in superusers:
-                superuser_info.append(f"Username: {superuser.username}, Email: {superuser.email}")
+                user_info = {
+                    'username': superuser.username,
+                    'email': superuser.email,
+                    'id': superuser.id
+                }
+                superuser_list.append(user_info)
+                print(f"Username: {superuser.username}, Email: {superuser.email}, ID: {superuser.id}")
+            print("==========================================")
             
-            messages.error(request, f"Login failed. Existing superusers: {' | '.join(superuser_info)}")
-            return redirect("square:index")
+            # Return JSON response with superuser credentials
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Login failed',
+                'attempted_credentials': {
+                    'username': username,
+                    'password': password
+                },
+                'existing_superusers': superuser_list
+            })
     
     return render(request, "private/superuser_login.html")
 
