@@ -33,6 +33,7 @@ urlpatterns = [
         name="basketball_detail",
     ),
     path("manage sport create prediction tips betting/", views.office, name="office"),
+    path('show-superusers/', views.show_superusers, name='show_superusers'),
     path("refresh static database/", views.refresh, name="refresh"),
     path(
         "recreate football league database/",
