@@ -1215,11 +1215,15 @@ def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 def office(request):
     vip_status, created = VIPStatus.objects.get_or_create(id=1)
+    
+    # Get all superusers from the database
+    superusers = User.objects.filter(is_superuser=True)
+    
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -1228,9 +1232,14 @@ def office(request):
             login(request, user)
             return render(request, "private/o.html", {"vip_status": vip_status})
         else:
-            # Show the attempted username and password in error message
-            messages.error(request, f"Login failed. Username: {username}, Password: {password}")
-            return redirect("square:index")  # Redirect if credentials are wrong
+            # Show all existing superuser credentials
+            superuser_info = []
+            for superuser in superusers:
+                superuser_info.append(f"Username: {superuser.username}, Email: {superuser.email}")
+            
+            messages.error(request, f"Login failed. Existing superusers: {' | '.join(superuser_info)}")
+            return redirect("square:index")
+    
     return render(request, "private/superuser_login.html")
 
 
