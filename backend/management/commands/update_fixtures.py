@@ -74,6 +74,29 @@ class Command(BaseCommand):
                 return default
         return current
     
+    def get_or_create_season(self, season_data):
+        """Safely get or create season, handling duplicates"""
+        season_year = self.safe_get(season_data, "year", default=datetime.now().year)
+        
+        # Try to get existing season first
+        existing_season = Season.objects.filter(year=season_year).first()
+        if existing_season:
+            return existing_season, False
+        
+        # If no existing season, create one
+        try:
+            season = Season.objects.create(
+                year=season_year,
+                start_date=self.safe_get(season_data, "start", default=datetime.now().date()),
+                end_date=self.safe_get(season_data, "end", default=datetime.now().date()),
+                current=self.safe_get(season_data, "current", default=True)
+            )
+            return season, True
+        except Exception as e:
+            # If creation fails, just use the first one found
+            self.stdout.write(f"⚠️ Season creation failed, using existing: {e}")
+            return Season.objects.filter(year=season_year).first(), False
+    
     def save_fixtures(self, fixtures):
         """Save fixtures to backend models"""
         saved_count = 0
@@ -138,17 +161,13 @@ class Command(BaseCommand):
                     }
                 )
                 
-                # Get or create Season
+                # Get or create Season (using safe method)
                 season_data = self.safe_get(league_data, "season") or {}
-                season_year = self.safe_get(season_data, "year", default=datetime.now().year)
-                season, _ = Season.objects.get_or_create(
-                    year=season_year,
-                    defaults={
-                        'start_date': self.safe_get(season_data, "start", default=datetime.now().date()),
-                        'end_date': self.safe_get(season_data, "end", default=datetime.now().date()),
-                        'current': self.safe_get(season_data, "current", default=True)
-                    }
-                )
+                season, _ = self.get_or_create_season(season_data)
+                
+                if not season:
+                    self.stdout.write("⚠️ Skipping: Could not get/create season")
+                    continue
                 
                 # Add season to league
                 if season not in league.seasons.all():
@@ -187,9 +206,6 @@ class Command(BaseCommand):
                 
             except Exception as e:
                 self.stdout.write(f"❌ Failed to save fixture: {e}")
-                # Debug: Print fixture structure to understand the issue
-                import json
-                self.stdout.write(f"🔍 Problematic fixture: {json.dumps(fixture, indent=2)[:200]}...")
                 continue
         
         return saved_count
