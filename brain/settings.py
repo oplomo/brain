@@ -120,9 +120,11 @@ DATABASES = {
     )
 }
 
-# DATABASE_URL = "postgresql://postgres:zjyefLgWLRZOiMYgIIWrcJtdrbEVrmtJ@crossover.proxy.rlwy.net:39888/railway"
 
 #this is the databbase configuration for railway deployment if i dont want to use  environment variable in railway
+
+# DATABASE_URL = "postgresql://postgres:zjyefLgWLRZOiMYgIIWrcJtdrbEVrmtJ@crossover.proxy.rlwy.net:39888/railway"
+
 # DATABASES = {
 #     'default': dj_database_url.config(
 #         default=DATABASE_URL,
