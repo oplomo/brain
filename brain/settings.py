@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "square.apps.SquareConfig",
     "backend.apps.BackendConfig",
-    "django_crontab"
 ]
 
 SITE_ID = 2
@@ -180,14 +179,7 @@ USE_TZ = True
 
 
 
-# Cron jobs - Updated frequencies
-CRONJOBS = [
-    # Run every 4 minutes - replaces update_matches_task
-    ('*/4 * * * *', 'backend.management.commands.update_matches.run'),
-    
-    # Run every 6 minutes - replaces run_fixtures_update  
-    ('*/6 * * * *', 'backend.management.commands.update_fixtures.run'),
-]
+
 
 # settings.py
 PAYSTACK_PUBLIC_KEY = "pk_live_2e24f13b2b0ce6e1dfbc6886f2e40549a98fc76d"

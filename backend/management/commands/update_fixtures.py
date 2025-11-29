@@ -13,6 +13,83 @@ django.setup()
 class Command(BaseCommand):
     help = 'Update fixtures from API and send prediction reminder'
     
+    def handle(self, *args, **options):
+        self.stdout.write(f"🚀 CRON JOB STARTED: update_fixtures at {datetime.now()}")
+        
+        today_date = datetime.utcnow().strftime("%Y-%m-%d")
+        self.stdout.write(f"📅 Fetching fixtures for date: {today_date}")
+        
+        fixtures_data = self.fetch_fixtures_res(today_date)
+        
+        if fixtures_data:
+            self.stdout.write(f"📥 Found {len(fixtures_data)} fixtures from API")
+            new_count, updated_count = self.save_fixtures_to_db(fixtures_data)
+            total_fixtures = len(fixtures_data)
+            
+            # Send email with prediction link
+            subject = f"Fixtures Updated - {total_fixtures} matches available"
+            message = f"""
+            Fixtures update completed at {datetime.now()}!
+            
+            Statistics:
+            - Total fixtures fetched: {total_fixtures}
+            - New fixtures added: {new_count}
+            - Existing fixtures updated: {updated_count}
+            
+            🎯 Time to make your predictions!
+            
+            Click here to select predictions:
+            https://jerusqore-production.up.railway.app/select_football_prediction/
+            """
+            
+            try:
+                send_mail(
+                    subject,
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    ['adamsquare64@gmail.com'],
+                    fail_silently=False,
+                )
+                self.stdout.write("📧 Email sent successfully")
+            except Exception as e:
+                self.stdout.write(self.style.ERROR(f"❌ Email failed: {e}"))
+            
+            self.stdout.write(self.style.SUCCESS(
+                f'🎉 Successfully processed {total_fixtures} fixtures '
+                f'({new_count} new, {updated_count} updated)'
+            ))
+        else:
+            self.stdout.write(self.style.WARNING('⚠️ No fixtures data found from API'))
+            
+            # Send email even when no fixtures
+            subject = "Fixtures Update - No Matches Today"
+            message = f"""
+            Fixtures update completed at {datetime.now()} but no matches found for today.
+            
+            Date checked: {today_date}
+            
+            This could mean:
+            - No matches scheduled for today
+            - API is temporarily unavailable
+            - No active leagues/seasons
+            
+            The system will check again in 6 minutes.
+            """
+            
+            try:
+                send_mail(
+                    subject,
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    ['adamsquare64@gmail.com'],
+                    fail_silently=False,
+                )
+                self.stdout.write("📧 No-data email sent successfully")
+            except Exception as e:
+                self.stdout.write(self.style.ERROR(f"❌ Email failed: {e}"))
+        
+        self.stdout.write(f"⏰ CRON JOB COMPLETED: update_fixtures at {datetime.now()}")
+    
     def fetch_fixtures_res(self, date):
         api_key = settings.API_FOOTBALL
         url = "https://v3.football.api-sports.io/fixtures"
@@ -22,11 +99,22 @@ class Command(BaseCommand):
         }
         params = {"date": date}
         
-        response = requests.get(url, headers=headers, params=params)
-        if response.status_code == 200:
-            return response.json().get("response", [])
-        else:
-            self.stdout.write(self.style.ERROR(f"API Error: {response.status_code}"))
+        self.stdout.write(f"🌐 Making API request to: {url}")
+        
+        try:
+            response = requests.get(url, headers=headers, params=params)
+            self.stdout.write(f"📡 API Response status: {response.status_code}")
+            
+            if response.status_code == 200:
+                data = response.json()
+                fixtures = data.get("response", [])
+                self.stdout.write(f"✅ API Success - Found {len(fixtures)} fixtures")
+                return fixtures
+            else:
+                self.stdout.write(self.style.ERROR(f"❌ API Error: {response.status_code} - {response.text}"))
+                return []
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(f"❌ API Request failed: {e}"))
             return []
     
     def save_fixtures_to_db(self, res_data):
@@ -60,71 +148,8 @@ class Command(BaseCommand):
             
             if created:
                 new_fixtures_count += 1
+                self.stdout.write(f"➕ New fixture: {fixture['teams']['home']['name']} vs {fixture['teams']['away']['name']}")
             else:
                 updated_fixtures_count += 1
                 
         return new_fixtures_count, updated_fixtures_count
-    
-    def handle(self, *args, **options):
-        self.stdout.write("Starting fixtures update...")
-        today_date = datetime.utcnow().strftime("%Y-%m-%d")
-        
-        fixtures_data = self.fetch_fixtures_res(today_date)
-        
-        if fixtures_data:
-            new_count, updated_count = self.save_fixtures_to_db(fixtures_data)
-            total_fixtures = len(fixtures_data)
-            
-            # Send email with prediction link
-            subject = f"Fixtures Updated - {total_fixtures} matches available"
-            message = f"""
-            Fixtures update completed successfully!
-            
-            Statistics:
-            - Total fixtures fetched: {total_fixtures}
-            - New fixtures added: {new_count}
-            - Existing fixtures updated: {updated_count}
-            
-            🎯 Time to make your predictions!
-            
-            Click here to select predictions:
-            https://jerusqore-production.up.railway.app/select_football_prediction/
-            
-            Or go to: /select_football_prediction/
-            """
-            
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                ['adamsquare64@gmail.com'],
-                fail_silently=False,
-            )
-            
-            self.stdout.write(self.style.SUCCESS(
-                f'Successfully processed {total_fixtures} fixtures '
-                f'({new_count} new, {updated_count} updated)'
-            ))
-        else:
-            self.stdout.write(self.style.WARNING('No fixtures data found'))
-            
-            # Send email even when no fixtures (so you know it's working)
-            subject = "Fixtures Update - No Matches Today"
-            message = """
-            Fixtures update completed but no matches found for today.
-            
-            This could mean:
-            - No matches scheduled for today
-            - API is temporarily unavailable
-            - No active leagues/seasons
-            
-            The system will check again in 6 minutes.
-            """
-            
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                ['adamsquare64@gmail.com'],
-                fail_silently=False,
-            )
