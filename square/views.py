@@ -1211,6 +1211,13 @@ def Basketballview(request, pk, home_team_slug, away_team_slug, time, sport_slug
 
     return render(request, "public/basketballview.html", context)
 
+
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
+from django.contrib import messages
+from django.contrib.auth.models import User
+
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import JsonResponse
