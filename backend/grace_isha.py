@@ -187,6 +187,9 @@ class analyze_data:
                     )
 
                 try:
+                    # Handle abbreviated month names with periods (Nov., Dec., etc.)
+                    normalized_date_str = normalized_date_str.replace("Jan.", "January").replace("Feb.", "February").replace("Mar.", "March").replace("Apr.", "April").replace("May.", "May").replace("Jun.", "June").replace("Jul.", "July").replace("Aug.", "August").replace("Sep.", "September").replace("Oct.", "October").replace("Nov.", "November").replace("Dec.", "December")
+
                     # Determine format based on the presence of ':'
                     if ":" in normalized_date_str:
                         # Format includes minutes
@@ -202,12 +205,19 @@ class analyze_data:
                     print(f"Parsed match date: {match_date}")
                 except ValueError as e:
                     print(f"Error parsing match date: {e}")
-                    return False
+                    # Fallback: try parsing with dateutil if available
+                    try:
+                        from dateutil import parser
+                        match_date = parser.parse(match_date_str)
+                        print(f"Fallback parsing successful: {match_date}")
+                    except:
+                        print("All date parsing methods failed")
+                        return False
             else:
                 print("No match date available.")
                 return False
 
-            match_date_obj, created = MatchDate.objects.get_or_create(date=match_date)
+            match_date_obj, created = MatchDate.objects.get_or_create(date=match_date.date())
 
             league, created = League.objects.get_or_create(
                 league_id=match_details["league_id"]
@@ -247,7 +257,7 @@ class analyze_data:
         except Exception as e:
             print(f"Error saving match to database: {e}")
             return False
-
+        
     def asign_odds(self):
         bookmakers = [
             "Bet365",
